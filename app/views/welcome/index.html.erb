@@ -1,2 +1,15 @@
-<h1>University of Florida Sparse Matrix Collection</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "UF Sparse Matrix Collection", '#', id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home",   '#' %></li>
+        <li><%= link_to "About",   '#' %></li>
+        <li><%= link_to "Submit", '#' %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <%= yield %>
+</div>
