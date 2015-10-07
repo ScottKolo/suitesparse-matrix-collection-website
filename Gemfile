@@ -50,5 +50,7 @@ end
 group :production do
   # Use puma webserver for production
   gem 'puma'
+  # Enable better logging and support on Heroku
+  gem 'rails_12factor'
 end
 
