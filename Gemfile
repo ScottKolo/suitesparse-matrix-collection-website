@@ -47,3 +47,8 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  # Use puma webserver for production
+  gem 'puma'
+end
+
