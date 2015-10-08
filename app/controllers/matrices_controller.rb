@@ -1,5 +1,6 @@
 class MatricesController < ApplicationController
   def index
+    @matrices = Matrix.all
   end
 
   def show

@@ -1,2 +1,44 @@
-<h1>Matrices#index</h1>
-<p>Find me in app/views/matrices/index.html.haml</p>
+%h1 Matrices#index
+
+%p Find me in app/views/matrices/index.html.haml
+
+%table#matrices
+  %thead
+    %tr
+      %th Group
+      %th Name
+      %th Num Rows
+      %th Num Cols
+      %th Nonzeros
+      %th Kind
+      %th Symmetric
+      %th Date
+      %th Author
+      %th Editor
+      %th Notes
+      %th Matlab Url
+      %th Rutherford Boeing Url
+      %th Matrix Market Url
+      %th Type
+      %th Created At
+      %th Updated At
+  %tbody
+    - @matrices.each do |matrix|
+      %tr
+        %td= matrix.group
+        %td= matrix.name
+        %td= matrix.num_rows
+        %td= matrix.num_cols
+        %td= matrix.nonzeros
+        %td= matrix.kind
+        %td= matrix.symmetric
+        %td= matrix.date
+        %td= matrix.author
+        %td= matrix.editor
+        %td= matrix.notes
+        %td= matrix.matlab_url
+        %td= matrix.rutherford_boeing_url
+        %td= matrix.matrix_market_url
+        %td= matrix.type
+        %td= matrix.created_at
+        %td= matrix.updated_at
