@@ -1,2 +1,59 @@
-<h1>Matrices#show</h1>
-<p>Find me in app/views/matrices/show.html.erb</p>
+%h1 Matrices#show
+
+%p Find me in app/views/matrices/show.html.erb
+
+%p Detail View
+
+%table#matrix
+  %tbody
+    %tr
+      %td Group
+      %td= @matrix.group
+    %tr
+      %td Name
+      %td= @matrix.name
+    %tr
+      %td Num Rows
+      %td= @matrix.num_rows
+    %tr
+      %td Num Cols
+      %td= @matrix.num_cols
+    %tr
+      %td Nonzeros
+      %td= @matrix.nonzeros
+    %tr
+      %td Kind
+      %td= @matrix.kind
+    %tr
+      %td Symmetric
+      %td= @matrix.symmetric
+    %tr
+      %td Date
+      %td= @matrix.date
+    %tr
+      %td Author
+      %td= @matrix.author
+    %tr
+      %td Editor
+      %td= @matrix.editor
+    %tr
+      %td Notes
+      %td= @matrix.notes
+    %tr
+      %td Matlab Url
+      %td= @matrix.matlab_url
+    %tr
+      %td Rutherford Boeing Url
+      %td= @matrix.rutherford_boeing_url
+    %tr
+      %td Matrix Market Url
+      %td= @matrix.matrix_market_url
+    %tr
+      %td Type
+      %td= @matrix.type
+    %tr
+      %td Created At
+      %td= @matrix.created_at
+    %tr
+      %td Updated At
+      %td= @matrix.updated_at

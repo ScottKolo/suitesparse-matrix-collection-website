@@ -4,9 +4,12 @@ class MatricesController < ApplicationController
   end
 
   def show
+    id = params[:id]
+    @matrix = Matrix.find(id)
   end
 
   def create
+    # Push a new matrix to the pending database.
   end
 
   def new

@@ -5,8 +5,8 @@
 %table#matrices
   %thead
     %tr
-      %th Group
       %th Name
+      %th Group
       %th Num Rows
       %th Num Cols
       %th Nonzeros
@@ -25,8 +25,8 @@
   %tbody
     - @matrices.each do |matrix|
       %tr
+        %td= link_to "#{matrix.name}", matrix_path(matrix)
         %td= matrix.group
-        %td= matrix.name
         %td= matrix.num_rows
         %td= matrix.num_cols
         %td= matrix.nonzeros
