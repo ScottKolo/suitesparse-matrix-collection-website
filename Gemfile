@@ -29,6 +29,8 @@ gem 'bootstrap-sass', '~>3.3.5'
 gem 'haml', '~> 4.0.7'
 gem 'haml-rails', '~> 0.9'
 gem 'haml-contrib', '~> 1.0.0.1'
+# Add Google Web Fonts
+gem 'google-webfonts-rails', '~> 0.0.4'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

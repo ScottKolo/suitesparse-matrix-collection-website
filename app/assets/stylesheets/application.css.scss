@@ -18,5 +18,26 @@
 @import "bootstrap";
 
 body {
-    padding-top: 70px;
+    padding-top: 120px;
+}
+
+$navbar-inverse-bg: rgb(80, 0, 0);
+
+.navbar {
+  height: 100px;
+  font-family: 'Istok Web', sans-serif;
+  font-weight: 700;
+}
+
+.navbar-inverse {
+  background-color: $navbar-inverse-bg;
+  border-color: #090909;
+}
+
+.navbar-brand {
+  float: left;
+  padding: 15px 15px;
+  font-size: 32px;
+  line-height: 70px;
+  height: 100px;
 }
