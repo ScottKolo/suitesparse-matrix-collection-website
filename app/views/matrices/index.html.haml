@@ -1,12 +1,9 @@
 %h1 Matrices#index
 
-%p Find me in app/views/matrices/index.html.haml
-
-%table#matrices
+%table{:id => "matrices", :class => "table table-striped"}
   %thead
     %tr
-      %th Name
-      %th Group
+      %th Group/Name
       %th Num Rows
       %th Num Cols
       %th Nonzeros
@@ -16,17 +13,14 @@
       %th Author
       %th Editor
       %th Notes
-      %th Matlab Url
-      %th Rutherford Boeing Url
-      %th Matrix Market Url
+      %th Matlab URL
+      %th Rutherford Boeing URL
+      %th Matrix Market URL
       %th Type
-      %th Created At
-      %th Updated At
   %tbody
     - @matrices.each do |matrix|
       %tr
-        %td= link_to "#{matrix.name}", matrix_path(matrix)
-        %td= matrix.group
+        %td= link_to "#{matrix.group}/#{matrix.name}", matrix_path(matrix)
         %td= matrix.num_rows
         %td= matrix.num_cols
         %td= matrix.nonzeros
@@ -40,5 +34,3 @@
         %td= matrix.rutherford_boeing_url
         %td= matrix.matrix_market_url
         %td= matrix.type
-        %td= matrix.created_at
-        %td= matrix.updated_at
