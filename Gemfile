@@ -40,7 +40,7 @@ gem 'google-webfonts-rails', '~> 0.0.4'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
-  gem 'cucumber-rails', '~> 1.4.2'
+  gem 'cucumber-rails', '~> 1.4.2', :require => false
   gem 'cucumber-rails-training-wheels'
   gem 'database_cleaner', '~> 1.5.0'
   gem 'capybara', '2.5.0'
