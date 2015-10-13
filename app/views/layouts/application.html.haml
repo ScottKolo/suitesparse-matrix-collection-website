@@ -9,6 +9,11 @@
   %body{:role => "document"}
     %nav{:class => "navbar navbar-inverse navbar-fixed-top"}
       .container
-        .navbar-header.navbar-brand Sparse Matrix Collection
+        .navbar-header
+          %a{:class => "navbar-brand"} Sparse Matrix Collection
+        .navbar-collapse.collapse{:id => "navbar"}
+          %ul{:class => "nav navbar-nav navbar-right"}
+            %li Index
+            %li About
     .container.theme-showcase{:role => "main"}
       = yield
