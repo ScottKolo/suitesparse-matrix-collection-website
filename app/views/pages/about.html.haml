@@ -26,7 +26,7 @@ package of sparse matrix solvers is hosted at
           %param{:name => "play", :value => "true"}
             %param{:name => "loop", :value => "true"}
               %param{:name => "quality", :value => "high"}
-                %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer", :src => "Wolfram/graphplotbluedots.swf", :type => "application/x-shockwave-flash", :vmode => "transparent", :width => "305"}           %a{:href => "http://faculty.cse.tamu.edu/davis/matrices.html"}
+                %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer", :src => "Wolfram/graphplotbluedots.swf", :type => "application/x-shockwave-flash", :vmode => "transparent", :width => "305"}           
         %img{:height => "300", :src => "../Harn/UF_Matrix_Collection/Slide01.jpg"}
     %p
       (click reload to see a replay of the animation).
@@ -265,8 +265,6 @@ package of sparse matrix solvers is hosted at
                             Click here for a paper describing the collection
                           (look in the list for Davis and Hu, 2011)
                           %h2
-                            %a{:href => "http://yifanhu.net/GALLERY/GRAPHS/search.html"} Search the collection
-                          %h2
                             %a{:href => "../mat/UFget.html"} UFgui Java interface:
                           The
                           %a{:href => "../mat/UFget.html"} UFget
@@ -276,64 +274,6 @@ package of sparse matrix solvers is hosted at
                           %p
                             %a{:href => "../mat/UFget.html"}
                               %img{:alt => "UFgui screenshot", :src => "../mat/UFgui_screenshot.png"}/
-                            %h2 Browse the collection:
-                            %ul
-                              %li
-                                %a{:href => "http://yifanhu.net/GALLERY/GRAPHS/search.html"} Search the collection
-                                %li
-                                  %a{:href => "groups.html"} Browse the collection by matrix group
-                                  %li
-                                    %a{:href => "list_by_id.html"}> Browse all the matrices (sorted by matrix id)
-                                    \.
-                                    New matrices are always at the end of this list.
-                                    %li
-                                      %a{:href => "list_by_dimension.html"} Browse all the matrices (sorted by dimension)
-                                      %li
-                                        %a{:href => "list_by_name.html"} Browse all the matrices (sorted by name)
-                                        %li
-                                          %a{:href => "list_by_nnz.html"} Browse all the matrices (sorted by nnz)
-                                          %li
-                                            %a{:href => "list_by_symmetry.html"} Browse all the matrices (sorted by symmetry)
-                                            %li
-                                              %a{:href => "list_by_type.html"} Browse all the matrices (sorted by type)
-                                              %li
-                                                %a{:href => "list_by_group.html"} Browse all the matrices (sorted by group)
-                                                %li
-                                                  %a{:href => "../mat/UF_Listing.txt"}
-                                                    Browse a text file list of all the
-                                                    matrices
-                                                  In this list, the matrix ID is the same as the line number.
-                                                  %li
-                                                    %a{:href => "../mat/ChangeLog"} See the ChangeLog
-                                                    for recent changes.
-                                                    %li
-                                                      %a{:href => "rhs.txt"} List of matrix ID's and names with right-hand-sides
-                                                      %li
-                                                        For direct access to the matrix directories, useful for wget access:
-                                                        %ul
-                                                          %li
-                                                            %a{:href => "../mat"} MATLAB format
-                                                            %li
-                                                              %a{:href => "../RB"} Rutherford/Boeing format
-                                                              %li
-                                                                %a{:href => "../MM"} Matrix Market format
-                                                        %li
-                                                          Highlights:
-                                                          %ul
-                                                            %li
-                                                              Some of the matrices have xyz coordinates, which are plotted on the
-                                                              matrix web pages.  See the
-                                                              = succeed "," do
-                                                                %a{:href => "Cunningham"} Cunningham
-                                                              = succeed "," do
-                                                                %a{:href => "Engwirda"} Engwirda
-                                                              = succeed "," do
-                                                                %a{:href => "Pajek"} Pajek
-                                                              and
-                                                              %a{:href => "Pothen"} Pothen
-                                                              matrix sets.  Check out the
-                                                              = succeed ":" do
-                                                                %a{:href => "Pothen/commanche_dual.html"} Commanche helicopter
                             %h2 Statistics:
                             %ul
                               %li
@@ -356,16 +296,13 @@ package of sparse matrix solvers is hosted at
                                 For example, to download all symmetric matrices
                                 into MATLAB, in increasing size as measured by nnz(A):
                                 %pre
-                                  :preserve
-                                    
-                                        index = UFget ;           % get index of the UF Sparse Matrix Collection 
-                                        ids = find (index.numerical_symmetry == 1) ;
-                                        [ignore, i] = sort (index.nnz (ids)) ;
-                                        ids = ids (i) ;
-                                        for id = ids
-                                      Prob = UFget (id)     % Prob is a struct (matrix, name, meta-data, ...)
-                                      A = Prob.A ;          % A is a symmetric sparse matrix
-                                        end
+                                  index = UFget ;           % get index of the UF Sparse Matrix Collection 
+                                  ids = find (index.numerical_symmetry == 1) ;
+                                  [ignore, i] = sort (index.nnz (ids)) ;
+                                  ids = ids (i) ;
+                                  for id = ids
+                                  Prob = UFget (id)     % Prob is a struct (matrix, name, meta-data, ...)
+                                  A = Prob.A ;          % A is a symmetric sparse matrix
                             %h2 Julia interface:
                             %ul
                               %li
@@ -464,8 +401,6 @@ package of sparse matrix solvers is hosted at
                                       one entry per line (or use the Matrix Market format for dense matrices).
                                       Right-hand sides are particularly important for testing
                                       iterative solvers for sparse linear systems.
-                            %h2
-                              %a{:href => "links.html"} Sources of some matrices and related links
                             %hr
                               %h2 Graph drawings, by Yifan Hu
                               = succeed "," do
@@ -499,7 +434,8 @@ package of sparse matrix solvers is hosted at
                                       %param{:name => "play", :value => "true"}
                                         %param{:name => "loop", :value => "true"}
                                           %param{:name => "quality", :value => "high"}
-                                            %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer", :src => "Wolfram/graphplotbluedots.swf", :type => "application/x-shockwave-flash", :vmode => "transparent", :width => "305"}                                     %p
+                                            %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer", :src => "Wolfram/graphplotbluedots.swf", :type => "application/x-shockwave-flash", :vmode => "transparent", :width => "305"}                                     
+                                %p
                                   Below is Yifan Hu's graph drawing of the
                                   %a{:href => "Chen/pkustk01.html"} Chen/pkustk01
                                   matrix that
