@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3' 
+ruby '2.2.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -39,12 +39,14 @@ gem 'google-webfonts-rails', '~> 0.0.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-group :test do
-  gem 'cucumber-rails', '~> 1.4.2'
-  gem 'database_cleaner', '~> 1.5.0'
-end
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'cucumber-rails', '~> 1.4.2'
+  gem 'cucumber-rails-training-wheels'
+  gem 'database_cleaner', '~> 1.5.0'
+  gem 'capybara', '2.5.0'
+  gem 'launchy'
+  gem 'rspec-rails'
+  gem 'simplecov'
   gem 'byebug'
 end
 
