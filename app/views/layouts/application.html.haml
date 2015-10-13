@@ -13,7 +13,9 @@
           %a{:class => "navbar-brand"} Sparse Matrix Collection
         .navbar-collapse.collapse{:id => "navbar"}
           %ul{:class => "nav navbar-nav navbar-right"}
-            %li Index
-            %li About
+            %li 
+              = link_to "Index", root_path
+            %li
+              = link_to "About", about_path
     .container.theme-showcase{:role => "main"}
       = yield

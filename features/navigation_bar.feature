@@ -7,3 +7,13 @@ Feature: Navigation Bar
     When I am on the home page
     Then I should see "About"
     And I should see "Index"
+
+  Scenario: Index Page Link
+    Given I am on the home page
+    When I follow "Index"
+    Then I should be on the home page
+
+  Scenario: About Page Link
+    Given I am on the home page
+    When I follow "About"
+    Then I should be on the about page
