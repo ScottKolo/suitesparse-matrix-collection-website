@@ -18,37 +18,12 @@
 @import "bootstrap";
 
 body {
-  padding-top: 120px;
+  padding-top: 70px;
 }
 
 $navbar-inverse-bg: rgb(80, 0, 0);
 
-.navbar {
-  height: 100px;
-  /*font-family: 'Istok Web', sans-serif;*/
-  font-weight: 700;
-  color: #9D9D9D;
-}
-
-.navbar-nav {
-  line-height: 70px;
-  font-size: 24px;
-  padding: 15px 0;
-}
-
-.navbar li {
-  padding: 10px 20px;
-}
-
 .navbar-inverse {
   background-color: $navbar-inverse-bg;
   border-color: #090909;
-}
-
-.navbar-brand {
-  float: left;
-  padding: 15px 15px;
-  font-size: 32px;
-  line-height: 70px;
-  /*height: 100px;*/
 }
