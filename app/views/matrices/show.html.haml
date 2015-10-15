@@ -1,59 +1,52 @@
-%h1 Matrices#show
+%h1 Detail View
 
-%p Find me in app/views/matrices/show.html.erb
-
-%p Detail View
-
-%table#matrix
+%table{:id => "matrices", :class => "table table-striped"}
   %tbody
     %tr
-      %td Group
+      %th Group
       %td= @matrix.group
     %tr
-      %td Name
+      %th Name
       %td= @matrix.name
     %tr
-      %td Num Rows
+      %th Num Rows
       %td= @matrix.num_rows
     %tr
-      %td Num Cols
+      %th Num Cols
       %td= @matrix.num_cols
     %tr
-      %td Nonzeros
+      %th Nonzeros
       %td= @matrix.nonzeros
     %tr
-      %td Kind
+      %th Kind
       %td= @matrix.kind
     %tr
-      %td Symmetric
+      %th Symmetric
       %td= @matrix.symmetric
     %tr
-      %td Date
+      %th Date
       %td= @matrix.date
     %tr
-      %td Author
+      %th Author
       %td= @matrix.author
     %tr
-      %td Editor
+      %th Editor
       %td= @matrix.editor
     %tr
-      %td Notes
+      %th Notes
       %td= @matrix.notes
     %tr
-      %td Matlab Url
-      %td= @matrix.matlab_url
+      %th Download
+      %td 
+        = link_to "MATLAB", @matrix.matlab_url, class: "btn btn-default"
+        = link_to "Rutherford Boeing", @matrix.rutherford_boeing_url, class: "btn btn-default"
+        = link_to "Matrix Market", @matrix.matrix_market_url, class: "btn btn-default"
     %tr
-      %td Rutherford Boeing Url
-      %td= @matrix.rutherford_boeing_url
-    %tr
-      %td Matrix Market Url
-      %td= @matrix.matrix_market_url
-    %tr
-      %td Type
+      %th Type
       %td= @matrix.type
     %tr
-      %td Created At
+      %th Created At
       %td= @matrix.created_at
     %tr
-      %td Updated At
+      %th Updated At
       %td= @matrix.updated_at
