@@ -45,6 +45,7 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.5.0'
   gem 'capybara', '2.5.0'
   gem 'launchy'
+  gem 'factory_girl'
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'byebug'

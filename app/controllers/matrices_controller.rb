@@ -1,11 +1,17 @@
 class MatricesController < ApplicationController
+
   def index
     @matrices = Matrix.all
   end
 
   def show
+    # Show the details page for a matrix
     id = params[:id]
-    @matrix = Matrix.find(id)
+    begin
+      @matrix = Matrix.find(id) # Happy path
+    rescue
+      render :not_found         # Sad path
+    end
   end
 
   def create
@@ -20,4 +26,5 @@ class MatricesController < ApplicationController
 
   def update
   end
+
 end
