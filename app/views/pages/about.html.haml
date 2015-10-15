@@ -1,33 +1,33 @@
-I am now at Texas A&amp;M University, with a home page of
-%a{:href => "http://faculty.cse.tamu.edu/davis"}>
-  http://faculty.cse.tamu.edu/davis
-\.
+%p 
+  I am now at Texas A&amp;M University, with a home page of
+  %a{:href => "http://faculty.cse.tamu.edu/davis"}>
+    http://faculty.cse.tamu.edu/davis
+  \.
 The UF Sparse Matrix Collection is still hosted at this site by the University of Florida.
 My
 %a{:href => "http://suitesparse.com"} SuiteSparse
 package of sparse matrix solvers is hosted at
 %a{:href => "http://suitesparse.com"}> suitesparse.com
 \.
-%p
+%p{:style => "background-color:red"}
   %h4
     For a general-audience description of the matrices and images
     posted here, see our short note on
     = succeed "." do
-      %a{:href => "synopsis"}
+      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/synopsis"}
         Visualizing
         Sparse Matrices
     %p
       %a{:href => "http://faculty.cse.tamu.edu/davis/matrices.html"}
         Click here for a presentation at the Harn Museum, University of Florida
   %p
-    %ul
-      %object{:classid => "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000", :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0", :height => "334", :vmode => "transparent", :width => "305"}
-        %param{:name => "movie", :value => "Wolfram/graphplotbluedots.swf"}
-          %param{:name => "play", :value => "true"}
-            %param{:name => "loop", :value => "true"}
-              %param{:name => "quality", :value => "high"}
-                %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer", :src => "Wolfram/graphplotbluedots.swf", :type => "application/x-shockwave-flash", :vmode => "transparent", :width => "305"}           
-        %img{:height => "300", :src => "../Harn/UF_Matrix_Collection/Slide01.jpg"}
+    %object{:classid => "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000", :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0", :height => "334", :vmode => "transparent", :width => "305"}
+      %param{:name => "movie", :value => "Wolfram/graphplotbluedots.swf"}
+        %param{:name => "play", :value => "true"}
+          %param{:name => "loop", :value => "true"}
+            %param{:name => "quality", :value => "high"}
+              %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer", :src => "https://www.cise.ufl.edu/research/sparse/matrices/Wolfram/graphplotbluedots.swf", :type => "application/x-shockwave-flash", :vmode => "transparent", :width => "305"}           
+    %img{:height => "300", :src => "https://www.cise.ufl.edu/research/sparse/Harn/UF_Matrix_Collection/Slide01.jpg"}
     %p
       (click reload to see a replay of the animation).
       %hr
@@ -36,7 +36,7 @@ package of sparse matrix solvers is hosted at
         and
         %a{:href => "http://yifanhu.net"}> Yifan Hu, Yahoo! Labs
         \.
-        %p
+        %blockquote
           From the abstract of the paper
           %a{:href => "http://faculty.cse.tamu.edu/davis/publications.html"}
             The University of Florida Sparse Matrix Collection:
@@ -62,392 +62,393 @@ package of sparse matrix solvers is hosted at
             MATLAB, Mathematica, Fortran, and C, as well as an
             online search capability.  Graph visualization of the matrices is provided, and
             a new multilevel coarsening scheme is proposed to facilitate this task.
+        %p
+          %h2 Archival Data for Reproducible Research
           %p
+            %ul
+              The Collection serves a vital role in the sparse matrix algorithms
+              community, as a benchmark for algorithmic testing and development.
+              Results in journal articles that use these matrices can be repeated
+              by other researchers.  The matrices are given unique ID numbers and
+              they do not change once they are included in the collection.  The
+              collection also appears widely in other repositories or citation
+              indices:
+              %ul
+                %a{:href => "http://wokinfo.com/products_tools/multidisciplinary/dci/"}
+                  %img{:height => "100", :src => "DCI_button.png"}/
+                \&nbsp;
+                \&nbsp;
+                \&nbsp;
+                %a{:href => "http://developer.amazonwebservices.com/connect/entry.jspa?externalID=2379&categoryID=276"}
+                  %img{:height => "60", :src => "logo_aws.gif"}/
+                /
+                  <a href=http://thomsonreuters.com/en/products-services/scholarly-scientific-research/scholarly-search-and-discovery/data-citation-index.html>
+                  <img height=80 src=tr_ahz_rgb_pos.png></a>
+                %a{:href => "http://service.re3data.org/repository/r3d100010208"}
+                  %img{:height => "80", :src => "https://www.cise.ufl.edu/research/sparse/matrices/re3data_Logo_RGB_header.png"}/
+            %h2 Sample Gallery of the University of Florida Sparse Matrix Collection:
             %p
-              %h2 Archival Data for Reproducible Research
+              Click on the thumbnails below for a close-up.
               %p
-                %ul
-                  The Collection serves a vital role in the sparse matrix algorithms
-                  community, as a benchmark for algorithmic testing and development.
-                  Results in journal articles that use these matrices can be repeated
-                  by other researchers.  The matrices are given unique ID numbers and
-                  they do not change once they are included in the collection.  The
-                  collection also appears widely in other repositories or citation
-                  indices:
-                  %ul
-                    %a{:href => "http://wokinfo.com/products_tools/multidisciplinary/dci/"}
-                      %img{:height => "100", :src => "DCI_button.png"}/
-                    \&nbsp;
-                    \&nbsp;
-                    \&nbsp;
-                    %a{:href => "http://developer.amazonwebservices.com/connect/entry.jspa?externalID=2379&categoryID=276"}
-                      %img{:height => "60", :src => "logo_aws.gif"}/
-                    /
-                      <a href=http://thomsonreuters.com/en/products-services/scholarly-scientific-research/scholarly-search-and-discovery/data-citation-index.html>
-                      <img height=80 src=tr_ahz_rgb_pos.png></a>
-                    %a{:href => "http://service.re3data.org/repository/r3d100010208"}
-                      %img{:height => "80", :src => "re3data_Logo_RGB_header.png"}/
-                %h2 Sample Gallery of the University of Florida Sparse Matrix Collection:
+                %table{:class => "aboutImages"}
+                  %tr
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Alemdar/Alemdar.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Alemdar@Alemdar.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Andrews/Andrews.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrews@Andrews.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/ex3sta1.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@ex3sta1.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/fxm3_6.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@fxm3_6.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/fxm4_6.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@fxm4_6.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/lp1.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@lp1.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/lpl1.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@lpl1.gif"}/
+                  %tr
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/mip1.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@mip1.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/net25.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@net25.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/ATandT/pre2.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/ATandT@pre2.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Barabasi/NotreDame_www.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Barabasi@NotreDame_www.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Bates/Chem97Zt.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bates@Chem97Zt.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Bomhof/circuit_2.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bomhof@circuit_2.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Chen/pkustk01.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Chen@pkustk01.gif"}/
+                  %tr
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Chen/pkustk12.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Chen@pkustk12.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/GHS_indef/aug3d.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@aug3d.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/GHS_indef/dawson5.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@dawson5.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/GHS_indef/ncvxqp9.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@ncvxqp9.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/jnlbrng1.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@jnlbrng1.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/pds10.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@pds10.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Gleich/wikipedia-20070206.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Gleich@wikipedia-20070206.gif"}/
+                  %tr
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Grund/poli_large.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Grund@poli_large.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Gupta/gupta3.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Gupta@gupta3.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Hamm/hcircuit.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Hamm@hcircuit.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/HB/illc1033.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@illc1033.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/HB/lock1074.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@lock1074.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/HB/lock_700.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@lock_700.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/aircraft.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@aircraft.gif"}/
+                  %tr
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/cep1.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@cep1.gif"}/
+                    %td
+                      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/ex3sta1.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@ex3sta1.gif"}/
+                    %td
+                      %a{:href => "Meszaros/lpl3.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@lpl3.gif"}/
+                    %td
+                      %a{:href => "Meszaros/nemscem.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@nemscem.gif"}/
+                    %td
+                      %a{:href => "Meszaros/pltexpa.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@pltexpa.gif"}/
+                    %td
+                      %a{:href => "Mittelmann/spal_004.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Mittelmann@spal_004.gif"}/
+                    %td
+                      %a{:href => "Pothen/barth5.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@barth5.gif"}/
+                  %tr
+                    %td
+                      %a{:href => "Pothen/skirt.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@skirt.gif"}/
+                    %td
+                      %a{:href => "QCD/conf5_0-4x4-10.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/QCD@conf5_0-4x4-10.gif"}/
+                    %td
+                      %a{:href => "QCD/conf5_4-8x8-05.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/QCD@conf5_4-8x8-05.APlusAT.gif"}/
+                    %td
+                      %a{:href => "Rothberg/gearbox.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Rothberg@gearbox.gif"}/
+                    %td
+                      %a{:href => "Wissgott/parabolic_fem.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Wissgott@parabolic_fem.gif"}/
+                    %td
+                      %a{:href => "HB/sstmodel.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@sstmodel.gif"}/
+                    %td
+                      %a{:href => "Pothen/commanche_dual.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@commanche_dual.gif"}/
+                  %tr
+                    %td
+                      %a{:href => "GHS_psdef/finance256.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@finance256.gif"}/
+                    %td
+                      %a{:href => "Boeing/pct20stif.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Boeing@pct20stif.gif"}/
+                    %td
+                      %a{:href => "Cote/mplate.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Cote@mplate.gif"}/
+                    %td
+                      %a{:href => "Bai/rw5151.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bai@rw5151.gif"}/
+                    %td
+                      %a{:href => "GHS_indef/ncvxbqp1.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@ncvxbqp1.gif"}/
+                    %td
+                      %a{:href => "GHS_psdef/ford2.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@ford2.gif"}/
+                    %td
+                      %a{:href => "GHS_psdef/opt1.html"}
+                        %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@opt1.gif"}/
+                %br
+                %br
                 %p
-                  Click on the thumbnails below for a close-up.
+                  The images above of matrices in the UF Sparse Matrix Collection were created by
+                  = succeed "." do
+                    %a{:href => "http://yifanhu.net"} Yifan Hu, AT&T
+                  As of June 2015, it contains 2757 problems (some of which are sequences of
+                  dozens of matrices).  The largest has a dimension of 118 million, and the
+                  matrix with the most nonzero entries has almost 2 billion of them.  The
+                  matrices are available in three formats: MATLAB mat-file, Rutherford-Boeing,
+                  and Matrix Market.
                   %p
-                    %table{:bgcolor => "#000000"}
-                      %tr
-                        %td
-                          %a{:href => "Alemdar/Alemdar.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Alemdar@Alemdar.gif"}/
-                        %td
-                          %a{:href => "Andrews/Andrews.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrews@Andrews.gif"}/
-                        %td
-                          %a{:href => "Andrianov/ex3sta1.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@ex3sta1.gif"}/
-                        %td
-                          %a{:href => "Andrianov/fxm3_6.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@fxm3_6.gif"}/
-                        %td
-                          %a{:href => "Andrianov/fxm4_6.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@fxm4_6.gif"}/
-                        %td
-                          %a{:href => "Andrianov/lp1.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@lp1.gif"}/
-                        %td
-                          %a{:href => "Andrianov/lpl1.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@lpl1.gif"}/
-                      %tr
-                        %td
-                          %a{:href => "Andrianov/mip1.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@mip1.gif"}/
-                        %td
-                          %a{:href => "Andrianov/net25.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@net25.gif"}/
-                        %td
-                          %a{:href => "ATandT/pre2.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/ATandT@pre2.gif"}/
-                        %td
-                          %a{:href => "Barabasi/NotreDame_www.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Barabasi@NotreDame_www.gif"}/
-                        %td
-                          %a{:href => "Bates/Chem97Zt.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bates@Chem97Zt.gif"}/
-                        %td
-                          %a{:href => "Bomhof/circuit_2.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bomhof@circuit_2.gif"}/
-                        %td
-                          %a{:href => "Chen/pkustk01.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Chen@pkustk01.gif"}/
-                      %tr
-                        %td
-                          %a{:href => "Chen/pkustk12.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Chen@pkustk12.gif"}/
-                        %td
-                          %a{:href => "GHS_indef/aug3d.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@aug3d.gif"}/
-                        %td
-                          %a{:href => "GHS_indef/dawson5.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@dawson5.gif"}/
-                        %td
-                          %a{:href => "GHS_indef/ncvxqp9.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@ncvxqp9.gif"}/
-                        %td
-                          %a{:href => "GHS_psdef/jnlbrng1.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@jnlbrng1.gif"}/
-                        %td
-                          %a{:href => "GHS_psdef/pds10.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@pds10.gif"}/
-                        %td
-                          %a{:href => "Gleich/wikipedia-20070206.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Gleich@wikipedia-20070206.gif"}/
-                      %tr
-                        %td
-                          %a{:href => "Grund/poli_large.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Grund@poli_large.gif"}/
-                        %td
-                          %a{:href => "Gupta/gupta3.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Gupta@gupta3.gif"}/
-                        %td
-                          %a{:href => "Hamm/hcircuit.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Hamm@hcircuit.gif"}/
-                        %td
-                          %a{:href => "HB/illc1033.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@illc1033.gif"}/
-                        %td
-                          %a{:href => "HB/lock1074.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@lock1074.gif"}/
-                        %td
-                          %a{:href => "HB/lock_700.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@lock_700.gif"}/
-                        %td
-                          %a{:href => "Meszaros/aircraft.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@aircraft.gif"}/
-                      %tr
-                        %td
-                          %a{:href => "Meszaros/cep1.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@cep1.gif"}/
-                        %td
-                          %a{:href => "Meszaros/ex3sta1.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@ex3sta1.gif"}/
-                        %td
-                          %a{:href => "Meszaros/lpl3.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@lpl3.gif"}/
-                        %td
-                          %a{:href => "Meszaros/nemscem.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@nemscem.gif"}/
-                        %td
-                          %a{:href => "Meszaros/pltexpa.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@pltexpa.gif"}/
-                        %td
-                          %a{:href => "Mittelmann/spal_004.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Mittelmann@spal_004.gif"}/
-                        %td
-                          %a{:href => "Pothen/barth5.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@barth5.gif"}/
-                      %tr
-                        %td
-                          %a{:href => "Pothen/skirt.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@skirt.gif"}/
-                        %td
-                          %a{:href => "QCD/conf5_0-4x4-10.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/QCD@conf5_0-4x4-10.gif"}/
-                        %td
-                          %a{:href => "QCD/conf5_4-8x8-05.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/QCD@conf5_4-8x8-05.APlusAT.gif"}/
-                        %td
-                          %a{:href => "Rothberg/gearbox.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Rothberg@gearbox.gif"}/
-                        %td
-                          %a{:href => "Wissgott/parabolic_fem.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Wissgott@parabolic_fem.gif"}/
-                        %td
-                          %a{:href => "HB/sstmodel.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@sstmodel.gif"}/
-                        %td
-                          %a{:href => "Pothen/commanche_dual.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@commanche_dual.gif"}/
-                      %tr
-                        %td
-                          %a{:href => "GHS_psdef/finance256.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@finance256.gif"}/
-                        %td
-                          %a{:href => "Boeing/pct20stif.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Boeing@pct20stif.gif"}/
-                        %td
-                          %a{:href => "Cote/mplate.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Cote@mplate.gif"}/
-                        %td
-                          %a{:href => "Bai/rw5151.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bai@rw5151.gif"}/
-                        %td
-                          %a{:href => "GHS_indef/ncvxbqp1.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@ncvxbqp1.gif"}/
-                        %td
-                          %a{:href => "GHS_psdef/ford2.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@ford2.gif"}/
-                        %td
-                          %a{:href => "GHS_psdef/opt1.html"}
-                            %img{:border => "0", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@opt1.gif"}/
+                    This collection is managed by Tim Davis, with images created by Yifan Hu.
+                    ``Editors'' of other collections
+                    are attributed, via the Problem.ed field in each problem set.  Problem.author
+                    is the matrix creator.  Other collections are always welcome.
                     %p
-                      The images above of matrices in the UF Sparse Matrix Collection were created by
-                      = succeed "." do
-                        %a{:href => "http://yifanhu.net"} Yifan Hu, AT&T
-                      As of June 2015, it contains 2757 problems (some of which are sequences of
-                      dozens of matrices).  The largest has a dimension of 118 million, and the
-                      matrix with the most nonzero entries has almost 2 billion of them.  The
-                      matrices are available in three formats: MATLAB mat-file, Rutherford-Boeing,
-                      and Matrix Market.
+                      %a{:href => "http://faculty.cse.tamu.edu/davis/publications.html"}
+                        Click here for a paper describing the collection
+                      (look in the list for Davis and Hu, 2011)
+                      %h2
+                        %a{:href => "../mat/UFget.html"} UFgui Java interface:
+                      The
+                      %a{:href => "../mat/UFget.html"} UFget
+                      package includes a Java program (UFgui)
+                      for browsing and downloading the matrices in any format on any platform.
+                      Below is a screenshot (click on it to download the code):
                       %p
-                        This collection is managed by Tim Davis, with images created by Yifan Hu.
-                        ``Editors'' of other collections
-                        are attributed, via the Problem.ed field in each problem set.  Problem.author
-                        is the matrix creator.  Other collections are always welcome.
-                        %p
-                          %a{:href => "http://faculty.cse.tamu.edu/davis/publications.html"}
-                            Click here for a paper describing the collection
-                          (look in the list for Davis and Hu, 2011)
-                          %h2
-                            %a{:href => "../mat/UFget.html"} UFgui Java interface:
+                        %a{:href => "../mat/UFget.html"}
+                          %img{:alt => "UFgui screenshot", :src => "../mat/UFgui_screenshot.png"}/
+                        %h2 Statistics:
+                        %ul
+                          %li
+                            %a{:href => "stats.html"} A description of the statistics for each matrix
+                            %li
+                              %a{:href => "kind.html"} Problem domains
+                        %h2 MATLAB and stand-alone Java GUI interfaces:
+                        %ul
+                          %li
+                            %a{:href => "../mat/UFget.html"}>
+                              Click here for the UFget MATLAB and
+                              UFgui Java interfaces
+                            \.
+                            UFget.m provides
+                            for simple access to the collection, right inside your MATLAB workspace.
+                            From inside MATLAB, UFget will download a matrix, cache it locally, and
+                            load it into your MATLAB workspace.  No need to use a browser to get a matrix.
+                            You can even use the built-in index to search for matrices that fit your
+                            criteria ... all inside MATLAB.
+                            For example, to download all symmetric matrices
+                            into MATLAB, in increasing size as measured by nnz(A):
+                            %pre
+                              index = UFget ;           % get index of the UF Sparse Matrix Collection 
+                              ids = find (index.numerical_symmetry == 1) ;
+                              [ignore, i] = sort (index.nnz (ids)) ;
+                              ids = ids (i) ;
+                              for id = ids
+                              Prob = UFget (id)     % Prob is a struct (matrix, name, meta-data, ...)
+                              A = Prob.A ;          % A is a symmetric sparse matrix
+                        %h2 Julia interface:
+                        %ul
+                          %li
+                            %a{:href => "http://www.maths.manchester.ac.uk/~weijian/"}> Weijian Zhang
+                            ,
+                            at the University of Manchester, has created a
+                            %a{:href => "http://matrixdepotjl.readthedocs.org/en/latest/interface.html#interfaces"}> Julia interface to the UF collection
+                            \.
+                        %h2
+                          %a{:href => "../dimacs10"} DIMACS10
+                        %ul
                           The
-                          %a{:href => "../mat/UFget.html"} UFget
-                          package includes a Java program (UFgui)
-                          for browsing and downloading the matrices in any format on any platform.
-                          Below is a screenshot (click on it to download the code):
-                          %p
-                            %a{:href => "../mat/UFget.html"}
-                              %img{:alt => "UFgui screenshot", :src => "../mat/UFgui_screenshot.png"}/
-                            %h2 Statistics:
-                            %ul
-                              %li
-                                %a{:href => "stats.html"} A description of the statistics for each matrix
-                                %li
-                                  %a{:href => "kind.html"} Problem domains
-                            %h2 MATLAB and stand-alone Java GUI interfaces:
-                            %ul
-                              %li
-                                %a{:href => "../mat/UFget.html"}>
-                                  Click here for the UFget MATLAB and
-                                  UFgui Java interfaces
-                                \.
-                                UFget.m provides
-                                for simple access to the collection, right inside your MATLAB workspace.
-                                From inside MATLAB, UFget will download a matrix, cache it locally, and
-                                load it into your MATLAB workspace.  No need to use a browser to get a matrix.
-                                You can even use the built-in index to search for matrices that fit your
-                                criteria ... all inside MATLAB.
-                                For example, to download all symmetric matrices
-                                into MATLAB, in increasing size as measured by nnz(A):
-                                %pre
-                                  index = UFget ;           % get index of the UF Sparse Matrix Collection 
-                                  ids = find (index.numerical_symmetry == 1) ;
-                                  [ignore, i] = sort (index.nnz (ids)) ;
-                                  ids = ids (i) ;
-                                  for id = ids
-                                  Prob = UFget (id)     % Prob is a struct (matrix, name, meta-data, ...)
-                                  A = Prob.A ;          % A is a symmetric sparse matrix
-                            %h2 Julia interface:
-                            %ul
-                              %li
-                                %a{:href => "http://www.maths.manchester.ac.uk/~weijian/"}> Weijian Zhang
-                                ,
-                                at the University of Manchester, has created a
-                                %a{:href => "http://matrixdepotjl.readthedocs.org/en/latest/interface.html#interfaces"}> Julia interface to the UF collection
-                                \.
-                            %h2
-                              %a{:href => "../dimacs10"} DIMACS10
-                            %ul
-                              The
-                              %a{:href => "http://www.cc.gatech.edu/dimacs10"} DIMACS10
-                              Challenge Problems can be accessed in the UF Collection,
-                              using the
-                              %a{:href => "../dimacs10"} dimacs10
-                              toolbox.
-                            %h2 Software:
-                            %ul
-                              The
-                              %a{:href => "../SuiteSparse"} SuiteSparse
-                              collection of packages includes
-                              all of the software that I used to generate these web pages, and to
-                              manage the matrices themselves (creating the Matrix Market and Rutherford/
-                              Boeing files, for example).
-                              You don't need SuiteSparse to access the matrices, however.
-                            %h2 References:
-                            %ul
-                              %li
-                                To cite this collection, use the following:
-                                The University of Florida Sparse Matrix Collection,
-                                T. A. Davis and Y. Hu,
-                                ACM Transactions on Mathematical Software, Vol 38, Issue 1, 2011, pp 1:1 - 1:25.
-                                %a{:href => "http://www.cise.ufl.edu/research/sparse/matrices"}>
-                                  http://www.cise.ufl.edu/research/sparse/matrices
-                                \.
-                                %li
-                                  When using matrices in the LAW/ group in the collection,
-                                  please follow the citation instructions at
-                                  %a{:href => "http://law.di.unimi.it/datasets.php"}>
-                                    http://law.di.unimi.it/datasets.php
-                                  \.
-                                  %li
-                                    For additional background, see: Duff, I.S, Grimes, R. G, and Lewis, J. G,
-                                    %a{:href => "http://doi.acm.org/10.1145/62038.62043"}>
-                                      Sparse matrix test problems
-                                    ,
-                                    ACM Transactions on Mathematical Software,
-                                    vol 15, no. 1, pp 1-14, 1989.
-                                    This describes the Harwell-Boeing collection which is the starting point
-                                    of the UF Sparse Matrix Collection (the first 292 matrices).
-                                    %li
-                                      The Rutherford-Boeing format is described in the document
-                                      %a{:href => "DOC/rb.pdf"}
-                                        Rutherford-Boeing Sparse Matrix Collection
-                                      %li
-                                        See the
-                                        %a{:href => "http://math.nist.gov/MatrixMarket"} Matrix Market
-                                        for a description of the Matrix Market format.
-                            %h2 To submit matrices to this collection:
-                            %ul
-                              Sparse matrices from real applications are critical to the development of
-                              sparse matrix algorithms.  Many sparse matrix algorithm developers
-                              use the matrices at this site to test their methods.  If you would like
-                              the next generation of sparse matrix methods to work well on matrices
-                              from your problem domain, then please submit matrices to the collection,
-                              at:
-                              %a{:href => "http://www.cise.ufl.edu/dropbox/www"} http://www.cise.ufl.edu/dropbox/www
-                              (for recipient: "davis@cise.ufl.edu").
-                              If you upload a file there, I will automatically be notified via email.
-                              %p
-                                %b
-                                  Please include details about the matrix.
-                                In particular, include a paragraph or more about the problem the matrix
-                                represents.  Include any citations: journal articles, web pages,
-                                conference papers, books, etc that give more details.
-                                You cannot include this description in the
-                                %a{:href => "http://www.cise.ufl.edu/dropbox/www"} http://www.cise.ufl.edu/dropbox/www
-                                form, so please include it an uploaded file, or email it to me.
-                                %p
-                                  Use any reasonable format; just tell me what you use.  I prefer either the
-                                  Matrix Market format, or a MATLAB *.mat file.
-                                  %p
-                                    Another simple method is the triplet format.  The triplet format is a simple
-                                    ascii file with nz lines; each line contains a row index, column index, and
-                                    numerical value of one entry in the matrix (two values for a complex matrix,
-                                    the real part followed by the imaginary part).  Duplicates are OK - these are
-                                    summed in the output matrix.  The triplets can be in any order.  If the matrix
-                                    dimension cannot be inferred from the row and column indices, please tell me
-                                    what they are in another file or email message.
-                                    %p
-                                      If you wish to include other data (right-hand-sides, solutions,
-                                      cost vector c for a linear programming problem, and so on),
-                                      use a separate file for each matrix in your
-                                      problem.  A dense vector of length n should appear as a file with n lines, and
-                                      one entry per line (or use the Matrix Market format for dense matrices).
-                                      Right-hand sides are particularly important for testing
-                                      iterative solvers for sparse linear systems.
-                            %hr
-                              %h2 Graph drawings, by Yifan Hu
-                              = succeed "," do
-                                %a{:href => "http://yifanhu.net"} Yifan Hu
-                              at
-                              Yahoo! Labs has created a
-                              %a{:href => "http://yifanhu.net/PUB/graph_draw_small.pdf"}
-                                graph drawing program
-                              that can generate truly beautiful drawings of a large graph, based solely on
-                              the connectivity (that is, a sparse matrix).  Take a look at his
-                              %a{:href => "http://yifanhu.net/gallery.html"}>
-                                drawings of the matrices in the UF Sparse Matrix Collection
+                          %a{:href => "http://www.cc.gatech.edu/dimacs10"} DIMACS10
+                          Challenge Problems can be accessed in the UF Collection,
+                          using the
+                          %a{:href => "../dimacs10"} dimacs10
+                          toolbox.
+                        %h2 Software:
+                        %ul
+                          The
+                          %a{:href => "../SuiteSparse"} SuiteSparse
+                          collection of packages includes
+                          all of the software that I used to generate these web pages, and to
+                          manage the matrices themselves (creating the Matrix Market and Rutherford/
+                          Boeing files, for example).
+                          You don't need SuiteSparse to access the matrices, however.
+                        %h2 References:
+                        %ul
+                          %li
+                            To cite this collection, use the following:
+                            The University of Florida Sparse Matrix Collection,
+                            T. A. Davis and Y. Hu,
+                            ACM Transactions on Mathematical Software, Vol 38, Issue 1, 2011, pp 1:1 - 1:25.
+                            %a{:href => "http://www.cise.ufl.edu/research/sparse/matrices"}>
+                              http://www.cise.ufl.edu/research/sparse/matrices
+                            \.
+                            %li
+                              When using matrices in the LAW/ group in the collection,
+                              please follow the citation instructions at
+                              %a{:href => "http://law.di.unimi.it/datasets.php"}>
+                                http://law.di.unimi.it/datasets.php
                               \.
-                              
-                              Each square matrix in the UF Sparse Matrix Collection
-                              has a link to his graph drawings; clicking on them
-                              will bring up his web page for that matrix, including a link to a higher
-                              resolution image.
+                              %li
+                                For additional background, see: Duff, I.S, Grimes, R. G, and Lewis, J. G,
+                                %a{:href => "http://doi.acm.org/10.1145/62038.62043"}>
+                                  Sparse matrix test problems
+                                ,
+                                ACM Transactions on Mathematical Software,
+                                vol 15, no. 1, pp 1-14, 1989.
+                                This describes the Harwell-Boeing collection which is the starting point
+                                of the UF Sparse Matrix Collection (the first 292 matrices).
+                                %li
+                                  The Rutherford-Boeing format is described in the document
+                                  %a{:href => "DOC/rb.pdf"}
+                                    Rutherford-Boeing Sparse Matrix Collection
+                                  %li
+                                    See the
+                                    %a{:href => "http://math.nist.gov/MatrixMarket"} Matrix Market
+                                    for a description of the Matrix Market format.
+                        %h2 To submit matrices to this collection:
+                        %ul
+                          Sparse matrices from real applications are critical to the development of
+                          sparse matrix algorithms.  Many sparse matrix algorithm developers
+                          use the matrices at this site to test their methods.  If you would like
+                          the next generation of sparse matrix methods to work well on matrices
+                          from your problem domain, then please submit matrices to the collection,
+                          at:
+                          %a{:href => "http://www.cise.ufl.edu/dropbox/www"} http://www.cise.ufl.edu/dropbox/www
+                          (for recipient: "davis@cise.ufl.edu").
+                          If you upload a file there, I will automatically be notified via email.
+                          %p
+                            %b
+                              Please include details about the matrix.
+                            In particular, include a paragraph or more about the problem the matrix
+                            represents.  Include any citations: journal articles, web pages,
+                            conference papers, books, etc that give more details.
+                            You cannot include this description in the
+                            %a{:href => "http://www.cise.ufl.edu/dropbox/www"} http://www.cise.ufl.edu/dropbox/www
+                            form, so please include it an uploaded file, or email it to me.
+                            %p
+                              Use any reasonable format; just tell me what you use.  I prefer either the
+                              Matrix Market format, or a MATLAB *.mat file.
                               %p
-                                For a demo of how Yifan's algorithm works, see the
-                                %a{:href => "http://www.wolfram.com/products/mathematica/newin51/graphlayout.html"}
-                                  GraphPlot
-                                function, which he wrote for
-                                = succeed "," do
-                                  %a{:href => "http://www.wolfram.com"} Mathematica
-                                or you can view it here by right-clicking the figure below and selecting "Play".
-                                (or just click "reload" on your browser).
-                                %ul
-                                  %object{:classid => "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000", :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0", :height => "334", :vmode => "transparent", :width => "305"}
-                                    %param{:name => "movie", :value => "Wolfram/graphplotbluedots.swf"}
-                                      %param{:name => "play", :value => "true"}
-                                        %param{:name => "loop", :value => "true"}
-                                          %param{:name => "quality", :value => "high"}
-                                            %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer", :src => "Wolfram/graphplotbluedots.swf", :type => "application/x-shockwave-flash", :vmode => "transparent", :width => "305"}                                     
+                                Another simple method is the triplet format.  The triplet format is a simple
+                                ascii file with nz lines; each line contains a row index, column index, and
+                                numerical value of one entry in the matrix (two values for a complex matrix,
+                                the real part followed by the imaginary part).  Duplicates are OK - these are
+                                summed in the output matrix.  The triplets can be in any order.  If the matrix
+                                dimension cannot be inferred from the row and column indices, please tell me
+                                what they are in another file or email message.
                                 %p
-                                  Below is Yifan Hu's graph drawing of the
-                                  %a{:href => "Chen/pkustk01.html"} Chen/pkustk01
-                                  matrix that
-                                  I obtained from
-                                  = succeed "," do
-                                    %a{:href => "Chen"} Pu Chen
-                                  Beijing University.
-                                  The matrix is a model of the
-                                  %a{:href => "http://www.beijingbg.com"}> Beijing Botanical Garden Conservatory
-                                  \.
-                                  Overlayed on top of the graph is a picture of the actual building.
-                                  %p
-                                    %ul
-                                      %a{:href => "Chen/pkustk01.html"}
-                                        %img{:src => "Wolfram/graphlayout-dome.gif"}
+                                  If you wish to include other data (right-hand-sides, solutions,
+                                  cost vector c for a linear programming problem, and so on),
+                                  use a separate file for each matrix in your
+                                  problem.  A dense vector of length n should appear as a file with n lines, and
+                                  one entry per line (or use the Matrix Market format for dense matrices).
+                                  Right-hand sides are particularly important for testing
+                                  iterative solvers for sparse linear systems.
+                        %hr
+                          %h2 Graph drawings, by Yifan Hu
+                          = succeed "," do
+                            %a{:href => "http://yifanhu.net"} Yifan Hu
+                          at
+                          Yahoo! Labs has created a
+                          %a{:href => "http://yifanhu.net/PUB/graph_draw_small.pdf"}
+                            graph drawing program
+                          that can generate truly beautiful drawings of a large graph, based solely on
+                          the connectivity (that is, a sparse matrix).  Take a look at his
+                          %a{:href => "http://yifanhu.net/gallery.html"}>
+                            drawings of the matrices in the UF Sparse Matrix Collection
+                          \.
+                          
+                          Each square matrix in the UF Sparse Matrix Collection
+                          has a link to his graph drawings; clicking on them
+                          will bring up his web page for that matrix, including a link to a higher
+                          resolution image.
+                          %p
+                            For a demo of how Yifan's algorithm works, see the
+                            %a{:href => "http://www.wolfram.com/products/mathematica/newin51/graphlayout.html"}
+                              GraphPlot
+                            function, which he wrote for
+                            = succeed "," do
+                              %a{:href => "http://www.wolfram.com"} Mathematica
+                            or you can view it here by right-clicking the figure below and selecting "Play".
+                            (or just click "reload" on your browser).
+                            %ul
+                              %object{:classid => "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000", :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0", :height => "334", :vmode => "transparent", :width => "305"}
+                                %param{:name => "movie", :value => "Wolfram/graphplotbluedots.swf"}
+                                  %param{:name => "play", :value => "true"}
+                                    %param{:name => "loop", :value => "true"}
+                                      %param{:name => "quality", :value => "high"}
+                                        %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer", :src => "Wolfram/graphplotbluedots.swf", :type => "application/x-shockwave-flash", :vmode => "transparent", :width => "305"}                                     
+                            %p
+                              Below is Yifan Hu's graph drawing of the
+                              %a{:href => "Chen/pkustk01.html"} Chen/pkustk01
+                              matrix that
+                              I obtained from
+                              = succeed "," do
+                                %a{:href => "Chen"} Pu Chen
+                              Beijing University.
+                              The matrix is a model of the
+                              %a{:href => "http://www.beijingbg.com"}> Beijing Botanical Garden Conservatory
+                              \.
+                              Overlayed on top of the graph is a picture of the actual building.
+                              %p
+                                %ul
+                                  %a{:href => "Chen/pkustk01.html"}
+                                    %img{:src => "Wolfram/graphlayout-dome.gif"}
