@@ -12,10 +12,7 @@
       %th Author
       %th Editor
       %th Notes
-      %th Matlab URL
-      %th Rutherford Boeing URL
-      %th Matrix Market URL
-      %th Type
+      %th Download File
   %tbody
     - @matrices.each do |matrix|
       %tr
@@ -29,7 +26,7 @@
         %td= matrix.author
         %td= matrix.editor
         %td= matrix.notes
-        %td= matrix.matlab_url
-        %td= matrix.rutherford_boeing_url
-        %td= matrix.matrix_market_url
-        %td= matrix.type
+        %td
+          = link_to "MATLAB", matrix.matlab_url, class: "btn btn-default"
+          = link_to "Rutherford Boeing", matrix.rutherford_boeing_url, class: "btn btn-default"
+          = link_to "Matrix Market", matrix.matrix_market_url, class: "btn btn-default"
