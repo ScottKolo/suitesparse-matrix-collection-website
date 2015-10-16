@@ -10,13 +10,13 @@
       %td= @matrix.name
     %tr
       %th Num Rows
-      %td= @matrix.num_rows
+      %td= number_with_delimiter(@matrix.num_rows, :delimiter => ',')
     %tr
       %th Num Cols
-      %td= @matrix.num_cols
+      %td= number_with_delimiter(@matrix.num_cols, :delimiter => ',')
     %tr
       %th Nonzeros
-      %td= @matrix.nonzeros
+      %td= number_with_delimiter(@matrix.nonzeros, :delimiter => ',')
     %tr
       %th Kind
       %td= @matrix.kind

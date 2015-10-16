@@ -17,9 +17,9 @@
     - @matrices.each do |matrix|
       %tr
         %td= link_to "#{matrix.group}/#{matrix.name}", matrix_path(matrix)
-        %td= matrix.num_rows
-        %td= matrix.num_cols
-        %td= matrix.nonzeros
+        %td= number_with_delimiter(matrix.num_rows, :delimiter => ',')
+        %td= number_with_delimiter(matrix.num_cols, :delimiter => ',')
+        %td= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
         %td= matrix.kind
         %td= matrix.symmetric
         %td= matrix.date
