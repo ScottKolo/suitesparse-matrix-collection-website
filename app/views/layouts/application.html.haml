@@ -10,7 +10,7 @@
     %nav{:class => "navbar navbar-inverse navbar-fixed-top"}
       .container
         .navbar-header
-          %a{:class => "navbar-brand"} Sparse Matrix Collection
+          = link_to "Sparse Matrix Collection", root_path, class: "navbar-brand"
         .navbar-collapse.collapse{:id => "navbar"}
           %ul{:class => "nav navbar-nav navbar-right"}
             %li{:class => ("active" if current_page?(root_path))}
