@@ -4,6 +4,8 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "pat
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 require File.expand_path(File.join(File.dirname(__FILE__), "../..", "spec", "factories", "matrix.rb"))
 require 'factory_girl'
+require 'database_cleaner'
+require 'database_cleaner/cucumber'
 
 module WithinHelpers
   def with_scope(locator)
@@ -86,6 +88,7 @@ When /^I click the next page link$/ do
 end
 
 Given /^there are (.+) matrices$/ do |total_entries|
+  DatabaseCleaner.clean_with(:truncation)
   FactoryGirl.create_list(:matrix, total_entries.to_i)
 end
 
