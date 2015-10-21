@@ -1,7 +1,7 @@
 class MatricesController < ApplicationController
 
   def index
-    @matrices = Matrix.all
+    @matrices = Matrix.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show

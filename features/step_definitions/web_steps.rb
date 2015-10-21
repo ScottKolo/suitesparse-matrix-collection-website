@@ -41,8 +41,12 @@ When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
   with_scope(parent) { When "#{step}:", table_or_string }
 end
 
-Given /^(?:|I )am on (.+)$/ do |page_name|
-  visit path_to(page_name)
+# Given /^(?:|I )am on (.+)$/ do |page_name|
+#   visit path_to(page_name)
+# end
+
+Given /^(?:|I )am on the home page$/ do
+  visit '/'
 end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
@@ -230,7 +234,7 @@ end
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
-    current_path.should == path_to(page_name)
+    expect(current_path).to eq(path_to(page_name))
   else
     assert_equal path_to(page_name), current_path
   end

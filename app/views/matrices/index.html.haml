@@ -30,3 +30,6 @@
           = link_to "MATLAB", matrix.get_url("MAT"), class: "btn btn-default"
           = link_to "Rutherford Boeing", matrix.get_url("RB"), class: "btn btn-default"
           = link_to "Matrix Market", matrix.get_url("MM"), class: "btn btn-default"
+    %tr
+      %td{:colspan => 0, :align => "center"}
+        = will_paginate @matrices, renderer: BootstrapPagination::Rails
