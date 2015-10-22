@@ -2,21 +2,23 @@
 %table{:id => "matrices", :class => "table table-striped"}
   %thead
     %tr
-      %th Group/Name
-      %th Num Rows
-      %th Num Cols
-      %th Nonzeros
-      %th Kind
-      %th Symmetric
-      %th Date
-      %th Author
-      %th Editor
-      %th Notes
+      %th{:class => getStyle('group')}= link_to "Group", matrices_path(:sort => '"group"'), :id => 'group'
+      %th{:class => getStyle('name')}= link_to "Name", matrices_path(:sort => 'name'), :id => 'name'
+      %th{:class => getStyle('num_rows')}= link_to "Num Rows", matrices_path(:sort => 'num_rows'), :id => 'num_rows'
+      %th{:class => getStyle('num_cols')}= link_to "Num Cols", matrices_path(:sort => 'num_cols'), :id => 'num_cols'
+      %th{:class => getStyle('nonzeros')}= link_to "Nonzeros", matrices_path(:sort => 'nonzeros'), :id => 'nonzeros'
+      %th{:class => getStyle('kind')}= link_to "Kind", matrices_path(:sort => 'kind'), :id => 'kind'
+      %th{:class => getStyle('symmetric')}= link_to "Symmetric", matrices_path(:sort => '"symmetric"'), :id => 'symmetric'
+      %th{:class => getStyle('date')}= link_to "Date", matrices_path(:sort => 'date'), :id => 'date'
+      %th{:class => getStyle('author')}= link_to "Author", matrices_path(:sort => 'author'), :id => 'author'
+      %th{:class => getStyle('editor')}= link_to "Editor", matrices_path(:sort => 'editor'), :id => 'editor'
+      %th{:class => getStyle('notes')}= link_to "Notes", matrices_path(:sort => 'notes'), :id => 'notes'
       %th Download File
   %tbody
     - @matrices.each do |matrix|
       %tr
-        %td= link_to "#{matrix.group}/#{matrix.name}", matrix_path(matrix)
+        %td= link_to "#{matrix.group}", matrix_path(matrix)
+        %td= link_to "#{matrix.name}", matrix_path(matrix)
         %td= number_with_delimiter(matrix.num_rows, :delimiter => ',')
         %td= number_with_delimiter(matrix.num_cols, :delimiter => ',')
         %td= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
