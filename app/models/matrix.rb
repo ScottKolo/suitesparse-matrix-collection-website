@@ -1,6 +1,6 @@
 class Matrix < ActiveRecord::Base
     def self.get_base_url
-        return '//www.cise.ufl.edu/research/sparse/'
+        return 'http://www.cise.ufl.edu/research/sparse/'
     end
 
     def get_url(file_format)
