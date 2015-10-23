@@ -1,7 +1,7 @@
 !!! 5
 %html{:lang => "en"}
   %head
-    %title UFSMCWeb
+    %title= full_title(yield(:title))
     = google_webfonts_init google: ['Istok Web']
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
