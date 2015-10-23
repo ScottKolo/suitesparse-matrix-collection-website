@@ -1,6 +1,6 @@
 <!-- filter selector -->
 %div{:class => "dropdown theme-dropdown clearfix"}
-  %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
+  %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown", :'data-placement' => "right"}
     Filter by...
   %form{:id => "filter-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
 
@@ -56,7 +56,7 @@
       ['Columns', 'int'],
       ['Nonzeros', 'int'],
       ['Kind', 'string'],
-      ['Symmetric', 'boolean'],
+      ['Symmetric', 'bool'],
       ['Date', 'int'],
       ['Author', 'string'],
       ['Editor', 'string'],

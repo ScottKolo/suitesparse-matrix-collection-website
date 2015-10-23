@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-/// Create the filters from a list
+/// Create filters from a list of [[attribute1, type1], [attribute2, type2], ...]
 ////////////////////////////////////////////////////////////////////////////////
 function generateFilters(list) {
   // Get the selector list and filter table
@@ -18,15 +18,8 @@ function generateFilters(list) {
     var label = document.createElement("th");
     label.appendChild(document.createTextNode(attribute));
 
-    // Make filter input
-    var input = document.createElement("input");
-    input.type = "text";
-    input.name = attribute;
-    input.className = "form-control";
-
     // Make input container
-    var container = document.createElement("td");
-    container.appendChild(input);
+    var container = createFilter(attribute, type);
 
     // Make filter-table row
     var row = document.createElement("tr");
@@ -57,6 +50,82 @@ function generateFilters(list) {
     selector.appendChild(s);
     selector.appendChild(sLabel);
   }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// Create the appropriate filter object based on type.
+////////////////////////////////////////////////////////////////////////////////
+function createFilter(attribute, type) {
+  var f;
+  if(type == 'string')
+    f = createStringFilter(attribute);
+  else if(type == 'int')
+    f = createIntFilter(attribute);
+  else if(type == 'bool')
+    f = createBoolFilter(attribute);
+  return f; // null-return if type is unrecognized
+}
+function createStringFilter(attribute) {
+  // Make input field
+  var inputField = document.createElement("Input");
+  inputField.type = "text";
+  inputField.id = "filter-input-" + attribute;
+  inputField.name = attribute;
+  inputField.className = "form-control";
+
+  // Make label
+  var inputLabel = document.createElement("label");
+  inputLabel.htmlFor = inputField.id;
+  inputLabel.appendChild(document.createTextNode("contains:"));
+
+  // Make container
+  var container = document.createElement("td");
+  container.className = "form-inline"
+  container.appendChild(inputLabel);
+  container.appendChild(inputField);
+  return container;
+}
+function createIntFilter(attribute) {
+  // Make minimum input field
+  var inputMinField = document.createElement("Input");
+  inputMinField.type = "text";
+  inputMinField.id = "filter-input-" + attribute + "-min";
+  inputMinField.name = attribute + "-min";
+  inputMinField.className = "form-control";
+
+  // Make maximum input field
+  var inputMaxField = document.createElement("Input");
+  inputMaxField.type = "text";
+  inputMaxField.id = "filter-input-" + attribute + "-max";
+  inputMaxField.name = attribute + "-max";
+  inputMaxField.className = "form-control";
+
+  // Make label
+  var inputLabel = document.createElement("label");
+  inputLabel.htmlFor = inputMaxField.id;
+  inputLabel.appendChild(document.createTextNode(" <= " + attribute + " <= "));
+
+  // Make container
+  var container = document.createElement("td");
+  container.className = "form-inline"
+  container.appendChild(inputMinField);
+  container.appendChild(inputLabel);
+  container.appendChild(inputMaxField);
+  return container;
+}
+function createBoolFilter(attribute) {
+  // Make input field
+  var inputField = document.createElement("input");
+  inputField.type = "checkbox";
+  inputField.id = "filter-input-" + attribute;
+  inputField.name = attribute;
+  inputField.className = "form-control";
+
+  // Make container
+  var container = document.createElement("td");
+  container.className = "form-inline"
+  container.appendChild(inputField);
+  return container;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
