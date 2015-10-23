@@ -38,9 +38,9 @@
     %tr
       %th Download
       %td 
-        = link_to "MATLAB", @matrix.get_url("MAT"), class: "btn btn-default"
-        = link_to "Rutherford Boeing", @matrix.get_url("RB"), class: "btn btn-default"
-        = link_to "Matrix Market", @matrix.get_url("MM"), class: "btn btn-default"
+        = link_to "MATLAB", @matrix.get_url(:matlab), class: "btn btn-default"
+        = link_to "Rutherford Boeing", @matrix.get_url(:rutherford_boeing), class: "btn btn-default"
+        = link_to "Matrix Market", @matrix.get_url(:matrix_market), class: "btn btn-default"
     %tr
       %th Type
       %td= @matrix.rb_type
