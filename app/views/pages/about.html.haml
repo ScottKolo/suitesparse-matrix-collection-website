@@ -1,25 +1,18 @@
+=provide(:title, "About")
 %p 
   I am now at Texas A&amp;M University, with a home page of
-  %a{:href => "http://faculty.cse.tamu.edu/davis"}>
-    http://faculty.cse.tamu.edu/davis
-  \.
-The UF Sparse Matrix Collection is still hosted at this site by the University of Florida.
-My
-%a{:href => "http://suitesparse.com"} SuiteSparse
-package of sparse matrix solvers is hosted at
-%a{:href => "http://suitesparse.com"}> suitesparse.com
-\.
-%p{:style => "background-color:red"}
-  %h4
-    For a general-audience description of the matrices and images
-    posted here, see our short note on
-    = succeed "." do
-      %a{:href => "https://www.cise.ufl.edu/research/sparse/matrices/synopsis"}
-        Visualizing
-        Sparse Matrices
-    %p
-      %a{:href => "http://faculty.cse.tamu.edu/davis/matrices.html"}
-        Click here for a presentation at the Harn Museum, University of Florida
+  ==#{link_to "http://faculty.cse.tamu.edu/davis", "http://faculty.cse.tamu.edu/davis"}.
+  The UF Sparse Matrix Collection is still hosted at this site by the University of Florida.
+%p
+  ==My #{link_to "SuiteSparse", "http://suitesparse.com"} package of sparse matrix solvers is hosted at 
+  ==#{link_to "suitesparse.com", "http://suitesparse.com"}.
+
+%p
+  For a general-audience description of the matrices and images
+  posted here, see our short note on
+  ==#{link_to "Visualizing Sparse Matrices", "https://www.cise.ufl.edu/research/sparse/matrices/synopsis"}.
+%p
+  ==#{link_to "Click here", "http://faculty.cse.tamu.edu/davis/matrices.html"} for a presentation at the Harn Museum, University of Florida
 %p
   %table{ :class => "table-space"}
     %tr
@@ -41,8 +34,7 @@ package of sparse matrix solvers is hosted at
     Maintained by
     %a{:href => "http://faculty.cse.tamu.edu/davis"} Tim Davis
     and
-    %a{:href => "http://yifanhu.net"}> Yifan Hu, Yahoo! Labs
-    \.
+    ==#{link_to "Yifan Hu, Yahoo! Labs", "http://yifanhu.net"}.
     %blockquote
       From the abstract of the paper
       %a{:href => "http://faculty.cse.tamu.edu/davis/publications.html"}
@@ -316,9 +308,7 @@ package of sparse matrix solvers is hosted at
       %a{:href => "http://www.maths.manchester.ac.uk/~weijian/"}> Weijian Zhang
       ,
       at the University of Manchester, has created a 
-      %a{:href => "http://matrixdepotjl.readthedocs.org/en/latest/interface.html#interfaces"}> 
-        Julia interface to the UF collection
-      \.
+      ==#{link_to "Julia interface to the UF collection", "http://matrixdepotjl.readthedocs.org/en/latest/interface.html#interfaces"}.
   %h2
     %a{:href => "../dimacs10"} DIMACS10
   %ul
@@ -344,32 +334,26 @@ package of sparse matrix solvers is hosted at
       The University of Florida Sparse Matrix Collection,
       T. A. Davis and Y. Hu,
       ACM Transactions on Mathematical Software, Vol 38, Issue 1, 2011, pp 1:1 - 1:25.
-      %a{:href => "http://www.cise.ufl.edu/research/sparse/matrices"}>
-        http://www.cise.ufl.edu/research/sparse/matrices
-      \.
-      %li
-        When using matrices in the LAW/ group in the collection,
-        please follow the citation instructions at
-        %a{:href => "http://law.di.unimi.it/datasets.php"}>
-          http://law.di.unimi.it/datasets.php
-        \.
-        %li
-          For additional background, see: Duff, I.S, Grimes, R. G, and Lewis, J. G,
-          %a{:href => "http://doi.acm.org/10.1145/62038.62043"}>
-            Sparse matrix test problems
-          ,
-          ACM Transactions on Mathematical Software,
-          vol 15, no. 1, pp 1-14, 1989.
-          This describes the Harwell-Boeing collection which is the starting point
-          of the UF Sparse Matrix Collection (the first 292 matrices).
-          %li
-            The Rutherford-Boeing format is described in the document
-            %a{:href => "DOC/rb.pdf"}
-              Rutherford-Boeing Sparse Matrix Collection
-            %li
-              See the
-              %a{:href => "http://math.nist.gov/MatrixMarket"} Matrix Market
-              for a description of the Matrix Market format.
+      ==#{link_to "http://www.cise.ufl.edu/research/sparse/matrices", "http://www.cise.ufl.edu/research/sparse/matrices"}.
+    %li
+      When using matrices in the LAW/ group in the collection,
+      please follow the citation instructions at
+      ==#{link_to "http://law.di.unimi.it/datasets.php", "http://law.di.unimi.it/datasets.php"}.
+    %li
+      For additional background, see: Duff, I.S, Grimes, R. G, and Lewis, J. G,
+      ==#{link_to "Sparse matrix test problems", "http://doi.acm.org/10.1145/62038.62043"},
+      ACM Transactions on Mathematical Software,
+      vol 15, no. 1, pp 1-14, 1989.
+      This describes the Harwell-Boeing collection which is the starting point
+      of the UF Sparse Matrix Collection (the first 292 matrices).
+    %li
+      The Rutherford-Boeing format is described in the document
+      %a{:href => "DOC/rb.pdf"}
+        Rutherford-Boeing Sparse Matrix Collection
+    %li
+      See the
+      %a{:href => "http://math.nist.gov/MatrixMarket"} Matrix Market
+      for a description of the Matrix Market format.
   %h2 To submit matrices to this collection:
   %ul
     Sparse matrices from real applications are critical to the development of
