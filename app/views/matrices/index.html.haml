@@ -1,4 +1,71 @@
+<!-- filter selector -->
+%div{:class => "dropdown theme-dropdown clearfix"}
+  %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
+    Filter by...
+  %form{:id => "filter-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
+    %input{:type => "checkbox", :onclick => "toggleFilter('group')", :value => "group"}
+      Group
+    %input{:type => "checkbox", :onclick => "toggleFilter('name')", :value => "name"}
+      Name
+    %input{:type => "checkbox", :onclick => "toggleFilter('rows')", :value => "rows"}
+      Rows
+    %input{:type => "checkbox", :onclick => "toggleFilter('columns')", :value => "columns"}
+      Columns
+    %input{:type => "checkbox", :onclick => "toggleFilter('nonzeros')", :value => "nonzeros"}
+      Nonzeros
+    %input{:type => "checkbox", :onclick => "toggleFilter('kind')", :value => "kind"}
+      Kind
+    %input{:type => "checkbox", :onclick => "toggleFilter('symmetric')", :value => "symmetric"}
+      Symmetric
+    %input{:type => "checkbox", :onclick => "toggleFilter('date')", :value => "date"}
+      Date
+    %input{:type => "checkbox", :onclick => "toggleFilter('author')", :value => "author"}
+      Author
+    %input{:type => "checkbox", :onclick => "toggleFilter('editor')", :value => "editor"}
+      Editor
+    %input{:type => "checkbox", :onclick => "toggleFilter('notes')", :value => "notes"}
+      Notes
 
+<!-- filters -->
+%form{:id => "filter-form"}
+  %table{:id => "filter-table", :class => "table table-striped"}
+    %tr{:class => "filter", :id => "filter-group"}
+      %th Group
+      %td
+        %input{:type => "text", :name => "group", :class => "form-control"}
+    %tr{:class => "filter", :id => "filter-name"}
+      %th Name
+      %td (filter object)
+    %tr{:class => "filter", :id => "filter-rows"}
+      %th Rows
+      %td (filter object)
+    %tr{:class => "filter", :id => "filter-columns"}
+      %th Columns
+      %td (filter object)
+    %tr{:class => "filter", :id => "filter-nonzeros"}
+      %th Nonzeros
+      %td (filter object)
+    %tr{:class => "filter", :id => "filter-kind"}
+      %th Kind
+      %td (filter object)
+    %tr{:class => "filter", :id => "filter-symmetric"}
+      %th Symmetric
+      %td (filter object)
+    %tr{:class => "filter", :id => "filter-date"}
+      %th Date
+      %td (filter object)
+    %tr{:class => "filter", :id => "filter-author"}
+      %th Author
+      %td (filter object)
+    %tr{:class => "filter", :id => "filter-editor"}
+      %th Editor
+      %td (filter object)
+    %tr{:class => "filter", :id => "filter-notes"}
+      %th Notes
+      %td (filter object)
+  %input{:id => "filter-apply", :type => "submit", :value => "Apply Filters", :class => "btn btn-default"}
+
+<!-- matrices -->
 %table{:id => "matrices", :class => "table table-striped"}
   %thead
     %tr
@@ -33,3 +100,7 @@
     %tr
       %td{:colspan => 42, :align => "center"}
         = will_paginate @matrices, renderer: BootstrapPagination::Rails
+
+%script{:type => "text/javascript"}
+  :plain
+    hideFilters();

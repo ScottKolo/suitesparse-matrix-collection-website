@@ -12,4 +12,7 @@
 !/log/.keep
 /tmp
 
+# Ignore VIM swap files
+*.swp
+
 /public/assets
