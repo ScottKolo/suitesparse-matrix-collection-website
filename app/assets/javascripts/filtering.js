@@ -57,12 +57,15 @@ function generateFilters(list) {
 ////////////////////////////////////////////////////////////////////////////////
 function createFilter(attribute, type) {
   var f;
-  if(type == 'string')
+  if(type === 'string') {
     f = createStringFilter(attribute);
-  else if(type == 'int')
+  }
+  else if(type === 'int') {
     f = createIntFilter(attribute);
-  else if(type == 'bool')
+  }
+  else if(type === 'bool') {
     f = createBoolFilter(attribute);
+  }
   return f; // null-return if type is unrecognized
 }
 function createStringFilter(attribute) {
@@ -80,7 +83,7 @@ function createStringFilter(attribute) {
 
   // Make container
   var container = document.createElement("td");
-  container.className = "form-inline"
+  container.className = "form-inline";
   container.appendChild(inputLabel);
   container.appendChild(inputField);
   return container;
@@ -107,7 +110,7 @@ function createIntFilter(attribute) {
 
   // Make container
   var container = document.createElement("td");
-  container.className = "form-inline"
+  container.className = "form-inline";
   container.appendChild(inputMinField);
   container.appendChild(inputLabel);
   container.appendChild(inputMaxField);
@@ -123,7 +126,7 @@ function createBoolFilter(attribute) {
 
   // Make container
   var container = document.createElement("td");
-  container.className = "form-inline"
+  container.className = "form-inline";
   container.appendChild(inputField);
   return container;
 }
@@ -137,7 +140,7 @@ function toggleFilter(name) {
   var filter = document.getElementById("filter-" + name);
 
   // If the filter wasn't visible, make it and the button visibile
-  if(filter.style.display == "none") {
+  if(filter.style.display === "none") {
     filter.style.display = "";
     document.getElementById("filter-apply").style.display = "";
   }
@@ -148,8 +151,9 @@ function toggleFilter(name) {
     // If no other filters are visible, make the button invisible.
     var filters = document.getElementsByClassName("filter");
     for(var i = 0; i < filters.length; ++i) {
-      if(filters[i].style.display == "")
+      if(filters[i].style.display === "")  {
         return;
+      }
     }
     document.getElementById("filter-apply").style.display = "none";
   }
