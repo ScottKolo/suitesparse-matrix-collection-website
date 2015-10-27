@@ -55,6 +55,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'byebug'
+  gem 'selenium-webdriver'
 end
 
 group :test do

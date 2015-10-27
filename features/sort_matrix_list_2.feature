@@ -15,9 +15,9 @@ Background: matrices have been added to database
   And I am on the home page
 
 @javascript
-Scenario: sort groups alphabetically
-  When I follow "Group"
+Scenario: sort matrices in increasing number of rows
+  When I follow "Rows"
 
-  Then I should see "Bai" before "Boeing"
-  Then I should see "Boeing" before "HB"
-  Then I should see "Gset" before "HB"
+  Then I should see "HB" before "Bai"
+  Then I should see "Boeing" before "Bai"
+  Then I should see "Boeing" before "Gset"
