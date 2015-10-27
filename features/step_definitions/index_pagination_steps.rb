@@ -92,7 +92,7 @@ Given /^there are (.+) matrices$/ do |total_entries|
   FactoryGirl.create_list(:matrix, total_entries.to_i)
 end
 
-Given /^(?:|I )am on (.+) page (.+)$/ do |page_name, page_num|
+Given /^(?:|I )am on page number (.+) of (.+)$/ do |page_num, page_name|
     path = "#{page_name}?page=#{page_num}"
     visit path
 end
