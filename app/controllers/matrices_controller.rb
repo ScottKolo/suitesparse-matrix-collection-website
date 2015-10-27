@@ -1,18 +1,12 @@
 class MatricesController < ApplicationController
 
-  helper_method :getStyle
+  ### Resources methods ########################################################
 
   def index
-	
-	if params[:sort]!=nil
-	  session[:sort]=params[:sort]
-	end
+    parse_params
 
-    if (params[:sort]==nil and session[:sort]!=nil)
-      redirectThis
-    end
-
-	@matrices = Matrix.order(params[:sort]).paginate(:page => params[:page], :per_page => 10)
+    s = params[:sort].nil? ? nil : %{"#{params[:sort]}"};
+    @matrices = Matrix.order(s).paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
@@ -37,17 +31,28 @@ class MatricesController < ApplicationController
 
   def update
   end
-  
-  def getStyle(var)
-    if(params[:sort]==var)
-      return 'hilite'
+
+  ### Params Helpers ###########################################################
+
+  # Parse the params array into session data
+  def parse_params
+    if params[:sort] != nil
+      session[:sort] = params[:sort]
+    end
+
+    if params[:sort] == nil and session[:sort] != nil
+      reload_params
     end
   end
-  def redirectThis
-    if flash[:notice]!=nil
+
+  # Reload params from session
+  def reload_params
+    if flash[:notice] != nil
       flash.keep
     end
-    redirect_to matrices_path(:action => "show", :sort => session[:sort])
+    redirect_to matrices_path(:sort => session[:sort])
   end
+
+  ##############################################################################
 
 end

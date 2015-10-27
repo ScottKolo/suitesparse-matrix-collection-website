@@ -6,9 +6,6 @@ function generateFilters(list) {
   var selector = document.getElementById("filter-selector");
   var table = document.getElementById("filter-table");
 
-  // Hide apply filters button
-  document.getElementById("filter-apply").style.display = "none";
-
   // Generate a selector and filter for each item in the list
   for(var i = 0; i < list.length; ++i) {
     var attribute = list[i][0];
@@ -30,7 +27,6 @@ function generateFilters(list) {
 
     // Add filter to filter-table
     table.appendChild(row);
-    row.style.display = "none";
 
     // Make selector
     var s = document.createElement("input");
@@ -50,6 +46,19 @@ function generateFilters(list) {
     selector.appendChild(s);
     selector.appendChild(sLabel);
   }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// Hide all the filters after creating them and setting up tooltips
+////////////////////////////////////////////////////////////////////////////////
+function hideFilters() {
+  // Hide each filter row
+  var filters = document.getElementsByClassName("filter");
+  for(var i = 0; i < filters.length; ++i)
+    filters[i].style.display = "none";
+
+  // Hide apply filters button
+  document.getElementById("filter-apply").style.display = "none";
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -74,17 +83,18 @@ function createStringFilter(attribute) {
   inputField.type = "text";
   inputField.id = "filter-input-" + attribute;
   inputField.name = attribute;
+  inputField.placeholder = "contains...";
   inputField.className = "form-control";
 
-  // Make label
-  var inputLabel = document.createElement("label");
-  inputLabel.htmlFor = inputField.id;
-  inputLabel.appendChild(document.createTextNode("contains:"));
+  // Make tool tip
+  inputField.dataset.toggle = "tooltip";
+  inputField.dataset.placement = "right";
+  inputField.title = "Search for matrices who's " + attribute +
+      " includes one or more terms. Negate by prefacing with '-'.";
 
   // Make container
   var container = document.createElement("td");
   container.className = "form-inline";
-  container.appendChild(inputLabel);
   container.appendChild(inputField);
   return container;
 }
@@ -94,6 +104,7 @@ function createIntFilter(attribute) {
   inputMinField.type = "text";
   inputMinField.id = "filter-input-" + attribute + "-min";
   inputMinField.name = attribute + "-min";
+  inputMinField.placeholder = "min";
   inputMinField.className = "form-control";
 
   // Make maximum input field
@@ -101,7 +112,18 @@ function createIntFilter(attribute) {
   inputMaxField.type = "text";
   inputMaxField.id = "filter-input-" + attribute + "-max";
   inputMaxField.name = attribute + "-max";
+  inputMaxField.placeholder = "max";
   inputMaxField.className = "form-control";
+
+  // Make tool tips
+  inputMinField.dataset.toggle = "tooltip";
+  inputMinField.dataset.placement = "right";
+  inputMinField.title = "Search for matrices with " + attribute +
+      " between min and max.";
+  inputMaxField.dataset.toggle = "tooltip";
+  inputMaxField.dataset.placement = "right";
+  inputMaxField.title = "Search for matrices with " + attribute +
+      " between min and max.";
 
   // Make label
   var inputLabel = document.createElement("label");
@@ -123,6 +145,11 @@ function createBoolFilter(attribute) {
   inputField.id = "filter-input-" + attribute;
   inputField.name = attribute;
   inputField.className = "form-control";
+
+  // Make tool tips
+  inputField.dataset.toggle = "tooltip";
+  inputField.dataset.placement = "right";
+  inputField.title = "Require matrix to be " + attribute + "?";
 
   // Make container
   var container = document.createElement("td");

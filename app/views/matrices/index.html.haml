@@ -1,26 +1,19 @@
-<!-- filter selector -->
+<!-- Set up the filter selector -->
 %div{:class => "dropdown theme-dropdown clearfix"}
-  %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown", :'data-placement' => "right"}
+  %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
     Filter by...
   %form{:id => "filter-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
 
-<!-- filters -->
+<!-- Set up the filter form -->
 %form{:id => "filter-form"}
-  %table{:id => "filter-table", :class => "table table-striped"}
+  %table{:id => "filter-table", :class => "table"}
   %input{:id => "filter-apply", :type => "submit", :value => "Apply Filters", :class => "btn btn-default"}
 
-<!-- matrices -->
+<!-- Layout the matrix table -->
 %table{:id => "matrices", :class => "table table-striped"}
   %thead
-    %tr
-      %th{:class => getStyle('group')}= link_to "Group", matrices_path(:sort => '"group"'), :id => 'group'
-      %th{:class => getStyle('name')}= link_to "Name", matrices_path(:sort => 'name'), :id => 'name'
-      %th{:class => getStyle('num_rows')}= link_to "Num Rows", matrices_path(:sort => 'num_rows'), :id => 'num_rows'
-      %th{:class => getStyle('num_cols')}= link_to "Num Cols", matrices_path(:sort => 'num_cols'), :id => 'num_cols'
-      %th{:class => getStyle('nonzeros')}= link_to "Nonzeros", matrices_path(:sort => 'nonzeros'), :id => 'nonzeros'
-      %th{:class => getStyle('kind')}= link_to "Kind", matrices_path(:sort => 'kind'), :id => 'kind'
-      %th{:class => getStyle('date')}= link_to "Date", matrices_path(:sort => 'date'), :id => 'date'
-      %th Download File
+    %tr{:id => 'sort-selector'}
+      %th{:id => 'download-header'} Download File
   %tbody
     - @matrices.each do |matrix|
       %tr
@@ -39,18 +32,19 @@
       %td{:colspan => 42, :align => "center"}
         = will_paginate @matrices, renderer: BootstrapPagination::Rails
 
-%script{:type => "text/javascript"}
-  :plain
-    generateFilters([
-      ['Group', 'string'],
-      ['Name', 'string'],
-      ['Rows', 'int'],
-      ['Columns', 'int'],
-      ['Nonzeros', 'int'],
-      ['Kind', 'string'],
-      ['Symmetric', 'bool'],
-      ['Date', 'int'],
-      ['Author', 'string'],
-      ['Editor', 'string'],
-      ['Notes', 'string'],
-    ]);
+<!-------------------------- Scripted Generation ------------------------------>
+
+<!-- Create the filters -->
+:javascript
+  generateFilters(#{Matrix.filterable_attributes});
+  $(function() {$('[data-toggle="tooltip"]').tooltip()});
+  hideFilters();
+
+<!-- Create the sorters -->
+:javascript
+  generateSorters(#{Matrix.sortable_attributes});
+
+<!-- Highlight the sort attribute if there is one -->
+- if !params[:sort].nil?
+  :javascript
+    highlightSortAttribute("#{params[:sort]}");
