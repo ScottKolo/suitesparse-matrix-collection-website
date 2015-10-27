@@ -5,21 +5,21 @@ Feature: Index Pagination
   
   Scenario: Front Page
     Given there are 50 matrices
-    And I am on index page 1
+    And I am on page number 1 of index
     Then I should see pagination
     And I should see a link to the next page of pagination
     And I should see a disabled link to the previous page of pagination
 
   Scenario: Third Page
     Given there are 50 matrices
-    And I am on index page 3
+    And I am on page number 3 of index
     Then I should see pagination
     And I should see a link to the previous page of pagination
     And I should see a link to the next page of pagination
 
   Scenario: Last Page
     Given there are 50 matrices
-    And I am on index page 5
+    And I am on page number 5 of index
     Then I should see pagination
     And I should see a disabled link to the next page of pagination
     And I should see a link to the previous page of pagination

@@ -13,9 +13,9 @@
           = link_to "Sparse Matrix Collection", root_path, class: "navbar-brand"
         .navbar-collapse.collapse{:id => "navbar"}
           %ul{:class => "nav navbar-nav navbar-right"}
-            %li{:class => ("active" if current_page?(root_path))}
+            %li{:class => ("active" if yield(:title) == 'Index')}
               = link_to "Index", root_path
-            %li{:class => ("active" if current_page?(about_path))}
+            %li{:class => ("active" if yield(:title) == 'About')}
               = link_to "About", about_path
     .container.theme-showcase{:role => "main"}
       = yield
