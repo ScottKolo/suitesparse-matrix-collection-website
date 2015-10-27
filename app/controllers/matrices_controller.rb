@@ -5,6 +5,9 @@ class MatricesController < ApplicationController
   def index
     parse_params
 
+    # Apply Filter
+
+    # Apply Sort
     s = params[:sort].nil? ? nil : %{"#{params[:sort]}"};
     @matrices = Matrix.order(s).paginate(:page => params[:page], :per_page => 10)
   end
@@ -39,6 +42,15 @@ class MatricesController < ApplicationController
     if params[:sort] != nil
       session[:sort] = params[:sort]
     end
+
+#    filter_attributes = []
+#    params.each do |key, value|
+#      if key.match(/^filter-.*/)
+#        filter_attributes.push(key.match(/(?<=filter-)/).to_s.downcase
+#      end
+#    end
+#    filter_attributes.each
+#    end
 
     if params[:sort] == nil and session[:sort] != nil
       reload_params

@@ -26,30 +26,30 @@ class Matrix < ActiveRecord::Base
   # Get the set of filterable attributes
   def self.filterable_attributes
     return [
-      ['Group', 'string'],
-      ['Name', 'string'],
-      ['Rows', 'int'],
-      ['Columns', 'int'],
-      ['Nonzeros', 'int'],
-      ['Kind', 'string'],
-      ['Symmetric', 'bool'],
-      ['Date', 'int'],
-      ['Author', 'string'],
-      ['Editor', 'string'],
-      ['Notes', 'string']
+      ["group",     "string"],
+      ["name",      "string"],
+      ["num_rows",  "int"],
+      ["num_cols",  "int"],
+      ["nonzeros",  "int"],
+      ["kind",      "string"],
+      ["symmetric", "bool"],
+      ["date",      "int"],
+      ["author",    "string"],
+      ["editor",    "string"],
+      ["notes",     "string"]
     ]
   end
 
   # Get the set of sortable attributes
   def self.sortable_attributes
     return [
-      ["group", "Group"],
-      ["name", "Name"],
-      ["num_rows", "Rows"],
-      ["num_cols", "Cols"],
-      ["nonzeros", "Nonzeros"],
-      ["kind", "Kind"],
-      ["date", "Year"]
+      ["group"   ],
+      ["name"    ],
+      ["num_rows"],
+      ["num_cols"],
+      ["nonzeros"],
+      ["kind"    ],
+      ["date"    ]
     ]
   end
 

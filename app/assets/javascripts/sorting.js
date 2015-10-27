@@ -11,12 +11,12 @@ function highlightSortAttribute(attr) {
 function generateSorters(list) {
   // Get the selector and "download file" header
   var selector = document.getElementById("sort-selector");
-  var dlHeader = document.getElementById("download-header");
+  var downloadHeader = document.getElementById("download-header");
 
   // Create a sorting header for each element in the list
   for(var i = 0; i < list.length; ++i) {
     var attribute = list[i][0];
-    var label = list[i][1]
+    var label = pretty_attribute(attribute);
 
     // Create link text
     var text = document.createTextNode(label);
@@ -33,6 +33,6 @@ function generateSorters(list) {
     sortHeader.appendChild(link);
 
     // Attach header to selector
-    selector.insertBefore(sortHeader, dlHeader);
+    selector.insertBefore(sortHeader, downloadHeader);
   }
 }
