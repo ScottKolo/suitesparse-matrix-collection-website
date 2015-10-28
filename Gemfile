@@ -37,6 +37,7 @@ gem 'google-webfonts-rails', '~> 0.0.4'
 # Add pagination
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
+gem 'json'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

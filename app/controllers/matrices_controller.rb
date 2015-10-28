@@ -8,7 +8,7 @@ class MatricesController < ApplicationController
     # Apply Filter
 
     # Apply Sort
-    s = params[:sort].nil? ? nil : %{"#{params[:sort]}"};
+    s = session[:sort].nil? ? nil : %{"#{session[:sort]}"};
     @matrices = Matrix.order(s).paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -39,30 +39,16 @@ class MatricesController < ApplicationController
 
   # Parse the params array into session data
   def parse_params
-    if params[:sort] != nil
-      session[:sort] = params[:sort]
-    end
+    newSort   = !params[:sort].nil?
+    newFilter = !params[:filter].nil?
 
-#    filter_attributes = []
-#    params.each do |key, value|
-#      if key.match(/^filter-.*/)
-#        filter_attributes.push(key.match(/(?<=filter-)/).to_s.downcase
-#      end
-#    end
-#    filter_attributes.each
-#    end
+    if newSort   then session[:sort]   = params[:sort]   end
+    if newFilter then session[:filter] = params[:filter] end
 
-    if params[:sort] == nil and session[:sort] != nil
-      reload_params
+    if newSort or newFilter
+      if !flash[:notice].nil? then flash.keep end
+      redirect_to matrices_path
     end
-  end
-
-  # Reload params from session
-  def reload_params
-    if flash[:notice] != nil
-      flash.keep
-    end
-    redirect_to matrices_path(:sort => session[:sort])
   end
 
   ##############################################################################

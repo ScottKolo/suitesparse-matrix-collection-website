@@ -23,7 +23,7 @@ function generateSorters(list) {
 
     // Create link
     var link = document.createElement("a");
-    link.href = "matrices?sort=" + attribute;
+    link.href = "/matrices?sort=" + attribute;
     link.id = attribute;
     link.appendChild(text);
 

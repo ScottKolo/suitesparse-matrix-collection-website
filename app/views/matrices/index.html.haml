@@ -40,12 +40,13 @@
   generateFilters(#{Matrix.filterable_attributes});
   $(function() {$('[data-toggle="tooltip"]').tooltip()});
   hideFilters();
+  populateFilters(#{session[:filter].to_json});
 
 <!-- Create the sorters -->
 :javascript
   generateSorters(#{Matrix.sortable_attributes});
 
 <!-- Highlight the sort attribute if there is one -->
-- if !params[:sort].nil?
+- if !session[:sort].nil?
   :javascript
-    highlightSortAttribute("#{params[:sort]}");
+    highlightSortAttribute("#{session[:sort]}");

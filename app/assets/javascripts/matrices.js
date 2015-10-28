@@ -1,5 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-/// Get the pretty name for an attribute.
+/// Get the pretty name for an attribute. Except for special cases, this returns
+/// the database attribute name with the first letter capitalized.
 ////////////////////////////////////////////////////////////////////////////////
 function pretty_attribute(attribute) {
   if(attribute == "num_rows")
