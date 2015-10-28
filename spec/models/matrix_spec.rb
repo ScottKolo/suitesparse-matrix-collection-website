@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'factories/matrix'
 
 RSpec.describe Matrix, type: :model do
   describe "it does nothing" do
@@ -9,7 +10,7 @@ RSpec.describe Matrix, type: :model do
 
   describe "getting correct download URL" do
     before(:all) do
-        @matrix = create(:matrix, :group => "groupName_1", :name => "matrixName_1")
+        @matrix = FactoryGirl.create(:matrix, :group => "groupName_1", :name => "matrixName_1")
     end
     after(:all) do
         Matrix.destroy(@matrix.id)
