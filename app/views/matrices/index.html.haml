@@ -9,6 +9,18 @@
   %table{:id => "filter-table", :class => "table"}
   %input{:id => "filter-apply", :type => "submit", :value => "Apply Filters", :class => "btn btn-default"}
 
+<!-- Hiding Columns -->
+%div{:class => "dropdown theme-dropdown clearfix"}
+  %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
+    Hide by...
+  %form{:id => "hide-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
+
+<!-- Set up the hide form -->
+%form{:id => "hide-form"}
+  %table{:id => "hide-table", :class => "table"}
+  %input{:id => "hide-apply", :type => "submit", :value => "Apply Hides", :class => "btn btn-default"}
+
+  
 <!-- Layout the matrix table -->
 %table{:id => "matrices", :class => "table table-striped"}
   %thead
@@ -31,7 +43,7 @@
     %tr
       %td{:colspan => 42, :align => "center"}
         = will_paginate @matrices, renderer: BootstrapPagination::Rails
-
+		
 <!-------------------------- Scripted Generation ------------------------------>
 
 <!-- Create the filters -->
@@ -39,6 +51,12 @@
   generateFilters(#{Matrix.filterable_attributes});
   $(function() {$('[data-toggle="tooltip"]').tooltip()});
   hideFilters();
+  
+<!-- Create the hiders -->
+:javascript
+  generateHides(#{Matrix.filterable_attributes});
+  $(function() {$('[data-toggle="tooltip"]').tooltip()});
+  hideHides();
 
 <!-- Create the sorters -->
 :javascript

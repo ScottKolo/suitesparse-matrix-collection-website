@@ -17,6 +17,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  
+  #username: UFSMC-Web
+  #password: <%= ENV['UFSMC-WEB_DATABASE_PASSWORD'] %>
+  #previous two comments for matt_h, please ignore
+  
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
