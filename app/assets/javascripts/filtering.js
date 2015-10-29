@@ -150,14 +150,14 @@ function Filter(attribute, type) {
   this.cacheValue = function() {
     this.cachedValue = this.getValue();
     this.clearValue();
-  }
+  };
 
   this.restoreValue = function() {
     if(this.cachedValue != null) {
       this.setValue(this.cachedValue);
       this.cachedValue = null;
     }
-  }
+  };
 
   /*------------------------- Display Functions ------------------------------*/
 
@@ -177,18 +177,18 @@ function Filter(attribute, type) {
         return;
     }
     document.getElementById("filter-apply").style.display = "none";
-  }
+  };
 
   this.toggle = function() {
     if(this.visible())
       this.hide();
     else
       this.show();
-  }
+  };
 
   this.visible = function() {
     return this.container.style.display === "";
-  }
+  };
 
   /*--------------------------------------------------------------------------*/
 }
@@ -228,19 +228,19 @@ function StringFilter(attribute) {
 
   this.hasValue = function() {
     return this.input.value !== "";
-  }
+  };
 
   this.getValue = function() {
     return this.input.value;
-  }
+  };
 
   this.setValue = function(val) {
     this.input.value = val;
-  }
+  };
 
   this.clearValue = function() {
     this.input.value = "";
-  }
+  };
 
   /*--------------------------------------------------------------------------*/
 }
@@ -292,7 +292,7 @@ function IntFilter(attribute) {
   // Make label
   var inputLabel = document.createElement("label");
   inputLabel.htmlFor = maxField.id;
-  inputLabel.appendChild(document.createTextNode(" <= " + this.label + " <= "));
+  inputLabel.appendChild(document.createTextNode(" ≤ " + this.label + " ≤ "));
 
   // Populate input container
   this.inputContainer.appendChild(minField);
@@ -302,10 +302,10 @@ function IntFilter(attribute) {
   /*------------------------------ Functions ---------------------------------*/
 
   this.hasValue = function() {
-    var hasMin = (this.input.min.value != "");
-    var hasMax = (this.input.max.value != "");
+    var hasMin = (this.input.min.value !== "");
+    var hasMax = (this.input.max.value !== "");
     return hasMin || hasMax;
-  }
+  };
 
   this.getValue = function() {
     var value = {
@@ -313,17 +313,17 @@ function IntFilter(attribute) {
       max: this.input.max.value
     };
     return value;
-  }
+  };
 
   this.setValue = function(range) {
     this.input.min.value = range.min;
     this.input.max.value = range.max;
-  }
+  };
 
   this.clearValue = function() {
     this.input.min.value = "";
     this.input.max.value = "";
-  }
+  };
 
   /*--------------------------------------------------------------------------*/
 }
@@ -361,11 +361,11 @@ function BoolFilter(attribute) {
 
   this.hasValue = function() {
     return this.input.checked === true;
-  }
+  };
 
   this.getValue = function() {
     return this.hasValue();
-  }
+  };
 
   this.setValue = function(val) {
     if(val === "on" || val === true) {
@@ -376,12 +376,12 @@ function BoolFilter(attribute) {
       this.input.checked = false;
       this.selector.checked = false;
     }
-  }
+  };
 
   this.clearValue = function() {
     this.input.checked = false;
     this.selector.checked = false;
-  }
+  };
 
   /*--------------------------------------------------------------------------*/
 }
