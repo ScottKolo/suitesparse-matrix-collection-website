@@ -33,13 +33,11 @@
       %td{:colspan => 42, :align => "center"}
         = will_paginate @matrices, renderer: BootstrapPagination::Rails
 
-<!-------------------------- Scripted Generation ------------------------------>
 
 <!-- Create the filters -->
 :javascript
   generateFilters(#{Matrix.filterable_attributes});
   $(function() {$('[data-toggle="tooltip"]').tooltip()});
-  hideFilters();
   populateFilters(#{session[:filter].to_json});
 
 <!-- Create the sorters -->

@@ -1,244 +1,351 @@
 ////////////////////////////////////////////////////////////////////////////////
+/// Create an appropriate filter object based on type and store it in the global
+/// filters object.
+////////////////////////////////////////////////////////////////////////////////
+var filters = {};
+function createFilter(attribute, type) {
+  if(type === 'string')
+    filters[attribute] = new StringFilter(attribute);
+  else if(type === 'int')
+    filters[attribute] = new IntFilter(attribute);
+  else if(type === 'bool')
+    filters[attribute] = new BoolFilter(attribute);
+  else
+    console.log("createFilter:: skipping request for unrecognized type " + type);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
 /// Create filters from a list of [[attribute1, type1], [attribute2, type2], ...]
 ////////////////////////////////////////////////////////////////////////////////
 function generateFilters(list) {
-  // Get the selector list and filter table
-  var selector = document.getElementById("filter-selector");
-  var table = document.getElementById("filter-table");
-
-  // Generate a selector and filter for each item in the list
   for(var i = 0; i < list.length; ++i) {
     var attribute = list[i][0];
     var type = list[i][1];
-    var label = pretty_attribute(attribute);
-
-    // Make filter label
-    var fLabel = document.createElement("th");
-    fLabel.appendChild(document.createTextNode(label));
-
-    // Make input container
-    var container = createFilter(attribute, type);
-
-    // Make filter-table row
-    var row = document.createElement("tr");
-    row.className = "filter";
-    row.id = "filter-" + attribute;
-    row.appendChild(fLabel);
-    row.appendChild(container);
-    row.style.display = "";
-
-    // Add filter to filter-table
-    table.appendChild(row);
-
-    // Make selector
-    var s = document.createElement("input");
-    s.id = "filter-selector-" + attribute;
-    s.type = "checkbox";
-    s.value = attribute;
-    s.onclick = (function(target) {
-      return function() {toggleFilter(target);};
-    }(attribute)); // This generates the proper onclick function for each filter.
-
-    // Make selector label
-    var sLabel = document.createElement("label");
-    sLabel.htmlFor = s.id;
-    sLabel.appendChild(document.createTextNode(pretty_attribute(attribute)));
-
-    // Add selector and label to filter-selector
-    selector.appendChild(s);
-    selector.appendChild(sLabel);
+    createFilter(attribute, type);
   }
 }
 
+
 ////////////////////////////////////////////////////////////////////////////////
-/// Create the appropriate filter object based on type.
+/// Display the active filters and fill in their values from a params object.
 ////////////////////////////////////////////////////////////////////////////////
-function createFilter(attribute, type) {
-  var f;
-  if(type === 'string')
-    f = createStringFilter(attribute);
-  else if(type === 'int')
-    f = createIntFilter(attribute);
-  else if(type === 'bool')
-    f = createBoolFilter(attribute);
-  return f; // null-return if type is unrecognized
+function populateFilters(params) {
+  var empty = (params == null);
+  var debug = "Params:\n";
+
+  for(var prop in filters) {
+    var filter = filters[prop];
+    if(empty) {
+      filter.hide();
+      continue;
+    }
+
+    var value = params[prop];
+    if(value == null) {
+      debug += prop + " :: null\n";
+
+      filter.clearValue();
+      filter.hide();
+    }
+    else {
+      debug += prop + " :: " + value + "\n";
+
+      filter.setValue(value);
+      if(filter.hasValue())
+        filter.show();
+      else
+        filter.hide();
+    }
+  }
+
+  // Control debug output
+  if(false) {
+    var output = document.createElement("pre");
+    output.innerHTML = debug;
+    document.body.appendChild(output);
+  }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-/// Create a string filter.
-////////////////////////////////////////////////////////////////////////////////
-function createStringFilter(attribute) {
-  // Make input field
-  var inputField = document.createElement("Input");
-  inputField.type = "text";
-  inputField.id = "filter-input-" + attribute;
-  inputField.name = "filter[" + attribute + "]";
-  inputField.placeholder = "contains...";
-  inputField.className = "form-control";
-
-  // Make tool tip
-  inputField.dataset.toggle = "tooltip";
-  inputField.dataset.placement = "right";
-  inputField.title = "Search for matrices who's " + pretty_attribute(attribute) +
-      " includes one or more terms. Negate by prefacing with '-'.";
-
-  // Make container
-  var container = document.createElement("td");
-  container.className = "form-inline";
-  container.appendChild(inputField);
-  return container;
-}
 
 ////////////////////////////////////////////////////////////////////////////////
-/// Create an int filter.
+/// An abstract filter object for common functionality. Filter creates a set of
+/// dynamic HTML elements that look like this:
+///
+/// (in the selector form)
+/// %input <selector>
+///
+/// (in the filter table)
+/// %tr <container>
+///   %th <attribute label>
+///   %td <input container>
+///     %label <input label>
+///     %input <input field>
+///
 ////////////////////////////////////////////////////////////////////////////////
-function createIntFilter(attribute) {
-  // Make minimum input field
-  var inputMinField = document.createElement("Input");
-  inputMinField.type = "text";
-  inputMinField.id = "filter-input-" + attribute + "-min";
-  inputMinField.name = "filter[" + attribute + "][min]";
-  inputMinField.placeholder = "min";
-  inputMinField.className = "form-control";
+function Filter(attribute, type) {
 
-  // Make maximum input field
-  var inputMaxField = document.createElement("Input");
-  inputMaxField.type = "text";
-  inputMaxField.id = "filter-input-" + attribute + "-max";
-  inputMaxField.name = "filter[" + attribute + "][max]";
-  inputMaxField.placeholder = "max";
-  inputMaxField.className = "form-control";
+  /*--------------------------- Object Properties ----------------------------*/
 
-  // Make tool tips
-  inputMinField.dataset.toggle = "tooltip";
-  inputMinField.dataset.placement = "right";
-  inputMinField.title = "Search for matrices with " + attribute +
-      " between min and max.";
-  inputMaxField.dataset.toggle = "tooltip";
-  inputMaxField.dataset.placement = "right";
-  inputMaxField.title = "Search for matrices with " + attribute +
-      " between min and max.";
+  // Filter properties
+  this.attribute = attribute;
+  this.type = type;
+  this.label = pretty_attribute(this.attribute);
 
-  // Make label
-  var inputLabel = document.createElement("label");
-  inputLabel.htmlFor = inputMaxField.id;
-  inputLabel.appendChild(document.createTextNode(" <= " + attribute + " <= "));
+  // Associated DOM elements
+  this.container;      // The HTML container that holds the complete filter.
+  this.inputContainer; // The HTML container for the filter's input field[s].
+  this.input = null;   // The HTML input element[s].
+  this.selector;       // The checkbox element that turns this filter on/off.
 
-  // Make container
-  var container = document.createElement("td");
-  container.className = "form-inline";
-  container.appendChild(inputMinField);
-  container.appendChild(inputLabel);
-  container.appendChild(inputMaxField);
-  return container;
-}
+  /*----------------------- Initialize Input Elements ------------------------*/
 
-////////////////////////////////////////////////////////////////////////////////
-/// Create a bool filter.
-////////////////////////////////////////////////////////////////////////////////
-function createBoolFilter(attribute) {
-  // Make input field
-  var inputField = document.createElement("input");
-  inputField.type = "checkbox";
-  inputField.id = "filter-input-" + attribute;
-  inputField.name = "filter[" + attribute + "]";
-  inputField.className = "form-control";
+  // Make HTML label element
+  var labelElement = document.createElement("th");
+  labelElement.appendChild(document.createTextNode(this.label));
 
-  // Make tool tips
-  inputField.dataset.toggle = "tooltip";
-  inputField.dataset.placement = "right";
-  inputField.title = "Require matrix to be " + attribute + "?";
+  // Make HTML input container
+  this.inputContainer = document.createElement("td");
+  this.inputContainer.className = "form-inline";
 
-  // Make container
-  var container = document.createElement("td");
-  container.className = "form-inline";
-  container.appendChild(inputField);
-  return container;
-}
+  // Make HTML container element
+  this.container = document.createElement("tr");
+  this.container.className = "filter";
+  this.container.id = "filter-" + this.attribute;
+  this.container.style.display = "";
+  this.container.appendChild(labelElement);
+  this.container.appendChild(this.inputContainer);
 
-////////////////////////////////////////////////////////////////////////////////
-/// Hide all the filters after creating them and setting up tooltips
-////////////////////////////////////////////////////////////////////////////////
-function hideFilters() {
-  // Hide each filter row
-  var filters = document.getElementsByClassName("filter");
-  for(var i = 0; i < filters.length; ++i)
-    filters[i].style.display = "none";
+  // Add container element to filter-table
+  document.getElementById("filter-table").appendChild(this.container);
 
-  // Hide apply filters button
-  document.getElementById("filter-apply").style.display = "none";
-}
+  /*----------------------- Initialize Selector ------------------------------*/
 
-////////////////////////////////////////////////////////////////////////////////
-/// Hide/show the checked/unchecked filter on the index page and ensure the
-/// 'apply filters' button is in the proper state.
-////////////////////////////////////////////////////////////////////////////////
-function toggleFilter(attribute) {
-  // Get filter
-  var filter = document.getElementById("filter-" + attribute);
-  if(filter == null)
-    document.writeln("filter-" + attribute);
+  // Make selector
+  this.selector = document.createElement("input");
+  this.selector.id = "filter-selector-" + this.attribute;
+  this.selector.type = "checkbox";
+  this.selector.value = this.attribute;
+  this.selector.checked = false;
+  this.selector.onclick = (function(obj) {
+    return function() {obj.toggle();};
+  }(this));
 
-  // If the filter wasn't visible, make it and the button visibile
-  if(filter.style.display === "none") {
-    filter.style.display = "";
+  // Make selector label
+  var selectorLabel = document.createElement("label");
+  selectorLabel.htmlFor = this.selector.id;
+  selectorLabel.appendChild(document.createTextNode(this.label));
+
+  // Add selector and label to filter-selector
+  var s = document.getElementById("filter-selector");
+  s.appendChild(this.selector);
+  s.appendChild(selectorLabel);
+
+  /*------------------------------ Functions ---------------------------------*/
+
+  this.show = function() {
+    this.container.style.display = "";
+    this.selector.checked = true;
     document.getElementById("filter-apply").style.display = "";
   }
-  // If the filter was visible, make it invisible.
-  else {
-    filter.style.display = "none";
 
-    // If no other filters are visible, make the button invisible.
-    var filters = document.getElementsByClassName("filter");
-    for(var i = 0; i < filters.length; ++i) {
-      if(filters[i].style.display == "")
+  this.hide = function() {
+    this.container.style.display = "none";
+    this.selector.checked = false;
+    for(var prop in filters) {
+      if(filters[prop].visible())
         return;
     }
     document.getElementById("filter-apply").style.display = "none";
   }
+
+  this.toggle = function() {
+    if(this.visible())
+      this.hide();
+    else
+      this.show();
+  }
+
+  this.visible = function() {
+    return this.container.style.display === "";
+  }
+
+  /*--------------------------------------------------------------------------*/
 }
 
+
 ////////////////////////////////////////////////////////////////////////////////
-/// Display the active filters and fill in their values.
+/// A string filter.
 ////////////////////////////////////////////////////////////////////////////////
-function populateFilters(params) {
-  if(params == null)
-    return;
-  var out = "Params:\n"
-  for(var prop in params) {
-    var type = typeof(params[prop]);
-    out += prop + " :: ";
-    if(type == "string") {
-      out += params[prop] + "\n";
-      if(params[prop] != "") {
-        toggleFilter(prop);
-        document.getElementById("filter-input-" + prop).value = params[prop];
-        document.getElementById("filter-selector-" + prop).checked = true;
-      }
-    }
-    else if(type == "boolean") {
-      out += params[prop] + "\n";
-      if(params[prop] == "on") {
-        toggleFilter(prop);
-        document.getElementById("filter-input-" + prop).checked = true;
-        document.getElementById("filter-selector-" + prop).checked = true;
-      }
+function StringFilter(attribute) {
+
+  /*--------------------------- Object Properties ----------------------------*/
+
+  // Inherit from superclass
+  Filter.apply(this, [attribute, "string"]);
+
+  /*----------------------- Initialize Input Field ---------------------------*/
+
+  // Make input field
+  this.input = document.createElement("Input");
+  this.input.type = "text";
+  this.input.id = "filter-input-" + this.attribute;
+  this.input.name = "filter[" + this.attribute + "]";
+  this.input.value = "";
+  this.input.placeholder = "contains...";
+  this.input.className = "form-control";
+
+  // Make tool tip
+  this.input.dataset.toggle = "tooltip";
+  this.input.dataset.placement = "right";
+  this.input.title = "Search for matrices who's " + this.label +
+      " includes one or more terms. Negate by prefacing with '-'.";
+
+  // Add input field to input container.
+  this.inputContainer.appendChild(this.input);
+
+  /*------------------------------ Functions ---------------------------------*/
+
+  this.setValue = function(val) {
+    this.input.value = val;
+  }
+
+  this.clearValue = function() {
+    this.input.value = "";
+  }
+
+  this.hasValue = function() {
+    return this.input.value != "";
+  }
+
+  /*--------------------------------------------------------------------------*/
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+/// An integer filter.
+////////////////////////////////////////////////////////////////////////////////
+function IntFilter(attribute) {
+
+  /*--------------------------- Object Properties ----------------------------*/
+
+  // Inherit from superclass
+  Filter.apply(this, [attribute, "int"]);
+
+  /*----------------------- Initialize Input Field ---------------------------*/
+
+  // Make minimum input field
+  var minField = document.createElement("Input");
+  minField.type = "text";
+  minField.id = "filter-input-" + this.attribute + "-min";
+  minField.name = "filter[" + this.attribute + "][min]";
+  minField.value = "";
+  minField.placeholder = "min";
+  minField.className = "form-control";
+
+  // Make maximum input field
+  var maxField = document.createElement("Input");
+  maxField.type = "text";
+  maxField.id = "filter-input-" + this.attribute + "-max";
+  maxField.name = "filter[" + this.attribute + "][max]";
+  maxField.value = "";
+  maxField.placeholder = "max";
+  maxField.className = "form-control";
+
+  // Store min and max in input
+  this.input = {min: minField, max: maxField};
+
+  // Make tool tips
+  minField.dataset.toggle = "tooltip";
+  minField.dataset.placement = "right";
+  minField.title = "Search for matrices with " + this.label +
+      " between min and max.";
+  maxField.dataset.toggle = "tooltip";
+  maxField.dataset.placement = "right";
+  maxField.title = "Search for matrices with " + this.label +
+      " between min and max.";
+
+  // Make label
+  var inputLabel = document.createElement("label");
+  inputLabel.htmlFor = maxField.id;
+  inputLabel.appendChild(document.createTextNode(" <= " + this.label + " <= "));
+
+  // Populate input container
+  this.inputContainer.appendChild(minField);
+  this.inputContainer.appendChild(inputLabel);
+  this.inputContainer.appendChild(maxField);
+
+  /*------------------------------ Functions ---------------------------------*/
+
+  this.setValue = function(range) {
+    this.input.min.value = range.min;
+    this.input.max.value = range.max;
+  }
+
+  this.clearValue = function() {
+    this.input.min.value = "";
+    this.input.max.value = "";
+  }
+
+  this.hasValue = function() {
+    var hasMin = (this.input.min.value != "");
+    var hasMax = (this.input.max.value != "");
+    return hasMin && hasMax;
+  }
+
+  /*--------------------------------------------------------------------------*/
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+/// A boolean filter.
+////////////////////////////////////////////////////////////////////////////////
+function BoolFilter(attribute) {
+
+  /*--------------------------- Object Properties ----------------------------*/
+
+  // Inherit from superclass
+  Filter.apply(this, [attribute, "bool"]);
+
+  /*----------------------- Initialize Input Field ---------------------------*/
+
+  // Make input field
+  this.input = document.createElement("input");
+  this.input.type = "checkbox";
+  this.input.id = "filter-input-" + this.attribute;
+  this.input.name = "filter[" + this.attribute + "]";
+  this.input.checked = false;
+  this.input.className = "form-control";
+
+  // Make tool tips
+  this.input.dataset.toggle = "tooltip";
+  this.input.dataset.placement = "right";
+  this.input.title = "Require matrix to be " + this.label + "?";
+
+  // Attach input field to input container
+  this.inputContainer.appendChild(this.input);
+
+  /*------------------------------ Functions ---------------------------------*/
+
+  this.setValue = function(val) {
+    if(val == "on") {
+      this.input.checked = true;
+      this.selector.checked = true;
     }
     else {
-      var range = params[prop];
-      var hasMin = range.min != "";
-      var hasMax = range.max != "";
-      out += "[" + range.min + ", " + range.max + "]\n";
-      if(hasMin || hasMax) {
-        toggleFilter(prop);
-        if(hasMin)
-          document.getElementById("filter-input-" + prop + "-min").value = range.min;
-        if(hasMax)
-          document.getElementById("filter-input-" + prop + "-max").value = range.max;
-      }
+      this.input.checked = false;
+      this.selector.checked = false;
     }
   }
-  var outElement = document.createElement("pre");
-  outElement.innerHTML = out;
-  document.getElementById("testing").appendChild(outElement);
+
+  this.clearValue = function() {
+    this.input.checked = false;
+    this.selector.checked = false;
+  }
+
+  this.hasValue = function() {
+    return this.input.checked == true;
+  }
+
+  /*--------------------------------------------------------------------------*/
 }

@@ -16,10 +16,9 @@ function generateSorters(list) {
   // Create a sorting header for each element in the list
   for(var i = 0; i < list.length; ++i) {
     var attribute = list[i][0];
-    var label = pretty_attribute(attribute);
 
     // Create link text
-    var text = document.createTextNode(label);
+    var text = document.createTextNode(pretty_attribute(attribute));
 
     // Create link
     var link = document.createElement("a");
