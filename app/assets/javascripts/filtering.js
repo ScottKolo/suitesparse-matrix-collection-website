@@ -1,187 +1,387 @@
 ////////////////////////////////////////////////////////////////////////////////
+/// Create an appropriate filter object based on type and store it in the global
+/// filters object.
+////////////////////////////////////////////////////////////////////////////////
+var filters = {};
+function createFilter(attribute, type) {
+  if(type === 'string')
+    filters[attribute] = new StringFilter(attribute);
+  else if(type === 'int')
+    filters[attribute] = new IntFilter(attribute);
+  else if(type === 'bool')
+    filters[attribute] = new BoolFilter(attribute);
+  else
+    console.log("createFilter:: skipping request for unrecognized type " + type);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
 /// Create filters from a list of [[attribute1, type1], [attribute2, type2], ...]
 ////////////////////////////////////////////////////////////////////////////////
 function generateFilters(list) {
-  // Get the selector list and filter table
-  var selector = document.getElementById("filter-selector");
-  var table = document.getElementById("filter-table");
-
-  // Generate a selector and filter for each item in the list
   for(var i = 0; i < list.length; ++i) {
     var attribute = list[i][0];
     var type = list[i][1];
-
-    // Make filter label
-    var label = document.createElement("th");
-    label.appendChild(document.createTextNode(attribute));
-
-    // Make input container
-    var container = createFilter(attribute, type);
-
-    // Make filter-table row
-    var row = document.createElement("tr");
-    row.className = "filter";
-    row.id = "filter-" + attribute;
-    row.appendChild(label);
-    row.appendChild(container);
-
-    // Add filter to filter-table
-    table.appendChild(row);
-
-    // Make selector
-    var s = document.createElement("input");
-    s.id = "filter-selector-" + attribute;
-    s.type = "checkbox";
-    s.value = attribute;
-    s.onclick = (function(target) {
-      return function() {toggleFilter(target);};
-    }(attribute)); // This generates the proper onclick function for each filter.
-
-    // Make selector label
-    var sLabel = document.createElement("label");
-    sLabel.htmlFor = s.id;
-    sLabel.appendChild(document.createTextNode(attribute));
-
-    // Add selector and label to filter-selector
-    selector.appendChild(s);
-    selector.appendChild(sLabel);
+    createFilter(attribute, type);
   }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-/// Hide all the filters after creating them and setting up tooltips
-////////////////////////////////////////////////////////////////////////////////
-function hideFilters() {
-  // Hide each filter row
-  var filters = document.getElementsByClassName("filter");
-  for(var i = 0; i < filters.length; ++i)
-    filters[i].style.display = "none";
-
-  // Hide apply filters button
-  document.getElementById("filter-apply").style.display = "none";
-}
 
 ////////////////////////////////////////////////////////////////////////////////
-/// Create the appropriate filter object based on type.
+/// Display the active filters and fill in their values from a params object.
 ////////////////////////////////////////////////////////////////////////////////
-function createFilter(attribute, type) {
-  var f;
-  if(type === 'string') {
-    f = createStringFilter(attribute);
+function populateFilters(params) {
+  var empty = (params == null);
+  var debug = "Params:\n";
+
+  for(var prop in filters) {
+    var filter = filters[prop];
+    if(empty) {
+      filter.hide();
+      continue;
+    }
+
+    var value = params[prop];
+    if(value == null) {
+      debug += prop + " :: null\n";
+
+      filter.clearValue();
+      filter.hide();
+    }
+    else {
+      if(filter.type === "int")
+        debug += prop + " :: [" + value.min + ", " + value.max + "]\n";
+      else
+        debug += prop + " :: " + value + "\n";
+
+      filter.setValue(value);
+      if(filter.hasValue())
+        filter.show();
+      else
+        filter.hide();
+    }
   }
-  else if(type === 'int') {
-    f = createIntFilter(attribute);
+
+  // Control debug output
+  if(false) {
+    var output = document.createElement("pre");
+    output.innerHTML = debug;
+    document.body.appendChild(output);
   }
-  else if(type === 'bool') {
-    f = createBoolFilter(attribute);
-  }
-  return f; // null-return if type is unrecognized
 }
-function createStringFilter(attribute) {
+
+
+////////////////////////////////////////////////////////////////////////////////
+/// An abstract filter object for common functionality. Filter creates a set of
+/// dynamic HTML elements that look like this:
+///
+/// (in the selector form)
+/// %input <selector>
+///
+/// (in the filter table)
+/// %tr <container>
+///   %th <attribute label>
+///   %td <input container>
+///     %label <input label>
+///     %input <input field>
+///
+////////////////////////////////////////////////////////////////////////////////
+function Filter(attribute, type) {
+
+  /*--------------------------- Object Properties ----------------------------*/
+
+  // Filter properties
+  this.attribute = attribute;
+  this.type = type;
+  this.label = pretty_attribute(this.attribute);
+  this.cachedValue = null; // Stores the previous value when hiding a filter.
+
+  // Associated DOM elements
+  this.container;      // The HTML container that holds the complete filter.
+  this.inputContainer; // The HTML container for the filter's input field[s].
+  this.input = null;   // The HTML input element[s].
+  this.selector;       // The checkbox element that turns this filter on/off.
+
+  /*----------------------- Initialize Input Elements ------------------------*/
+
+  // Make HTML label element
+  var labelElement = document.createElement("th");
+  labelElement.appendChild(document.createTextNode(this.label));
+
+  // Make HTML input container
+  this.inputContainer = document.createElement("td");
+  this.inputContainer.className = "form-inline";
+
+  // Make HTML container element
+  this.container = document.createElement("tr");
+  this.container.className = "filter";
+  this.container.id = "filter-" + this.attribute;
+  this.container.style.display = "";
+  this.container.appendChild(labelElement);
+  this.container.appendChild(this.inputContainer);
+
+  // Add container element to filter-table
+  document.getElementById("filter-table").appendChild(this.container);
+
+  /*----------------------- Initialize Selector ------------------------------*/
+
+  // Make selector
+  this.selector = document.createElement("input");
+  this.selector.id = "filter-selector-" + this.attribute;
+  this.selector.type = "checkbox";
+  this.selector.value = this.attribute;
+  this.selector.checked = false;
+  this.selector.onclick = (function(obj) {
+    return function() {obj.toggle();};
+  }(this));
+
+  // Make selector label
+  var selectorLabel = document.createElement("label");
+  selectorLabel.htmlFor = this.selector.id;
+  selectorLabel.appendChild(document.createTextNode(this.label));
+
+  // Add selector and label to filter-selector
+  var s = document.getElementById("filter-selector");
+  s.appendChild(this.selector);
+  s.appendChild(selectorLabel);
+
+  /*----------------------- Value Caching Functions --------------------------*/
+
+  this.cacheValue = function() {
+    this.cachedValue = this.getValue();
+    this.clearValue();
+  }
+
+  this.restoreValue = function() {
+    if(this.cachedValue != null) {
+      this.setValue(this.cachedValue);
+      this.cachedValue = null;
+    }
+  }
+
+  /*------------------------- Display Functions ------------------------------*/
+
+  this.show = function() {
+    this.restoreValue();
+    this.container.style.display = "";
+    this.selector.checked = true;
+    document.getElementById("filter-apply").style.display = "";
+  }
+
+  this.hide = function() {
+    this.cacheValue();
+    this.container.style.display = "none";
+    this.selector.checked = false;
+    for(var prop in filters) {
+      if(filters[prop].visible())
+        return;
+    }
+    document.getElementById("filter-apply").style.display = "none";
+  }
+
+  this.toggle = function() {
+    if(this.visible())
+      this.hide();
+    else
+      this.show();
+  }
+
+  this.visible = function() {
+    return this.container.style.display === "";
+  }
+
+  /*--------------------------------------------------------------------------*/
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+/// A string filter.
+////////////////////////////////////////////////////////////////////////////////
+function StringFilter(attribute) {
+
+  /*--------------------------- Object Properties ----------------------------*/
+
+  // Inherit from superclass
+  Filter.apply(this, [attribute, "string"]);
+
+  /*----------------------- Initialize Input Field ---------------------------*/
+
   // Make input field
-  var inputField = document.createElement("Input");
-  inputField.type = "text";
-  inputField.id = "filter-input-" + attribute;
-  inputField.name = attribute;
-  inputField.placeholder = "contains...";
-  inputField.className = "form-control";
+  this.input = document.createElement("Input");
+  this.input.type = "text";
+  this.input.id = "filter-input-" + this.attribute;
+  this.input.name = "filter[" + this.attribute + "]";
+  this.input.value = "";
+  this.input.placeholder = "contains...";
+  this.input.className = "form-control";
 
   // Make tool tip
-  inputField.dataset.toggle = "tooltip";
-  inputField.dataset.placement = "right";
-  inputField.title = "Search for matrices who's " + attribute +
+  this.input.dataset.toggle = "tooltip";
+  this.input.dataset.placement = "right";
+  this.input.title = "Search for matrices who's " + this.label +
       " includes one or more terms. Negate by prefacing with '-'.";
 
-  // Make container
-  var container = document.createElement("td");
-  container.className = "form-inline";
-  container.appendChild(inputField);
-  return container;
+  // Add input field to input container.
+  this.inputContainer.appendChild(this.input);
+
+  /*------------------------------ Functions ---------------------------------*/
+
+  this.hasValue = function() {
+    return this.input.value !== "";
+  }
+
+  this.getValue = function() {
+    return this.input.value;
+  }
+
+  this.setValue = function(val) {
+    this.input.value = val;
+  }
+
+  this.clearValue = function() {
+    this.input.value = "";
+  }
+
+  /*--------------------------------------------------------------------------*/
 }
-function createIntFilter(attribute) {
+
+
+////////////////////////////////////////////////////////////////////////////////
+/// An integer filter.
+////////////////////////////////////////////////////////////////////////////////
+function IntFilter(attribute) {
+
+  /*--------------------------- Object Properties ----------------------------*/
+
+  // Inherit from superclass
+  Filter.apply(this, [attribute, "int"]);
+
+  /*----------------------- Initialize Input Field ---------------------------*/
+
   // Make minimum input field
-  var inputMinField = document.createElement("Input");
-  inputMinField.type = "text";
-  inputMinField.id = "filter-input-" + attribute + "-min";
-  inputMinField.name = attribute + "-min";
-  inputMinField.placeholder = "min";
-  inputMinField.className = "form-control";
+  var minField = document.createElement("Input");
+  minField.type = "text";
+  minField.id = "filter-input-" + this.attribute + "-min";
+  minField.name = "filter[" + this.attribute + "][min]";
+  minField.value = "";
+  minField.placeholder = "min";
+  minField.className = "form-control";
 
   // Make maximum input field
-  var inputMaxField = document.createElement("Input");
-  inputMaxField.type = "text";
-  inputMaxField.id = "filter-input-" + attribute + "-max";
-  inputMaxField.name = attribute + "-max";
-  inputMaxField.placeholder = "max";
-  inputMaxField.className = "form-control";
+  var maxField = document.createElement("Input");
+  maxField.type = "text";
+  maxField.id = "filter-input-" + this.attribute + "-max";
+  maxField.name = "filter[" + this.attribute + "][max]";
+  maxField.value = "";
+  maxField.placeholder = "max";
+  maxField.className = "form-control";
+
+  // Store min and max in input
+  this.input = {min: minField, max: maxField};
 
   // Make tool tips
-  inputMinField.dataset.toggle = "tooltip";
-  inputMinField.dataset.placement = "right";
-  inputMinField.title = "Search for matrices with " + attribute +
+  minField.dataset.toggle = "tooltip";
+  minField.dataset.placement = "right";
+  minField.title = "Search for matrices with " + this.label +
       " between min and max.";
-  inputMaxField.dataset.toggle = "tooltip";
-  inputMaxField.dataset.placement = "right";
-  inputMaxField.title = "Search for matrices with " + attribute +
+  maxField.dataset.toggle = "tooltip";
+  maxField.dataset.placement = "right";
+  maxField.title = "Search for matrices with " + this.label +
       " between min and max.";
 
   // Make label
   var inputLabel = document.createElement("label");
-  inputLabel.htmlFor = inputMaxField.id;
-  inputLabel.appendChild(document.createTextNode(" <= " + attribute + " <= "));
+  inputLabel.htmlFor = maxField.id;
+  inputLabel.appendChild(document.createTextNode(" <= " + this.label + " <= "));
 
-  // Make container
-  var container = document.createElement("td");
-  container.className = "form-inline";
-  container.appendChild(inputMinField);
-  container.appendChild(inputLabel);
-  container.appendChild(inputMaxField);
-  return container;
+  // Populate input container
+  this.inputContainer.appendChild(minField);
+  this.inputContainer.appendChild(inputLabel);
+  this.inputContainer.appendChild(maxField);
+
+  /*------------------------------ Functions ---------------------------------*/
+
+  this.hasValue = function() {
+    var hasMin = (this.input.min.value != "");
+    var hasMax = (this.input.max.value != "");
+    return hasMin || hasMax;
+  }
+
+  this.getValue = function() {
+    var value = {
+      min: this.input.min.value,
+      max: this.input.max.value
+    };
+    return value;
+  }
+
+  this.setValue = function(range) {
+    this.input.min.value = range.min;
+    this.input.max.value = range.max;
+  }
+
+  this.clearValue = function() {
+    this.input.min.value = "";
+    this.input.max.value = "";
+  }
+
+  /*--------------------------------------------------------------------------*/
 }
-function createBoolFilter(attribute) {
+
+
+////////////////////////////////////////////////////////////////////////////////
+/// A boolean filter.
+////////////////////////////////////////////////////////////////////////////////
+function BoolFilter(attribute) {
+
+  /*--------------------------- Object Properties ----------------------------*/
+
+  // Inherit from superclass
+  Filter.apply(this, [attribute, "bool"]);
+
+  /*----------------------- Initialize Input Field ---------------------------*/
+
   // Make input field
-  var inputField = document.createElement("input");
-  inputField.type = "checkbox";
-  inputField.id = "filter-input-" + attribute;
-  inputField.name = attribute;
-  inputField.className = "form-control";
+  this.input = document.createElement("input");
+  this.input.type = "checkbox";
+  this.input.id = "filter-input-" + this.attribute;
+  this.input.name = "filter[" + this.attribute + "]";
+  this.input.checked = false;
+  this.input.className = "form-control";
 
   // Make tool tips
-  inputField.dataset.toggle = "tooltip";
-  inputField.dataset.placement = "right";
-  inputField.title = "Require matrix to be " + attribute + "?";
+  this.input.dataset.toggle = "tooltip";
+  this.input.dataset.placement = "right";
+  this.input.title = "Require matrix to be " + this.label + "?";
 
-  // Make container
-  var container = document.createElement("td");
-  container.className = "form-inline";
-  container.appendChild(inputField);
-  return container;
-}
+  // Attach input field to input container
+  this.inputContainer.appendChild(this.input);
 
-////////////////////////////////////////////////////////////////////////////////
-/// Hide/show the checked/unchecked filter on the index page and ensure the
-/// 'apply filters' button is in the proper state.
-////////////////////////////////////////////////////////////////////////////////
-function toggleFilter(name) {
-  // Get filter
-  var filter = document.getElementById("filter-" + name);
+  /*------------------------------ Functions ---------------------------------*/
 
-  // If the filter wasn't visible, make it and the button visibile
-  if(filter.style.display === "none") {
-    filter.style.display = "";
-    document.getElementById("filter-apply").style.display = "";
+  this.hasValue = function() {
+    return this.input.checked === true;
   }
-  // If the filter was visible, make it invisible.
-  else {
-    filter.style.display = "none";
 
-    // If no other filters are visible, make the button invisible.
-    var filters = document.getElementsByClassName("filter");
-    for(var i = 0; i < filters.length; ++i) {
-      if(filters[i].style.display === "")  {
-        return;
-      }
+  this.getValue = function() {
+    return this.hasValue();
+  }
+
+  this.setValue = function(val) {
+    if(val === "on" || val === true) {
+      this.input.checked = true;
+      this.selector.checked = true;
     }
-    document.getElementById("filter-apply").style.display = "none";
+    else {
+      this.input.checked = false;
+      this.selector.checked = false;
+    }
   }
+
+  this.clearValue = function() {
+    this.input.checked = false;
+    this.selector.checked = false;
+  }
+
+  /*--------------------------------------------------------------------------*/
 }

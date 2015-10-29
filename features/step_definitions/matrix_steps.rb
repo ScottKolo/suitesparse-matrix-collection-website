@@ -5,7 +5,5 @@ Given /the following matrices exist/ do |matrices_table|
 end
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  index1 = page.body.index(e1)
-  index2 = page.body.index(e2)
-  expect(index1).to be < index2
+  page.assert_text(:visible, /#{e1}.*#{e2}/)
 end
