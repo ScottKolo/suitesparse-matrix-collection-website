@@ -153,7 +153,7 @@ function Filter(attribute, type) {
   };
 
   this.restoreValue = function() {
-    if(this.cachedValue != null) {
+    if(this.cachedValue !== null) {
       this.setValue(this.cachedValue);
       this.cachedValue = null;
     }
@@ -166,7 +166,7 @@ function Filter(attribute, type) {
     this.container.style.display = "";
     this.selector.checked = true;
     document.getElementById("filter-apply").style.display = "";
-  }
+  };
 
   this.hide = function() {
     this.cacheValue();
@@ -292,7 +292,7 @@ function IntFilter(attribute) {
   // Make label
   var inputLabel = document.createElement("label");
   inputLabel.htmlFor = maxField.id;
-  inputLabel.appendChild(document.createTextNode(" ≤ " + this.label + " ≤ "));
+  inputLabel.appendChild(document.createTextNode(" \u2264 " + this.label + " \u2264 "));
 
   // Populate input container
   this.inputContainer.appendChild(minField);
