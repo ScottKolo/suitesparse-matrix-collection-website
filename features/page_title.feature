@@ -5,16 +5,16 @@ Feature: Page Titles
   
   Scenario: Home Page Title
     Given I am on the home page
-    Then the page title should be "Sparse Matrix Collection"
+    Then the page title should be "SuiteSparse Matrix Collection"
 
   Scenario: Show Page Title
     Given I am on the show page for a matrix with name "Test_matrix_1" and group "GroupName_1"
-    Then the page title should be "GroupName_1/Test_matrix_1 | Sparse Matrix Collection"
+    Then the page title should be "GroupName_1/Test_matrix_1 | SuiteSparse Matrix Collection"
 
   Scenario: About Page Title
     Given I am on the about page
-    Then the page title should be "About | Sparse Matrix Collection"
+    Then the page title should be "About | SuiteSparse Matrix Collection"
 
   Scenario: Not Found Page Title
     Given I am on the Not Found page
-    Then the page title should be "Not Found | Sparse Matrix Collection"
+    Then the page title should be "Not Found | SuiteSparse Matrix Collection"

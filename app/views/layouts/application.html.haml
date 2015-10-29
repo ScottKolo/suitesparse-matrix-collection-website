@@ -10,7 +10,9 @@
     %nav{:class => "navbar navbar-inverse navbar-fixed-top"}
       .container
         .navbar-header
-          = link_to "Sparse Matrix Collection", root_path, class: "navbar-brand"
+          = link_to root_path, class: "navbar-brand" do
+            SuiteSparse Matrix Collection
+            %small Formerly the University of Florida Sparse Matrix Collection
         .navbar-collapse.collapse{:id => "navbar"}
           %ul{:class => "nav navbar-nav navbar-right"}
             %li{:class => ("active" if yield(:title) == 'Index')}

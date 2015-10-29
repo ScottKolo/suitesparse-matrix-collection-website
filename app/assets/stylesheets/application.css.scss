@@ -28,6 +28,19 @@ $navbar-inverse-bg: rgb(80, 0, 0);
   border-color: #090909;
 }
 
+.navbar-brand {
+  line-height:12px;
+  padding-top:13px;
+  padding-bottom:5px;
+  font-size: 150%;
+}
+
+.navbar-brand small {
+  padding-top:5px;
+  display:block;
+  font-size:55%;
+}
+
 .about-images {
   background-color: black;
 }
