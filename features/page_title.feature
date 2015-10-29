@@ -5,7 +5,7 @@ Feature: Page Titles
   
   Scenario: Home Page Title
     Given I am on the home page
-    Then the page title should be "Index | Sparse Matrix Collection"
+    Then the page title should be "Sparse Matrix Collection"
 
   Scenario: Show Page Title
     Given I am on the show page for a matrix with name "Test_matrix_1" and group "GroupName_1"

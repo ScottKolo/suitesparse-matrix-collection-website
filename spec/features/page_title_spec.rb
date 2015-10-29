@@ -11,7 +11,7 @@ RSpec.feature "Page titles", :type => :feature do
   end
 
   scenario "User views a specific matrix" do
-    matrix = create(:matrix, :id => 1, :group => "GroupName_1", :name => "MatrixName_1")
+    matrix = FactoryGirl.create(:matrix, :id => 1, :group => "GroupName_1", :name => "MatrixName_1")
     visit "/matrices/#{matrix.id}"
     expect(page).to have_title "GroupName_1/MatrixName_1 | Sparse Matrix Collection"
   end

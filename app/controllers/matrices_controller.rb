@@ -9,7 +9,11 @@ class MatricesController < ApplicationController
 
     # Apply Sort
     s = session[:sort].nil? ? nil : %{"#{session[:sort]}"};
-    @matrices = Matrix.order(s).paginate(:page => params[:page], :per_page => 10)
+    @per_page = params[:per_page] || Matrix.per_page || 20
+    if @per_page == "All"
+      @per_page = Matrix.count
+    end
+    @matrices = Matrix.order(s).paginate(:page => params[:page], :per_page => @per_page)
   end
 
   def show
