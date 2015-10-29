@@ -49,7 +49,10 @@ function populateFilters(params) {
       filter.hide();
     }
     else {
-      debug += prop + " :: " + value + "\n";
+      if(filter.type === "int")
+        debug += prop + " :: [" + value.min + ", " + value.max + "]\n";
+      else
+        debug += prop + " :: " + value + "\n";
 
       filter.setValue(value);
       if(filter.hasValue())
@@ -91,6 +94,7 @@ function Filter(attribute, type) {
   this.attribute = attribute;
   this.type = type;
   this.label = pretty_attribute(this.attribute);
+  this.cachedValue = null; // Stores the previous value when hiding a filter.
 
   // Associated DOM elements
   this.container;      // The HTML container that holds the complete filter.
@@ -141,15 +145,31 @@ function Filter(attribute, type) {
   s.appendChild(this.selector);
   s.appendChild(selectorLabel);
 
-  /*------------------------------ Functions ---------------------------------*/
+  /*----------------------- Value Caching Functions --------------------------*/
+
+  this.cacheValue = function() {
+    this.cachedValue = this.getValue();
+    this.clearValue();
+  }
+
+  this.restoreValue = function() {
+    if(this.cachedValue != null) {
+      this.setValue(this.cachedValue);
+      this.cachedValue = null;
+    }
+  }
+
+  /*------------------------- Display Functions ------------------------------*/
 
   this.show = function() {
+    this.restoreValue();
     this.container.style.display = "";
     this.selector.checked = true;
     document.getElementById("filter-apply").style.display = "";
   }
 
   this.hide = function() {
+    this.cacheValue();
     this.container.style.display = "none";
     this.selector.checked = false;
     for(var prop in filters) {
@@ -206,16 +226,20 @@ function StringFilter(attribute) {
 
   /*------------------------------ Functions ---------------------------------*/
 
+  this.hasValue = function() {
+    return this.input.value !== "";
+  }
+
+  this.getValue = function() {
+    return this.input.value;
+  }
+
   this.setValue = function(val) {
     this.input.value = val;
   }
 
   this.clearValue = function() {
     this.input.value = "";
-  }
-
-  this.hasValue = function() {
-    return this.input.value != "";
   }
 
   /*--------------------------------------------------------------------------*/
@@ -277,6 +301,20 @@ function IntFilter(attribute) {
 
   /*------------------------------ Functions ---------------------------------*/
 
+  this.hasValue = function() {
+    var hasMin = (this.input.min.value != "");
+    var hasMax = (this.input.max.value != "");
+    return hasMin || hasMax;
+  }
+
+  this.getValue = function() {
+    var value = {
+      min: this.input.min.value,
+      max: this.input.max.value
+    };
+    return value;
+  }
+
   this.setValue = function(range) {
     this.input.min.value = range.min;
     this.input.max.value = range.max;
@@ -285,12 +323,6 @@ function IntFilter(attribute) {
   this.clearValue = function() {
     this.input.min.value = "";
     this.input.max.value = "";
-  }
-
-  this.hasValue = function() {
-    var hasMin = (this.input.min.value != "");
-    var hasMax = (this.input.max.value != "");
-    return hasMin && hasMax;
   }
 
   /*--------------------------------------------------------------------------*/
@@ -327,8 +359,16 @@ function BoolFilter(attribute) {
 
   /*------------------------------ Functions ---------------------------------*/
 
+  this.hasValue = function() {
+    return this.input.checked === true;
+  }
+
+  this.getValue = function() {
+    return this.hasValue();
+  }
+
   this.setValue = function(val) {
-    if(val == "on") {
+    if(val === "on" || val === true) {
       this.input.checked = true;
       this.selector.checked = true;
     }
@@ -341,10 +381,6 @@ function BoolFilter(attribute) {
   this.clearValue = function() {
     this.input.checked = false;
     this.selector.checked = false;
-  }
-
-  this.hasValue = function() {
-    return this.input.checked == true;
   }
 
   /*--------------------------------------------------------------------------*/
