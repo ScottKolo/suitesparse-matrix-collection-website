@@ -34,11 +34,17 @@ function generateHides(list) {
 }
 
 function toggleHide(attribute){
+	var nodes = document.getElementsByClassName("column-" + attribute);
     if(columns[attribute] === true) {
 		columns[attribute] = false;
+		//now hide stuff
+		for(var i = 0; i < nodes.length; ++i)
+			nodes[i].style.display = "none";
 	}
 	else {
 		columns[attribute] = true;
+		for(var i = 0; i < nodes.length; ++i)
+			nodes[i].style.display = "";
 	}
 }
 

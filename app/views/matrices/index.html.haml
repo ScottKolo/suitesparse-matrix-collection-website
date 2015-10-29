@@ -15,11 +15,6 @@
   %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
     Hide by...
   %form{:id => "hide-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
-
-<!-- Set up the hide form -->
-%form{:id => "hide-form"}
-  %table{:id => "hide-table", :class => "table"}
-  %input{:id => "hide-apply", :type => "submit", :value => "Apply Hides", :class => "btn btn-default"}
   
 <!-- Top Pagination Bar -->
 %center
@@ -36,13 +31,13 @@
   %tbody
     - @matrices.each do |matrix|
       %tr
-        %td= link_to "#{matrix.group}", matrix_path(matrix)
-        %td= link_to "#{matrix.name}", matrix_path(matrix)
-        %td= number_with_delimiter(matrix.num_rows, :delimiter => ',')
-        %td= number_with_delimiter(matrix.num_cols, :delimiter => ',')
-        %td= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
-        %td= matrix.kind.titleize unless matrix.kind.nil?
-        %td= matrix.date
+        %td{class: "column-group"}= link_to "#{matrix.group}", matrix_path(matrix)
+        %td{class: "column-name"}= link_to "#{matrix.name}", matrix_path(matrix)
+        %td{class: "column-num_rows"}= number_with_delimiter(matrix.num_rows, :delimiter => ',')
+        %td{class: "column-num_cols"}= number_with_delimiter(matrix.num_cols, :delimiter => ',')
+        %td{class: "column-nonzeros"}= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
+        %td{class: "column-kind"}= matrix.kind.titleize unless matrix.kind.nil?
+        %td{class: "column-date"}= matrix.date
         %td
           = link_to "MATLAB", matrix.get_url(:matlab), class: "btn btn-default"
           = link_to "Rutherford Boeing", matrix.get_url(:rutherford_boeing), class: "btn btn-default"
@@ -62,9 +57,9 @@
   
 <!-- Create the hiders -->
 :javascript
-  generateHides(#{Matrix.filterable_attributes});
+  generateHides(#{Matrix.sortable_attributes});
   $(function() {$('[data-toggle="tooltip"]').tooltip()});
-  hideHides();
+  //hideHides();
 
 <!-- Create the sorters -->
 :javascript

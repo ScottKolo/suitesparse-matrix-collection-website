@@ -2,7 +2,7 @@
 /// Highlight the sorting attribute.
 ////////////////////////////////////////////////////////////////////////////////
 function highlightSortAttribute(attr) {
-  document.getElementById(attr + "-header").className = "hilite";
+  document.getElementById(attr + "-header").className += " hilite";
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -29,6 +29,7 @@ function generateSorters(list) {
     // Create table header
     var sortHeader = document.createElement("th");
     sortHeader.id = attribute + "-header";
+	sortHeader.className = "column-" + attribute;
     sortHeader.appendChild(link);
 
     // Attach header to selector
