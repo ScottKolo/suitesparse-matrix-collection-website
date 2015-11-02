@@ -266,6 +266,8 @@ function IntFilter(attribute) {
   minField.value = "";
   minField.placeholder = "min";
   minField.className = "form-control";
+  minField.maxLength = "11";
+  minField.size = "11";
 
   // Make maximum input field
   var maxField = document.createElement("Input");
@@ -275,6 +277,8 @@ function IntFilter(attribute) {
   maxField.value = "";
   maxField.placeholder = "max";
   maxField.className = "form-control";
+  maxField.maxLength = "11";
+  maxField.size = "11";
 
   // Store min and max in input
   this.input = {min: minField, max: maxField};
@@ -292,7 +296,9 @@ function IntFilter(attribute) {
   // Make label
   var inputLabel = document.createElement("label");
   inputLabel.htmlFor = maxField.id;
-  inputLabel.appendChild(document.createTextNode(" \u2264 " + this.label + " \u2264 "));
+  var div = document.createElement("div");
+  div.innerHTML += '&nbsp;&le;&nbsp;' + this.label + '&nbsp;&le;&nbsp;';
+  inputLabel.appendChild(div);
 
   // Populate input container
   this.inputContainer.appendChild(minField);

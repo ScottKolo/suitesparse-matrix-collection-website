@@ -1,20 +1,21 @@
 =provide(:title, "Index")
 <!-- Set up the filter selector -->
-%div{:class => "dropdown theme-dropdown clearfix"}
-  %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
-    Filter by...
-  %form{:id => "filter-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
+.well
+  %div{:class => "dropdown theme-dropdown clearfix"}
+    %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
+      Filter by...
+    %form{:id => "filter-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
 
-<!-- Set up the filter form -->
-%form{:id => "filter-form"}
-  %table{:id => "filter-table", :class => "table"}
-  %input{:id => "filter-apply", :type => "submit", :value => "Apply Filters", :class => "btn btn-default"}
+  <!-- Set up the filter form -->
+  %form{:id => "filter-form"}
+    %table{:id => "filter-table", :class => "table"}
+    %input{:id => "filter-apply", :type => "submit", :value => "Apply Filters", :class => "btn btn-default"}
 
-<!-- Hiding Columns -->
-%div{:class => "dropdown theme-dropdown clearfix"}
-  %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
-    Hide by...
-  %form{:id => "hide-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
+  <!-- Hiding Columns -->
+  %div{:class => "dropdown theme-dropdown clearfix"}
+    %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
+      Hide by...
+    %form{:id => "hide-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
   
 <!-- Top Pagination Bar -->
 %center
