@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020204741) do
+ActiveRecord::Schema.define(version: 20151104033524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20151020204741) do
     t.string   "name"
     t.integer  "num_rows"
     t.integer  "num_cols"
-    t.integer  "nonzeros"
+    t.integer  "nonzeros",                          limit: 8
     t.string   "kind"
     t.boolean  "symmetric"
     t.integer  "date"
@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 20151020204741) do
     t.string   "matlab_url"
     t.string   "rutherford_boeing_url"
     t.string   "matrix_market_url"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "description"
     t.string   "problem_2D_or_3D"
-    t.integer  "num_explicit_zeros"
+    t.integer  "num_explicit_zeros",                limit: 8
     t.integer  "num_strongly_connected_components"
     t.integer  "num_dmperm_blocks"
     t.string   "structural_full_rank"
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 20151020204741) do
     t.string   "structure"
     t.string   "cholesky_candidate"
     t.string   "positive_definite"
-    t.integer  "nnz_chol"
-    t.integer  "nnz_L_plus_U"
-    t.integer  "nnz_v"
-    t.integer  "nnz_r"
+    t.integer  "nnz_chol",                          limit: 8
+    t.integer  "nnz_L_plus_U",                      limit: 8
+    t.integer  "nnz_v",                             limit: 8
+    t.integer  "nnz_r",                             limit: 8
     t.string   "norm"
     t.string   "min_singular_value"
     t.string   "condition_number"
