@@ -9,7 +9,7 @@
   <!-- Set up the filter form -->
   %form{:id => "filter-form"}
     %table{:id => "filter-table", :class => "table"}
-    %input{:id => "filter-apply", :type => "submit", :value => "Apply Filters", :class => "btn btn-default"}
+    %input{:id => "filter-apply", :type => "button", :value => "Apply Filters", :class => "btn btn-default", :onclick => "validateFilters()"}
 
   <!-- Hiding Columns -->
   %div{:class => "dropdown theme-dropdown clearfix"}
