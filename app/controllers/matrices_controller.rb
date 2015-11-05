@@ -6,36 +6,9 @@ class MatricesController < ApplicationController
     parse_params
     @matrices = Matrix.all
 
-    # Apply Filter
-    filters = session[:filter]
-    if !filters.nil?
-      filters.each do |attribute, value|
-        if value.class == Hash then
-          if value["min"] != "" then
-            @matrices = @matrices.where(%{"#{attribute}" >= ?}, value["min"])
-          end
-          if value["max"] != "" then
-            @matrices = @matrices.where(%{"#{attribute}" <= ?}, value["max"])
-          end
-        elsif value != "" then
-          if value == "on" then
-            value = "true"
-          end
-          @matrices = @matrices.where(%{"#{attribute}" = ?}, value)
-        end
-      end
-    end
-
-    # Apply Sort
-    s = session[:sort].nil? ? nil : %{"#{session[:sort]}"};
-    @matrices = @matrices.order(s)
-
-    # Apply pagination
-    @per_page = params[:per_page] || Matrix.per_page || 20
-    if @per_page == "All"
-      @per_page = Matrix.count
-    end
-    @matrices = @matrices.paginate(:page => params[:page], :per_page => @per_page)
+    apply_filters
+    apply_sort
+    apply_pagination
   end
 
   def show
@@ -75,6 +48,42 @@ class MatricesController < ApplicationController
       if !flash[:notice].nil? then flash.keep end
       redirect_to matrices_path
     end
+  end
+
+  ### Index Helpers ############################################################
+
+  def apply_filters
+    filters = session[:filter]
+    if !filters.nil?
+      filters.each do |attribute, value|
+        if value.class == Hash then
+          if value["min"] != "" then
+            @matrices = @matrices.where(%{"#{attribute}" >= ?}, value["min"])
+          end
+          if value["max"] != "" then
+            @matrices = @matrices.where(%{"#{attribute}" <= ?}, value["max"])
+          end
+        elsif value != "" then
+          if value == "on" then
+            value = "true"
+          end
+          @matrices = @matrices.where(%{"#{attribute}" = ?}, value)
+        end
+      end
+    end
+  end
+
+  def apply_sort
+    s = session[:sort].nil? ? nil : %{"#{session[:sort]}"};
+    @matrices = @matrices.order(s)
+  end
+
+  def apply_pagination
+    @per_page = params[:per_page] || Matrix.per_page || 20
+    if @per_page == "All"
+      @per_page = Matrix.count
+    end
+    @matrices = @matrices.paginate(:page => params[:page], :per_page => @per_page)
   end
 
   ##############################################################################
