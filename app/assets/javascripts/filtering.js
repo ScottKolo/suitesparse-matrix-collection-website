@@ -269,35 +269,32 @@ function IntFilter(attribute) {
   var minField = document.createElement("Input");
   setProperties(minField,
   {
-    "type" : "text",
     "id" : "filter-input-" + this.attribute + "-min",
     "name" : "filter[" + this.attribute + "][min]",
-    "value" : "",
     "placeholder" : "min",
-    "class" : "form-control",
-    "maxLength" : "11",
-    "size" : "11",
-    "data-toggle" : "tooltip",
-    "data-placement" : "right",
-    "title" : "Search for matrices with " + this.label + " between min and max."
   });
 
   // Make maximum input field
   var maxField = document.createElement("Input");
   setProperties(maxField,
   {
-    "type" : "text",
     "id" : "filter-input-" + this.attribute + "-max",
     "name" : "filter[" + this.attribute + "][max]",
-    "value" : "",
     "placeholder" : "max",
+  });
+
+  var commonProperties = {
+    "type" : "text",
+    "value" : "",
     "class" : "form-control",
     "maxLength" : "11",
     "size" : "11",
     "data-toggle" : "tooltip",
     "data-placement" : "right",
     "title" : "Search for matrices with " + this.label + " between min and max."
-  });
+  };
+  setProperties(minField, commonProperties);
+  setProperties(maxField, commonProperties);
 
   // Store min and max in input
   this.input = {min: minField, max: maxField};
