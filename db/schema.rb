@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104033524) do
+ActiveRecord::Schema.define(version: 20151105223945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20151104033524) do
     t.string   "matlab_url"
     t.string   "rutherford_boeing_url"
     t.string   "matrix_market_url"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
     t.string   "description"
     t.string   "problem_2D_or_3D"
     t.integer  "num_explicit_zeros",                limit: 8
@@ -63,8 +63,10 @@ ActiveRecord::Schema.define(version: 20151104033524) do
     t.integer  "matrix_id"
     t.string   "rb_type"
     t.string   "cholesky_flop_count"
+    t.boolean  "pending",                                     default: false
   end
 
   add_index "matrices", ["matrix_id"], name: "index_matrices_on_matrix_id", using: :btree
+  add_index "matrices", ["pending"], name: "index_matrices_on_pending", using: :btree
 
 end
