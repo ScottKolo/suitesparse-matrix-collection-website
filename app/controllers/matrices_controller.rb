@@ -4,7 +4,7 @@ class MatricesController < ApplicationController
 
   def index
     parse_params
-    @matrices = Matrix.all
+    @matrices = Matrix.where(pending: false)
 
     apply_filters
     apply_sort
