@@ -60,15 +60,29 @@ class AdminsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def login 
+    reset_session
+    authenticate_or_request_with_http_basic do |username, password|
+      @admin = Admin.find_by(username: username).try(:authenticate,password)
+      if @admin
+        session[:admin_id]=@admin.id
+        redirect_to matrices_path
+      else
+        #login failure
+      end
+    end
+  end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin
-      @admin = Admin.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_admin
+    @admin = Admin.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_params
-      params.require(:admin).permit(:name, :username, :password, :password_confirmation)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def admin_params
+    params.require(:admin).permit(:name, :username, :password, :password_confirmation)
+  end
+
 end
