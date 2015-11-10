@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :admins
+  get 'login' => 'admins#login'
   get 'matrices/index'
 
   get 'matrices/show'
