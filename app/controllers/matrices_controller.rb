@@ -4,6 +4,11 @@ class MatricesController < ApplicationController
 
   def index
     parse_params
+    @admin = false
+    #if session[:admin_id] and Admin.find(session[:admin_id])
+      @pending_matrices = Matrix.where(pending: true)
+      @admin = true
+    #end
     @matrices = Matrix.where(pending: false)
 
     apply_filters
@@ -84,6 +89,9 @@ class MatricesController < ApplicationController
       @per_page = Matrix.count
     end
     @matrices = @matrices.paginate(:page => params[:page], :per_page => @per_page)
+    if @pending_matrices
+      @pending_matrices = @pending_matrices.paginate(:page => params[:pend_page], :per_page => @per_page)
+    end
   end
 
   ##############################################################################

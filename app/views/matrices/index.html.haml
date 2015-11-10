@@ -1,4 +1,37 @@
 =provide(:title, "Index")
+<!-- Setup the pending Matrices-->
+-if @admin and !@pending_matrices.nil?
+  %h1 Pending Matrices
+  <!-- Layout the matrix table -->
+  %table{:id => "pending_matrices", :class => "table table-striped"}
+    %thead
+      %tr
+        %td Group
+        %td Name
+        %td Rows
+        %td Cols
+        %td Nonzeros
+        %td Kind
+        %td Year
+        %td Download File
+    %tbody
+      - @pending_matrices.each do |matrix|
+        %tr
+          %td{class: "column-group"}= link_to "#{matrix.group}", matrix_path(matrix)
+          %td{class: "column-name"}= link_to "#{matrix.name}", matrix_path(matrix)
+          %td{class: "column-num_rows"}= number_with_delimiter(matrix.num_rows, :delimiter => ',')
+          %td{class: "column-num_cols"}= number_with_delimiter(matrix.num_cols, :delimiter => ',')
+          %td{class: "column-nonzeros"}= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
+          %td{class: "column-kind"}= matrix.kind.titleize unless matrix.kind.nil?
+          %td{class: "column-date"}= matrix.date
+          %td
+            = link_to "MATLAB", matrix.get_url(:matlab), class: "btn btn-default"
+            = link_to "Rutherford Boeing", matrix.get_url(:rutherford_boeing), class: "btn btn-default"
+            = link_to "Matrix Market", matrix.get_url(:matrix_market), class: "btn btn-default"
+      %tr
+        %td{:colspan => 42, :align => "center"}
+          = will_paginate @pending_matrices, renderer: BootstrapPagination::Rails
+  %h1 Current Matrices
 <!-- Set up the filter selector -->
 .well
   %div{:class => "dropdown theme-dropdown clearfix"}
@@ -16,7 +49,6 @@
     %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
       Hide by...
     %form{:id => "hide-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
-  
 <!-- Top Pagination Bar -->
 %center
   = will_paginate @matrices, renderer: BootstrapPagination::Rails
