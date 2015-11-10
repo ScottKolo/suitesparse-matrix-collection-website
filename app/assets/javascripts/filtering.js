@@ -70,16 +70,17 @@ function populateFilters(params) {
   }
 }
 
-function validateFilters(){
-  var isAllValid=true;
+////////////////////////////////////////////////////////////////////////////////
+/// Validate all integer filters and submit the filter form.
+////////////////////////////////////////////////////////////////////////////////
+function validateFilters() {
+  var allValid = true;
   for(var prop in filters) {
-    if(filters[prop].type==="int" && filters[prop].visible())
-      isAllValid=isAllValid && filters[prop].validate();
+    if(filters[prop].type === "int" && filters[prop].visible())
+      allValid = allValid && filters[prop].validate();
   }
-  if(isAllValid){
+  if(allValid)
     document.getElementById("filter-form").submit();
-  }
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -330,7 +331,7 @@ function IntFilter(attribute) {
 
   /*------------------------------ Functions ---------------------------------*/
 
-  this.validate = function(){
+  this.validate = function() {
     var isValid = {
       'min': !isNaN(this.input.min.value),
       'max': !isNaN(this.input.max.value)
