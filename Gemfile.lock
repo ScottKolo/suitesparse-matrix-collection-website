@@ -41,6 +41,8 @@ GEM
     autoprefixer-rails (6.0.3)
       execjs
       json
+    bcrypt (3.1.10)
+    bcrypt (3.1.10-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.5.1)
@@ -251,6 +253,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.5)
   byebug
   capybara (= 2.5.0)
@@ -286,3 +289,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   will_paginate (~> 3.0.6)
   will_paginate-bootstrap (~> 1.0.1)
+
+BUNDLED WITH
+   1.10.6
