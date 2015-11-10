@@ -71,15 +71,15 @@ function populateFilters(params) {
 }
 
 function validateFilters(){
-	var isAllValid=true;
-	for(var prop in filters) {
-      if(filters[prop].type==="int" && filters[prop].visible())
-        isAllValid=isAllValid && filters[prop].validate();
-    }
-	if(isAllValid){
-		document.getElementById("filter-form").submit();
-	}
-	
+  var isAllValid=true;
+  for(var prop in filters) {
+    if(filters[prop].type==="int" && filters[prop].visible())
+      isAllValid=isAllValid && filters[prop].validate();
+  }
+  if(isAllValid){
+    document.getElementById("filter-form").submit();
+  }
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -331,32 +331,25 @@ function IntFilter(attribute) {
   /*------------------------------ Functions ---------------------------------*/
 
   this.validate = function(){
-	  var isMinValid = !isNaN(this.input.min.value);
-	  var isMaxValid = !isNaN(this.input.max.value);
-	  
-	  // Check if min is valid
-	  if(isMinValid){
-		  //turn box white
-		  this.input.min.style.backgroundColor = "white";
-		  this.input.min.style.color = "black";
-	  }else{
-		  //turn box red
-		  this.input.min.style.backgroundColor = "red";
-		  this.input.min.style.color = "white";
-	  }
-	  if(isMaxValid){
-		  //turn box white
-		  this.input.max.style.backgroundColor = "white";
-		  this.input.max.style.color = "black";
-	  }else{
-		  //turn box red
-		  this.input.max.style.backgroundColor = "red";
-		  this.input.max.style.color = "white";
-	  }
-	  
-	  return isMinValid && isMaxValid;
+    var isValid = {
+      'min': !isNaN(this.input.min.value),
+      'max': !isNaN(this.input.max.value)
+    };
+
+    // Check if min is valid
+    for(var field in isValid) {
+      if(isValid[field]) {
+        this.input[field].style.backgroundColor = "white";
+        this.input[field].style.color = "black";
+      }
+      else {
+        this.input[field].style.backgroundColor = "red";
+        this.input[field].style.color = "white";
+      }
+    }
+    return isValid.min && isValid.max;
   }
-  
+
   this.hasValue = function() {
     var hasMin = (this.input.min.value !== "");
     var hasMax = (this.input.max.value !== "");
