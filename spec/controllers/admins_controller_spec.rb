@@ -158,4 +158,31 @@ RSpec.describe AdminsController, type: :controller do
     end
   end
 
+  describe "login" do
+    context "with valid credentials" do
+      it "redirects to the index" do
+        admin = Admin.create! valid_attributes
+        request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(valid_attributes[:username], valid_attributes[:password])
+        get 'login'
+        expect(response).to redirect_to(matrices_path)
+      end
+
+      it "creates an admin session" do
+        admin = Admin.create! valid_attributes
+        request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(valid_attributes[:username], valid_attributes[:password])
+        get 'login'
+        expect(session[:admin_id]).to eq(admin.id)
+      end
+    end
+
+    context "with invalid credentials" do
+      it "fails" do
+        admin = Admin.create! valid_attributes
+        request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(invalid_attributes[:username], invalid_attributes[:password])
+        get 'login'
+        expect(session[:admin_id]).to be_nil
+      end
+    end
+  end
+
 end
