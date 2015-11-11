@@ -16,6 +16,7 @@ Background: matrices have been added to database
 
 @javascript
 Scenario: hide a column
+  Given I am not an admin
   When I press "Hide by..."
   Then I check "Rows"
   When I press "Hide by..."
