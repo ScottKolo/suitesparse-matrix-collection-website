@@ -24,7 +24,9 @@ function generateHides(list) {
     // Make selector label
     var sLabel = document.createElement("label");
     sLabel.htmlFor = s.id;
-    sLabel.appendChild(document.createTextNode(pretty_attribute(attribute)));
+    var labelDiv = document.createElement("div");
+    labelDiv.innerHTML += '&nbsp;' + pretty_attribute(attribute) + '&nbsp;';
+    sLabel.appendChild(labelDiv);
 
     // Add selector and label to filter-selector
     selector.appendChild(s);

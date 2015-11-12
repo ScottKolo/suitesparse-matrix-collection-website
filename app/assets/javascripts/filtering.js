@@ -156,7 +156,9 @@ function Filter(attribute, type) {
   // Make selector label
   var selectorLabel = document.createElement("label");
   selectorLabel.htmlFor = this.selector.id;
-  selectorLabel.appendChild(document.createTextNode(this.label));
+  var labelDiv = document.createElement("div");
+  labelDiv.innerHTML += '&nbsp;' + this.label + '&nbsp;';
+  selectorLabel.appendChild(labelDiv);
 
   // Add selector and label to filter-selector
   var s = document.getElementById("filter-selector");

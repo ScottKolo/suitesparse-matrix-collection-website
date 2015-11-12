@@ -87,19 +87,19 @@
 
 <!-- Create the filters -->
 :javascript
-  generateFilters(#{Matrix.filterable_attributes});
+  generateFilters(#{Matrix.filterable_attributes.to_json});
   $(function() {$('[data-toggle="tooltip"]').tooltip()});
   populateFilters(#{session[:filter].to_json});
 
 <!-- Create the hiders -->
 :javascript
-  generateHides(#{Matrix.sortable_attributes});
+  generateHides(#{Matrix.sortable_attributes.to_json});
   $(function() {$('[data-toggle="tooltip"]').tooltip()});
   //hideHides();
 
 <!-- Create the sorters -->
 :javascript
-  generateSorters(#{Matrix.sortable_attributes});
+  generateSorters(#{Matrix.sortable_attributes.to_json});
 
 <!-- Highlight the sort attribute if there is one -->
 - if !session[:sort].nil?

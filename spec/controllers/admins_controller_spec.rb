@@ -24,11 +24,11 @@ RSpec.describe AdminsController, type: :controller do
   # Admin. As you add validations to Admin, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {username: "Username", name: "User Z. Name", password: "foobar"}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {username: "bad&   username", name: "Bad U. Name"}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +103,16 @@ RSpec.describe AdminsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {username: "Username_new", name: "Name O. User", password: "bazquux9800+"}
       }
 
       it "updates the requested admin" do
         admin = Admin.create! valid_attributes
         put :update, {:id => admin.to_param, :admin => new_attributes}, valid_session
         admin.reload
-        skip("Add assertions for updated state")
+        expect(admin.username).to eq("Username_new")
+        expect(admin.name).to eq("Name O. User")
+        expect(Admin.find_by(username: "Username_new").try(:authenticate, "bazquux9800+")).to eq(admin)
       end
 
       it "assigns the requested admin as @admin" do
@@ -153,6 +155,33 @@ RSpec.describe AdminsController, type: :controller do
       admin = Admin.create! valid_attributes
       delete :destroy, {:id => admin.to_param}, valid_session
       expect(response).to redirect_to(admins_url)
+    end
+  end
+
+  describe "login" do
+    context "with valid credentials" do
+      it "redirects to the index" do
+        admin = Admin.create! valid_attributes
+        request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(valid_attributes[:username], valid_attributes[:password])
+        get 'login'
+        expect(response).to redirect_to(matrices_path)
+      end
+
+      it "creates an admin session" do
+        admin = Admin.create! valid_attributes
+        request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(valid_attributes[:username], valid_attributes[:password])
+        get 'login'
+        expect(session[:admin_id]).to eq(admin.id)
+      end
+    end
+
+    context "with invalid credentials" do
+      it "fails" do
+        admin = Admin.create! valid_attributes
+        request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(invalid_attributes[:username], invalid_attributes[:password])
+        get 'login'
+        expect(session[:admin_id]).to be_nil
+      end
     end
   end
 

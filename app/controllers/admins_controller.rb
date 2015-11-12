@@ -74,6 +74,11 @@ class AdminsController < ApplicationController
     end
   end
 
+  def logout
+    session[:admin_id] = false
+    redirect_to matrices_path
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_admin

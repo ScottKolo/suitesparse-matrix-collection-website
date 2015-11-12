@@ -59,6 +59,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'byebug'
   gem 'selenium-webdriver'
+  gem 'brakeman', :require => false
 end
 
 group :test do
