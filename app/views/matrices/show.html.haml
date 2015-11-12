@@ -1,13 +1,13 @@
 =provide(:title, "#{@matrix.group}/#{@matrix.name}")
 %h1= "#{@matrix.group}/#{@matrix.name}"
 
-%table{:id => "matrices", :class => "table table-striped"}
+%table{:class => "table table-striped"}
   %tbody
     %tr
       %th Group
       %td{width: 600}= @matrix.group
       %td{rowspan: 10}
-        .pull-right= image_tag "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png"
+        .pull-right.img-responsive= image_tag "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png"
     %tr
       %th Name
       %td= @matrix.name
@@ -22,10 +22,10 @@
       %td= number_with_delimiter(@matrix.nonzeros, :delimiter => ',')
     %tr
       %th Kind
-      %td= @matrix.kind
+      %td= @matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless @matrix.kind.nil?
     %tr
       %th Symmetric
-      %td= @matrix.symmetric
+      %td= @matrix.structure == "symmetric" ? "Yes" : "No"
     %tr
       %th Date
       %td= @matrix.date
@@ -49,3 +49,23 @@
     %tr
       %th Type
       %td{colspan: 2}= @matrix.rb_type
+
+%table{:class => "table table-striped"}
+  %tbody
+    %tr
+      %th{colspan:2} Ordering Statistics
+    %tr
+      %th nnz(chol(P*(A+A'+s*I)*P')) with AMD
+      %td= number_with_delimiter(@matrix.nnz_chol, :delimiter => ',')
+    %tr
+      %th Cholesky flop count
+      %td= @matrix.cholesky_flop_count
+    %tr
+      %th nnz(L+U), no partial pivoting, with AMD
+      %td= number_with_delimiter(@matrix.nnz_L_plus_U, :delimiter => ',')
+    %tr
+      %th nnz(V) for QR, upper bound nnz(L) for LU, with COLAMD
+      %td= number_with_delimiter(@matrix.nnz_v, :delimiter => ',')
+    %tr
+      %th nnz(R) for QR, upper bound nnz(U) for LU, with COLAMD
+      %td= number_with_delimiter(@matrix.nnz_r, :delimiter => ',')
