@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :admins
   get 'login' => 'admins#login'
   get 'logout' => 'admins#logout'
-  
+
   get 'matrices/index'
 
   get 'matrices/show'
@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get 'index' => 'matrices#index'
 
   get 'about' => 'pages#about'
+  get 'other_interfaces' => 'pages#other_interfaces'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

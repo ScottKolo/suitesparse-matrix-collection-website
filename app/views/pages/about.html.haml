@@ -1,10 +1,10 @@
 =provide(:title, "About")
-%p 
+%p
   I am now at Texas A&amp;M University, with a home page of
   ==#{link_to "http://faculty.cse.tamu.edu/davis", "http://faculty.cse.tamu.edu/davis"}.
   The UF Sparse Matrix Collection is still hosted at this site by the University of Florida.
 %p
-  ==My #{link_to "SuiteSparse", "http://suitesparse.com"} package of sparse matrix solvers is hosted at 
+  ==My #{link_to "SuiteSparse", "http://suitesparse.com"} package of sparse matrix solvers is hosted at
   ==#{link_to "suitesparse.com", "http://suitesparse.com"}.
 
 %p
@@ -17,15 +17,15 @@
   %table{ :class => "table-space"}
     %tr
       %td{:class => "table-flash"}
-        %object{:classid => "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000", 
+        %object{:classid => "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000",
         :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0", :height => "334", :vmode => "transparent", :width => "305"}
           %param{:name => "movie", :value => "Wolfram/graphplotbluedots.swf"}
             %param{:name => "play", :value => "true"}
               %param{:name => "loop", :value => "true"}
                 %param{:name => "quality", :value => "high"}
-                  %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer", 
-                  :src => "https://www.cise.ufl.edu/research/sparse/matrices/Wolfram/graphplotbluedots.swf", 
-                  :type => "application/x-shockwave-flash", :vmode => "transparent", :width => "305"}           
+                  %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer",
+                  :src => "https://www.cise.ufl.edu/research/sparse/matrices/Wolfram/graphplotbluedots.swf",
+                  :type => "application/x-shockwave-flash", :vmode => "transparent", :width => "305"}
       %td{:class => "table-image"}
         %img{:height => "300", :src => "https://www.cise.ufl.edu/research/sparse/Harn/UF_Matrix_Collection/Slide01.jpg"}
 %p
@@ -204,43 +204,12 @@
 %p
   ==#{link_to "Click here for a paper describing the collection", "http://faculty.cse.tamu.edu/davis/publications.html"}
   (look in the list for Davis and Hu, 2011)
-  %h2 #{link_to "UFgui Java interface:", "https://www.cise.ufl.edu/research/sparse/mat/UFget.html"}
-  The #{link_to "UFget", "https://www.cise.ufl.edu/research/sparse/mat/UFget.html"} package includes 
-  a Java program (UFgui) for browsing and downloading the matrices in any format on any platform.
-  Below is a screenshot (click on it to download the code):
-%p
-  ==#{link_to image_tag("https://www.cise.ufl.edu/research/sparse/mat/UFgui_screenshot.png",alt:"UFgui screenshot"), "https://www.cise.ufl.edu/research/sparse/mat/UFget.html"}
   %h2 Statistics:
   %ul
     %li
       ==#{link_to "A description of the statistics for each matrix", "https://www.cise.ufl.edu/research/sparse/matrices/stats.html"}
     %li
       ==#{link_to "Problem domains", "https://www.cise.ufl.edu/research/sparse/matrices/kind.html"}
-  %h2 MATLAB and stand-alone Java GUI interfaces:
-  %ul
-    %li
-      ==#{link_to "Click here for the UFget MATLAB and","https://www.cise.ufl.edu/research/sparse/mat/UFget.html"}.
-      UFget.m provides
-      for simple access to the collection, right inside your MATLAB workspace.
-      From inside MATLAB, UFget will download a matrix, cache it locally, and
-      load it into your MATLAB workspace.  No need to use a browser to get a matrix.
-      You can even use the built-in index to search for matrices that fit your
-      criteria ... all inside MATLAB.
-      For example, to download all symmetric matrices
-      into MATLAB, in increasing size as measured by nnz(A):
-      %pre
-        index = UFget ;           % get index of the UF Sparse Matrix Collection 
-        ids = find (index.numerical_symmetry == 1) ;
-        [ignore, i] = sort (index.nnz (ids)) ;
-        ids = ids (i) ;
-        for id = ids
-        Prob = UFget (id)     % Prob is a struct (matrix, name, meta-data, ...)
-        A = Prob.A ;          % A is a symmetric sparse matrix
-  %h2 Julia interface:
-  %ul
-    %li
-      ==#{link_to "Weijian Zhang", "http://www.maths.manchester.ac.uk/~weijian/"}, at the University of Manchester, has created a 
-      ==#{link_to "Julia interface to the UF collection", "http://matrixdepotjl.readthedocs.org/en/latest/interface.html#interfaces"}.
   %h2
     ==#{link_to "DIMACS10","https://www.cise.ufl.edu/research/sparse/dimacs10"}
   %ul
@@ -322,13 +291,13 @@
       iterative solvers for sparse linear systems.
 %hr
   %h2 Graph drawings, by Yifan Hu
-  #{link_to "Yifan Hu", "http://yifanhu.net"} at Yahoo! Labs has created a 
+  #{link_to "Yifan Hu", "http://yifanhu.net"} at Yahoo! Labs has created a
   #{link_to "graph drawing program", "http://yifanhu.net/PUB/graph_draw_small.pdf"}
   that can generate truly beautiful drawings of a large graph, based solely on
   the connectivity (that is, a sparse matrix).  Take a look at his
   ==#{link_to "drawings of the matrices in the UF Sparse Matrix Collection", "http://yifanhu.net/gallery.html"}.
-  
-  
+
+
   Each square matrix in the UF Sparse Matrix Collection
   has a link to his graph drawings; clicking on them
   will bring up his web page for that matrix, including a link to a higher
@@ -340,8 +309,8 @@
   or you can view it here by right-clicking the figure below and selecting "Play".
   (or just click "reload" on your browser).
   %ul
-    %object{:classid => "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000", 
-    :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0", 
+    %object{:classid => "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000",
+    :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0",
     :height => "334", :vmode => "transparent", :width => "305"}
       %param{:name => "movie", :value => "Wolfram/graphplotbluedots.swf"}
         %param{:name => "play", :value => "true"}
@@ -355,7 +324,7 @@
   Below is Yifan Hu's graph drawing of the
   #{link_to "Chen/ptusk01", "https://www.cise.ufl.edu/research/sparse/matrices/Chen/pkustk01.html"} matrix that
   I obtained from #{link_to "Pu Chen", "https://www.cise.ufl.edu/research/sparse/matrices/Chen"}, Beijing University.
-  The matrix is a model of the #{link_to "Beijing Botanical Garden Conservatory","http://www.beijingbg.com"}. 
+  The matrix is a model of the #{link_to "Beijing Botanical Garden Conservatory","http://www.beijingbg.com"}.
   Overlayed on top of the graph is a picture of the actual building.
 %p
   %ul

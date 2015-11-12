@@ -19,5 +19,7 @@
               = link_to "Index", root_path
             %li{:class => ("active" if yield(:title) == 'About')}
               = link_to "About", about_path
+            %li{:class => ("active" if yield(:title) == 'Interfaces')}
+              = link_to "Interfaces", "/other_interfaces.html"
     .container.theme-showcase{:role => "main"}
       = yield
