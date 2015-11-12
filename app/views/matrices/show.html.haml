@@ -1,11 +1,13 @@
 =provide(:title, "#{@matrix.group}/#{@matrix.name}")
-%h1 Detail View
+%h1= "#{@matrix.group}/#{@matrix.name}"
 
 %table{:id => "matrices", :class => "table table-striped"}
   %tbody
     %tr
       %th Group
-      %td= @matrix.group
+      %td{width: 600}= @matrix.group
+      %td{rowspan: 10}
+        .pull-right= image_tag "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png"
     %tr
       %th Name
       %td= @matrix.name
@@ -35,19 +37,15 @@
       %td= @matrix.editor
     %tr
       %th Notes
-      %td= @matrix.notes
+      %td{colspan: 2}
+        - if @matrix.notes
+          %pre= @matrix.notes
     %tr
       %th Download
-      %td 
+      %td{colspan: 2} 
         = link_to "MATLAB", @matrix.get_url(:matlab), class: "btn btn-default"
         = link_to "Rutherford Boeing", @matrix.get_url(:rutherford_boeing), class: "btn btn-default"
         = link_to "Matrix Market", @matrix.get_url(:matrix_market), class: "btn btn-default"
     %tr
       %th Type
-      %td= @matrix.rb_type
-    %tr
-      %th Created At
-      %td= @matrix.created_at
-    %tr
-      %th Updated At
-      %td= @matrix.updated_at
+      %td{colspan: 2}= @matrix.rb_type
