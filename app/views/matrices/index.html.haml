@@ -72,7 +72,7 @@
         %td{class: "column-num_rows"}= number_with_delimiter(matrix.num_rows, :delimiter => ',')
         %td{class: "column-num_cols"}= number_with_delimiter(matrix.num_cols, :delimiter => ',')
         %td{class: "column-nonzeros"}= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
-        %td{class: "column-kind"}= matrix.kind.titleize unless matrix.kind.nil?
+        %td{class: "column-kind"}= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
         %td{class: "column-date"}= matrix.date
         %td
           = link_to "MATLAB", matrix.get_url(:matlab), class: "btn btn-default"
