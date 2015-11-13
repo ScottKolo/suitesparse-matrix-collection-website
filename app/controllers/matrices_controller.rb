@@ -72,7 +72,11 @@ class MatricesController < ApplicationController
           if value == "on" then
             value = "true"
           end
-          @matrices = @matrices.where(%{"#{attribute}" = ?}, value)
+		  if value != "true" then
+			@matrices = @matrices.where(%{lower("#{attribute}") like ?},"%#{value}%".downcase) #compares lowercase attribute to lower case input string, finds substrings
+		  else
+			@matrices = @matrices.where(%{"#{attribute}" = ?}, value)
+		  end
         end
       end
     end

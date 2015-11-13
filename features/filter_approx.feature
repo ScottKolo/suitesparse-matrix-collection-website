@@ -1,9 +1,8 @@
-@wip
-Feature: display list of matrices filtered by attributes
+Feature: display list of matrices approximately filtered by attributes
 
   As a consumer
   So that I can better browse the collection
-  I want to filter the collection by matrix properties
+  I want to approximately filter the collection by matrix properties
 
 Background: matrices have been added to database
 
