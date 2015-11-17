@@ -46,5 +46,7 @@
         %label{for: "matrix-reference"} Bibliographic Reference
       %td
         %textarea{form: "submission-form", id: "matrix-reference", placeholder: "enter bibliographic reference here", rows: "2", class: "form-control"}
-
+    %tr
+      %td
+        ==#{show_simple_captcha}
   %input{type: "submit", value: "Submit My Matrix"}

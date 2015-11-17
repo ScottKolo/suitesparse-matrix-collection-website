@@ -61,6 +61,7 @@ group :development, :test do
   gem 'byebug'
   gem 'selenium-webdriver'
   gem 'brakeman', :require => false
+  gem 'simple_captcha2', require: 'simple_captcha'
 end
 
 group :test do

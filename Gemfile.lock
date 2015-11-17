@@ -230,6 +230,8 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0)
     sexp_processor (4.6.0)
+    simple_captcha2 (0.3.4)
+      rails (>= 4.1)
     simplecov (0.10.0)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -304,6 +306,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   selenium-webdriver
+  simple_captcha2
   simplecov
   spring
   turbolinks
@@ -313,3 +316,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   will_paginate (~> 3.0.6)
   will_paginate-bootstrap (~> 1.0.1)
+
+BUNDLED WITH
+   1.10.6
