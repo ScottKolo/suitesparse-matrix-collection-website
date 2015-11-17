@@ -60,8 +60,8 @@ class AdminsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def login 
+
+  def login
     reset_session
     authenticate_or_request_with_http_basic do |username, password|
       @admin = Admin.find_by(username: username).try(:authenticate,password)

@@ -1,2 +1,50 @@
-<h1>Matrices#new</h1>
-<p>Find me in app/views/matrices/new.html.erb</p>
+%h1 Submit a New Matrix
+
+%form{id: "submission-form"}
+  %h2 Submitter Information
+  %table{class: "table"}
+    %tr
+      %th
+        %label{for: "submitter-name"} Name
+      %td
+        %input{type: "text", id: "submitter-name", class: "form-control"}
+    %tr
+      %th
+        %label{for: "submitter-email"} Email
+      %td
+        %input{type: "email", id: "submitter-email", class: "form-control"}
+
+  %h2 Matrix Information
+  %table{class: "table"}
+    %tr
+      %th
+        %label{for: "matrix-name"} Name
+      %td
+        %input{type: "text", id: "matrix-name", class: "form-control"}
+    %tr
+      %th
+        %label{for: "matrix-kind"} Kind/problem domain
+      %td
+        %input{type: "text", id: "matrix-kind", class: "form-control"}
+    %tr
+      %th
+        %label{for: "matrix-author"} Author
+      %td
+        %input{type: "text", id: "matrix-author", class: "form-control"}
+    %tr
+      %th
+        %label{for: "matrix-editor"} Editor
+      %td
+        %input{type: "text", id: "matrix-editor", class: "form-control"}
+    %tr
+      %th
+        %label{for: "matrix-notes"} Notes
+      %td
+        %textarea{form: "submission-form", id: "matrix-notes", placeholder: "enter notes here", rows: "8", class: "form-control"}
+    %tr
+      %th
+        %label{for: "matrix-reference"} Bibliographic Reference
+      %td
+        %textarea{form: "submission-form", id: "matrix-reference", placeholder: "enter bibliographic reference here", rows: "2", class: "form-control"}
+
+  %input{type: "submit", value: "Submit My Matrix"}
