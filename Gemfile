@@ -43,6 +43,7 @@ gem 'will_paginate-bootstrap', '~> 1.0.1'
 gem 'json'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'simple_captcha2', require: 'simple_captcha'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -61,7 +62,6 @@ group :development, :test do
   gem 'byebug'
   gem 'selenium-webdriver'
   gem 'brakeman', :require => false
-  gem 'simple_captcha2', require: 'simple_captcha'
 end
 
 group :test do
