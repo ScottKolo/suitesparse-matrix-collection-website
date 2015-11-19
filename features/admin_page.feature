@@ -6,12 +6,16 @@ Background: matrices have been added to database
 
   Given the following matrices exist:
   | group  | num_rows | num_rows  | author | pending |
-  | Boeing | 343      | 55        | John   | true    |
-  | HB     | 34       | 435       | Paul   | true    |
+  | Test1  | 343      | 55        | John   | true    |
+  | Test2  | 34       | 435       | Paul   | true    |
   | Bai    | 44       | 23333     | Greg   | false   |
   | Gset   | 46902    | 343       | Lass   | false   |
-  @wip
-  Scenario: Not showing pending matrices
-    Given I am on the home page
-    And I am not the admin
-    Then I should not see pending matrices
+  Given the following admins exist:
+  | name   | username | password |
+  | user   | user     | pass     |
+Scenario: Not showing pending matrices
+  Given I am not an admin
+  Then I should see "Bai"
+  And I should see "Gset"
+  But I should not see "Test1"
+  And I should not see "Test2"
