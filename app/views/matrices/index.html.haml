@@ -24,7 +24,7 @@
           %td{class: "column-nonzeros"}= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
           %td{class: "column-kind"}= matrix.kind.titleize unless matrix.kind.nil?
           %td{class: "column-date"}= matrix.date
-          %td
+          %td{class: "column-download"}
             = link_to "MATLAB", matrix.get_url(:matlab), class: "btn btn-default"
             = link_to "Rutherford Boeing", matrix.get_url(:rutherford_boeing), class: "btn btn-default"
             = link_to "Matrix Market", matrix.get_url(:matrix_market), class: "btn btn-default"
