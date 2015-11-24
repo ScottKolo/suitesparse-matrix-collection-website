@@ -1,4 +1,9 @@
 class Matrix < ActiveRecord::Base
+  validates :group, presence: true
+  validates :name, presence: true
+  validates :author, presence: true
+  validates :kind, presence: true
+  validates :email, presence: true
 
   ### Download Helpers #########################################################
 
