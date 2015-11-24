@@ -42,16 +42,16 @@ class MatricesController < ApplicationController
         
         if @matrix.save!
           flash[:notice] = "Matrix Saved and awaiting Verification"
-          redirect_to index
+          redirect_to index_path
         else
           #failure
           flash[:notice] = "Failed to save matrix"
-          redirect_to index
+          redirect_to matrices_new_path
         end
       end
     else
-      flash[:notice]="Invalid Captcha"
-      redirect_to index
+      flash[:notice] = "Invalid Captcha"
+      redirect_to matrices_new_path
     end
   end
 

@@ -1,18 +1,17 @@
 %h1 Submit a New Matrix
-
-%form{id: "submission-form"}
+= form_for :matrix, method: "post", url: "create" do |f|
   %h2 Submitter Information
   %table{class: "table"}
     %tr
       %th
         %label{for: "submitter-name"} Name
       %td
-        %input{type: "text", id: "submitter-name", class: "form-control"}
+        = f.text_field :submitter_name, class: "form-control"
     %tr
       %th
         %label{for: "submitter-email"} Email
       %td
-        %input{type: "email", id: "submitter-email", class: "form-control"}
+        = f.email_field :submitter_email, class: "form-control"
 
   %h2 Matrix Information
   %table{class: "table"}
@@ -20,33 +19,38 @@
       %th
         %label{for: "matrix-name"} Name
       %td
-        %input{type: "text", id: "matrix-name", class: "form-control"}
+        = f.text_field :matrix_name, class: "form-control"
     %tr
       %th
         %label{for: "matrix-kind"} Kind/problem domain
       %td
-        %input{type: "text", id: "matrix-kind", class: "form-control"}
+        = f.text_field :matrix_kind, class: "form-control"
     %tr
       %th
         %label{for: "matrix-author"} Author
       %td
-        %input{type: "text", id: "matrix-author", class: "form-control"}
+        = f.text_field :matrix_author, class: "form-control"
     %tr
       %th
         %label{for: "matrix-editor"} Editor
       %td
-        %input{type: "text", id: "matrix-editor", class: "form-control"}
+        = f.text_field :matrix_editor, class: "form-control"
     %tr
       %th
         %label{for: "matrix-notes"} Notes
       %td
-        %textarea{form: "submission-form", id: "matrix-notes", placeholder: "enter notes here", rows: "8", class: "form-control"}
+        = f.text_area :matrix_notes, class: "form-control", rows: "8", placeholder: "Enter notes here"
     %tr
       %th
         %label{for: "matrix-reference"} Bibliographic Reference
       %td
-        %textarea{form: "submission-form", id: "matrix-reference", placeholder: "enter bibliographic reference here", rows: "2", class: "form-control"}
+        = f.text_area :matrix_notes, class: "form-control", rows: "2", placeholder: "Enter bibliographic reference here"
+    %tr
+      %th
+        %label{for: "matrix-data-file"} Matrix File Upload
+      %td
+        = f.file_field :matrix_data_file
     %tr
       %td
-        ==#{show_simple_captcha}
-  %input{type: "submit", value: "Submit My Matrix"}
+        = show_simple_captcha
+  = submit_tag("Submit My Matrix")

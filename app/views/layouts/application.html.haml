@@ -22,4 +22,7 @@
             %li{:class => ("active" if yield(:title) == 'Interfaces')}
               = link_to "Interfaces", "/other_interfaces.html"
     .container.theme-showcase{:role => "main"}
+      = if flash[:notice]
+        %div.alert.alert-danger
+          = flash[:notice]
       = yield
