@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20151124222914) do
-=======
-ActiveRecord::Schema.define(version: 20151119221256) do
->>>>>>> 9e0fedd0ccb0e94d63f37e3e277431f8ee85bf45
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,16 +72,13 @@ ActiveRecord::Schema.define(version: 20151119221256) do
     t.string   "rb_type"
     t.string   "cholesky_flop_count"
     t.boolean  "pending",                                     default: false
-<<<<<<< HEAD
     t.string   "submitter_name"
     t.string   "submitter_email"
     t.boolean  "display_email",                               default: false
-=======
     t.string   "matrix_data_file_file_name"
     t.string   "matrix_data_file_content_type"
     t.integer  "matrix_data_file_file_size"
     t.datetime "matrix_data_file_updated_at"
->>>>>>> 9e0fedd0ccb0e94d63f37e3e277431f8ee85bf45
   end
 
   add_index "matrices", ["matrix_id"], name: "index_matrices_on_matrix_id", using: :btree
