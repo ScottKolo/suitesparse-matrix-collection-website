@@ -45,7 +45,7 @@
       %td= @matrix.structural_rank
     %tr
       %th Structural Rank Full
-      %td= @matrix.structural_full_rank.downcase.titleize 
+      %td= @matrix.structural_full_rank 
     %tr
       %th Num Dmperm Blocks
       %td= @matrix.num_dmperm_blocks
@@ -63,10 +63,10 @@
       %td= number_to_percentage(@matrix.numeric_symmetry, precision:0)
     %tr
       %th Cholesky Candidate
-      %td= @matrix.cholesky_candidate.downcase.titleize
+      %td= @matrix.cholesky_candidate
     %tr
       %th Positive Definite
-      %td= @matrix.positive_definite.downcase.titleize
+      %td= @matrix.positive_definite
     %tr
       %th Download
       %td{colspan: 2} 
@@ -75,12 +75,12 @@
         = link_to "Matrix Market", @matrix.get_url(:matrix_market), class: "btn btn-default"
     %tr
       %th Type
-      %td{colspan: 2}= @matrix.rb_type.downcase.titleize
+      %td{colspan: 2}= @matrix.rb_type
 
 %table{:class => "table table-striped"}
   %tbody
     %tr
-      %th{colspan:2} Ordering Statistics
+      %th{colspan:2, :style=>'text-align: center'} Ordering Statistics
     %tr
       %th nnz(chol(P*(A+A'+s*I)*P')) with AMD
       %td= number_with_delimiter(@matrix.nnz_chol, :delimiter => ',')
