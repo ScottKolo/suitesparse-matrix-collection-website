@@ -8,7 +8,7 @@
       %th Group
       %td{width: 600}= @matrix.group
       %td{rowspan: 10}
-        .pull-right.img-responsive= image_tag "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png"
+        .pull-left.img-responsive= image_tag "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png"
     %tr
       %th Name
       %td= @matrix.name
