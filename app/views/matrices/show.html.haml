@@ -41,6 +41,33 @@
         - if @matrix.notes
           %pre= @matrix.notes
     %tr
+      %th Structural Rank
+      %td= @matrix.structural_rank
+    %tr
+      %th Structural Rank Full
+      %td= @matrix.structural_full_rank.downcase.titleize 
+    %tr
+      %th Num Dmperm Blocks
+      %td= @matrix.num_dmperm_blocks
+    %tr
+      %th Strongly Connect Components
+      %td= @matrix.num_strongly_connected_components
+    %tr
+      %th Num Explicit Zeros
+      %td= @matrix.num_explicit_zeros
+    %tr
+      %th Pattern Symmetry
+      %td= number_to_percentage(@matrix.pattern_symmetry, precision:0)
+    %tr
+      %th Numeric Symmetry
+      %td= number_to_percentage(@matrix.numeric_symmetry, precision:0)
+    %tr
+      %th Cholesky Candidate
+      %td= @matrix.cholesky_candidate.downcase.titleize
+    %tr
+      %th Positive Definite
+      %td= @matrix.positive_definite.downcase.titleize
+    %tr
       %th Download
       %td{colspan: 2} 
         = link_to "MATLAB", @matrix.get_url(:matlab), class: "btn btn-default"
@@ -48,7 +75,7 @@
         = link_to "Matrix Market", @matrix.get_url(:matrix_market), class: "btn btn-default"
     %tr
       %th Type
-      %td{colspan: 2}= @matrix.rb_type
+      %td{colspan: 2}= @matrix.rb_type.downcase.titleize
 
 %table{:class => "table table-striped"}
   %tbody
