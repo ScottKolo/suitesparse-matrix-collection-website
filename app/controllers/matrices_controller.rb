@@ -27,7 +27,32 @@ class MatricesController < ApplicationController
   end
 
   def create
-    # Push a new matrix to the pending database.
+    #Check the captcha
+    if simple_captcha_valid?
+      @matrix = Matrix.new(params[:matrix])
+      #Check whether the matrix has all of the necessary fields
+      if @matrix.valid?
+        
+        #Process matrix here
+        @matrix.pending=true
+        #set num columns
+        #set num rows
+        #set num zeroes
+        #set whether its symetric
+        
+        if @matrix.save!
+          flash[:notice] = "Matrix Saved and awaiting Verification"
+          redirect_to index
+        else
+          #failure
+          flash[:notice] = "Failed to save matrix"
+          redirect_to index
+        end
+      end
+    else
+      flash[:notice]="Invalid Captcha"
+      redirect_to index
+    end
   end
 
   def new

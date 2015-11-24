@@ -45,10 +45,9 @@ $navbar-inverse-bg: rgb(80, 0, 0);
   background-color: black;
 }
 
-table{
-  @media only screen and (max-width: 760px) {
-    .column-download{
-      display: none;
-    }
+@media only screen and (width: 760px) {
+  .column-download{
+    display: none;
   }
 }
+

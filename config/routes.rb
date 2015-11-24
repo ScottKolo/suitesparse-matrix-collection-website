@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'matrices/show'
 
-  get 'matrices/create'
+  post 'matrices/create'
 
   get 'matrices/new'
 

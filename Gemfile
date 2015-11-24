@@ -45,6 +45,10 @@ gem 'json'
 gem 'bcrypt', '~> 3.1.7'
 gem 'simple_captcha2', require: 'simple_captcha'
 
+gem 'paperclip'
+gem 'fog'
+gem 'fog-dropbox'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
