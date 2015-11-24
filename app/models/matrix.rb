@@ -5,6 +5,8 @@ class Matrix < ActiveRecord::Base
   #validates :kind, presence: true
   #validates :email, presence: true
 
+  has_attached_file :matrix_data_file
+
   ### Download Helpers #########################################################
 
   # Get the base URL for remote matrix downloads

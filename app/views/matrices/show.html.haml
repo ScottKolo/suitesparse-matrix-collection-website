@@ -1,14 +1,13 @@
 =provide(:title, "#{@matrix.group}/#{@matrix.name}")
 %h1= "#{@matrix.group}/#{@matrix.name}"
 
-.table-responsive
 %table{:class => "table table-striped"}
   %tbody
     %tr
       %th Group
       %td{width: 600}= @matrix.group
       %td{rowspan: 10}
-        .pull-right.img-responsive= image_tag "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png"
+        .pull-left.img-responsive= image_tag "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png"
     %tr
       %th Name
       %td= @matrix.name
