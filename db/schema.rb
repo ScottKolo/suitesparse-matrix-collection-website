@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117134727) do
+ActiveRecord::Schema.define(version: 20151124222914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,9 @@ ActiveRecord::Schema.define(version: 20151117134727) do
     t.string   "rb_type"
     t.string   "cholesky_flop_count"
     t.boolean  "pending",                                     default: false
+    t.string   "submitter_name"
+    t.string   "submitter_email"
+    t.boolean  "display_email",                               default: false
   end
 
   add_index "matrices", ["matrix_id"], name: "index_matrices_on_matrix_id", using: :btree
