@@ -54,9 +54,11 @@ class MatricesController < ApplicationController
       redirect_to matrices_new_path
     end
   end
+
   def matrix_params
     params.require(:matrix).permit(:name, :author, :notes, :author, :editor, :kind)
   end
+
   def new
   end
 
