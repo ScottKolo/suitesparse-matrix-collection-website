@@ -21,6 +21,8 @@
               = link_to "About", about_path
             %li{:class => ("active" if yield(:title) == 'Interfaces')}
               = link_to "Interfaces", "/other_interfaces.html"
+            %li{:class => ("active" if yield(:title) == 'Submit Matrix')}
+              = link_to "Submit Matrix", "/matrices/new"
     .container.theme-showcase{:role => "main"}
       = if flash[:notice]
         %div.alert.alert-danger
