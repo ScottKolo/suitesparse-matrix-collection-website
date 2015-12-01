@@ -56,7 +56,7 @@ class MatricesController < ApplicationController
   end
 
   def matrix_params
-    params.require(:matrix).permit(:name, :author, :notes, :author, :editor, :kind)
+    params.require(:matrix).permit(:group, :name, :author, :notes, :author, :editor, :kind)
   end
 
   def new
