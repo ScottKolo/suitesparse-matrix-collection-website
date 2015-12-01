@@ -17,7 +17,7 @@ Background: matrices have been added to database
 @javascript
 Scenario: hide a column
   Given I am not an admin
-  When I press "Hide by..."
+  When I press "Hide columns..."
   Then I check "Rows"
-  When I press "Hide by..."
+  When I press "Hide columns..."
   Then I should not see "Rows"

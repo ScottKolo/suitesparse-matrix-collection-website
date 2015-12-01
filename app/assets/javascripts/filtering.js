@@ -239,7 +239,7 @@ function StringFilter(attribute) {
     "data-toggle" : "tooltip",
     "data-placement": "right",
     "title" : "Search for matrices who's " + this.label +
-        " includes one or more terms. Negate by prefacing with '-'."
+        " includes a given term."
   });
 
   // Add input field to input container.
@@ -344,6 +344,8 @@ function IntFilter(attribute) {
       if(isValid[field]) {
         this.input[field].style.backgroundColor = "white";
         this.input[field].style.color = "black";
+        if(this.input[field].value.charAt(0) == ".")
+          this.input[field].value = "0" + this.input[field].value;
       }
       else {
         this.input[field].style.backgroundColor = "red";
@@ -394,18 +396,27 @@ function BoolFilter(attribute) {
   /*----------------------- Initialize Input Field ---------------------------*/
 
   // Make input field
-  this.input = document.createElement("input");
+  this.input = document.createElement("select");
   setProperties(this.input,
   {
-    "type" : "checkbox",
     "id" : "filter-input-" + this.attribute,
     "name" : "filter[" + this.attribute + "]",
-    "checked" : false,
     "class" : "form-control",
     "data-toggle" : "tooltip",
     "data-placement" : "right",
-    "title" : "Require matrix to be " + this.label + "?"
+    "title" : "Matrix is " + this.label + "?"
   });
+  var choices = ["Yes", "No", ""];
+  for(var i = 0; i < choices.length; ++i) {
+    var option = document.createElement("option");
+    option.value = choices[i];
+    if(choices[i] === "")
+      option.text = "Either";
+    else
+      option.text = choices[i];
+    this.input.appendChild(option);
+  }
+  this.input.selectedIndex = 2;
 
   // Attach input field to input container
   this.inputContainer.appendChild(this.input);
@@ -413,26 +424,32 @@ function BoolFilter(attribute) {
   /*------------------------------ Functions ---------------------------------*/
 
   this.hasValue = function() {
-    return this.input.checked === true;
+    return this.input.selectedIndex != 2;
   };
 
   this.getValue = function() {
-    return this.hasValue();
+    if(this.hasValue)
+      return this.input[this.input.selectedIndex].value.toLowerCase();
+    return "";
   };
 
   this.setValue = function(val) {
-    if(val === "on" || val === true) {
-      this.input.checked = true;
+    if(val === "Yes" || val === true) {
+      this.input.selectedIndex = 0;
+      this.selector.checked = true;
+    }
+    else if(val === "No" || val === false) {
+      this.input.selectedIndex = 1;
       this.selector.checked = true;
     }
     else {
-      this.input.checked = false;
+      this.input.selectedIndex = 2;
       this.selector.checked = false;
     }
   };
 
   this.clearValue = function() {
-    this.input.checked = false;
+    this.input.selectedIndex = 2;
     this.selector.checked = false;
   };
 

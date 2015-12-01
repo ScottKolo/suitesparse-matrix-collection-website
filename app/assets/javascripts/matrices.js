@@ -9,6 +9,11 @@ function pretty_attribute(attribute) {
     return "Cols";
   else if(attribute == "date")
     return "Year";
-  else
-    return attribute.charAt(0).toUpperCase() + attribute.slice(1);
+  else {
+    var tokens = attribute.split("_");
+    var s = "";
+    for(var i = 0; i < tokens.length; ++i)
+      s += tokens[i].charAt(0).toUpperCase() + tokens[i].slice(1) + " ";
+    return s.slice(0, s.length - 1);
+  }
 }
