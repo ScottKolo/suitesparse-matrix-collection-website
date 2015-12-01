@@ -22,7 +22,12 @@
   %table{class: "table"}
     %tr
       %th
-        %label{for: "matrix-name"} Name
+        %label{for: "matrix-group"} Group
+      %td
+        = f.text_field :group, class: "form-control"
+    %tr
+      %th
+        %label{for: "matrix-name"} Matrix Name
       %td
         = f.text_field :name, class: "form-control"
     %tr
