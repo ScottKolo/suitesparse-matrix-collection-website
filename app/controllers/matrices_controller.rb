@@ -29,7 +29,7 @@ class MatricesController < ApplicationController
   def create
     #Check the captcha
     if simple_captcha_valid?
-      @matrix = Matrix.new(params[:matrix])
+      @matrix = Matrix.new(matrix_params)
       #Check whether the matrix has all of the necessary fields
       if @matrix.valid?
         
@@ -54,7 +54,9 @@ class MatricesController < ApplicationController
       redirect_to matrices_new_path
     end
   end
-
+  def matrix_params
+    params.require(:matrix).permit(:name, :author, :notes, :author, :editor, :kind)
+  end
   def new
   end
 
