@@ -12,39 +12,44 @@
         %label{for: "submitter-email"} Email
       %td
         = f.email_field :submitter_email, class: "form-control"
+    %tr
+      %th
+        %label{for: "display-email"} Have this email displayed publically?
+      %td
+        = f.check_box :display_email, class: "form-control"
 
   %h2 Matrix Information
   %table{class: "table"}
     %tr
       %th
-        %label{for: "matrix-name"} Name
+        %label{for: "matrix-group"} Group
       %td
-        = f.text_field :matrix_name, class: "form-control"
+        = f.text_field :group, class: "form-control"
+    %tr
+      %th
+        %label{for: "matrix-name"} Matrix Name
+      %td
+        = f.text_field :name, class: "form-control"
     %tr
       %th
         %label{for: "matrix-kind"} Kind/problem domain
       %td
-        = f.text_field :matrix_kind, class: "form-control"
+        = f.text_field :kind, class: "form-control"
     %tr
       %th
         %label{for: "matrix-author"} Author
       %td
-        = f.text_field :matrix_author, class: "form-control"
+        = f.text_field :author, class: "form-control"
     %tr
       %th
         %label{for: "matrix-editor"} Editor
       %td
-        = f.text_field :matrix_editor, class: "form-control"
+        = f.text_field :editor, class: "form-control"
     %tr
       %th
         %label{for: "matrix-notes"} Notes
       %td
-        = f.text_area :matrix_notes, class: "form-control", rows: "8", placeholder: "Enter notes here"
-    %tr
-      %th
-        %label{for: "matrix-reference"} Bibliographic Reference
-      %td
-        = f.text_area :matrix_notes, class: "form-control", rows: "2", placeholder: "Enter bibliographic reference here"
+        = f.text_area :notes, class: "form-control", rows: "8", placeholder: "Enter notes here"
     %tr
       %th
         %label{for: "matrix-data-file"} Matrix File Upload
@@ -54,3 +59,5 @@
       %td
         = show_simple_captcha
   = submit_tag("Submit My Matrix")
+%br
+%br

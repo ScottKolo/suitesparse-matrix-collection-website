@@ -29,17 +29,17 @@ class MatricesController < ApplicationController
   def create
     #Check the captcha
     if simple_captcha_valid?
-      @matrix = Matrix.new(params[:matrix])
+      @matrix = Matrix.new(matrix_params)
       #Check whether the matrix has all of the necessary fields
       if @matrix.valid?
-        
+
         #Process matrix here
         @matrix.pending=true
         #set num columns
         #set num rows
         #set num zeroes
         #set whether its symetric
-        
+
         if @matrix.save!
           flash[:notice] = "Matrix Saved and awaiting Verification"
           redirect_to index_path
@@ -53,6 +53,10 @@ class MatricesController < ApplicationController
       flash[:notice] = "Invalid Captcha"
       redirect_to matrices_new_path
     end
+  end
+
+  def matrix_params
+    params.require(:matrix).permit(:group, :name, :author, :notes, :author, :editor, :kind)
   end
 
   def new
@@ -97,11 +101,11 @@ class MatricesController < ApplicationController
           if value == "on" then
             value = "true"
           end
-		  if value != "true" then
-			@matrices = @matrices.where(%{lower("#{attribute}") like ?},"%#{value}%".downcase) #compares lowercase attribute to lower case input string, finds substrings
-		  else
-			@matrices = @matrices.where(%{"#{attribute}" = ?}, value)
-		  end
+          if value != "true" then
+            @matrices = @matrices.where(%{lower("#{attribute}") like ?},"%#{value}%".downcase) #compares lowercase attribute to lower case input string, finds substrings
+          else
+            @matrices = @matrices.where(%{"#{attribute}" = ?}, value)
+          end
         end
       end
     end

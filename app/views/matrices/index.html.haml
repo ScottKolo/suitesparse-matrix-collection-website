@@ -47,7 +47,7 @@
   <!-- Hiding Columns -->
   %div{:class => "dropdown theme-dropdown clearfix"}
     %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
-      Hide by...
+      Hide columns...
     %form{:id => "hide-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
 <!-- Top Pagination Bar -->
 %center
@@ -95,7 +95,6 @@
 :javascript
   generateHides(#{Matrix.sortable_attributes.to_json});
   $(function() {$('[data-toggle="tooltip"]').tooltip()});
-  //hideHides();
 
 <!-- Create the sorters -->
 :javascript

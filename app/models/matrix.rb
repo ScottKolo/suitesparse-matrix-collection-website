@@ -38,8 +38,10 @@ class Matrix < ActiveRecord::Base
       ["num_rows",  "int"],
       ["num_cols",  "int"],
       ["nonzeros",  "int"],
+      ["pattern_symmetry", "int"],
+      ["numeric_symmetry", "int"],
+      ["positive_definite", "bool"],
       ["kind",      "string"],
-      ["symmetric", "bool"],
       ["date",      "int"],
       ["author",    "string"],
       ["editor",    "string"],
@@ -56,7 +58,7 @@ class Matrix < ActiveRecord::Base
       ["num_cols"],
       ["nonzeros"],
       ["kind"    ],
-      ["date"    ]
+      ["date"    ],
     ]
   end
 
