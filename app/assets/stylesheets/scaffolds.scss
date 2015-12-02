@@ -37,6 +37,66 @@ div {
   }
 }
 
+#slide-container{
+  width: 604px;
+  height: 453px;
+  position: relative;
+}
+
+#slide-container li:first-child{
+  display:list-item;
+  position:absolute;
+}
+
+#slide-container li{
+  position:absolute;
+  display:none;
+}
+
+#slide-container ul{
+  width: 604px;
+  height: 453px;
+  list-style:none outside none;
+  position:relative;
+  overflow:hidden;
+}
+
+#slide-container .prevButton{
+  height:72px;
+  width:68px;
+  position:absolute;
+  background:url('buttons.png') no-repeat;
+  top:50%;
+  margin-top:-36px;
+  cursor:pointer;
+  z-index:200;
+  background-position:left top;
+  left:0
+}
+
+#slide-container .nextButton{
+  height:72px;
+  width:68px;
+  position:absolute;
+  background:url('buttons.png') no-repeat;
+  top:50%;
+  margin-top:-36px;
+  cursor:pointer;
+  z-index:200;
+  background-position:right top;
+  right:0
+}
+
+#container .prevButton:hover{ 
+  background-position:left bottom;
+  left:0;
+}
+
+#container .nextButton:hover{ 
+  background-position:right bottom;
+  right:0;
+}
+
 #notice {
   color: green;
 }

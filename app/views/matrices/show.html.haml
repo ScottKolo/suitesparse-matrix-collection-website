@@ -5,9 +5,17 @@
   %tbody
     %tr
       %th Group
-      %td{width: 600}= @matrix.group
+      %td{width: 600}=@matrix.group
       %td{rowspan: 10}
-        .pull-left.img-responsive= image_tag "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png"
+        #slide-container.pull-right
+          %ul
+            %li
+              %img{:width => "100%", :src => "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", :align => "middle"}/
+            %li
+              %img{:width => "100%", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", :align => "middle"}/
+          %span.button.prevButton
+          %span.button.nextButton
+      %script{:src => "../../assets/javascripts/slideshow.js"}
     %tr
       %th Name
       %td= @matrix.name
