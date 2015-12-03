@@ -5,7 +5,7 @@
   %tbody
     %tr
       %th Group
-      %td{width: 600}=@matrix.group
+      %td= @matrix.group
       %td{rowspan: 10}
         #slide-container.pull-right
           %ul
@@ -50,31 +50,31 @@
           %pre= @matrix.notes
     %tr
       %th Structural Rank
-      %td= @matrix.structural_rank
+      %td{colspan: 2}= @matrix.structural_rank
     %tr
       %th Structural Rank Full
-      %td= @matrix.structural_full_rank 
+      %td{colspan: 2}= @matrix.structural_full_rank 
     %tr
       %th Num Dmperm Blocks
-      %td= @matrix.num_dmperm_blocks
+      %td{colspan: 2}= @matrix.num_dmperm_blocks
     %tr
       %th Strongly Connect Components
-      %td= @matrix.num_strongly_connected_components
+      %td{colspan: 2}= @matrix.num_strongly_connected_components
     %tr
       %th Num Explicit Zeros
-      %td= @matrix.num_explicit_zeros
+      %td{colspan: 2}= @matrix.num_explicit_zeros
     %tr
       %th Pattern Symmetry
-      %td= number_to_percentage(@matrix.pattern_symmetry, precision:0)
+      %td{colspan: 2}= number_to_percentage(@matrix.pattern_symmetry, precision:0)
     %tr
       %th Numeric Symmetry
-      %td= number_to_percentage(@matrix.numeric_symmetry, precision:0)
+      %td{colspan: 2}= number_to_percentage(@matrix.numeric_symmetry, precision:0)
     %tr
       %th Cholesky Candidate
-      %td= @matrix.cholesky_candidate
+      %td{colspan: 2}= @matrix.cholesky_candidate
     %tr
       %th Positive Definite
-      %td= @matrix.positive_definite
+      %td{colspan: 2}= @matrix.positive_definite
     %tr
       %th Download
       %td{colspan: 2} 
@@ -85,7 +85,7 @@
       %th Type
       %td{colspan: 2}= @matrix.rb_type
 
-%table{:class => "table table-striped"}
+%table{class: "table table-striped pull-right", style: "width: 49%"}
   %tbody
     %tr
       %th{colspan:2, :style=>'text-align: center'} Ordering Statistics
@@ -104,3 +104,29 @@
     %tr
       %th nnz(R) for QR, upper bound nnz(U) for LU, with COLAMD
       %td= number_with_delimiter(@matrix.nnz_r, :delimiter => ',')
+
+%table{class: "table table-striped", style: "width: 49%"}
+  %tbody
+    %tr
+      %th{colspan:2, :style=>'text-align: center'} SVD Statistics
+    %tr
+      %th Matrix Norm
+      %td= number_with_delimiter(@matrix.norm, :delimiter => ',')
+    %tr
+      %th Minimum Singular Value
+      %td= @matrix.min_singular_value
+    %tr
+      %th Condition Number
+      %td= number_with_delimiter(@matrix.condition_number, :delimiter => ',')
+    %tr
+      %th Rank
+      %td= number_with_delimiter(@matrix.svd_rank, :delimiter => ',')
+    %tr
+      %th sprank(A)-rank(A)
+      %td= number_with_delimiter(@matrix.sprank_minus_rank, :delimiter => ',')
+    %tr
+      %th Null Space Dimension
+      %td= number_with_delimiter(@matrix.null_space_dimension, :delimiter => ',')
+    %tr
+      %th Full Numerical Rank?
+      %td= @matrix.full_numerical_rank
