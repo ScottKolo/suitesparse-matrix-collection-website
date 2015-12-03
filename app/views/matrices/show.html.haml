@@ -129,6 +129,11 @@
     %tr
       %th Full Numerical Rank?
       %td= @matrix.full_numerical_rank
+  -if @matrix.display_email
+    %tr
+      %th Submitter Email
+      %td= @matrix.submitter_email
+      
 
 :javascript
   setUpSlideShow();
