@@ -10,9 +10,9 @@
         #slide-container.pull-right
           %ul
             %li
-              %img{:width => "100%", :src => "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", :align => "middle"}/
+              %img{:width => "100%", :src => "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", :class=>"img-responsive center-block"}/
             %li
-              %img{:width => "100%", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", :align => "middle"}/
+              %img{:width => "85%", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", :class=>"img-responsive center-block"}/
           %span.button.prevButton
           %span.button.nextButton
       %script{:src => "../../assets/javascripts/slideshow.js"}

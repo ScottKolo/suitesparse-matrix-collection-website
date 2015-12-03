@@ -40,6 +40,7 @@ div {
 #slide-container{
   width: 604px;
   height: 453px;
+  background-color:white;
   position: relative;
 }
 
@@ -87,12 +88,12 @@ div {
   right:0
 }
 
-#container .prevButton:hover{ 
+#slide-container .prevButton:hover{ 
   background-position:left bottom;
   left:0;
 }
 
-#container .nextButton:hover{ 
+#slide-container .nextButton:hover{ 
   background-position:right bottom;
   right:0;
 }
