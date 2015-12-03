@@ -17,6 +17,9 @@ class MatricesController < ApplicationController
   end
 
   def show
+    if session[:admin_id]
+      @admin = Admin.find(session[:admin_id])
+    end
     # Show the details page for a matrix
     id = params[:id]
     begin
@@ -66,6 +69,16 @@ class MatricesController < ApplicationController
   end
 
   def update
+    id = params[:format]
+    @matrix = Matrix.find(id)
+    @matrix.toggle_pending
+    @matrix.save!
+    if @matrix.pending?
+      flash[:notice] = "#{@matrix.name} is now pending"
+    else
+      flash[:notice] = "#{@matrix.name} has been added to the collection"
+    end
+    redirect_to index_path
   end
 
   ### Params Helpers ###########################################################

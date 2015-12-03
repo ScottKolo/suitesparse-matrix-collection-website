@@ -1,5 +1,16 @@
-=provide(:title, "#{@matrix.group}/#{@matrix.name}")
-%h1= "#{@matrix.group}/#{@matrix.name}"
+-if @admin and @matrix.pending?
+  =provide(:title, "Submission #{@matrix.name}")
+  %h1= "Submitted Matrix #{@matrix.name}"
+-else
+  =provide(:title, "#{@matrix.group}/#{@matrix.name}")
+  %h1= "#{@matrix.group}/#{@matrix.name}"
+
+%div{style: "padding-bottom: 20px;"}
+  -if @admin and @matrix.pending?
+    = link_to "Submit to Collection", matrices_update_path(@matrix), class: "btn btn-default"
+  -else
+    = link_to "Make Pending", matrices_update_path(@matrix), class: "btn btn-default"
+
 
 %table{:class => "table table-striped"}
   %tbody
