@@ -66,7 +66,7 @@ div {
   height:72px;
   width:68px;
   position:absolute;
-  background:url('buttons.png') no-repeat;
+  background:image-url('buttons.png') no-repeat;
   top:50%;
   margin-top:-36px;
   cursor:pointer;
@@ -79,7 +79,7 @@ div {
   height:72px;
   width:68px;
   position:absolute;
-  background:url('buttons.png') no-repeat;
+  background:image-url('buttons.png') no-repeat;
   top:50%;
   margin-top:-36px;
   cursor:pointer;
@@ -88,12 +88,12 @@ div {
   right:0
 }
 
-#slide-container .prevButton:hover{ 
+#slide-container .prevButton:hover{
   background-position:left bottom;
   left:0;
 }
 
-#slide-container .nextButton:hover{ 
+#slide-container .nextButton:hover{
   background-position:right bottom;
   right:0;
 }

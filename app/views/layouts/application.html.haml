@@ -2,7 +2,7 @@
 %html{:lang => "en"}
   %head
     %title= full_title(yield(:title))
-    = google_webfonts_init google: ['Istok Web']
+    = google_webfonts_init google: ['Cutive']
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -11,8 +11,11 @@
       .container
         .navbar-header
           = link_to root_path, class: "navbar-brand" do
-            SuiteSparse Matrix Collection
-            %small Formerly the University of Florida Sparse Matrix Collection
+            .pull-left{style: "margin-left: -200px; margin-top: -40px;"}
+              = image_tag('logo.png')
+            %div{style: "position: absolute; color: #fff;"}
+              SuiteSparse Matrix Collection
+              %small Formerly the University of Florida Sparse Matrix Collection
         .navbar-collapse.collapse{:id => "navbar"}
           %ul{:class => "nav navbar-nav navbar-right"}
             %li{:class => ("active" if yield(:title) == 'Index')}
