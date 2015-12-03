@@ -17,7 +17,7 @@
     %tbody
       - @pending_matrices.each do |matrix|
         %tr
-          %td{class: "column-group"}= link_to "#{matrix.group}", matrix_path(matrix)
+          %td{class: "column-group"}= "#{matrix.group}"
           %td{class: "column-name"}= link_to "#{matrix.name}", matrix_path(matrix)
           %td{class: "column-num_rows"}= number_with_delimiter(matrix.num_rows, :delimiter => ',')
           %td{class: "column-num_cols"}= number_with_delimiter(matrix.num_cols, :delimiter => ',')
@@ -67,7 +67,7 @@
   %tbody
     - @matrices.each do |matrix|
       %tr
-        %td{class: "column-group"}= link_to "#{matrix.group}", matrix_path(matrix)
+        %td{class: "column-group"}= "#{matrix.group}"
         %td{class: "column-name"}= link_to "#{matrix.name}", matrix_path(matrix)
         %td{class: "column-num_rows"}= number_with_delimiter(matrix.num_rows, :delimiter => ',')
         %td{class: "column-num_cols"}= number_with_delimiter(matrix.num_cols, :delimiter => ',')
