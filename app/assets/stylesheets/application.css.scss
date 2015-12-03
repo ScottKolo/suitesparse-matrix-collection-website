@@ -21,7 +21,7 @@ body {
   padding-top: 70px;
 }
 
-$navbar-inverse-bg: rgb(80, 0, 0);
+$navbar-inverse-bg: rgb(0, 0, 0);
 
 .navbar-inverse {
   background-color: $navbar-inverse-bg;
@@ -30,9 +30,10 @@ $navbar-inverse-bg: rgb(80, 0, 0);
 
 .navbar-brand {
   line-height:12px;
-  padding-top:13px;
+  padding-top:16px;
   padding-bottom:5px;
   font-size: 150%;
+  font-family: "cutive";
 }
 
 .navbar-brand small {
