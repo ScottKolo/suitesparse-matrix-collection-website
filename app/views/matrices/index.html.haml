@@ -64,6 +64,13 @@
   %thead
     %tr{:id => 'sort-selector'}
       %th{:id => 'download-header'} Download File
+  <!-- Create the hiders -->
+  :javascript
+    generateHides(#{Matrix.sortable_attributes.to_json});
+    $(function() {$('[data-toggle="tooltip"]').tooltip()});
+  <!-- Create the sorters -->
+  :javascript
+    generateSorters(#{Matrix.sortable_attributes.to_json});
   %tbody
     - @matrices.each do |matrix|
       %tr
@@ -90,15 +97,6 @@
   generateFilters(#{Matrix.filterable_attributes.to_json});
   $(function() {$('[data-toggle="tooltip"]').tooltip()});
   populateFilters(#{session[:filter].to_json});
-
-<!-- Create the hiders -->
-:javascript
-  generateHides(#{Matrix.sortable_attributes.to_json});
-  $(function() {$('[data-toggle="tooltip"]').tooltip()});
-
-<!-- Create the sorters -->
-:javascript
-  generateSorters(#{Matrix.sortable_attributes.to_json});
 
 <!-- Highlight the sort attribute if there is one -->
 - if !session[:sort].nil?
