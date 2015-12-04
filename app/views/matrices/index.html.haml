@@ -13,7 +13,6 @@
   %table{:id => "pending_matrices", :class => "table table-striped"}
     %thead
       %tr
-        %td Group
         %td Name
         %td Kind
         %td Submitter Name
@@ -21,9 +20,8 @@
     %tbody
       - @pending_matrices.each do |matrix|
         %tr
-          %td{class: "column-group"}= "#{matrix.group}"
           %td{class: "column-name"}= link_to "#{matrix.name}", matrix_path(matrix)
-          %td{class: "column-kind"}= matrix.kind.titleize unless matrix.kind.nil?
+          %td{class: "column-kind"}= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
           %td{class: "column-submitter-name"}= matrix.submitter_name
           %td{class: "column-submitter-email"}= matrix.submitter_email
       %tr
