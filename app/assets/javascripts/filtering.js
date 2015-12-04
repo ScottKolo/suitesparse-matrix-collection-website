@@ -147,23 +147,32 @@ function Filter(attribute, type) {
     "id" : "filter-selector-" + this.attribute,
     "type" : "checkbox",
     "value" : this.attribute,
-    "checked" : false,
+    "checked" : false
   });
   this.selector.onclick = (function(obj) {
-    return function() {obj.toggle();};
-  }(this))
+    return function() {
+      obj.toggle();
+      for(var prop in filters) {
+        if(filters[prop].visible())
+          return;
+      }
+      validateFilters();
+    };
+  }(this));
 
   // Make selector label
   var selectorLabel = document.createElement("label");
   selectorLabel.htmlFor = this.selector.id;
-  var labelDiv = document.createElement("div");
-  labelDiv.innerHTML += '&nbsp;' + this.label + '&nbsp;';
-  selectorLabel.appendChild(labelDiv);
+  selectorLabel.innerHTML += '&nbsp;' + this.label + '&nbsp;';
+
+  // Make container for checkbox and label
+  var selectorDiv = document.createElement("div");
+  selectorDiv.appendChild(this.selector);
+  selectorDiv.appendChild(selectorLabel);
 
   // Add selector and label to filter-selector
   var s = document.getElementById("filter-selector");
-  s.appendChild(this.selector);
-  s.appendChild(selectorLabel);
+  s.appendChild(selectorDiv);
 
   /*----------------------- Value Caching Functions --------------------------*/
 
@@ -185,7 +194,7 @@ function Filter(attribute, type) {
     this.restoreValue();
     this.container.style.display = "";
     this.selector.checked = true;
-    document.getElementById("filter-apply").style.display = "";
+    //document.getElementById("filter-apply").style.display = "";
   };
 
   this.hide = function() {
@@ -196,7 +205,7 @@ function Filter(attribute, type) {
       if(filters[prop].visible())
         return;
     }
-    document.getElementById("filter-apply").style.display = "none";
+    //document.getElementById("filter-apply").style.display = "none";
   };
 
   this.toggle = function() {

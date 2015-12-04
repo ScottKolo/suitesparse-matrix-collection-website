@@ -13,7 +13,6 @@
   %table{:id => "pending_matrices", :class => "table table-striped"}
     %thead
       %tr
-        %td Group
         %td Name
         %td Kind
         %td Submitter Name
@@ -21,9 +20,8 @@
     %tbody
       - @pending_matrices.each do |matrix|
         %tr
-          %td{class: "column-group"}= "#{matrix.group}"
           %td{class: "column-name"}= link_to "#{matrix.name}", matrix_path(matrix)
-          %td{class: "column-kind"}= matrix.kind.titleize unless matrix.kind.nil?
+          %td{class: "column-kind"}= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
           %td{class: "column-submitter-name"}= matrix.submitter_name
           %td{class: "column-submitter-email"}= matrix.submitter_email
       %tr
@@ -31,16 +29,16 @@
           = will_paginate @pending_matrices, renderer: BootstrapPagination::Rails
   %h1 Current Matrices
 
-<!-- Set up the filter selector -->
 .well
+  <!-- Set up the filter form -->
+  %form{:id => "filter-form"}
+    %table{:id => "filter-table", :class => "table"}
+
+  <!-- Set up the filter selector -->
   %div{:class => "dropdown theme-dropdown clearfix"}
     %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
       Filter by...
     %form{:id => "filter-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
-
-  <!-- Set up the filter form -->
-  %form{:id => "filter-form"}
-    %table{:id => "filter-table", :class => "table"}
     %input{:id => "filter-apply", :type => "button", :value => "Apply Filters", :class => "btn btn-default", :onclick => "validateFilters()"}
 
   <!-- Hiding Columns -->

@@ -20,12 +20,17 @@ class MatricesController < ApplicationController
     if session[:admin_id]
       @admin = Admin.find(session[:admin_id])
     end
+
     # Show the details page for a matrix
     id = params[:id]
     begin
       @matrix = Matrix.find(id) # Happy path
     rescue
       render :not_found         # Sad path
+    end
+
+    if !@matrix.nil? and @matrix.pending? and @admin.nil?
+      render :not_found
     end
   end
 
