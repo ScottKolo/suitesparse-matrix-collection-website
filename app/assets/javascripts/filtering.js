@@ -238,7 +238,7 @@ function StringFilter(attribute) {
     "class" : "form-control",
     "data-toggle" : "tooltip",
     "data-placement": "right",
-    "title" : "Search for matrices who's " + this.label +
+    "title" : "Search for matrices whose " + this.label +
         " includes a given term."
   });
 

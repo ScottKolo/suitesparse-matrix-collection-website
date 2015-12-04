@@ -12,6 +12,7 @@
     -else
       = link_to "Make Pending", matrices_update_path(@matrix), class: "btn btn-default"
 
+%h4= @matrix.description
 
 %table{:class => "table table-striped"}
   %tbody
