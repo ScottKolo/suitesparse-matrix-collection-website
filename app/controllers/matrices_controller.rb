@@ -72,13 +72,34 @@ class MatricesController < ApplicationController
 
   # Parse the params array into session data
   def parse_params
-    newSort   = !params[:sort].nil?
-    newFilter = !params[:filter].nil?
+    # Parse sorting param
+    newSort = !params[:sort].nil?
+    if newSort
+      session[:sort_old] = session[:sort]
+      session[:sort] = params[:sort]
 
-    if newSort   then session[:sort]   = params[:sort]   end
+      # If new sort is same as old sort, reverse direction.
+      if session[:sort] == session[:sort_old]
+        if session[:sort_dir] == "up"
+          session[:sort_dir] = "down"
+        else
+          session[:sort_dir] = "up"
+        end
+      # Otherwise, sort ascending by default
+      else
+        session[:sort_dir] = "up"
+      end
+    end
+
+    # Parse filter params
+    newFilter = !params[:filter].nil?
     if newFilter then session[:filter] = params[:filter] end
 
-    if newSort or newFilter
+    # Parse pagination params
+    if !params[:per_page].nil? then session[:per_page] = params[:per_page] end
+
+    # If new params, reload
+    if newSort or newFilter# or newPaginate
       if !flash[:notice].nil? then flash.keep end
       redirect_to matrices_path
     end
@@ -112,12 +133,24 @@ class MatricesController < ApplicationController
   end
 
   def apply_sort
-    s = session[:sort].nil? ? nil : %{"#{session[:sort]}"};
-    @matrices = @matrices.order(s)
+    if !session[:sort].nil?
+      s = %{"#{session[:sort]}"};
+      # Set sort direction
+      if session[:sort_dir] == "up"
+        @matrices = @matrices.order(s + " ASC")
+      else
+        @matrices = @matrices.order(s + " DESC")
+      end
+    else
+      session[:sort] = "group"
+      session[:sort_old] = "group"
+      session[:sort_dir] = "up"
+      @matrices = @matrices.order(%{"group" ASC})
+    end
   end
 
   def apply_pagination
-    @per_page = params[:per_page] || Matrix.per_page || 20
+    @per_page = session[:per_page] || Matrix.per_page || 20
     if @per_page == "All"
       @per_page = Matrix.count
     end
