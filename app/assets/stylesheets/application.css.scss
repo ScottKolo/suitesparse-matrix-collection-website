@@ -42,6 +42,11 @@ $navbar-inverse-bg: rgb(0, 0, 0);
   font-size:55%;
 }
 
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #222;
+}
+
 .about-images {
   background-color: black;
 }
