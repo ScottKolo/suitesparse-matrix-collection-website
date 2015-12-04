@@ -8,26 +8,17 @@
       %tr
         %td Group
         %td Name
-        %td Rows
-        %td Cols
-        %td Nonzeros
         %td Kind
-        %td Year
-        %td Download File
+        %td Submitter Name
+        %td Submitter Email
     %tbody
       - @pending_matrices.each do |matrix|
         %tr
-          %td{class: "column-group"}= link_to "#{matrix.group}", matrix_path(matrix)
+          %td{class: "column-group"}= "#{matrix.group}"
           %td{class: "column-name"}= link_to "#{matrix.name}", matrix_path(matrix)
-          %td{class: "column-num_rows"}= number_with_delimiter(matrix.num_rows, :delimiter => ',')
-          %td{class: "column-num_cols"}= number_with_delimiter(matrix.num_cols, :delimiter => ',')
-          %td{class: "column-nonzeros"}= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
           %td{class: "column-kind"}= matrix.kind.titleize unless matrix.kind.nil?
-          %td{class: "column-date"}= matrix.date
-          %td{class: "column-download"}
-            = link_to "MATLAB", matrix.get_url(:matlab), class: "btn btn-default"
-            = link_to "Rutherford Boeing", matrix.get_url(:rutherford_boeing), class: "btn btn-default"
-            = link_to "Matrix Market", matrix.get_url(:matrix_market), class: "btn btn-default"
+          %td{class: "column-submitter-name"}= matrix.submitter_name
+          %td{class: "column-submitter-email"}= matrix.submitter_email
       %tr
         %td{:colspan => 42, :align => "center"}
           = will_paginate @pending_matrices, renderer: BootstrapPagination::Rails
@@ -67,7 +58,7 @@
   %tbody
     - @matrices.each do |matrix|
       %tr
-        %td{class: "column-group"}= link_to "#{matrix.group}", matrix_path(matrix)
+        %td{class: "column-group"}= "#{matrix.group}"
         %td{class: "column-name"}= link_to "#{matrix.name}", matrix_path(matrix)
         %td{class: "column-num_rows"}= number_with_delimiter(matrix.num_rows, :delimiter => ',')
         %td{class: "column-num_cols"}= number_with_delimiter(matrix.num_cols, :delimiter => ',')

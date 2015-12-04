@@ -64,4 +64,12 @@ class Matrix < ActiveRecord::Base
 
   ##############################################################################
 
+  def toggle_pending
+    if self.pending?
+      self.pending = false
+    else
+      self.pending = true
+    end
+  end
+
 end
