@@ -47,6 +47,21 @@ $navbar-inverse-bg: rgb(0, 0, 0);
   background-color: #222;
 }
 
+@media (max-width: 1000px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+}
+
 .about-images {
   background-color: black;
 }

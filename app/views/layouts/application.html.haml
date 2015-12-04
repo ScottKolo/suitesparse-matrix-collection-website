@@ -10,13 +10,17 @@
     %nav{:class => "navbar navbar-inverse navbar-fixed-top"}
       .container
         .navbar-header
+          %button.navbar-toggle{'data-toggle':'collapse', 'data-target':'#navbar'}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
           = link_to root_path, class: "navbar-brand" do
             .pull-left{style: "margin-left: -200px; margin-top: -40px;"}
               = image_tag('logo.png')
             %div{style: "position: absolute; color: #fff;"}
               SuiteSparse Matrix Collection
               %small Formerly the University of Florida Sparse Matrix Collection
-        .navbar-collapse.collapse{:id => "navbar"}
+        .collapse.navbar-collapse{:id => "navbar"}
           %ul{:class => "nav navbar-nav navbar-right"}
             %li{:class => ("active" if yield(:title) == 'Index')}
               = link_to "Index", root_path

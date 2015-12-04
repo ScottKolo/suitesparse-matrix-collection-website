@@ -40,7 +40,7 @@
       %th
         %label{for: "matrix-name"} Matrix Name
       %td
-        = f.text_field :name, class: "form-control"
+        = f.text_field :name, class: "form-control", placeholder: "Give a unique name for your matrix"
     %tr
       %th
         %label{for: "matrix-kind"} Kind/problem domain
@@ -50,12 +50,12 @@
       %th
         %label{for: "matrix-notes"} Notes
       %td
-        = f.text_area :notes, class: "form-control", rows: "8", placeholder: "Enter Notes Here: Bibliographic Information, Nature of Problem, Supplemental Information, etc."
+        = f.text_area :notes, class: "form-control", rows: "8", placeholder: "Please include Bibliographic Information, Nature of Problem, Application, Any Numerical Issues, Who created the Matrix, Why is it interesting? etc."
     %tr
       %th
         %label{for: "submitter-url"} Matrix File URL
       %td
-        = f.text_field :submitter_url, class: "form-control"
+        = f.text_field :submitter_url, class: "form-control", placeholder: "Please enter a url to download the matrix file from (i.e. dropbox)."
     %tr
       %td
         = show_simple_captcha
