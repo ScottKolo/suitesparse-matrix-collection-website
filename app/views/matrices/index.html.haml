@@ -74,7 +74,7 @@
         %td{class: "column-nonzeros"}= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
         %td{class: "column-kind"}= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
         %td{class: "column-date"}= matrix.date
-        %td{style: "width: 390px"}
+        %td{style: "min-width: 390px"}
           = link_to "MATLAB", matrix.get_url(:matlab), class: "btn btn-default"
           = link_to "Rutherford Boeing", matrix.get_url(:rutherford_boeing), class: "btn btn-default"
           = link_to "Matrix Market", matrix.get_url(:matrix_market), class: "btn btn-default"
