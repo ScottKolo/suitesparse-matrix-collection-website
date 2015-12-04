@@ -1,5 +1,19 @@
 =provide(:title, "Submit Matrix")
 
+:javascript
+  var warnMessage = "";
+
+  $(document).ready(function() {
+      $('input:not(:button,:submit),textarea').change(function () {
+          window.onbeforeunload = function () {
+              if (warnMessage != null) return warnMessage;
+          }
+      });
+      $('input:submit').click(function(e) {
+          warnMessage = null;
+      });
+  });
+
 %h1 Submit a New Matrix
 = form_for :matrix, method: "post", url: "create" do |f|
   %h2 Submitter Information
