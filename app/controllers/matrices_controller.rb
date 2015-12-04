@@ -187,7 +187,7 @@ class MatricesController < ApplicationController
     parse_params
     
     @matrices = Matrix.where(pending: false)
-	@groupnames=@matrices.uniq.pluck(:group)
+	@groupnames=@matrices.uniq.pluck(:group).sort
   end
 
   ##############################################################################
