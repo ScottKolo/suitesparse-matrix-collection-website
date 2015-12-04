@@ -31,16 +31,16 @@
           = will_paginate @pending_matrices, renderer: BootstrapPagination::Rails
   %h1 Current Matrices
 
-<!-- Set up the filter selector -->
 .well
+  <!-- Set up the filter form -->
+  %form{:id => "filter-form"}
+    %table{:id => "filter-table", :class => "table"}
+
+  <!-- Set up the filter selector -->
   %div{:class => "dropdown theme-dropdown clearfix"}
     %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
       Filter by...
     %form{:id => "filter-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
-
-  <!-- Set up the filter form -->
-  %form{:id => "filter-form"}
-    %table{:id => "filter-table", :class => "table"}
     %input{:id => "filter-apply", :type => "button", :value => "Apply Filters", :class => "btn btn-default", :onclick => "validateFilters()"}
 
   <!-- Hiding Columns -->
