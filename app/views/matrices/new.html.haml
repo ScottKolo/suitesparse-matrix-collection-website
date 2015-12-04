@@ -16,7 +16,7 @@
       %th
         %label{for: "display-email"} Have this email displayed publically?
       %td
-        = f.check_box :display_email, class: "form-control"
+        = f.select :display_email, [['Display Publically', true], ['Hide', false]]
 
   %h2 Matrix Information
   %table{class: "table"}
@@ -29,27 +29,17 @@
       %th
         %label{for: "matrix-kind"} Kind/problem domain
       %td
-        = f.text_field :kind, class: "form-control"
-    %tr
-      %th
-        %label{for: "matrix-author"} Author
-      %td
-        = f.text_field :author, class: "form-control"
-    %tr
-      %th
-        %label{for: "matrix-editor"} Editor
-      %td
-        = f.text_field :editor, class: "form-control"
+        = f.select(:kind, @kinds)
     %tr
       %th
         %label{for: "matrix-notes"} Notes
       %td
-        = f.text_area :notes, class: "form-control", rows: "8", placeholder: "Enter notes here"
+        = f.text_area :notes, class: "form-control", rows: "8", placeholder: "Enter Notes Here: Bibliographic Information, Nature of Problem, Supplemental Information, etc."
     %tr
       %th
-        %label{for: "matrix-file"} Matrix File URL
+        %label{for: "submitter-url"} Matrix File URL
       %td
-        = f.text_field :matrix_data_file_file_name, class: "form-control"
+        = f.text_field :submitter_url, class: "form-control"
     %tr
       %td
         = show_simple_captcha

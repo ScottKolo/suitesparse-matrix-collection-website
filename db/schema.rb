@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124222914) do
+ActiveRecord::Schema.define(version: 20151204040414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20151124222914) do
     t.integer  "num_cols"
     t.integer  "nonzeros",                          limit: 8
     t.string   "kind"
-    t.boolean  "symmetric"
     t.integer  "date"
     t.string   "author"
     t.string   "editor"
@@ -48,8 +47,8 @@ ActiveRecord::Schema.define(version: 20151124222914) do
     t.integer  "num_dmperm_blocks"
     t.string   "structural_full_rank"
     t.integer  "structural_rank"
-    t.string   "pattern_symmetry"
-    t.string   "numeric_symmetry"
+    t.float    "pattern_symmetry"
+    t.float    "numeric_symmetry"
     t.string   "structure"
     t.string   "cholesky_candidate"
     t.string   "positive_definite"
@@ -64,7 +63,7 @@ ActiveRecord::Schema.define(version: 20151124222914) do
     t.integer  "sprank_minus_rank"
     t.integer  "null_space_dimension"
     t.string   "full_numerical_rank"
-    t.text     "svd_gap"
+    t.decimal  "svd_gap"
     t.text     "b_field"
     t.text     "x_field"
     t.text     "aux_fields"
@@ -72,13 +71,11 @@ ActiveRecord::Schema.define(version: 20151124222914) do
     t.string   "rb_type"
     t.string   "cholesky_flop_count"
     t.boolean  "pending",                                     default: false
-    t.string   "matrix_data_file_file_name"
-    t.string   "matrix_data_file_content_type"
-    t.integer  "matrix_data_file_file_size"
-    t.datetime "matrix_data_file_updated_at"
     t.string   "submitter_name"
     t.string   "submitter_email"
     t.boolean  "display_email",                               default: false
+    t.string   "submitter_url"
+    t.boolean  "submitter_confidentiality",                   default: false
   end
 
   add_index "matrices", ["matrix_id"], name: "index_matrices_on_matrix_id", using: :btree
