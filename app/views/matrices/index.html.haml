@@ -1,4 +1,11 @@
 =provide(:title, "Index")
+
+<!-- Show warnings if cookies/javascript are disabled -->
+%div{:id => "warnings"}
+  %noscript
+    WARNING: this site requires javascript to function! You will not be able to
+    sort or filter the matrices without it.
+
 <!-- Setup the pending Matrices-->
 -if @admin and !@pending_matrices.nil?
   %h1 Pending Matrices
@@ -23,6 +30,7 @@
         %td{:colspan => 42, :align => "center"}
           = will_paginate @pending_matrices, renderer: BootstrapPagination::Rails
   %h1 Current Matrices
+
 <!-- Set up the filter selector -->
 .well
   %div{:class => "dropdown theme-dropdown clearfix"}
@@ -40,6 +48,7 @@
     %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
       Hide columns...
     %form{:id => "hide-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
+
 <!-- Top Pagination Bar -->
 %center
   = will_paginate @matrices, renderer: BootstrapPagination::Rails
@@ -95,3 +104,7 @@
 - if !session[:sort].nil?
   :javascript
     highlightSortAttribute("#{session[:sort]}");
+
+<!-- Check for cookies -->
+:javascript
+  checkCookies();
