@@ -71,6 +71,10 @@ ActiveRecord::Schema.define(version: 20151204040414) do
     t.string   "rb_type"
     t.string   "cholesky_flop_count"
     t.boolean  "pending",                                     default: false
+    t.string   "matrix_data_file_file_name"
+    t.string   "matrix_data_file_content_type"
+    t.integer  "matrix_data_file_file_size"
+    t.datetime "matrix_data_file_updated_at"
     t.string   "submitter_name"
     t.string   "submitter_email"
     t.boolean  "display_email",                               default: false

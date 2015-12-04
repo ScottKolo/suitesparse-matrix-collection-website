@@ -6,7 +6,7 @@
   %h1= "#{@matrix.group}/#{@matrix.name}"
 
 %div{style: "padding-bottom: 20px;"}
-  -if @admin 
+  -if @admin
     -if @matrix.pending?
       = link_to "Submit to Collection", matrices_update_path(@matrix), class: "btn btn-default"
     -else
@@ -22,9 +22,9 @@
         #slide-container.pull-right
           %ul
             %li
-              %img{:width => "100%", :src => "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", :class=>"img-responsive center-block"}/
-            %li
               %img{:width => "85%", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", :class=>"img-responsive center-block"}/
+            %li
+              %img{:width => "100%", :src => "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", :class=>"img-responsive center-block"}/
           %span.button.prevButton
           %span.button.nextButton
     %tr
@@ -145,7 +145,7 @@
     %tr
       %th Submitter Email
       %td= @matrix.submitter_email
-      
+
 
 :javascript
   setUpSlideShow();
