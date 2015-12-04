@@ -177,6 +177,13 @@ class MatricesController < ApplicationController
       @pending_matrices = @pending_matrices.paginate(:page => params[:pend_page], :per_page => @per_page)
     end
   end
+  
+  def groups
+    parse_params
+    
+    @matrices = Matrix.where(pending: false)
+	@groupnames=@matrices.uniq.pluck(:group)
+  end
 
   ##############################################################################
 

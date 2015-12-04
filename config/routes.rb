@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get 'login' => 'admins#login'
   get 'logout' => 'admins#logout'
 
+  get 'groups' => 'matrices#groups'
+  
+  get 'matrices/groups'
+  
   get 'matrices/index'
 
   get 'matrices/show'
