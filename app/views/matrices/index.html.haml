@@ -13,6 +13,23 @@
       });
   });
 
+  $(document).ready(hideFilterTable);
+  $(document).on('[type="checkbox"]').change(hideFilterTable);
+
+  function hideFilterTable() {
+    console.log('Function called');
+    var visible = false;
+    $('#filter-table').find('tr').each(function(value) {
+        visible |= $(this).css('display') != 'none';
+    });
+    if (!visible) {
+      $('#filter-form').hide();
+    }
+    else {
+      $('#filter-form').show();
+    }
+  }
+
 .alert.alert-info.alert-dismissible.about-alert
   %button.close.about-close{type: "button", 'data-dismiss':"alert", 'aria-label': "Close"}
     %span{:'aria-hidden' => "true"}
@@ -51,22 +68,22 @@
   %h1 Current Matrices
 
 .well
-  <!-- Set up the filter form -->
+  / Set up the filter form
   %form{:id => "filter-form"}
     %table{:id => "filter-table", :class => "table"}
+  %div
+    / Set up the filter selector
+    %span{:class => "dropdown theme-dropdown clearfix", style: "display: inline-block;"}
+      %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
+        Filter by...
+      %form{:id => "filter-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
+      %input{:id => "filter-apply", :type => "button", :value => "Apply Filters", :class => "btn btn-default", :onclick => "validateFilters()" }
 
-  <!-- Set up the filter selector -->
-  %div{:class => "dropdown theme-dropdown clearfix"}
-    %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
-      Filter by...
-    %form{:id => "filter-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
-    %input{:id => "filter-apply", :type => "button", :value => "Apply Filters", :class => "btn btn-default", :onclick => "validateFilters()"}
-
-  <!-- Hiding Columns -->
-  %div{:class => "dropdown theme-dropdown clearfix"}
-    %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
-      Hide columns...
-    %form{:id => "hide-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
+    %span{:class => "dropdown theme-dropdown clearfix", style: "display: inline-block;"}
+      / Hiding Columns
+      %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
+        Hide columns...
+      %form{:id => "hide-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
 
 <!-- Top Pagination Bar -->
 %center
