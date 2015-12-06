@@ -259,6 +259,8 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    js_cookie_rails (1.0.1)
+      railties (>= 3.1)
     json (1.8.3)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -429,6 +431,7 @@ DEPENDENCIES
   haml-rails (~> 0.9)
   jbuilder (~> 2.0)
   jquery-rails
+  js_cookie_rails
   json
   launchy
   paperclip
@@ -450,3 +453,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   will_paginate (~> 3.0.6)
   will_paginate-bootstrap (~> 1.0.1)
+
+BUNDLED WITH
+   1.10.6

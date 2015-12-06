@@ -1,5 +1,26 @@
 =provide(:title, "Index")
 
+:javascript
+  jQuery(function( $ ){
+      // Check if alert has been closed
+      if( Cookies.get('about-box') === 'closed' ){
+          $('.about-alert').hide();
+      }
+      $('.about-close').click(function( e ){
+          // Do not perform default action when button is clicked
+          e.preventDefault();
+          Cookies.set('about-box', 'closed');
+      });
+  });
+
+.alert.alert-info.alert-dismissible.about-alert
+  %button.close.about-close{type: "button", 'data-dismiss':"alert", 'aria-label': "Close"}
+    %span{:'aria-hidden' => "true"}
+      &times;
+  The SuiteSparse Matrix Collection (formerly the University of Florida Sparse Matrix Collection) is a widely used set of sparse matrix benchmarks collected from a wide range of applications. See the
+  = link_to "about page", about_path, class: "alert-link"
+  for more information.
+
 <!-- Show warnings if cookies/javascript are disabled -->
 %div{:id => "warnings"}
   %noscript
