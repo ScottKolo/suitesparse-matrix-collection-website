@@ -22,12 +22,12 @@
       %th{style: "width: 30%"}
         %label{for: "submitter-name"} Name
       %td
-        = f.text_field :submitter_name, class: "form-control"
+        = f.text_field :submitter_name, class: "form-control", maxlength: "100"
     %tr
       %th
         %label{for: "submitter-email"} Email
       %td
-        = f.email_field :submitter_email, class: "form-control"
+        = f.email_field :submitter_email, class: "form-control", maxlength: "100"
     %tr
       %th
         %label{for: "display-email"} Have this email displayed publically?
@@ -40,7 +40,7 @@
       %th{style: "width: 30%"}
         %label{for: "matrix-name"} Matrix Name
       %td
-        = f.text_field :name, class: "form-control", placeholder: "A unique name for your matrix"
+        = f.text_field :name, class: "form-control", placeholder: "A unique name for your matrix", maxlength: "100"
     %tr
       %th
         %label{for: "matrix-kind"} Kind/problem domain
@@ -50,12 +50,12 @@
       %th
         %label{for: "matrix-notes"} Notes
       %td
-        = f.text_area :notes, class: "form-control", rows: "8", placeholder: "Bibliographic Information, Nature of Problem, Application, Numerical Issues, Matrix Creator, Why is it Interesting?"
+        = f.text_area :notes, class: "form-control", rows: "8", placeholder: "Bibliographic Information, Nature of Problem, Application, Numerical Issues, Matrix Creator, Why is it Interesting?", maxlength: "5000"
     %tr
       %th
         %label{for: "submitter-url"} Matrix File URL
       %td
-        = f.text_field :submitter_url, class: "form-control", placeholder: "URL of matrix data file (Matrix Market, MATLAB, or Rutherford-Boeing format)"
+        = f.text_field :submitter_url, class: "form-control", placeholder: "URL of matrix data file (Matrix Market, MATLAB, or Rutherford-Boeing format)", maxlength: "200"
     %tr
       %th
         %label{for: "submitter-confidentiality"} Do you grant permission to display this matrix publically?
