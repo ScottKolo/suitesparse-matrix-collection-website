@@ -64,7 +64,7 @@ class MatricesController < ApplicationController
   end
 
   def matrix_params
-    params.require(:matrix).permit(:submitter_name, :submitter_email, :display_email, :name, :author, :notes, :author, :editor, :kind, :matrix_data_file_file_name)
+    params.require(:matrix).permit(:submitter_name, :submitter_email, :display_email, :name, :author, :notes, :author, :editor, :kind, :submitter_url)
   end
 
   def new
