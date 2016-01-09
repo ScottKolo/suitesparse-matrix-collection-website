@@ -47,9 +47,7 @@ gem 'json'
 gem 'bcrypt', '~> 3.1.7'
 gem 'simple_captcha2', require: 'simple_captcha'
 
-gem 'paperclip'
-gem 'fog'
-gem 'fog-dropbox'
+gem 'filterrific'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -66,7 +64,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'byebug'
-  gem 'selenium-webdriver'
+#  gem 'selenium-webdriver'
+  gem 'capybara-webkit'
   gem 'brakeman', :require => false
 end
 

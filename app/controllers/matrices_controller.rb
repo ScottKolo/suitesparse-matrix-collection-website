@@ -3,17 +3,36 @@ class MatricesController < ApplicationController
   ### Resources methods ########################################################
 
   def index
-    parse_params
+    #parse_params
     #@admin = false
     if session[:admin_id] and @admin = Admin.find(session[:admin_id])
       @pending_matrices = Matrix.where(pending: true)
       #@admin = Admin.find()
     end
-    @matrices = Matrix.where(pending: false)
+    
 
-    apply_filters
-    apply_sort
+    @filterrific = initialize_filterrific(
+      Matrix,
+      params[:filterrific],
+      select_options: {
+        sorted_by: Matrix.options_for_sorted_by,
+      }
+    ) or return
+
+    @matrices = @filterrific.find.page(params[:page])
+    @matrices = @matrices.where(pending: false)
+
     apply_pagination
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+  rescue ActiveRecord::RecordNotFound => e
+    # There is an issue with the persisted param_set. Reset it.
+    puts "Had to reset filterrific params: #{ e.message }"
+    redirect_to(reset_filterrific_url(format: :html)) and return
   end
 
   def show
@@ -173,7 +192,7 @@ class MatricesController < ApplicationController
   end
 
   def apply_pagination
-    @per_page = session[:per_page] || Matrix.per_page || 20
+    @per_page = params[:per_page] || session[:per_page] || Matrix.per_page || 20
     if @per_page == "All"
       @per_page = Matrix.count
     end

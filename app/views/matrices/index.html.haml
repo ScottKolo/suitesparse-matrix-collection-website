@@ -12,6 +12,53 @@
           Cookies.set('about-box', 'closed');
       });
   });
+:javascript
+  var options = [];
+  // Select all links with the dropdown-menu class
+  $( '.dropdown-menu a' ).on( 'click', function( event ) {
+
+    var $target = $( event.currentTarget ),
+        val = $target.attr( 'data-value' ),
+        $inp = $target.find( 'input' ),
+        idx;
+
+    if ( ( idx = options.indexOf( val ) ) > -1 ) {
+      options.splice( idx, 1 );
+      setTimeout( function() { $inp.prop( 'checked', false ).change(); }, 0);
+        //$inp.prop( 'checked', false );
+      //$inp.click();
+    } else {
+      options.push( val );
+      setTimeout( function() { $inp.prop( 'checked', true ).change(); }, 0);
+        //$inp.prop( 'checked', true )
+      //$inp.click();
+    }
+
+    $( event.target ).blur();
+
+    console.log( options );
+    return false;
+  });
+
+:javascript
+  $(".filter-checkbox").change(function(){
+    //window.alert("Checkbox Triggered");
+    //window.alert($(this).data("target"));
+    //window.alert(this);
+    //window.alert(this.checked);
+    if (this.checked) {
+      $($(this).data("target")).show();
+
+    } else {
+      $($(this).data("target")).hide();
+    }
+  });
+
+// Hide filters initially
+:javascript
+  $( document ).ready(function() {
+    $(".filter").hide();
+  });
 
 .alert.alert-info.alert-dismissible.about-alert
   %button.close.about-close{:type => "button", :'data-dismiss' => "alert", :'aria-label' => "Close"}
@@ -50,66 +97,67 @@
           = will_paginate @pending_matrices, renderer: BootstrapPagination::Rails
   %h1 Current Matrices
 
-.well
+.well.container-fluid
+  .col-xs-2.column.text-center{style: "border-right: 1px solid #e3e3e3;"}
+    .dropdown
+      %button.btn.btn-default.dropdown-toggle{type: "button", id: "dropdownMenu1", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
+        %span.glyphicon.glyphicon-filter{'aria-hidden': "true"}
+        Filters
+        %span.caret
+      %ul.dropdown-menu{'aria-labelledby': 'dropdownMenu1'}
+        %li
+          %a.small{href: "", 'data-value': "option1", tabIndex: "-1"}
+            %input.filter-checkbox.rows-checkbox{type: "checkbox", 'data-target': "#rows-filter"} &nbsp;Rows
+        %li
+          %a.small{href: "", 'data-value': "option2", tabIndex: "-1"}
+            %input.filter-checkbox.columns-checkbox{type: "checkbox", 'data-target': "#columns-filter"} &nbsp;Columns
+        %li
+          %a.small{href: "", 'data-value': "option3", tabIndex: "-1"}
+            %input.filter-checkbox.nonzeros-checkbox{type: "checkbox", 'data-target': "#nonzeros-filter"} &nbsp;Nonzeros
+        %li
+          %a.small{href: "", 'data-value': "option4", tabIndex: "-1"}
+            %input.filter-checkbox.pattern-symmetry-checkbox{type: "checkbox", 'data-target': "#pattern-symmetry-filter"} &nbsp;Pattern Symmetry
+        %li
+          %a.small{href: "", 'data-value': "option5", tabIndex: "-1"}
+            %input.filter-checkbox.numerical-symmetry-checkbox{type: "checkbox", 'data-target': "#numerical-symmetry-filter"} &nbsp;Numerical Symmetry
+        %li
+          %a.small{href: "", 'data-value':"option6", tabIndex: "-1"}
+            %input.filter-checkbox.positive-definiteness-checkbox{type: "checkbox", 'data-target': "#positive-definiteness-filter"} &nbsp;Positive Definiteness
+    = link_to 'Reset filters', reset_filterrific_url, class: "btn btn-default"
   <!-- Set up the filter form -->
-  %form{:id => "filter-form"}
-    %table{:id => "filter-table", :class => "table"}
+  .col-xs-10.column.text-center{style: "margin-left: -1px; border-left: 1px solid #e3e3e3;"}
+    = form_for_filterrific @filterrific do |f|
+      #search.well.well-sm
+        Search&nbsp;
+        = f.text_field :search_query, class: 'filterrific-periodically-observed'
+      #rows-filter.filter.well.well-sm
+        = f.text_field :min_rows, class: 'filterrific-periodically-observed', id: 'filter-input-rows-min'
+        &le; Number of Rows &le;
+        = f.text_field :max_rows, class: 'filterrific-periodically-observed', id: 'filter-input-rows-max'
+      #columns-filter.filter.well.well-sm
+        = f.text_field :min_cols, class: 'filterrific-periodically-observed', id: 'filter-input-columns-min'
+        &le; Number of Columns &le;
+        = f.text_field :max_cols, class: 'filterrific-periodically-observed', id: 'filter-input-columns-max'
+      #nonzeros-filter.filter.well.well-sm
+        = f.text_field :min_nonzeros, class: 'filterrific-periodically-observed', id: 'filter-input-nonzeros-min'
+        &le; Number of Nonzeros &le;
+        = f.text_field :max_nonzeros, class: 'filterrific-periodically-observed', id: 'filter-input-nonzeros-max'
+      #pattern-symmetry-filter.filter.well.well-sm
+        = f.text_field :min_pattern_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-pattern_symmetry-min'
+        &le; Pattern Symmetry &le;
+        = f.text_field :max_pattern_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-pattern_symmetry-max'
+      #numerical-symmetry-filter.filter.well.well-sm
+        = f.text_field :min_numerical_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-numerical_symmetry-min'
+        &le; Numerical Symmetry &le;
+        = f.text_field :max_numerical_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-numerical_symmetry-max'
+      .well.well-sm
+        Sorted by
+        = f.select :sorted_by, @filterrific.select_options[:sorted_by]
 
-  <!-- Set up the filter selector -->
-  %div{:class => "dropdown theme-dropdown clearfix"}
-    %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
-      Filter by...
-    %form{:id => "filter-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
-    %input{:id => "filter-apply", :type => "button", :value => "Apply Filters", :class => "btn btn-default", :onclick => "validateFilters()"}
+    = render_filterrific_spinner
 
-  <!-- Hiding Columns -->
-  %div{:class => "dropdown theme-dropdown clearfix"}
-    %button{:class => "btn btn-default dropdown-toggle", :type => "button", :'data-toggle' => "dropdown"}
-      Hide columns...
-    %form{:id => "hide-selector", :class => "dropdown-menu", :action => "about", :method => "GET"}
-
-<!-- Top Pagination Bar -->
-%center
-  = will_paginate @matrices, renderer: BootstrapPagination::Rails
-  .pull-right.pagination
-    Display per page:
-    = select_tag :per_page, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
-
-<!-- Layout the matrix table -->
-- if @matrices.empty?
-  %p No matrices found that match the filter!
-
-%table{:id => "matrices", :class => "table table-striped"}
-  %thead
-    %tr{:id => 'sort-selector'}
-      %th{:id => 'download-header'} Download File
-  <!-- Create the hiders -->
-  :javascript
-    generateHides(#{Matrix.sortable_attributes.to_json});
-    $(function() {$('[data-toggle="tooltip"]').tooltip()});
-  <!-- Create the sorters -->
-  :javascript
-    generateSorters(#{Matrix.sortable_attributes.to_json});
-  %tbody
-    - @matrices.each do |matrix|
-      %tr
-        %td{class: "column-group"}= link_to "#{matrix.group}", matrices_path(:'filter[group]'=>matrix.group)
-        %td{class: "column-name"}= link_to "#{matrix.name}", matrix_path(matrix)
-        %td{class: "column-num_rows"}= number_with_delimiter(matrix.num_rows, :delimiter => ',')
-        %td{class: "column-num_cols"}= number_with_delimiter(matrix.num_cols, :delimiter => ',')
-        %td{class: "column-nonzeros"}= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
-        %td{class: "column-kind"}= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
-        %td{class: "column-date"}= matrix.date
-        %td{style: "min-width: 390px"}
-          = link_to "MATLAB", matrix.get_url(:matlab), class: "btn btn-default"
-          = link_to "Rutherford Boeing", matrix.get_url(:rutherford_boeing), class: "btn btn-default"
-          = link_to "Matrix Market", matrix.get_url(:matrix_market), class: "btn btn-default"
-    %tr
-      %td{:colspan => 42, :align => "center"}
-        = will_paginate @matrices, renderer: BootstrapPagination::Rails
-        .pull-right.pagination
-          Display per page:
-          = select_tag :per_page, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
+#filterrific_results
+  = render partial: 'matrices/list', locals: { matrices: @matrices }
 
 <!-- Create the filters -->
 :javascript

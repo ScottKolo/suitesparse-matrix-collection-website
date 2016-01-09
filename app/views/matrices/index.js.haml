@@ -1,0 +1,4 @@
+- js = escape_javascript(
+- render(partial: 'matrices/list', locals: { matrices: @matrices })
+- )
+$("#filterrific_results").html("#{js}");

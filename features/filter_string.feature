@@ -14,9 +14,10 @@ Background: matrices have been added to database
   | Gset   | asdf     | 46902    | 343       | Lass   |
   And I am on the home page
 
+@wip
 @javascript
 Scenario: filter by string attribute
-  When I press "Filter by..."
+  When I press "Filters"
   And  I check "Group"
   And  I fill in "HB" for "filter-input-group"
   And  I press "Apply Filters"

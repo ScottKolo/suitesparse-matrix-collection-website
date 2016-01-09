@@ -14,6 +14,7 @@ Background: matrices have been added to database
   | Gset   | asdf     | 46902    | 343       | Lass   |
   And I am on the home page
 
+@wip
 @javascript
 Scenario: filter by string attribute
   When I press "Filter by..."

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require filterrific/filterrific-jquery
 //= require js.cookie
 //= require turbolinks
 //= require_tree .

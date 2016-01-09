@@ -14,6 +14,7 @@ Background: matrices have been added to database
   | Gset   | 46902    | 343       | Lass   |
   And I am on the home page
 
+@wip
 @javascript
 Scenario: hide a column
   Given I am not an admin

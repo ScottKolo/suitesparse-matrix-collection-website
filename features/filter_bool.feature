@@ -14,9 +14,10 @@ Background: matrices have been added to database
   | Gset   | asdf     | no                |
   And I am on the home page
 
+@wip
 @javascript
 Scenario: filter by positive_definite
-  When I press "Filter by..."
+  When I press "Filters"
   And  I check "Positive Definite"
   And  I select "Yes" from "filter-input-positive_definite"
   And  I press "Apply Filters"
