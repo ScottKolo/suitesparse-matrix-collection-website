@@ -46,6 +46,9 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'other_interfaces' => 'pages#other_interfaces'
 
+  # Route for group/matrix URL
+  get 'matrices/:group/:name', to: 'matrices#show'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -8,6 +8,9 @@ Feature: Page Titles
     Then the page title should be "SuiteSparse Matrix Collection"
 
   Scenario: Show Page Title
+    Given the following matrix exist:
+      | group       | name          |
+      | GroupName_1 | Test_matrix_1 |
     Given I am on the show page for a matrix with name "Test_matrix_1" and group "GroupName_1"
     Then the page title should be "GroupName_1/Test_matrix_1 | SuiteSparse Matrix Collection"
 

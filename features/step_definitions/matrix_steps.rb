@@ -1,4 +1,4 @@
-Given /the following matrices exist/ do |matrices_table|
+Given /the following matri(?:x|ces) exist/ do |matrices_table|
   matrices_table.hashes.each do |matrix|
     Matrix.create!(matrix)
   end

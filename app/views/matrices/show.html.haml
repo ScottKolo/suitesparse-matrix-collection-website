@@ -105,10 +105,10 @@
         %td{colspan: 2}= @matrix.num_explicit_zeros
       %tr
         %th Pattern Symmetry
-        %td{colspan: 2}= number_to_percentage(@matrix.pattern_symmetry, precision:0)
+        %td{colspan: 2}= number_to_percentage(@matrix.pattern_symmetry ? @matrix.pattern_symmetry*100 : nil, precision:0)
       %tr
         %th Numeric Symmetry
-        %td{colspan: 2}= number_to_percentage(@matrix.numeric_symmetry, precision:0)
+        %td{colspan: 2}= number_to_percentage(@matrix.numeric_symmetry ? @matrix.numeric_symmetry*100 : nil, precision:0)
       %tr
         %th Cholesky Candidate
         %td{colspan: 2}= @matrix.cholesky_candidate

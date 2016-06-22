@@ -41,11 +41,18 @@ class MatricesController < ApplicationController
     end
 
     # Show the details page for a matrix
-    id = params[:id]
-    begin
-      @matrix = Matrix.find(id) # Happy path
-    rescue
-      render :not_found         # Sad path
+    if id = params[:id]
+      begin
+        @matrix = Matrix.find(id) # Happy path
+      rescue
+        render :not_found         # Sad path
+      end
+    elsif name = params[:name] and group = params[:group]
+      begin
+        @matrix = Matrix.find_by name: name, group: group # Happy path
+      rescue
+        render :not_found         # Sad path
+      end
     end
 
     if !@matrix.nil? and @matrix.pending? and @admin.nil?

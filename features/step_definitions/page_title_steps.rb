@@ -11,9 +11,10 @@ Given /^(?:|I )am on the Not Found page$/ do
 end
 
 Given /^(?:|I )am on the show page for a matrix with name "([^"]*)" and group "([^"]*)"$/ do |name, group|
-    DatabaseCleaner.clean_with(:truncation)
-    matrix = FactoryGirl.create(:matrix, :id => 1, :group => group, :name => name)
-    visit "/matrices/1"
+  visit "/matrices/#{group}/#{name}"
+    #DatabaseCleaner.clean_with(:truncation)
+    #matrix = FactoryGirl.create(:matrix, :id => 1, :group => group, :name => name)
+    #visit "/matrices/1"
     #expect(page).to have_title "GroupName_1/MatrixName_1 | Sparse Matrix Collection"
 end
 
