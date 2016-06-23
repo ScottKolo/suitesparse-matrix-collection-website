@@ -40,22 +40,12 @@ class MatricesController < ApplicationController
       @admin = Admin.find(session[:admin_id])
     end
 
-    # Show the details page for a matrix
-    if id = params[:id]
-      begin
-        @matrix = Matrix.find(id) # Happy path
-      rescue
-        render :not_found         # Sad path
-      end
-    elsif name = params[:name] and group = params[:group]
-      begin
-        @matrix = Matrix.find_by name: name, group: group # Happy path
-      rescue
-        render :not_found         # Sad path
-      end
-    end
+    # Get matrix info from the params
+    id, group, name = params.values_at(:id, :group, :name)
 
-    if !@matrix.nil? and @matrix.pending? and @admin.nil?
+    # Show the details page for a matrix
+    @matrix = Matrix.find_by(id: id) || Matrix.find_by(name: name, group: group)
+    if !@matrix
       render :not_found
     end
   end
