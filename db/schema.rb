@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204040414) do
+ActiveRecord::Schema.define(version: 20160623184425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20151204040414) do
     t.string   "matlab_url"
     t.string   "rutherford_boeing_url"
     t.string   "matrix_market_url"
-    t.datetime "created_at",                                                  null: false
-    t.datetime "updated_at",                                                  null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "description"
     t.string   "problem_2D_or_3D"
     t.integer  "num_explicit_zeros",                limit: 8
@@ -70,20 +70,9 @@ ActiveRecord::Schema.define(version: 20151204040414) do
     t.integer  "matrix_id"
     t.string   "rb_type"
     t.string   "cholesky_flop_count"
-    t.boolean  "pending",                                     default: false
-    t.string   "matrix_data_file_file_name"
-    t.string   "matrix_data_file_content_type"
-    t.integer  "matrix_data_file_file_size"
-    t.datetime "matrix_data_file_updated_at"
-    t.string   "submitter_name"
-    t.string   "submitter_email"
-    t.boolean  "display_email",                               default: false
-    t.string   "submitter_url"
-    t.boolean  "submitter_confidentiality",                   default: false
   end
 
   add_index "matrices", ["matrix_id"], name: "index_matrices_on_matrix_id", using: :btree
-  add_index "matrices", ["pending"], name: "index_matrices_on_pending", using: :btree
 
   create_table "simple_captcha_data", force: :cascade do |t|
     t.string   "key",        limit: 40

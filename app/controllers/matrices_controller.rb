@@ -3,14 +3,6 @@ class MatricesController < ApplicationController
   ### Resources methods ########################################################
 
   def index
-    #parse_params
-    #@admin = false
-    if session[:admin_id] and @admin = Admin.find(session[:admin_id])
-      @pending_matrices = Matrix.where(pending: true)
-      #@admin = Admin.find()
-    end
-    
-
     @filterrific = initialize_filterrific(
       Matrix,
       params[:filterrific],
@@ -20,7 +12,6 @@ class MatricesController < ApplicationController
     ) or return
 
     @matrices = @filterrific.find.page(params[:page])
-    @matrices = @matrices.where(pending: false)
 
     apply_pagination
 

@@ -74,29 +74,6 @@
     WARNING: this site requires javascript to function! You will not be able to
     sort or filter the matrices without it.
 
-<!-- Setup the pending Matrices-->
--if @admin and !@pending_matrices.nil?
-  %h1 Pending Matrices
-  <!-- Layout the matrix table -->
-  %table{:id => "pending_matrices", :class => "table table-striped"}
-    %thead
-      %tr
-        %td Name
-        %td Kind
-        %td Submitter Name
-        %td Submitter Email
-    %tbody
-      - @pending_matrices.each do |matrix|
-        %tr
-          %td{class: "column-name"}= link_to "#{matrix.name}", matrix_path(matrix)
-          %td{class: "column-kind"}= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
-          %td{class: "column-submitter-name"}= matrix.submitter_name
-          %td{class: "column-submitter-email"}= matrix.submitter_email
-      %tr
-        %td{:colspan => 42, :align => "center"}
-          = will_paginate @pending_matrices, renderer: BootstrapPagination::Rails
-  %h1 Current Matrices
-
 .well.container-fluid
   .col-xs-2.column.text-center{style: "border-right: 1px solid #e3e3e3;"}
     .dropdown
