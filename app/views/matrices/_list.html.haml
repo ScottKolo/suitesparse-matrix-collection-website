@@ -1,3 +1,9 @@
+.well.well-small
+  .pull-right
+    = link_to "Reset filters", reset_filterrific_url, :class => 'btn btn-default btn-sm'
+  %div
+    = page_entries_info @matrices, model: 'Matrix'
+
 <!-- Top Pagination Bar -->
 %center
   = will_paginate matrices, renderer: BootstrapPagination::Rails
@@ -6,9 +12,6 @@
     = select_tag :per_page, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
 
 <!-- Layout the matrix table -->
-- if matrices.empty?
-  %p No matrices found that match the filter!
-
 %table{:id => "matrices", :class => "table table-striped"}
   %thead
     %tr{:id => 'sort-selector'}
