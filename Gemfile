@@ -39,6 +39,8 @@ gem 'haml-rails', '~> 0.9'
 gem 'haml-contrib', '~> 1.0.0.1'
 # Add Google Web Fonts
 gem 'google-webfonts-rails', '~> 0.0.4'
+# Add Font Awesome
+gem "font-awesome-rails"
 # Add pagination
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
@@ -46,7 +48,7 @@ gem 'json'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'simple_captcha2', require: 'simple_captcha'
-
+# Use Filterrific for AJAX filtering
 gem 'filterrific'
 
 # Use Unicorn as the app server

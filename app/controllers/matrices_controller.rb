@@ -49,7 +49,6 @@ class MatricesController < ApplicationController
       if @matrix.valid?
 
         #Process matrix here
-        @matrix.pending=true
         #set num columns
         #set num rows
         #set num zeroes
@@ -68,10 +67,6 @@ class MatricesController < ApplicationController
       flash[:notice] = "Invalid Captcha"
       redirect_to matrices_new_path
     end
-  end
-
-  def matrix_params
-    params.require(:matrix).permit(:submitter_name, :submitter_email, :submitter_confidentiality, :submitter_url, :display_email, :name, :author, :notes, :author, :editor, :kind, :matrix_data_file_file_name)
   end
 
   def new
