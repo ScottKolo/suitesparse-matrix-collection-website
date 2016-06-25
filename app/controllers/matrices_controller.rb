@@ -175,7 +175,7 @@ class MatricesController < ApplicationController
   end
 
   def apply_pagination
-    @per_page = params[:per_page] || session[:per_page] || Matrix.per_page || 20
+    @per_page = params[:per_page] || session[:per_page] || 20
     if @per_page == "All"
       @per_page = Matrix.count
     end
