@@ -76,6 +76,7 @@
 
 .well.container-fluid
   .col-xs-2.column.text-center{style: "border-right: 1px solid #e3e3e3;"}
+    %br
     .dropdown
       %button.btn.btn-default.dropdown-toggle{type: "button", id: "dropdownMenu1", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
         %i.fa.fa-filter{'aria-hidden': "true"}
@@ -100,6 +101,7 @@
         %li
           %a.small{href: "", 'data-value':"option6", tabIndex: "-1"}
             %input.filter-checkbox.positive-definiteness-checkbox{type: "checkbox", 'data-target': "#positive-definiteness-filter"} &nbsp;Positive Definiteness
+    %br
     = link_to 'Reset filters', reset_filterrific_url, class: "btn btn-default"
   <!-- Set up the filter form -->
   .col-xs-10.column.text-center{style: "margin-left: -1px; border-left: 1px solid #e3e3e3;"}
