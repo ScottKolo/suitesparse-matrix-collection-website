@@ -78,7 +78,7 @@
   .col-xs-2.column.text-center{style: "border-right: 1px solid #e3e3e3;"}
     .dropdown
       %button.btn.btn-default.dropdown-toggle{type: "button", id: "dropdownMenu1", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
-        %span.glyphicon.glyphicon-filter{'aria-hidden': "true"}
+        %i.fa.fa-filter{'aria-hidden': "true"}
         Filters
         %span.caret
       %ul.dropdown-menu{'aria-labelledby': 'dropdownMenu1'}
@@ -135,18 +135,3 @@
 
 #filterrific_results
   = render partial: 'matrices/list', locals: { matrices: @matrices }
-
-<!-- Create the filters -->
-:javascript
-  generateFilters(#{Matrix.filterable_attributes.to_json});
-  $(function() {$('[data-toggle="tooltip"]').tooltip()});
-  populateFilters(#{session[:filter].to_json});
-
-<!-- Highlight the sort attribute if there is one -->
-- if !session[:sort].nil?
-  :javascript
-    highlightSortAttribute("#{session[:sort]}");
-
-<!-- Check for cookies -->
-:javascript
-  checkCookies();
