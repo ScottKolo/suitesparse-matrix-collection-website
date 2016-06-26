@@ -24,7 +24,7 @@ Background: matrices have been added to database
   @javascript
   Scenario: sort matrices in increasing number of rows
     Given I am on the home page
-    When I follow "Rows"
+    When I follow "Reset filters"
     And I follow "Rows"
     Then I should see "HB" before "Bai"
     Then I should see "Boeing" before "Bai"
