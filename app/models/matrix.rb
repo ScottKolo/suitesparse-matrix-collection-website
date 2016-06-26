@@ -1,9 +1,4 @@
 class Matrix < ActiveRecord::Base
-  #validates :group, presence: true
-  #validates :name, presence: true
-  #validates :author, presence: true
-  #validates :kind, presence: true
-  #validates :email, presence: true
 
   ### Download Helpers #########################################################
 
@@ -84,18 +79,18 @@ class Matrix < ActiveRecord::Base
   # It is called in the controller as part of `initialize_filterrific`.
   def self.options_for_sorted_by
     [
-      ['ID (High to Low)', 'id_asc'],
-      ['ID (Low to High)', 'id_desc'],
-      ['Group (A to Z)', 'group_asc'],
-      ['Group (Z to A)', 'group_desc'],
+      ['ID (High to Low)', 'id_desc'],
+      ['ID (Low to High)', 'id_asc'],
+      ['Group (A to Z)', 'group_desc'],
+      ['Group (Z to A)', 'group_asc'],
       ['Name (A to Z)', 'name_asc'],
       ['Name (Z to A)', 'name_desc'],
-      ['Rows (High to Low)', 'rows_asc'],
-      ['Rows (Low to High)', 'rows_desc'],
-      ['Columns (High to Low)', 'cols_asc'],
-      ['Columns (Low to High)', 'cols_desc'],
-      ['Nonzeros (High to Low)', 'nonzeros_asc'],
-      ['Nonzeros (Low to High)', 'nonzeros_desc'],
+      ['Rows (High to Low)', 'rows_desc'],
+      ['Rows (Low to High)', 'rows_asc'],
+      ['Columns (High to Low)', 'cols_desc'],
+      ['Columns (Low to High)', 'cols_asc'],
+      ['Nonzeros (High to Low)', 'nonzeros_desc'],
+      ['Nonzeros (Low to High)', 'nonzeros_asc'],
       ['Kind (A to Z)', 'kind_asc'],
       ['Kind (Z to A)', 'kind_desc'],
       ['Date (Oldest First)', 'date_asc'],
@@ -166,46 +161,6 @@ class Matrix < ActiveRecord::Base
     where("matrices.numeric_symmetry <= ?", max_numerical_symmetry)
   }
 
-  # Get the set of filterable attributes
-  def self.filterable_attributes
-    return [
-      ["group",     "string"],
-      ["name",      "string"],
-      ["num_rows",  "int"],
-      ["num_cols",  "int"],
-      ["nonzeros",  "int"],
-#      ["pattern_symmetry", "int"],
-#      ["numeric_symmetry", "int"],
-      ["positive_definite", "bool"],
-      ["kind",      "string"],
-      ["date",      "int"],
-      ["author",    "string"],
-      ["editor",    "string"],
-      ["notes",     "string"]
-    ]
-  end
-
-  # Get the set of sortable attributes
-  def self.sortable_attributes
-    return [
-      ["group"   ],
-      ["name"    ],
-      ["num_rows"],
-      ["num_cols"],
-      ["nonzeros"],
-      ["kind"    ],
-      ["date"    ],
-    ]
-  end
-
   ##############################################################################
-
-  def toggle_pending
-    if self.pending?
-      self.pending = false
-    else
-      self.pending = true
-    end
-  end
 
 end

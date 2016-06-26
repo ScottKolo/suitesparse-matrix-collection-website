@@ -1,4 +1,8 @@
+require 'database_cleaner'
+require 'database_cleaner/cucumber'
+
 Given /the following matri(?:x|ces) exist/ do |matrices_table|
+  DatabaseCleaner.clean_with(:truncation)
   matrices_table.hashes.each do |matrix|
     Matrix.create!(matrix)
   end

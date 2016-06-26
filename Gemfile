@@ -9,7 +9,7 @@ gem 'tzinfo'
 gem 'coffee-script-source', '1.8.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.4'
+gem 'rails'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -42,7 +42,7 @@ gem 'google-webfonts-rails', '~> 0.0.4'
 # Add Font Awesome
 gem "font-awesome-rails"
 # Add pagination
-gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
 gem 'json'
 # Use ActiveModel has_secure_password
@@ -57,10 +57,10 @@ gem 'filterrific'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
-  gem 'cucumber-rails', '~> 1.4.2', :require => false
+  gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'database_cleaner', '~> 1.5.0'
-  gem 'capybara', '2.5.0'
+  gem 'database_cleaner'
+  gem 'capybara'
   gem 'launchy'
   gem 'factory_girl'
   gem 'rspec-rails'

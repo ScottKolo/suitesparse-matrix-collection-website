@@ -5,7 +5,7 @@ Feature: Admin Page
 Background: matrices have been added to database
 
   Given the following matrices exist:
-  | group  | num_rows | num_rows  | author |
+  | group  | num_rows | num_cols  | author |
   | Test1  | 343      | 55        | John   |
   | Test2  | 34       | 435       | Paul   |
   | Bai    | 44       | 23333     | Greg   |

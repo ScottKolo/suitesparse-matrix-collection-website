@@ -6,7 +6,7 @@ Feature: Show Matrix Page
 Background: matrices have been added to database
 
   Given the following matrices exist:
-  | group  | name     | num_rows | num_rows  | author | pattern_symmetry | numeric_symmetry | 
+  | group  | name     | num_rows | num_cols  | author | pattern_symmetry | numeric_symmetry | 
   | Boeing | dingbat  | 343      | 55        | John   | 0.00             | 0.00             |
   | HB     | banana   | 34       | 34        | Paul   | 1.00             | 0.53             |
   | Bai    | canoe    | 23333    | 23333     | Greg   | 0.00             | 0.00             |
