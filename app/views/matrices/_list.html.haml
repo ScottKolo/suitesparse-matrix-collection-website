@@ -8,8 +8,8 @@
 %center
   = will_paginate matrices, renderer: BootstrapPagination::Rails
   .pull-right.pagination
-    = label_tag :per_page, "Display per page:"
-    = select_tag :per_page, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
+    = label_tag :per_page_top, "Display per page:"
+    = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
 
 <!-- Layout the matrix table -->
 %table{:id => "matrices", :class => "table table-striped"}
@@ -41,5 +41,5 @@
       %td{:colspan => 42, :align => "center"}
         = will_paginate matrices, renderer: BootstrapPagination::Rails
         .pull-right.pagination
-          = label_tag :per_page, "Display per page:"
-          = select_tag :per_page, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
+          = label_tag :per_page_bottom, "Display per page:"
+          = select_tag :per_page_bottom, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"

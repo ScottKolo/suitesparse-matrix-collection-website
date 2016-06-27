@@ -146,19 +146,19 @@ class Matrix < ActiveRecord::Base
   }
 
   scope :min_pattern_symmetry, -> (min_pattern_symmetry) {
-    where("matrices.pattern_symmetry >= ?", min_pattern_symmetry)
+    where("matrices.pattern_symmetry >= ?", min_pattern_symmetry/100)
   }
 
   scope :max_pattern_symmetry, -> (max_pattern_symmetry) {
-    where("matrices.pattern_symmetry <= ?", max_pattern_symmetry)
+    where("matrices.pattern_symmetry <= ?", max_pattern_symmetry/100)
   }
 
   scope :min_numerical_symmetry, -> (min_numerical_symmetry) {
-    where("matrices.numeric_symmetry >= ?", min_numerical_symmetry)
+    where("matrices.numeric_symmetry >= ?", min_numerical_symmetry/100)
   }
 
   scope :max_numerical_symmetry, -> (max_numerical_symmetry) {
-    where("matrices.numeric_symmetry <= ?", max_numerical_symmetry)
+    where("matrices.numeric_symmetry <= ?", max_numerical_symmetry/100)
   }
 
   ##############################################################################

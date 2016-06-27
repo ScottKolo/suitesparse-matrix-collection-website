@@ -36,14 +36,25 @@ $navbar-inverse-bg: rgb(0, 0, 0);
   line-height:12px;
   padding-top:16px;
   padding-bottom:5px;
-  font-size: 150%;
   font-family: "cutive";
+  color: #fff;
+}
+
+.navbar-brand a {
+  color: #fff;
+}
+
+.navbar-brand h1 {
+  position: absolute;
+  margin-top: -6px;
+  font-size: 115%;
+  color: #fff;
 }
 
 .navbar-brand small {
-  padding-top:5px;
   display:block;
-  font-size:55%;
+  font-size:60%;
+  color: #fff;
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
@@ -74,4 +85,25 @@ $navbar-inverse-bg: rgb(0, 0, 0);
   .column-download{
     display: none;
   }
+}
+
+.input-with-label {
+  display: inline-block;
+}
+
+.input-with-label input {
+  width: 8em;
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+.input-with-label label {
+  font-size: $font-size-h6;
+  display: block;
+  float: left;
+  width: 100%;
+  margin: 0 auto; 
+  color: $gray-light;
+  margin-bottom: 0px;
 }
