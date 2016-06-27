@@ -110,43 +110,43 @@
       #rows-filter.filter.well.well-sm
         .input-with-label
           = f.text_field :min_rows, class: 'filterrific-periodically-observed', id: 'filter-input-rows-min'
-          = f.label :min_rows, "Min"
+          = label_tag 'filter-input-rows-min', "Min"
         &le; Number of Rows &le;
         .input-with-label
           = f.text_field :max_rows, class: 'filterrific-periodically-observed', id: 'filter-input-rows-max'
-          = f.label :max_rows, "Max"
+          = label_tag 'filter-input-rows-max', "Max"
       #columns-filter.filter.well.well-sm
         .input-with-label
           = f.text_field :min_cols, class: 'filterrific-periodically-observed', id: 'filter-input-columns-min'
-          = f.label :min_cols, "Min"
+          = label_tag 'filter-input-columns-min', "Min"
         &le; Number of Columns &le;
         .input-with-label
           = f.text_field :max_cols, class: 'filterrific-periodically-observed', id: 'filter-input-columns-max'
-          = f.label :max_cols, "Max"
+          = label_tag 'filter-input-columns-max', "Max"
       #nonzeros-filter.filter.well.well-sm
         .input-with-label
           = f.text_field :min_nonzeros, class: 'filterrific-periodically-observed', id: 'filter-input-nonzeros-min'
-          = f.label :min_nonzeros, "Min"
+          = label_tag 'filter-input-nonzeros-min', "Min"
         &le; Number of Nonzeros &le;
         .input-with-label
           = f.text_field :max_nonzeros, class: 'filterrific-periodically-observed', id: 'filter-input-nonzeros-max'
-          = f.label :max_nonzeros, "Max"
+          = label_tag 'filter-input-nonzeros-max', "Max"
       #pattern-symmetry-filter.filter.well.well-sm
         .input-with-label
           = f.text_field :min_pattern_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-pattern_symmetry-min'
-          = f.label :min_pattern_symmetry, "Min (%)"
+          = label_tag 'filter-input-pattern_symmetry-min', "Min (%)"
         &le; Pattern Symmetry &le;
         .input-with-label
           = f.text_field :max_pattern_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-pattern_symmetry-max'
-          = f.label :max_pattern_symmetry, "Max (%)"
+          = label_tag 'filter-input-pattern_symmetry-max', "Max (%)"
       #numerical-symmetry-filter.filter.well.well-sm
         .input-with-label
           = f.text_field :min_numerical_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-numerical_symmetry-min'
-          = f.label :min_numerical_symmetry, "Min (%)"
+          = label_tag 'filter-input-numerical_symmetry-min', "Min (%)"
         &le; Numerical Symmetry &le;
         .input-with-label
           = f.text_field :max_numerical_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-numerical_symmetry-max'
-          = f.label :max_numerical_symmetry, "Max (%)"
+          = label_tag 'filter-input-numerical_symmetry-max', "Max (%)"
       .well.well-sm
         = f.label :sorted_by, "Sorted by"
         = f.select :sorted_by, @filterrific.select_options[:sorted_by]
