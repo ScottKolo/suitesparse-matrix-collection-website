@@ -8,7 +8,7 @@
 %center
   = will_paginate matrices, renderer: BootstrapPagination::Rails
   .pull-right.pagination
-    Display per page:
+    = label_tag :per_page, "Display per page:"
     = select_tag :per_page, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
 
 <!-- Layout the matrix table -->
@@ -41,5 +41,5 @@
       %td{:colspan => 42, :align => "center"}
         = will_paginate matrices, renderer: BootstrapPagination::Rails
         .pull-right.pagination
-          Display per page:
+          = label_tag :per_page, "Display per page:"
           = select_tag :per_page, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"

@@ -105,7 +105,7 @@
   .col-xs-10.column.text-center{style: "margin-left: -1px; border-left: 1px solid #e3e3e3;"}
     = form_for_filterrific @filterrific do |f|
       #search.well.well-sm
-        Search&nbsp;
+        = f.label :search_query, "Search"
         = f.text_field :search_query, class: 'filterrific-periodically-observed'
       #rows-filter.filter.well.well-sm
         = f.text_field :min_rows, class: 'filterrific-periodically-observed', id: 'filter-input-rows-min'
@@ -128,7 +128,7 @@
         &le; Numerical Symmetry &le;
         = f.text_field :max_numerical_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-numerical_symmetry-max'
       .well.well-sm
-        Sorted by
+        = f.label :sorted_by, "Sorted by"
         = f.select :sorted_by, @filterrific.select_options[:sorted_by]
     = render_filterrific_spinner
 
