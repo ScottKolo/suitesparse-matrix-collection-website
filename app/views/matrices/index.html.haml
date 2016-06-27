@@ -68,12 +68,6 @@
   = link_to "about page", about_path, class: "alert-link"
   for more information.
 
-<!-- Show warnings if cookies/javascript are disabled -->
-%div{:id => "warnings"}
-  %noscript
-    WARNING: this site requires javascript to function! You will not be able to
-    sort or filter the matrices without it.
-
 .well.container-fluid
   .col-xs-2.column.text-center{style: "border-right: 1px solid #e3e3e3;"}
     %br
@@ -85,22 +79,28 @@
       %ul.dropdown-menu{'aria-labelledby': 'dropdownMenu1'}
         %li
           %a.small{href: "", 'data-value': "option1", tabIndex: "-1"}
-            %input.filter-checkbox.rows-checkbox{type: "checkbox", 'data-target': "#rows-filter"} &nbsp;Rows
+            = check_box_tag :rows_checkbox, 'enable', false, class: "filter-checkbox rows-checkbox", 'data-target': "#rows-filter"
+            = label_tag :rows_checkbox, "Rows"
         %li
           %a.small{href: "", 'data-value': "option2", tabIndex: "-1"}
-            %input.filter-checkbox.columns-checkbox{type: "checkbox", 'data-target': "#columns-filter"} &nbsp;Columns
+            = check_box_tag :columns_checkbox, 'enable', false, class: "filter-checkbox columns-checkbox", 'data-target': "#columns-filter"
+            = label_tag :columns_checkbox, "Columns"
         %li
           %a.small{href: "", 'data-value': "option3", tabIndex: "-1"}
-            %input.filter-checkbox.nonzeros-checkbox{type: "checkbox", 'data-target': "#nonzeros-filter"} &nbsp;Nonzeros
+            = check_box_tag :nonzeros_checkbox, 'enable', false, class: "filter-checkbox nonzeros-checkbox", 'data-target': "#nonzeros-filter"
+            = label_tag :nonzeros_checkbox, "Nonzeros"
         %li
           %a.small{href: "", 'data-value': "option4", tabIndex: "-1"}
-            %input.filter-checkbox.pattern-symmetry-checkbox{type: "checkbox", 'data-target': "#pattern-symmetry-filter"} &nbsp;Pattern Symmetry
+            = check_box_tag :pattern_symmetry_checkbox, 'enable', false, class: "filter-checkbox pattern-symmetry-checkbox", 'data-target': "#pattern-symmetry-filter"
+            = label_tag :pattern_symmetry_checkbox, "Pattern Symmetry"
         %li
           %a.small{href: "", 'data-value': "option5", tabIndex: "-1"}
-            %input.filter-checkbox.numerical-symmetry-checkbox{type: "checkbox", 'data-target': "#numerical-symmetry-filter"} &nbsp;Numerical Symmetry
+            = check_box_tag :numerical_symmetry_checkbox, 'enable', false, class: "filter-checkbox numerical-symmetry-checkbox", 'data-target': "#numerical-symmetry-filter"
+            = label_tag :numerical_symmetry_checkbox, "Numerical Symmetry"
         %li
           %a.small{href: "", 'data-value':"option6", tabIndex: "-1"}
-            %input.filter-checkbox.positive-definiteness-checkbox{type: "checkbox", 'data-target': "#positive-definiteness-filter"} &nbsp;Positive Definiteness
+            = check_box_tag :positive_definiteness_checkbox, 'enable', false, class: "filter-checkbox positive-definiteness-checkbox", 'data-target': "#positive-definiteness-filter"
+            = label_tag :positive_definiteness_checkbox, "Positive Definiteness"
   <!-- Set up the filter form -->
   .col-xs-10.column.text-center{style: "margin-left: -1px; border-left: 1px solid #e3e3e3;"}
     = form_for_filterrific @filterrific do |f|
