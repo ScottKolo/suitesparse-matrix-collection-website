@@ -13,9 +13,9 @@
           #slide-container.pull-right
             %ul
               %li
-                %img{:width => "85%", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", :class=>"img-responsive center-block"}/
+                %img{:width => "85%", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", :class=>"img-responsive center-block", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}/
               %li
-                %img{:width => "100%", :src => "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", :class=>"img-responsive center-block"}/
+                %img{:width => "100%", :src => "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", :class=>"img-responsive center-block", alt: "Nonzero Pattern of #{@matrix.group}/#{@matrix.name}"}/
             %span.button.prevButton
             %span.button.nextButton
       %tr
