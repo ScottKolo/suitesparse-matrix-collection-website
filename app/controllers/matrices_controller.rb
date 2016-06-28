@@ -10,10 +10,14 @@ class MatricesController < ApplicationController
         sorted_by: Matrix.options_for_sorted_by,
       }
     ) or return
-
+    
     @matrices = @filterrific.find.page(params[:page])
-
-    apply_pagination
+    
+    @per_page = params[:per_page] || session[:per_page] || 20
+    if @per_page == "All"
+      @per_page = Matrix.count
+    end
+    @matrices = @matrices.paginate(:page => params[:page], :per_page => @per_page)
 
     respond_to do |format|
       format.html
@@ -92,106 +96,5 @@ class MatricesController < ApplicationController
     end
     redirect_to index_path
   end
-
-  ### Params Helpers ###########################################################
-
-  # Parse the params array into session data
-  def parse_params
-    # Parse sorting param
-    newSort = !params[:sort].nil?
-    if newSort
-      session[:sort_old] = session[:sort]
-      session[:sort] = params[:sort]
-
-      # If new sort is same as old sort, reverse direction.
-      if session[:sort] == session[:sort_old]
-        if session[:sort_dir] == "up"
-          session[:sort_dir] = "down"
-        else
-          session[:sort_dir] = "up"
-        end
-      # Otherwise, sort ascending by default
-      else
-        session[:sort_dir] = "up"
-      end
-    end
-
-    # Parse filter params
-    newFilter = !params[:filter].nil?
-    if newFilter then session[:filter] = params[:filter] end
-
-    # Parse pagination params
-    if !params[:per_page].nil? then session[:per_page] = params[:per_page] end
-
-    # If new params, reload
-    if newSort or newFilter# or newPaginate
-      if !flash[:notice].nil? then flash.keep end
-      redirect_to matrices_path
-    end
-  end
-
-  ### Index Helpers ############################################################
-
-  def apply_filters
-    filters = session[:filter]
-    if !filters.nil?
-      filters.each do |attribute, value|
-        if value.class == Hash then
-          if value["min"] != "" then
-            @matrices = @matrices.where(%{"#{attribute}" >= ?}, value["min"])
-          end
-          if value["max"] != "" then
-            @matrices = @matrices.where(%{"#{attribute}" <= ?}, value["max"])
-          end
-        elsif value != "" then
-          if value == "on" then
-            value = "true"
-          end
-          if value != "true" then
-            @matrices = @matrices.where(%{lower("#{attribute}") like ?},"%#{value}%".downcase) #compares lowercase attribute to lower case input string, finds substrings
-          else
-            @matrices = @matrices.where(%{"#{attribute}" = ?}, value)
-          end
-        end
-      end
-    end
-  end
-
-  def apply_sort
-    if !session[:sort].nil?
-      s = %{"#{session[:sort]}"};
-      # Set sort direction
-      if session[:sort_dir] == "up"
-        @matrices = @matrices.order(s + " ASC")
-      else
-        @matrices = @matrices.order(s + " DESC")
-      end
-    else
-      session[:sort] = "group"
-      session[:sort_old] = "group"
-      session[:sort_dir] = "up"
-      @matrices = @matrices.order(%{"group" ASC})
-    end
-  end
-
-  def apply_pagination
-    @per_page = params[:per_page] || session[:per_page] || 20
-    if @per_page == "All"
-      @per_page = Matrix.count
-    end
-    @matrices = @matrices.paginate(:page => params[:page], :per_page => @per_page)
-    if @pending_matrices
-      @pending_matrices = @pending_matrices.paginate(:page => params[:pend_page], :per_page => @per_page)
-    end
-  end
-  
-  def groups
-    parse_params
-    
-    @matrices = Matrix.where(pending: false)
-	@groupnames=@matrices.uniq.pluck(:group).sort
-  end
-
-  ##############################################################################
 
 end
