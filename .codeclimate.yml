@@ -21,4 +21,6 @@ ratings:
 exclude_paths:
 - spec/**/*
 - features/**/*
+- db/*
+- lib/*
 - "**/vendor/**/*"
