@@ -12,7 +12,7 @@ class MatricesController < ApplicationController
     ) or return
     
     @matrices = @filterrific.find.page(params[:page])
-    
+
     @per_page = params[:per_page] || session[:per_page] || 20
     if @per_page == "All"
       @per_page = Matrix.count
@@ -75,8 +75,8 @@ class MatricesController < ApplicationController
 
   def new
     @kinds = Matrix.order('kind asc').uniq.pluck(:kind)
-    @kinds.map! do |x| 
-      x = x.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D')
+    @kinds.map! do |kind| 
+      kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D')
     end
     @kinds.push("Other")
   end

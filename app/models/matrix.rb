@@ -106,14 +106,14 @@ class Matrix < ActiveRecord::Base
     # replace "*" with "%" for wildcard searches,
     # append '%', remove duplicate '%'s
     terms = terms.map { |e|
-      (e.gsub('*', '%') + '%').gsub(/%+/, '%')
+      (e.tr('*', '%') + '%').gsub(/%+/, '%')
     }
     # configure number of OR conditions for provision
     # of interpolation arguments. Adjust this if you
     # change the number of OR conditions.
     num_or_conds = 1
     where(
-      terms.map { |term|
+      terms.map {
         "LOWER(matrices.name) LIKE ?"
       }.join(' AND '),
       *terms.map { |e| [e] * num_or_conds }.flatten
