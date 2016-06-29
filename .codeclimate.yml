@@ -23,4 +23,5 @@ exclude_paths:
 - features/**/*
 - db/*
 - lib/*
+- bin/*
 - "**/vendor/**/*"

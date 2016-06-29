@@ -44,7 +44,6 @@ class Matrix < ActiveRecord::Base
   scope :sorted_by, ->(sort_option) {
     # extract the sort direction from the param value.
     direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
-    logger.debug "Sort Option: #{sort_option}, #{sort_option.to_s}"
     case sort_option.to_s
     when /^id_/
       # Sort by matrix ID
