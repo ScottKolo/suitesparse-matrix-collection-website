@@ -45,56 +45,19 @@ class MatricesController < ApplicationController
     end
   end
 
-  def create
-    #Check the captcha
-    if simple_captcha_valid?
-      @matrix = Matrix.new(matrix_params)
-      #Check whether the matrix has all of the necessary fields
-      if @matrix.valid?
-
-        #Process matrix here
-        #set num columns
-        #set num rows
-        #set num zeroes
-        #set whether its symetric
-
-        if @matrix.save!
-          flash[:notice] = "Matrix Saved and awaiting Verification"
-          redirect_to index_path
-        else
-          #failure
-          flash[:notice] = "Failed to save matrix"
-          redirect_to matrices_new_path
-        end
-      end
-    else
-      flash[:notice] = "Invalid Captcha"
-      redirect_to matrices_new_path
-    end
+  def new
+    # TODO: Add admin interface to add a matrix to the database
   end
 
-  def new
-    @kinds = Matrix.order('kind asc').uniq.pluck(:kind)
-    @kinds.map! do |kind| 
-      kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D')
-    end
-    @kinds.push("Other")
+  def create
+    # TODO: Add admin interface to create/save the new matrix
   end
 
   def destroy
   end
 
   def update
-    id = params[:format]
-    @matrix = Matrix.find(id)
-    @matrix.toggle_pending
-    @matrix.save!
-    if @matrix.pending?
-      flash[:notice] = "#{@matrix.name} is now pending"
-    else
-      flash[:notice] = "#{@matrix.name} has been added to the collection"
-    end
-    redirect_to index_path
+    # TODO: Add admin interface to update a matrix in the database
   end
 
 end
