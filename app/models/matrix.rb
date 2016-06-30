@@ -50,10 +50,10 @@ class Matrix < ActiveRecord::Base
       order("matrices.id #{ direction }")
     when /^group_/
       # Sort alphabetically by group name
-      order("matrices.group #{ direction }")
+      order("LOWER(matrices.group) #{ direction }")
     when /^name_/
       # Sort alphabetically by matrix name
-      order("matrices.name #{ direction }")
+      order("LOWER(matrices.name) #{ direction }")
     when /^rows_/
       # Sort by number of rows
       order("matrices.num_rows #{ direction }")
