@@ -33,10 +33,13 @@
         %td{class: "column-nonzeros"}= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
         %td{class: "column-kind"}= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
         %td{class: "column-date"}= matrix.date
-        %td{style: "min-width: 390px"}
-          = link_to "MATLAB", matrix.get_url(:matlab), class: "btn btn-default"
-          = link_to "Rutherford Boeing", matrix.get_url(:rutherford_boeing), class: "btn btn-default"
-          = link_to "Matrix Market", matrix.get_url(:matrix_market), class: "btn btn-default"
+        %td{style: "min-width: 380px"}
+          = link_to matrix.get_url(:matlab), class: "btn btn-default btn-sm" do
+            = "MATLAB #{fa_icon 'download'}".html_safe
+          = link_to matrix.get_url(:rutherford_boeing), class: "btn btn-default btn-sm" do
+            = "Rutherford Boeing #{fa_icon 'download'}".html_safe
+          = link_to matrix.get_url(:matrix_market), class: "btn btn-default btn-sm" do
+            = "Matrix Market #{fa_icon 'download'}".html_safe
     %tr
       %td{:colspan => 42, :align => "center"}
         = will_paginate matrices, renderer: BootstrapPagination::Rails
