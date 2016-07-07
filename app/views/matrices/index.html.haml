@@ -1,65 +1,5 @@
 =provide(:title, "Index")
 
-:javascript
-  jQuery(function( $ ){
-      // Check if alert has been closed
-      if( Cookies.get('about-box') === 'closed' ){
-          $('.about-alert').hide();
-      }
-      $('.about-close').click(function( e ){
-          // Do not perform default action when button is clicked
-          e.preventDefault();
-          Cookies.set('about-box', 'closed');
-      });
-  });
-:javascript
-  var options = [];
-  // Select all links with the dropdown-menu class
-  $( '.dropdown-menu a' ).on( 'click', function( event ) {
-
-    var $target = $( event.currentTarget ),
-        val = $target.attr( 'data-value' ),
-        $inp = $target.find( 'input' ),
-        idx;
-
-    if ( ( idx = options.indexOf( val ) ) > -1 ) {
-      options.splice( idx, 1 );
-      setTimeout( function() { $inp.prop( 'checked', false ).change(); }, 0);
-        //$inp.prop( 'checked', false );
-      //$inp.click();
-    } else {
-      options.push( val );
-      setTimeout( function() { $inp.prop( 'checked', true ).change(); }, 0);
-        //$inp.prop( 'checked', true )
-      //$inp.click();
-    }
-
-    $( event.target ).blur();
-
-    console.log( options );
-    return false;
-  });
-
-:javascript
-  $(".filter-checkbox").change(function(){
-    //window.alert("Checkbox Triggered");
-    //window.alert($(this).data("target"));
-    //window.alert(this);
-    //window.alert(this.checked);
-    if (this.checked) {
-      $($(this).data("target")).show();
-
-    } else {
-      $($(this).data("target")).hide();
-    }
-  });
-
-// Hide filters initially
-:javascript
-  $( document ).ready(function() {
-    $(".filter").hide();
-  });
-
 .alert.alert-info.alert-dismissible.about-alert
   %button.close.about-close{:type => "button", :'data-dismiss' => "alert", :'aria-label' => "Close"}
     %span{:'aria-hidden' => "true"}
@@ -72,33 +12,33 @@
   .col-xs-2.column.text-center{style: "border-right: 1px solid #e3e3e3;"}
     %br
     .dropdown
-      %button.btn.btn-default.dropdown-toggle{type: "button", id: "dropdownMenu1", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
+      %button.btn.btn-default.dropdown-toggle{type: "button", id: "filter-dropdown", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
         %i.fa.fa-filter{'aria-hidden': "true"}
         Filters
         %i.fa.fa-caret-down{'aria-hidden': "true"}
-      %ul.dropdown-menu{'aria-labelledby': 'dropdownMenu1'}
+      %ul.dropdown-menu{'aria-labelledby': 'filter-dropdown'}
         %li
-          %a.small{href: "", 'data-value': "option1", tabIndex: "-1"}
+          .small{'data-value': "option1", tabIndex: "-1"}
             = check_box_tag :rows_checkbox, 'enable', false, class: "filter-checkbox rows-checkbox", 'data-target': "#rows-filter"
             = label_tag :rows_checkbox, "Rows"
         %li
-          %a.small{href: "", 'data-value': "option2", tabIndex: "-1"}
+          .small{'data-value': "option2", tabIndex: "-1"}
             = check_box_tag :columns_checkbox, 'enable', false, class: "filter-checkbox columns-checkbox", 'data-target': "#columns-filter"
             = label_tag :columns_checkbox, "Columns"
         %li
-          %a.small{href: "", 'data-value': "option3", tabIndex: "-1"}
+          .small{'data-value': "option3", tabIndex: "-1"}
             = check_box_tag :nonzeros_checkbox, 'enable', false, class: "filter-checkbox nonzeros-checkbox", 'data-target': "#nonzeros-filter"
             = label_tag :nonzeros_checkbox, "Nonzeros"
         %li
-          %a.small{href: "", 'data-value': "option4", tabIndex: "-1"}
+          .small{'data-value': "option4", tabIndex: "-1"}
             = check_box_tag :pattern_symmetry_checkbox, 'enable', false, class: "filter-checkbox pattern-symmetry-checkbox", 'data-target': "#pattern-symmetry-filter"
             = label_tag :pattern_symmetry_checkbox, "Pattern Symmetry"
         %li
-          %a.small{href: "", 'data-value': "option5", tabIndex: "-1"}
+          .small{'data-value': "option5", tabIndex: "-1"}
             = check_box_tag :numerical_symmetry_checkbox, 'enable', false, class: "filter-checkbox numerical-symmetry-checkbox", 'data-target': "#numerical-symmetry-filter"
             = label_tag :numerical_symmetry_checkbox, "Numerical Symmetry"
         %li
-          %a.small{href: "", 'data-value':"option6", tabIndex: "-1"}
+          .small{'data-value':"option6", tabIndex: "-1"}
             = check_box_tag :positive_definiteness_checkbox, 'enable', false, class: "filter-checkbox positive-definiteness-checkbox", 'data-target': "#positive-definiteness-filter"
             = label_tag :positive_definiteness_checkbox, "Positive Definiteness"
   <!-- Set up the filter form -->
@@ -107,15 +47,15 @@
       #search.well.well-sm
         = f.label :search_query, "Search"
         = f.text_field :search_query, class: 'filterrific-periodically-observed'
-      #rows-filter.filter.well.well-sm
+      #rows-filter.filter.filter-hidden.well.well-sm
         .input-with-label
-          = f.text_field :min_rows, class: 'filterrific-periodically-observed', id: 'filter-input-rows-min'
+          = f.text_field :min_rows, class: 'filterrific-periodically-observed', id: "filter-input-rows-min"
           = label_tag 'filter-input-rows-min', "Min"
         &le; Number of Rows &le;
         .input-with-label
-          = f.text_field :max_rows, class: 'filterrific-periodically-observed', id: 'filter-input-rows-max'
+          = f.text_field :max_rows, class: 'filterrific-periodically-observed', id: "filter-input-rows-max"
           = label_tag 'filter-input-rows-max', "Max"
-      #columns-filter.filter.well.well-sm
+      #columns-filter.filter.filter-hidden.well.well-sm
         .input-with-label
           = f.text_field :min_cols, class: 'filterrific-periodically-observed', id: 'filter-input-columns-min'
           = label_tag 'filter-input-columns-min', "Min"
@@ -123,7 +63,7 @@
         .input-with-label
           = f.text_field :max_cols, class: 'filterrific-periodically-observed', id: 'filter-input-columns-max'
           = label_tag 'filter-input-columns-max', "Max"
-      #nonzeros-filter.filter.well.well-sm
+      #nonzeros-filter.filter.filter-hidden.well.well-sm
         .input-with-label
           = f.text_field :min_nonzeros, class: 'filterrific-periodically-observed', id: 'filter-input-nonzeros-min'
           = label_tag 'filter-input-nonzeros-min', "Min"
@@ -131,7 +71,7 @@
         .input-with-label
           = f.text_field :max_nonzeros, class: 'filterrific-periodically-observed', id: 'filter-input-nonzeros-max'
           = label_tag 'filter-input-nonzeros-max', "Max"
-      #pattern-symmetry-filter.filter.well.well-sm
+      #pattern-symmetry-filter.filter.filter-hidden.well.well-sm
         .input-with-label
           = f.text_field :min_pattern_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-pattern_symmetry-min'
           = label_tag 'filter-input-pattern_symmetry-min', "Min (%)"
@@ -139,7 +79,7 @@
         .input-with-label
           = f.text_field :max_pattern_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-pattern_symmetry-max'
           = label_tag 'filter-input-pattern_symmetry-max', "Max (%)"
-      #numerical-symmetry-filter.filter.well.well-sm
+      #numerical-symmetry-filter.filter.filter-hidden.well.well-sm
         .input-with-label
           = f.text_field :min_numerical_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-numerical_symmetry-min'
           = label_tag 'filter-input-numerical_symmetry-min', "Min (%)"
@@ -154,3 +94,27 @@
 
 #filterrific_results
   = render partial: 'matrices/list', locals: { matrices: @matrices }
+
+:javascript
+  $(function() {
+      // Check if alert has been closed
+      if( Cookies.get('about-box') === 'closed' ){
+          $('.about-alert').hide();
+      }
+      $('.about-close').click(function( e ){
+          // Do not perform default action when button is clicked
+          e.preventDefault();
+          Cookies.set('about-box', 'closed');
+      });
+  });
+
+:javascript
+  $(function() {
+    $(".filter-checkbox").change(function() {
+      if(this.checked) {
+        $($(this).data("target")).removeClass('filter-hidden');
+      } else {
+        $($(this).data("target")).addClass('filter-hidden');
+      }
+    });
+  });

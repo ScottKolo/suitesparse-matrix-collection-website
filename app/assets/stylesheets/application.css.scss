@@ -87,6 +87,18 @@ $navbar-inverse-bg: rgb(0, 0, 0);
   }
 }
 
+.filter-hidden {
+  display: none;
+}
+
+.dropdown-menu {
+  width: 180px;
+}
+
+.dropdown-menu li {
+  margin-left: 6px;
+}
+
 .input-with-label {
   display: inline-block;
 }

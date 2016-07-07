@@ -46,10 +46,10 @@ end
 #     DatabaseCleaner.strategy = :truncation
 #   end
 #
-  Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
-    DatabaseCleaner.strategy = :truncation
-  end
-#
+
+Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
+DatabaseCleaner.strategy = :truncation
+end
 
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.

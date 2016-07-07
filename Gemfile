@@ -1,10 +1,6 @@
 source 'https://rubygems.org'
 
 ruby '2.2.3'
-#ruby '2.0.0'
-
-gem 'tzinfo-data'
-gem 'tzinfo'
 
 gem 'coffee-script-source', '1.8.0'
 
@@ -66,7 +62,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'byebug'
-#  gem 'selenium-webdriver'
   gem 'capybara-webkit'
   gem 'brakeman', :require => false
 end
