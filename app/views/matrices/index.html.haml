@@ -18,27 +18,27 @@
         %i.fa.fa-caret-down{'aria-hidden': "true"}
       %ul.dropdown-menu{'aria-labelledby': 'filter-dropdown'}
         %li
-          .small{'data-value': "option1", tabIndex: "-1"}
+          .small{'data-target': ".rows-checkbox", tabIndex: "-1"}
             = check_box_tag :rows_checkbox, 'enable', false, class: "filter-checkbox rows-checkbox", 'data-target': "#rows-filter"
             = label_tag :rows_checkbox, "Rows"
         %li
-          .small{'data-value': "option2", tabIndex: "-1"}
+          .small{'data-target': ".columns-checkbox", tabIndex: "-1"}
             = check_box_tag :columns_checkbox, 'enable', false, class: "filter-checkbox columns-checkbox", 'data-target': "#columns-filter"
             = label_tag :columns_checkbox, "Columns"
         %li
-          .small{'data-value': "option3", tabIndex: "-1"}
+          .small{'data-target': ".nonzeros-checkbox", tabIndex: "-1"}
             = check_box_tag :nonzeros_checkbox, 'enable', false, class: "filter-checkbox nonzeros-checkbox", 'data-target': "#nonzeros-filter"
             = label_tag :nonzeros_checkbox, "Nonzeros"
         %li
-          .small{'data-value': "option4", tabIndex: "-1"}
+          .small{'data-target': ".pattern-symmetry-checkbox", tabIndex: "-1"}
             = check_box_tag :pattern_symmetry_checkbox, 'enable', false, class: "filter-checkbox pattern-symmetry-checkbox", 'data-target': "#pattern-symmetry-filter"
             = label_tag :pattern_symmetry_checkbox, "Pattern Symmetry"
         %li
-          .small{'data-value': "option5", tabIndex: "-1"}
+          .small{'data-target': ".numerical-symmetry-checkbox", tabIndex: "-1"}
             = check_box_tag :numerical_symmetry_checkbox, 'enable', false, class: "filter-checkbox numerical-symmetry-checkbox", 'data-target': "#numerical-symmetry-filter"
             = label_tag :numerical_symmetry_checkbox, "Numerical Symmetry"
         %li
-          .small{'data-value':"option6", tabIndex: "-1"}
+          .small{'data-target': ".positive-definiteness-checkbox", tabIndex: "-1"}
             = check_box_tag :positive_definiteness_checkbox, 'enable', false, class: "filter-checkbox positive-definiteness-checkbox", 'data-target': "#positive-definiteness-filter"
             = label_tag :positive_definiteness_checkbox, "Positive Definiteness"
   <!-- Set up the filter form -->
@@ -116,5 +116,17 @@
       } else {
         $($(this).data("target")).addClass('filter-hidden');
       }
+    });
+  });
+
+:javascript
+  $(function() {
+    $('.dropdown-menu').find('.small').click(function(e) {
+      if(e.target.type !== 'checkbox' && e.target.nodeName !== 'LABEL') {
+        // If the click is on the checkbox or label, no need to click twice
+        $($(this).data("target")).trigger('click');
+      }
+      // Keep the dropdown menu open until we click elsewhere
+      e.stopPropagation();
     });
   });
