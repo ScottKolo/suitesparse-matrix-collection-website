@@ -1,13 +1,12 @@
+# File: features/step_definitions/download_steps.rb
+#
+# Step definitions for forming Cucumber tests related to downloading matrix
+# data files
 
 Given /^there is a matrix with the group "(.+)" and the name "(.+)"$/ do |group, name|
   Matrix.create(group: group, name: name)
 end
 
-Then /^I should receive a(?: "([^"]*)") file$/ do |file|
-  pending
-  #result = page.response_headers['Content-Type'].should == "application/octet-stream"
-  #if result
-    #result = page.response_headers['Content-Disposition'].should =~ /#{file}/
-  #end
-  #result
+Then /^I should be able to download a "([^"]*)" file called "([^"]*)"$/ do |format, filename|
+  expect(page).to have_link(format, href: /.*#{filename}/)
 end

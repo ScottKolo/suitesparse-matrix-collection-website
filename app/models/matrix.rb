@@ -4,7 +4,7 @@ class Matrix < ActiveRecord::Base
 
   # Get the base URL for remote matrix downloads
   def self.get_base_url
-    return '//www.cise.ufl.edu/research/sparse/'
+    return 'https://www.cise.ufl.edu/research/sparse/'
   end
 
   # Get the download URL for a given matrix and file format

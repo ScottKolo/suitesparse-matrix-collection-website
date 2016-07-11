@@ -60,4 +60,5 @@ Capybara.javascript_driver = :webkit
 Capybara::Webkit.configure do |config|
     config.allow_url("ajax.googleapis.com")
     config.allow_url("fonts.googleapis.com")
+    config.allow_url("www.cise.ufl.edu")
 end
