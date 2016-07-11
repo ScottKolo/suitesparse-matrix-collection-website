@@ -12,10 +12,10 @@ Background: matrices have been added to database
 
   Given the following matrices exist:
   | group                | name                 | num_rows | num_cols | author          |
-  | Magical Mystery Tour | All You Need Is Love | 1        | 357      | John Lennon     |
-  | Hey Jude             | Can't Buy Me Love    | 5000     | 211      | Paul McCartney  |
-  | Abbey Road           | Come Together        | 100      | 418      | John Lennon     |
-  | Let It Be            | For You Blue         | 1687642  | 232      | George Harrison |
+  | Magical Mystery Tour | All You Need Is Love | 1        | 357      | J. Lennon     |
+  | Hey Jude             | Can't Buy Me Love    | 5000     | 211      | P. McCartney  |
+  | Abbey Road           | Come Together        | 100      | 418      | J. Lennon     |
+  | Let It Be            | For You Blue         | 1687642  | 232      | G. Harrison |
 
 Scenario: sort matrices by name by clicking header
   Given I am on the home page
