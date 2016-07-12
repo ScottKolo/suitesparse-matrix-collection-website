@@ -37,7 +37,10 @@ class Matrix < ActiveRecord::Base
       :min_pattern_symmetry,
       :max_pattern_symmetry,
       :min_numerical_symmetry,
-      :max_numerical_symmetry
+      :max_numerical_symmetry,
+      :min_strongly_connected_components,
+      :max_strongly_connected_components,
+      :positive_definite,
     ]
   )
 
@@ -125,6 +128,7 @@ class Matrix < ActiveRecord::Base
     )
   }
 
+  # Filter by number of rows
   scope :min_rows, -> (min_rows) {
     where("matrices.num_rows >= ?", min_rows)
   }
@@ -133,6 +137,7 @@ class Matrix < ActiveRecord::Base
     where("matrices.num_rows <= ?", max_rows)
   }
 
+  # Filter by number of columns
   scope :min_cols, -> (min_cols) {
     where("matrices.num_cols >= ?", min_cols)
   }
@@ -141,6 +146,7 @@ class Matrix < ActiveRecord::Base
     where("matrices.num_cols <= ?", max_cols)
   }
 
+  # Filter by number of nonzeros
   scope :min_nonzeros, -> (min_nonzeros) {
     where("matrices.nonzeros >= ?", min_nonzeros)
   }
@@ -149,6 +155,7 @@ class Matrix < ActiveRecord::Base
     where("matrices.nonzeros <= ?", max_nonzeros)
   }
 
+  # Filter by patterny symmetry
   scope :min_pattern_symmetry, -> (min_pattern_symmetry) {
     where("matrices.pattern_symmetry >= ?", min_pattern_symmetry/100)
   }
@@ -157,12 +164,31 @@ class Matrix < ActiveRecord::Base
     where("matrices.pattern_symmetry <= ?", max_pattern_symmetry/100)
   }
 
+  # Filter by numerical symmetry
   scope :min_numerical_symmetry, -> (min_numerical_symmetry) {
     where("matrices.numeric_symmetry >= ?", min_numerical_symmetry/100)
   }
 
   scope :max_numerical_symmetry, -> (max_numerical_symmetry) {
     where("matrices.numeric_symmetry <= ?", max_numerical_symmetry/100)
+  }
+
+  # Filter by number of strongly connected components
+  scope :min_strongly_connected_components, -> (min_strongly_connected_components) {
+    where("matrices.num_strongly_connected_components >= ?", min_strongly_connected_components)
+  }
+
+  scope :max_strongly_connected_components, -> (max_strongly_connected_components) {
+    where("matrices.num_strongly_connected_components <= ?", max_strongly_connected_components)
+  }
+
+  # Filter by positive definiteness
+  scope :positive_definite, -> (pos_def) {
+    if (pos_def == "Any")
+      nil
+    else
+      where("matrices.positive_definite = ?", pos_def.downcase)
+    end
   }
 
   ##############################################################################

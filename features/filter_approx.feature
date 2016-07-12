@@ -7,7 +7,7 @@ Feature: display list of matrices approximately filtered by attributes
 Background: matrices have been added to database
 
   Given the following matrices exist:
-  | group                | name                 | num_rows | num_cols | author                  |
+  | group                | name                 | num_rows | num_cols | author                  | 
   | Magical Mystery Tour | All You Need Is Love | 1        | 357      | J. Lennon               |
   | Hey Jude             | Can't Buy Me Love    | 5000     | 211      | P. McCartney            |
   | Abbey Road           | Come Together        | 100      | 418      | J. Lennon               |

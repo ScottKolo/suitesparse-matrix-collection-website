@@ -8,6 +8,7 @@ class MatricesController < ApplicationController
       params[:filterrific],
       select_options: {
         sorted_by: Matrix.options_for_sorted_by,
+        positive_definite_options: ['Yes', 'No'],
       }
     ) or return
     

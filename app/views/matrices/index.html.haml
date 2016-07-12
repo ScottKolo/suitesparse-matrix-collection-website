@@ -38,9 +38,13 @@
             = check_box_tag :numerical_symmetry_checkbox, 'enable', false, class: "filter-checkbox numerical-symmetry-checkbox", 'data-target': "#numerical-symmetry-filter"
             = label_tag :numerical_symmetry_checkbox, "Numerical Symmetry"
         %li
-          .small{'data-target': ".positive-definiteness-checkbox", tabIndex: "-1"}
-            = check_box_tag :positive_definiteness_checkbox, 'enable', false, class: "filter-checkbox positive-definiteness-checkbox", 'data-target': "#positive-definiteness-filter"
-            = label_tag :positive_definiteness_checkbox, "Positive Definiteness"
+          .small{'data-target': ".strongly-connected-components-checkbox", tabIndex: "-1"}
+            = check_box_tag :strongly_connected_components_checkbox, 'enable', false, class: "filter-checkbox strongly-connected-components-checkbox", 'data-target': "#strongly-connected-components-filter"
+            = label_tag :strongly_connected_components_checkbox, "Strongly Connected Components"
+        %li
+          .small{'data-target': ".positive-definite-checkbox", tabIndex: "-1"}
+            = check_box_tag :positive_definite_checkbox, 'enable', false, class: "filter-checkbox positive-definite-checkbox", 'data-target': "#positive-definite-filter"
+            = label_tag :positive_definite_checkbox, "Positive Definiteness"
   <!-- Set up the filter form -->
   .col-xs-10.column.text-center{style: "margin-left: -1px; border-left: 1px solid #e3e3e3;"}
     = form_for_filterrific @filterrific do |f|
@@ -87,6 +91,17 @@
         .input-with-label
           = f.text_field :max_numerical_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-numerical_symmetry-max'
           = label_tag 'filter-input-numerical_symmetry-max', "Max (%)"
+      #strongly-connected-components-filter.filter.filter-hidden.well.well-sm
+        .input-with-label
+          = f.text_field :min_strongly_connected_components, class: 'filterrific-periodically-observed', id: 'filter-input-strongly_connected_components-min'
+          = label_tag 'filter-input-strongly_connected_components-min', "Min"
+        &le; Number of Strongly Connected Components &le;
+        .input-with-label
+          = f.text_field :max_strongly_connected_components, class: 'filterrific-periodically-observed', id: 'filter-input-strongly_connected_components-max'
+          = label_tag 'filter-input-strongly_connected_components-max', "Max"
+      #positive-definite-filter.filter.filter-hidden.well.well-sm
+        = label_tag :positive_definite, 'Positive Definite?'
+        = f.select :positive_definite, @filterrific.select_options[:positive_definite_options], { include_blank: 'Any' }
       .well.well-sm
         = f.label :sorted_by, "Sorted by"
         = f.select :sorted_by, @filterrific.select_options[:sorted_by]
