@@ -5,3 +5,7 @@ end
 Given /^(?:|I )fill in "([^"]*)" for the input field "([^"]*)"$/ do |value, filter|
   fill_in filter, with: value
 end
+
+When /^(?:|I )search for the string "([^"]*)"$/ do |str|
+    visit "/matrices/index?filterrific%5Bsearch_query%5D=#{str}"
+end

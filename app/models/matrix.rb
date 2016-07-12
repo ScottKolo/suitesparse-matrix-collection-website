@@ -78,27 +78,28 @@ class Matrix < ActiveRecord::Base
   # It is called in the controller as part of `initialize_filterrific`.
   def self.options_for_sorted_by
     [
-      ['ID (High to Low)', 'id_desc'],
-      ['ID (Low to High)', 'id_asc'],
-      ['Group (A to Z)', 'group_desc'],
-      ['Group (Z to A)', 'group_asc'],
-      ['Name (A to Z)', 'name_asc'],
-      ['Name (Z to A)', 'name_desc'],
-      ['Rows (High to Low)', 'rows_desc'],
-      ['Rows (Low to High)', 'rows_asc'],
-      ['Columns (High to Low)', 'cols_desc'],
-      ['Columns (Low to High)', 'cols_asc'],
+      ['ID (High to Low)',       'id_desc'      ],
+      ['ID (Low to High)',       'id_asc'       ],
+      ['Group (A to Z)',         'group_desc'   ],
+      ['Group (Z to A)',         'group_asc'    ],
+      ['Name (A to Z)',          'name_asc'     ],
+      ['Name (Z to A)',          'name_desc'    ],
+      ['Rows (High to Low)',     'rows_desc'    ],
+      ['Rows (Low to High)',     'rows_asc'     ],
+      ['Columns (High to Low)',  'cols_desc'    ],
+      ['Columns (Low to High)',  'cols_asc'     ],
       ['Nonzeros (High to Low)', 'nonzeros_desc'],
-      ['Nonzeros (Low to High)', 'nonzeros_asc'],
-      ['Kind (A to Z)', 'kind_asc'],
-      ['Kind (Z to A)', 'kind_desc'],
-      ['Date (Oldest First)', 'date_asc'],
-      ['Date (Recent First)', 'date_desc']
+      ['Nonzeros (Low to High)', 'nonzeros_asc' ],
+      ['Kind (A to Z)',          'kind_asc'     ],
+      ['Kind (Z to A)',          'kind_desc'    ],
+      ['Date (Oldest First)',    'date_asc'     ],
+      ['Date (Recent First)',    'date_desc'    ]
     ]
   end
 
   scope :search_query, -> (query) { 
     return nil if query.blank?
+    puts query
 
     # condition query, parse into individual keywords
     terms = query.to_s.downcase.split(/\s+/)
@@ -106,24 +107,22 @@ class Matrix < ActiveRecord::Base
     # replace "*" with "%" for wildcard searches,
     # append '%', remove duplicate '%'s
     terms = terms.map { |e|
-      (e.tr('*', '%') + '%').gsub(/%+/, '%')
+      ('%' + e.tr('*', '%') + '%').gsub(/%+/, '%')
     }
     # configure number of OR conditions for provision
     # of interpolation arguments. Adjust this if you
     # change the number of OR conditions.
-    # num_or_conds = 1
-    # where(
-    #   terms.map {
-    #     "LOWER(matrices.name) LIKE ?"
-    #   }.join(' AND '),
-    #   *terms.map { |e| [e] * num_or_conds }.flatten
-    # )
-    where("LOWER(matrices.name) LIKE :search 
-      OR LOWER(matrices.description) LIKE :search 
-      OR LOWER(matrices.kind) LIKE :search 
-      OR LOWER(matrices.notes) LIKE :search 
-      OR LOWER(matrices.group) LIKE :search", 
-      search: terms[0])
+    num_or_conds = 5
+    where(
+      terms.map { |term|
+        "LOWER(matrices.name) LIKE ?
+          OR LOWER(matrices.description) LIKE ? 
+          OR LOWER(matrices.kind) LIKE ? 
+          OR LOWER(matrices.notes) LIKE ? 
+          OR LOWER(matrices.group) LIKE ?"
+      }.join(' AND '),
+      *terms.map { |e| [e] * num_or_conds }.flatten
+    )
   }
 
   scope :min_rows, -> (min_rows) {
