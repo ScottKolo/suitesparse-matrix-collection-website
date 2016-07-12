@@ -100,7 +100,7 @@
           = f.text_field :max_strongly_connected_components, class: 'filterrific-periodically-observed', id: 'filter-input-strongly_connected_components-max'
           = label_tag 'filter-input-strongly_connected_components-max', "Max"
       #positive-definite-filter.filter.filter-hidden.well.well-sm
-        = label_tag :positive_definite, 'Positive Definite?'
+        = f.label :positive_definite, 'Positive Definite?'
         = f.select :positive_definite, @filterrific.select_options[:positive_definite_options], { include_blank: 'Any' }
       .well.well-sm
         = f.label :sorted_by, "Sorted by"
