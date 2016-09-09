@@ -16,3 +16,5 @@
 *.swp
 
 /public/assets
+
+*.DS_Store

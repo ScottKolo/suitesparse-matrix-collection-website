@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623184425) do
+ActiveRecord::Schema.define(version: 20160830130819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,10 +52,6 @@ ActiveRecord::Schema.define(version: 20160623184425) do
     t.string   "structure"
     t.string   "cholesky_candidate"
     t.string   "positive_definite"
-    t.integer  "nnz_chol",                          limit: 8
-    t.integer  "nnz_L_plus_U",                      limit: 8
-    t.integer  "nnz_v",                             limit: 8
-    t.integer  "nnz_r",                             limit: 8
     t.string   "norm"
     t.string   "min_singular_value"
     t.string   "condition_number"
@@ -69,7 +65,6 @@ ActiveRecord::Schema.define(version: 20160623184425) do
     t.text     "aux_fields"
     t.integer  "matrix_id"
     t.string   "rb_type"
-    t.string   "cholesky_flop_count"
   end
 
   add_index "matrices", ["matrix_id"], name: "index_matrices_on_matrix_id", using: :btree

@@ -87,26 +87,6 @@
         %th Type
         %td{colspan: 2}= @matrix.rb_type
 
-  %table{class: "table table-striped pull-right", style: "width: 49%"}
-    %tbody
-      %tr
-        %th{colspan:2, :style=>'text-align: center'} Ordering Statistics
-      %tr
-        %th nnz(chol(P*(A+A'+s*I)*P')) with AMD
-        %td= number_with_delimiter(@matrix.nnz_chol, :delimiter => ',')
-      %tr
-        %th Cholesky flop count
-        %td= @matrix.cholesky_flop_count
-      %tr
-        %th nnz(L+U), no partial pivoting, with AMD
-        %td= number_with_delimiter(@matrix.nnz_L_plus_U, :delimiter => ',')
-      %tr
-        %th nnz(V) for QR, upper bound nnz(L) for LU, with COLAMD
-        %td= number_with_delimiter(@matrix.nnz_v, :delimiter => ',')
-      %tr
-        %th nnz(R) for QR, upper bound nnz(U) for LU, with COLAMD
-        %td= number_with_delimiter(@matrix.nnz_r, :delimiter => ',')
-
   %table{class: "table table-striped", style: "width: 49%"}
     %tbody
       %tr
