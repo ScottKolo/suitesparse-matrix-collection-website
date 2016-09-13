@@ -63,7 +63,7 @@
         = f.select :submitter_confidentiality, [['Display Publically', false], ['Not for Public Release', true]]
     %tr
       %td
-        = show_simple_captcha
+        = recaptcha_tags
   = submit_tag("Submit My Matrix")
 %br
 %br
