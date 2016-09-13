@@ -20,6 +20,8 @@ $link-color: #265986;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import 'slick';
+@import 'slick-theme';
 
 body {
   padding-top: 70px;
@@ -122,4 +124,12 @@ $navbar-inverse-bg: rgb(0, 0, 0);
   margin: 0 auto; 
   color: $gray-light;
   margin-bottom: 0px;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: black;
+}
+
+.slick-slide img {
+  margin: auto;
 }

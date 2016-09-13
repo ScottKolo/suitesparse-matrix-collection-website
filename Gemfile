@@ -47,6 +47,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem "recaptcha", require: "recaptcha/rails"
 # Use Filterrific for AJAX filtering
 gem 'filterrific'
+# Use Slick for image carousels
+gem 'jquery-slick-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

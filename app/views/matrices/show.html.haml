@@ -3,115 +3,123 @@
 
 %div{style: "padding-bottom: 20px;"}
   %h4= @matrix.description
+  .row
+    .col-md-6.col-md-push-6
+      .carousel
+        %figure.slick-slide
+          %img.img-responsive{src: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}/
+        %figure.slick-slide
+          %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", alt: "Nonzero Pattern of #{@matrix.group}/#{@matrix.name}"}/
+    .col-md-6.col-md-pull-6
+      %table.table.table-striped
+        %tbody
+          %tr
+            %th Group
+            %td= @matrix.group
+          %tr
+            %th Name
+            %td= @matrix.name
+          %tr
+            %th Num Rows
+            %td= number_with_delimiter(@matrix.num_rows, :delimiter => ',')
+          %tr
+            %th Num Cols
+            %td= number_with_delimiter(@matrix.num_cols, :delimiter => ',')
+          %tr
+            %th Nonzeros
+            %td= number_with_delimiter(@matrix.nonzeros, :delimiter => ',')
+          %tr
+            %th Kind
+            %td= @matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless @matrix.kind.nil?
+          %tr
+            %th Symmetric
+            %td= @matrix.structure == "symmetric" ? "Yes" : "No"
+          %tr
+            %th Date
+            %td= @matrix.date
+          %tr
+            %th Author
+            %td= @matrix.author
+          %tr
+            %th Editor
+            %td= @matrix.editor
 
-  %table{:class => "table table-striped"}
-    %tbody
-      %tr
-        %th Group
-        %td= @matrix.group
-        %td{rowspan: 10}
-          #slide-container.pull-right
-            %ul
-              %li
-                %img{:width => "85%", :src => "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", :class=>"img-responsive center-block", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}/
-              %li
-                %img{:width => "100%", :src => "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", :class=>"img-responsive center-block", alt: "Nonzero Pattern of #{@matrix.group}/#{@matrix.name}"}/
-            %span.button.prevButton
-            %span.button.nextButton
-      %tr
-        %th Name
-        %td= @matrix.name
-      %tr
-        %th Num Rows
-        %td= number_with_delimiter(@matrix.num_rows, :delimiter => ',')
-      %tr
-        %th Num Cols
-        %td= number_with_delimiter(@matrix.num_cols, :delimiter => ',')
-      %tr
-        %th Nonzeros
-        %td= number_with_delimiter(@matrix.nonzeros, :delimiter => ',')
-      %tr
-        %th Kind
-        %td= @matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless @matrix.kind.nil?
-      %tr
-        %th Symmetric
-        %td= @matrix.structure == "symmetric" ? "Yes" : "No"
-      %tr
-        %th Date
-        %td= @matrix.date
-      %tr
-        %th Author
-        %td= @matrix.author
-      %tr
-        %th Editor
-        %td= @matrix.editor
-      %tr
-        %th Notes
-        %td{colspan: 2}
-          - if @matrix.notes
-            %pre= @matrix.notes
-      %tr
-        %th Structural Rank
-        %td{colspan: 2}= @matrix.structural_rank
-      %tr
-        %th Structural Rank Full
-        %td{colspan: 2}= @matrix.structural_full_rank
-      %tr
-        %th Num Dmperm Blocks
-        %td{colspan: 2}= @matrix.num_dmperm_blocks
-      %tr
-        %th Strongly Connect Components
-        %td{colspan: 2}= @matrix.num_strongly_connected_components
-      %tr
-        %th Num Explicit Zeros
-        %td{colspan: 2}= @matrix.num_explicit_zeros
-      %tr
-        %th Pattern Symmetry
-        %td{colspan: 2}= number_to_percentage(@matrix.pattern_symmetry ? @matrix.pattern_symmetry*100 : nil, precision:0)
-      %tr
-        %th Numeric Symmetry
-        %td{colspan: 2}= number_to_percentage(@matrix.numeric_symmetry ? @matrix.numeric_symmetry*100 : nil, precision:0)
-      %tr
-        %th Cholesky Candidate
-        %td{colspan: 2}= @matrix.cholesky_candidate
-      %tr
-        %th Positive Definite
-        %td{colspan: 2}= @matrix.positive_definite
-      %tr
-        %th Download
-        %td{colspan: 2}
-          = link_to "MATLAB", @matrix.get_url(:matlab), class: "btn btn-default"
-          = link_to "Rutherford Boeing", @matrix.get_url(:rutherford_boeing), class: "btn btn-default"
-          = link_to "Matrix Market", @matrix.get_url(:matrix_market), class: "btn btn-default"
-      %tr
-        %th Type
-        %td{colspan: 2}= @matrix.rb_type
+  .row
+    .col-md-6
+      %table.table.table-striped
+        %tbody
+          %tr
+            %th Structural Rank
+            %td= @matrix.structural_rank
+          %tr
+            %th Structural Rank Full
+            %td= @matrix.structural_full_rank
+          %tr
+            %th Num Dmperm Blocks
+            %td= @matrix.num_dmperm_blocks
+          %tr
+            %th Strongly Connect Components
+            %td= @matrix.num_strongly_connected_components
+          %tr
+            %th Num Explicit Zeros
+            %td= @matrix.num_explicit_zeros
+          %tr
+            %th Pattern Symmetry
+            %td= number_to_percentage(@matrix.pattern_symmetry ? @matrix.pattern_symmetry*100 : nil, precision:0)
+          %tr
+            %th Numeric Symmetry
+            %td= number_to_percentage(@matrix.numeric_symmetry ? @matrix.numeric_symmetry*100 : nil, precision:0)
+          %tr
+            %th Cholesky Candidate
+            %td= @matrix.cholesky_candidate
+          %tr
+            %th Positive Definite
+            %td= @matrix.positive_definite
+          %tr
+            %th Type
+            %td{colspan: 2}= @matrix.rb_type
 
-  %table{class: "table table-striped", style: "width: 49%"}
-    %tbody
-      %tr
-        %th{colspan:2, :style=>'text-align: center'} SVD Statistics
-      %tr
-        %th Matrix Norm
-        %td= number_with_delimiter(@matrix.norm, :delimiter => ',')
-      %tr
-        %th Minimum Singular Value
-        %td= @matrix.min_singular_value
-      %tr
-        %th Condition Number
-        %td= number_with_delimiter(@matrix.condition_number, :delimiter => ',')
-      %tr
-        %th Rank
-        %td= number_with_delimiter(@matrix.svd_rank, :delimiter => ',')
-      %tr
-        %th sprank(A)-rank(A)
-        %td= number_with_delimiter(@matrix.sprank_minus_rank, :delimiter => ',')
-      %tr
-        %th Null Space Dimension
-        %td= number_with_delimiter(@matrix.null_space_dimension, :delimiter => ',')
-      %tr
-        %th Full Numerical Rank?
-        %td= @matrix.full_numerical_rank
+    .col-md-6
+      %table.table.table-striped
+        %tbody
+          %tr
+            %th{colspan:2, style: 'text-align: center'} SVD Statistics
+          %tr
+            %th Matrix Norm
+            %td= number_with_delimiter(@matrix.norm, :delimiter => ',')
+          %tr
+            %th Minimum Singular Value
+            %td= @matrix.min_singular_value
+          %tr
+            %th Condition Number
+            %td= number_with_delimiter(@matrix.condition_number, :delimiter => ',')
+          %tr
+            %th Rank
+            %td= number_with_delimiter(@matrix.svd_rank, :delimiter => ',')
+          %tr
+            %th sprank(A)-rank(A)
+            %td= number_with_delimiter(@matrix.sprank_minus_rank, :delimiter => ',')
+          %tr
+            %th Null Space Dimension
+            %td= number_with_delimiter(@matrix.null_space_dimension, :delimiter => ',')
+          %tr
+            %th Full Numerical Rank?
+            %td= @matrix.full_numerical_rank
+  .row
+    .col-md-12
+      %table.table.table-striped
+        %tbody
+          %tr
+            %th Download
+            %td
+              = link_to "MATLAB #{fa_icon 'download'}".html_safe, @matrix.get_url(:matlab), class: "btn btn-default"
+              = link_to "Rutherford Boeing #{fa_icon 'download'}".html_safe, @matrix.get_url(:rutherford_boeing), class: "btn btn-default"
+              = link_to "Matrix Market #{fa_icon 'download'}".html_safe, @matrix.get_url(:matrix_market), class: "btn btn-default"
+          %tr
+            %th Notes
+            %td
+              - if @matrix.notes
+                %pre= @matrix.notes
 
   :javascript
     setUpSlideShow();
