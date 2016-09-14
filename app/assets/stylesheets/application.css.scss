@@ -131,5 +131,17 @@ $navbar-inverse-bg: rgb(0, 0, 0);
 }
 
 .slick-slide img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   margin: auto;
+  max-height: 384px;
+}
+
+.slick-slide {
+  height: 384px;
+}
+
+.slick-list {
+  height: 384px;
 }

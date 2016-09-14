@@ -120,6 +120,11 @@
             %td
               - if @matrix.notes
                 %pre= @matrix.notes
-
-  :javascript
-    setUpSlideShow();
+:javascript
+  $(function() {
+      $('.carousel').slick({
+          adaptiveHeight: true,
+          slidesToShow: 1,
+          dots: true
+      });
+  });
