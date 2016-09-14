@@ -2,9 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'coffee-script-source', '1.8.0'
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# Need the Rails gem
 gem 'rails', '~> 5.0.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -14,8 +12,7 @@ gem 'sass-rails', '~> 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2.1'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'coffee-script-source', '1.8.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -48,24 +45,24 @@ gem 'filterrific'
 # Use Slick for image carousels
 gem 'jquery-slick-rails'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 group :development, :test do
+  # Use Cucumber for BDD testing
   gem 'cucumber-rails', '~> 1.4.4', :require => false
   gem 'cucumber-rails-training-wheels'
+  # Use Database Cleaner to clear the database between tests
   gem 'database_cleaner'
   gem 'capybara'
   gem 'rails-controller-testing'
   gem 'launchy'
   gem 'factory_girl'
+  # Use rspec for lower level unit testing
   gem 'rspec-rails', '~> 3.5'
+  # Use simplecov for coverage testing
   gem 'simplecov'
   gem 'byebug'
-  #gem 'capybara-webkit'
+  # Use Poltergeist/PhantomJS for javascript testing
   gem 'poltergeist'
+  # Use brakeman for security checks
   gem 'brakeman', :require => false
 end
 
