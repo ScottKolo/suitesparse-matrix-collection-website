@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
+ruby '2.3.1'
 
 gem 'coffee-script-source', '1.8.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails'
+gem 'rails', '~> 5.0.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -31,10 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~>3.3.5'
 # Use haml for views
 gem 'haml', '~> 4.0.7'
-gem 'haml-rails', '~> 0.9'
+gem 'haml-rails'
 gem 'haml-contrib', '~> 1.0.0.1'
-# Add Google Web Fonts
-gem 'google-webfonts-rails', '~> 0.0.4'
 # Add Font Awesome
 gem "font-awesome-rails"
 # Add pagination
@@ -56,16 +54,18 @@ gem 'jquery-slick-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', '~> 1.4.4', :require => false
   gem 'cucumber-rails-training-wheels'
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'rails-controller-testing'
   gem 'launchy'
   gem 'factory_girl'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.5'
   gem 'simplecov'
   gem 'byebug'
-  gem 'capybara-webkit'
+  #gem 'capybara-webkit'
+  gem 'poltergeist'
   gem 'brakeman', :require => false
 end
 

@@ -46,7 +46,7 @@ class MatricesController < ApplicationController
     # TODO: Add admin interface to add a matrix to the database
     @kinds = Matrix.order('kind asc').uniq.pluck(:kind)
     @kinds.map! do |x| 
-      x = x.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D')
+      x.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D')
     end
     @kinds.push("Other")
   end

@@ -56,9 +56,11 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-Capybara.javascript_driver = :webkit
-Capybara::Webkit.configure do |config|
-    config.allow_url("ajax.googleapis.com")
-    config.allow_url("fonts.googleapis.com")
-    config.allow_url("www.cise.ufl.edu")
-end
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+# Capybara.javascript_driver = :webkit
+# Capybara::Webkit.configure do |config|
+#     config.allow_url("ajax.googleapis.com")
+#     config.allow_url("fonts.googleapis.com")
+#     config.allow_url("www.cise.ufl.edu")
+# end
