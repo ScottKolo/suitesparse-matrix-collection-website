@@ -32,10 +32,6 @@ class MatricesController < ApplicationController
   end
 
   def show
-    if session[:admin_id]
-      @admin = Admin.find(session[:admin_id])
-    end
-
     # Get matrix info from the params
     id, group, name = params.values_at(:id, :group, :name)
 
@@ -53,17 +49,6 @@ class MatricesController < ApplicationController
       x = x.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D')
     end
     @kinds.push("Other")
-  end
-
-  def create
-    # TODO: Add admin interface to create/save the new matrix
-  end
-
-  def destroy
-  end
-
-  def update
-    # TODO: Add admin interface to update a matrix in the database
   end
 
 end

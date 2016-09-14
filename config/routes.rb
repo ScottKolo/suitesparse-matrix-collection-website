@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :admins
-  get 'login' => 'admins#login'
-  get 'logout' => 'admins#logout'
 
   get 'groups' => 'matrices#groups'
   
@@ -11,27 +8,7 @@ Rails.application.routes.draw do
 
   get 'matrices/show'
 
-  post 'matrices/create'
-
   get 'matrices/new'
-
-  get 'matrices/destroy'
-
-  get 'matrices/update'
-
-  get 'matrices/index'
-
-  get 'matrices/show'
-
-  get 'matrices/create'
-
-  get 'matrices/new'
-
-  get 'matrices/destroy'
-
-  get 'matrices/update'
-
-  get 'matrices/destroy'
 
   resources :matrices
 
