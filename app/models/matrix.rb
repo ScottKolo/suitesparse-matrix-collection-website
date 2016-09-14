@@ -50,7 +50,7 @@ class Matrix < ActiveRecord::Base
     case sort_option.to_s
     when /^id_/
       # Sort by matrix ID
-      order("matrices.id #{ direction }")
+      order("matrices.matrix_id #{ direction }")
     when /^group_/
       # Sort alphabetically by group name
       order("LOWER(matrices.group) #{ direction }")
