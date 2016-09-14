@@ -102,7 +102,6 @@ class Matrix < ActiveRecord::Base
 
   scope :search_query, -> (query) { 
     return nil if query.blank?
-    puts query
 
     # condition query, parse into individual keywords
     terms = query.to_s.downcase.split(/\s+/)

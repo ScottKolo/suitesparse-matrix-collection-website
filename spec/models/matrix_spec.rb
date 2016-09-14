@@ -2,6 +2,76 @@ require 'rails_helper'
 require 'factories/matrix'
 
 RSpec.describe Matrix, type: :model do
+  describe "keyword search scopes" do
+    before(:all) do
+        @matrix1 = FactoryGirl.create(:matrix, 
+          matrix_id: 68,
+          group: "a", 
+          name: "b",
+          num_rows: 1000,
+          num_cols: 1,
+          nonzeros: 1,
+          kind: "2D Mesh",
+          description: "Lucy in the sky with diamonds.",
+          notes: "The unique query string is 'Ringo'"
+          )
+        @matrix2 = FactoryGirl.create(:matrix, 
+          matrix_id: 11,
+          group: "Bravo", 
+          name: "c",
+          num_rows: 2000,
+          num_cols: 2,
+          nonzeros: 40,
+          kind: "Fancy type",
+          description: "Help! I need somebody.",
+          notes: "A fancy matrix."
+          )
+        @matrix3 = FactoryGirl.create(:matrix, 
+          matrix_id: 10000,
+          group: "Z", 
+          name: "Twist and Shout",
+          num_rows: 3000,
+          num_cols: 3,
+          nonzeros: 50,
+          kind: "zeta type",
+          description: "Roll over Beethoven.",
+          notes: ""
+          )
+    end
+    after(:all) do
+        Matrix.destroy(@matrix1.id)
+        Matrix.destroy(@matrix2.id)
+        Matrix.destroy(@matrix3.id)
+    end
+
+    it "should be able to return a list related to the search query" do
+      @matrices = Matrix.search_query("")
+      expect(@matrices).to include(@matrix1)
+      expect(@matrices).to include(@matrix2)
+      expect(@matrices).to include(@matrix3)
+      @matrices = Matrix.search_query("Lucy")
+      expect(@matrices).to include(@matrix1)
+      expect(@matrices).to_not include(@matrix2)
+      expect(@matrices).to_not include(@matrix3)
+      @matrices = Matrix.search_query("Zeta")
+      expect(@matrices).to_not include(@matrix1)
+      expect(@matrices).to_not include(@matrix2)
+      expect(@matrices).to include(@matrix3)
+      @matrices = Matrix.search_query("bravo")
+      expect(@matrices).to_not include(@matrix1)
+      expect(@matrices).to include(@matrix2)
+      expect(@matrices).to_not include(@matrix3)
+      @matrices = Matrix.search_query("shout")
+      expect(@matrices).to_not include(@matrix1)
+      expect(@matrices).to_not include(@matrix2)
+      expect(@matrices).to include(@matrix3)
+      @matrices = Matrix.search_query("ringo")
+      expect(@matrices).to include(@matrix1)
+      expect(@matrices).to_not include(@matrix2)
+      expect(@matrices).to_not include(@matrix3)
+    end
+  end
+
   describe "filtering scopes" do
     before(:all) do
         @matrix1 = FactoryGirl.create(:matrix, 
