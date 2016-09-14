@@ -155,7 +155,7 @@ class Matrix < ActiveRecord::Base
     where("matrices.nonzeros <= ?", max_nonzeros)
   }
 
-  # Filter by patterny symmetry
+  # Filter by pattern symmetry
   scope :min_pattern_symmetry, -> (min_pattern_symmetry) {
     where("matrices.pattern_symmetry >= ?", min_pattern_symmetry/100)
   }
