@@ -2,6 +2,133 @@ require 'rails_helper'
 require 'factories/matrix'
 
 RSpec.describe Matrix, type: :model do
+  describe "filtering scopes" do
+    before(:all) do
+        @matrix1 = FactoryGirl.create(:matrix, 
+          matrix_id: 68,
+          group: "a", 
+          name: "b",
+          num_rows: 1000,
+          num_cols: 1,
+          nonzeros: 1,
+          kind: "2D Mesh",
+          date: 1991,
+          pattern_symmetry: 0,
+          numeric_symmetry: 0,
+          num_strongly_connected_components: 1,
+          positive_definite: "no"
+          )
+        @matrix2 = FactoryGirl.create(:matrix, 
+          matrix_id: 11,
+          group: "B", 
+          name: "c",
+          num_rows: 2000,
+          num_cols: 2,
+          nonzeros: 40,
+          kind: "Fancy type",
+          date: 2001,
+          pattern_symmetry: 0.5,
+          numeric_symmetry: 0.5,
+          num_strongly_connected_components: 10,
+          positive_definite: "yes"
+          )
+        @matrix3 = FactoryGirl.create(:matrix, 
+          matrix_id: 10000,
+          group: "Z", 
+          name: "D",
+          num_rows: 3000,
+          num_cols: 3,
+          nonzeros: 50,
+          kind: "zeta type",
+          date: 2015,
+          pattern_symmetry: 1,
+          numeric_symmetry: 1,
+          num_strongly_connected_components: 1000,
+          positive_definite: "yes"
+          )
+    end
+    after(:all) do
+        Matrix.destroy(@matrix1.id)
+        Matrix.destroy(@matrix2.id)
+        Matrix.destroy(@matrix3.id)
+    end
+
+    it "should be able to return a list filtered by number of rows" do
+      @matrices = Matrix.min_rows(1500)
+      expect(@matrices).to_not include(@matrix1);
+      expect(@matrices).to include(@matrix2);
+      expect(@matrices).to include(@matrix3);
+      @matrices = Matrix.max_rows(1500)
+      expect(@matrices).to include(@matrix1);
+      expect(@matrices).to_not include(@matrix2);
+      expect(@matrices).to_not include(@matrix3);
+    end
+    it "should be able to return a list filtered by number of columns" do
+      @matrices = Matrix.min_cols(2)
+      expect(@matrices).to_not include(@matrix1);
+      expect(@matrices).to include(@matrix2);
+      expect(@matrices).to include(@matrix3);
+      @matrices = Matrix.max_cols(1)
+      expect(@matrices).to include(@matrix1);
+      expect(@matrices).to_not include(@matrix2);
+      expect(@matrices).to_not include(@matrix3);
+    end
+    it "should be able to return a list filtered by number of nonzeros" do
+      @matrices = Matrix.min_nonzeros(30)
+      expect(@matrices).to_not include(@matrix1);
+      expect(@matrices).to include(@matrix2);
+      expect(@matrices).to include(@matrix3);
+      @matrices = Matrix.max_nonzeros(10)
+      expect(@matrices).to include(@matrix1);
+      expect(@matrices).to_not include(@matrix2);
+      expect(@matrices).to_not include(@matrix3);
+    end
+    it "should be able to return a list filtered by pattern symmetry" do
+      @matrices = Matrix.min_pattern_symmetry(0.3)
+      expect(@matrices).to_not include(@matrix1);
+      expect(@matrices).to include(@matrix2);
+      expect(@matrices).to include(@matrix3);
+      @matrices = Matrix.max_pattern_symmetry(0.2)
+      expect(@matrices).to include(@matrix1);
+      expect(@matrices).to_not include(@matrix2);
+      expect(@matrices).to_not include(@matrix3);
+    end
+    it "should be able to return a list filtered by numerical symmetry" do
+      @matrices = Matrix.min_numerical_symmetry(0.3)
+      expect(@matrices).to_not include(@matrix1);
+      expect(@matrices).to include(@matrix2);
+      expect(@matrices).to include(@matrix3);
+      @matrices = Matrix.max_numerical_symmetry(0.4)
+      expect(@matrices).to include(@matrix1);
+      expect(@matrices).to_not include(@matrix2);
+      expect(@matrices).to_not include(@matrix3);
+    end
+    it "should be able to return a list filtered by number of strongly connected components" do
+      @matrices = Matrix.min_strongly_connected_components(5)
+      expect(@matrices).to_not include(@matrix1);
+      expect(@matrices).to include(@matrix2);
+      expect(@matrices).to include(@matrix3);
+      @matrices = Matrix.max_strongly_connected_components(3)
+      expect(@matrices).to include(@matrix1);
+      expect(@matrices).to_not include(@matrix2);
+      expect(@matrices).to_not include(@matrix3);
+    end
+    it "should be able to return a list filtered by positive definiteness" do
+      @matrices = Matrix.positive_definite("Yes")
+      expect(@matrices).to_not include(@matrix1);
+      expect(@matrices).to include(@matrix2);
+      expect(@matrices).to include(@matrix3);
+      @matrices = Matrix.positive_definite("No")
+      expect(@matrices).to include(@matrix1);
+      expect(@matrices).to_not include(@matrix2);
+      expect(@matrices).to_not include(@matrix3);
+      @matrices = Matrix.positive_definite("Any")
+      expect(@matrices).to include(@matrix1);
+      expect(@matrices).to include(@matrix2);
+      expect(@matrices).to include(@matrix3);
+    end
+  end
+
   describe "sorting scopes" do
     before(:all) do
         @matrix1 = FactoryGirl.create(:matrix, 
@@ -105,8 +232,10 @@ RSpec.describe Matrix, type: :model do
       expect(@matrices.first).to eq(@matrix3);
       expect(@matrices.last).to eq(@matrix1);
     end
+    it "should raise an exception if the sort does not exist" do
+      expect{Matrix.sorted_by("fugacity_desc")}.to raise_error(ArgumentError)
+    end
   end
-
 
   describe "getting correct download URL" do
     before(:all) do
