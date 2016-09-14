@@ -18,7 +18,7 @@ class MatricesController < ApplicationController
     if @per_page == "All"
       @per_page = Matrix.count
     end
-    @matrices = @matrices.paginate(:page => params[:page], :per_page => @per_page)
+    @matrices = @matrices.paginate(page: params[:page], per_page: @per_page)
 
     respond_to do |format|
       format.html
