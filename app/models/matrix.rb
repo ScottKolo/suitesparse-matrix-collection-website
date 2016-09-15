@@ -116,7 +116,7 @@ class Matrix < ActiveRecord::Base
     # change the number of OR conditions.
     num_or_conds = 5
     where(
-      terms.map { |term|
+      terms.map {
         "LOWER(matrices.name) LIKE ?
           OR LOWER(matrices.description) LIKE ? 
           OR LOWER(matrices.kind) LIKE ? 
