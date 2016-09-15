@@ -14,10 +14,8 @@ class MatricesController < ApplicationController
     
     @matrices = @filterrific.find.page(params[:page])
 
-    @per_page = params[:per_page] || session[:per_page] || 20
-    if @per_page == "All"
-      @per_page = Matrix.count
-    end
+    @per_page = helpers.per_page(params, session)
+    
     @matrices = @matrices.paginate(page: params[:page], per_page: @per_page)
 
     respond_to do |format|
@@ -43,7 +41,6 @@ class MatricesController < ApplicationController
   end
 
   def new
-    # TODO: Add admin interface to add a matrix to the database
     @kinds = Matrix.order('kind asc').uniq.pluck(:kind)
     @kinds.map! do |x| 
       x.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D')
