@@ -23,7 +23,7 @@ class MatricesController < ApplicationController
       format.js
     end
 
-  rescue ActiveRecord::RecordNotFound => e
+  rescue ArgumentError => e
     # There is an issue with the persisted param_set. Reset it.
     puts "Had to reset filterrific params: #{ e.message }"
     redirect_to(reset_filterrific_url(format: :html)) and return

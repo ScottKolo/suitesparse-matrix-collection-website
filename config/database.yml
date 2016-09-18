@@ -18,23 +18,19 @@ default: &default
   adapter: postgresql
   encoding: unicode
   
-  #username: UFSMC-Web
-  #password: <%= ENV['UFSMC-WEB_DATABASE_PASSWORD'] %>
-  #previous two comments for matt_h, please ignore
-  
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
 development:
   <<: *default
-  database: UFSMC-Web_development
+  database: SuiteSparseMatrixCollectionWebsite_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: UFSMC-Web
+  #username: SuiteSparseMatrixCollectionWebsite
 
   # The password associated with the postgres role (username).
   #password:
@@ -62,7 +58,7 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   <<: *default
-  database: UFSMC-Web_test
+  database: SuiteSparseMatrixCollectionWebsite_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -85,9 +81,9 @@ test: &test
 #
 production:
   <<: *default
-  database: UFSMC-Web_production
-  username: UFSMC-Web
-  password: <%= ENV['UFSMC-WEB_DATABASE_PASSWORD'] %>
+  database: SuiteSparseMatrixCollectionWebsite_production
+  username: SuiteSparseMatrixCollectionWebsite
+  password: <%= ENV['SUITESPARSEMATRIXCOLLECTIONWEBSITE_DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *test
