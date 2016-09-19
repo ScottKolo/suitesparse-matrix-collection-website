@@ -43,4 +43,15 @@ class MatricesController < ApplicationController
     @kinds.push("Other")
   end
 
+  def submit
+    # Verify the reCaptcha
+    if verify_recaptcha
+      flash[:notice] = "Matrix submitted successfully!"
+      redirect_to :index
+    else
+      flash[:notice] = "Please satisfy the reCaptcha."
+      render :new
+    end
+  end
+
 end
