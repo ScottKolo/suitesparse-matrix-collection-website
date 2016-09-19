@@ -13,6 +13,7 @@ RSpec.describe MatricesController, type: :controller do
 
     it "should handle corrupted parameters" do
       get :index, params: {filterrific: {bogus: 1}}
+      expect(response).to render_template :index
     end
 
   end
