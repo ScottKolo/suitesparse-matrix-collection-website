@@ -50,7 +50,7 @@ class MatricesController < ApplicationController
       redirect_to :index
     else
       flash[:notice] = "Please satisfy the reCaptcha."
-      render :new
+      redirect_to :new
     end
   end
 
