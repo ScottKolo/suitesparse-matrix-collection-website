@@ -12,7 +12,7 @@ module MatricesHelper
 
   # Creates a list of all matrix kinds currently in the database
   def kind_list
-    @kinds = Matrix.order('kind asc').uniq.pluck(:kind)
+    @kinds = Matrix.order('kind asc').distinct.pluck(:kind)
     @kinds.map! do |x| 
       x.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D')
     end
