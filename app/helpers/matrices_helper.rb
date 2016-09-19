@@ -22,10 +22,10 @@ module MatricesHelper
   def kind_submission_list
     @kinds = kind_list
 
-    @kinds.each { |kind| 
-      if kind.include? "Sequence" or kind.include? "Duplicate"
-        @kinds.delete(kind)
-      end
+    @kinds.delete_if { |kind| 
+      (kind.include? "Sequence") or 
+      (kind.include? "Duplicate") or 
+      (kind.include? "Subsequent")
     }
 
     # Add an option for an "Other" kind if the submission is really different
