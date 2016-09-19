@@ -37,10 +37,7 @@ class MatricesController < ApplicationController
 
   def new
     # Get a list of kinds currently in the collection
-    @kinds = helpers.kind_list
-
-    # Add an option for an "Other" kind if the submission is really different
-    @kinds.push("Other")
+    @kinds = helpers.kind_submission_list
   end
 
   def submit

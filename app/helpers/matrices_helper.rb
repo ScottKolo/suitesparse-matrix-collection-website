@@ -18,4 +18,17 @@ module MatricesHelper
     end
     return @kinds
   end
+
+  def kind_submission_list
+    @kinds = kind_list
+
+    @kinds.each { |kind| 
+      if kind.include? "Sequence" or kind.include? "Duplicate"
+        @kinds.delete(kind)
+      end
+    }
+
+    # Add an option for an "Other" kind if the submission is really different
+    @kinds.push("Other")
+  end
 end
