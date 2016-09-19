@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get 'matrices/new'
 
+  post 'matrices/submit'
+
   resources :matrices
 
   # The priority is based upon order of creation: first created -> highest priority.
