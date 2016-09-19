@@ -49,7 +49,7 @@ class MatricesController < ApplicationController
       flash[:notice] = "Matrix submitted successfully!"
       redirect_to :index
     else
-      flash[:notice] = "Please satisfy the reCaptcha."
+      flash[:notice] = "Please verify that you are not a robot."
       redirect_to :new
     end
   end
