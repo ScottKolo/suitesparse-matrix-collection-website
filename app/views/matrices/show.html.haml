@@ -78,33 +78,33 @@
           %tr
             %th Type
             %td{colspan: 2}= @matrix.rb_type
-
-    .col-md-6
-      %table.table.table-striped
-        %tbody
-          %tr
-            %th{colspan:2, style: 'text-align: center'} SVD Statistics
-          %tr
-            %th Matrix Norm
-            %td= number_with_delimiter(@matrix.norm, :delimiter => ',')
-          %tr
-            %th Minimum Singular Value
-            %td= @matrix.min_singular_value
-          %tr
-            %th Condition Number
-            %td= number_with_delimiter(@matrix.condition_number, :delimiter => ',')
-          %tr
-            %th Rank
-            %td= number_with_delimiter(@matrix.svd_rank, :delimiter => ',')
-          %tr
-            %th sprank(A)-rank(A)
-            %td= number_with_delimiter(@matrix.sprank_minus_rank, :delimiter => ',')
-          %tr
-            %th Null Space Dimension
-            %td= number_with_delimiter(@matrix.null_space_dimension, :delimiter => ',')
-          %tr
-            %th Full Numerical Rank?
-            %td= @matrix.full_numerical_rank
+    - if @matrix.norm
+      .col-md-6
+        %table.table.table-striped
+          %tbody
+            %tr
+              %th{colspan:2, style: 'text-align: center'} SVD Statistics
+            %tr
+              %th Matrix Norm
+              %td= number_with_delimiter(@matrix.norm, :delimiter => ',')
+            %tr
+              %th Minimum Singular Value
+              %td= @matrix.min_singular_value
+            %tr
+              %th Condition Number
+              %td= number_with_delimiter(@matrix.condition_number, :delimiter => ',')
+            %tr
+              %th Rank
+              %td= number_with_delimiter(@matrix.svd_rank, :delimiter => ',')
+            %tr
+              %th sprank(A)-rank(A)
+              %td= number_with_delimiter(@matrix.sprank_minus_rank, :delimiter => ',')
+            %tr
+              %th Null Space Dimension
+              %td= number_with_delimiter(@matrix.null_space_dimension, :delimiter => ',')
+            %tr
+              %th Full Numerical Rank?
+              %td= @matrix.full_numerical_rank
   .row
     .col-md-12
       %table.table.table-striped
