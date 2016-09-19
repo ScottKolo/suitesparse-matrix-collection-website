@@ -18,7 +18,6 @@ RSpec.describe MatricesController, type: :controller do
 
   end
 
-
   describe "showing the details page" do
 
     it "should render the details view when the matrix exists" do
@@ -32,6 +31,15 @@ RSpec.describe MatricesController, type: :controller do
       allow(matrix).to receive(:id).and_return(1)
       get :show, params: {:id => matrix.id}
       expect(response).to render_template :not_found
+    end
+
+  end
+
+  describe "showing the submit new matrix page" do
+
+    it "should render the matrix submission page" do
+      get :new
+      expect(response).to render_template :new
     end
 
   end

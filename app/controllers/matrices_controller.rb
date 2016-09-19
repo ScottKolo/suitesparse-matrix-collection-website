@@ -41,10 +41,10 @@ class MatricesController < ApplicationController
   end
 
   def new
-    @kinds = Matrix.order('kind asc').uniq.pluck(:kind)
-    @kinds.map! do |x| 
-      x.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D')
-    end
+    # Get a list of kinds currently in the collection
+    @kinds = kind_list
+
+    # Add an option for an "Other" kind if the submission is really different
     @kinds.push("Other")
   end
 
