@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   root 'matrices#index'
 
   get 'index' => 'matrices#index'
+  get 'new' => 'matrices#new'
 
   get 'about' => 'pages#about'
   get 'other_interfaces' => 'pages#other_interfaces'
