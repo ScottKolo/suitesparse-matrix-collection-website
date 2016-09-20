@@ -123,15 +123,21 @@ RSpec.describe Matrix, type: :model do
         Matrix.destroy(@matrix3.id)
     end
 
+    it "should be able to filter by specific groups" do
+      @matrices = Matrix.group_name("Z")
+      expect(@matrices).to_not include(@matrix1)
+      expect(@matrices).to_not include(@matrix2)
+      expect(@matrices).to include(@matrix3)
+    end
     it "should be able to return a list filtered by number of rows" do
       @matrices = Matrix.min_rows(1500)
-      expect(@matrices).to_not include(@matrix1);
-      expect(@matrices).to include(@matrix2);
-      expect(@matrices).to include(@matrix3);
+      expect(@matrices).to_not include(@matrix1)
+      expect(@matrices).to include(@matrix2)
+      expect(@matrices).to include(@matrix3)
       @matrices = Matrix.max_rows(1500)
-      expect(@matrices).to include(@matrix1);
-      expect(@matrices).to_not include(@matrix2);
-      expect(@matrices).to_not include(@matrix3);
+      expect(@matrices).to include(@matrix1)
+      expect(@matrices).to_not include(@matrix2)
+      expect(@matrices).to_not include(@matrix3)
     end
     it "should be able to return a list filtered by number of columns" do
       @matrices = Matrix.min_cols(2)
