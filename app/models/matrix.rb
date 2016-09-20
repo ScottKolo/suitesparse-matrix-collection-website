@@ -127,6 +127,11 @@ class Matrix < ActiveRecord::Base
     )
   }
 
+  # Filter by group name
+  scope :group_name, -> (group) {
+    where("matrices.group = ?", group)
+  }
+
   # Filter by number of rows
   scope :min_rows, -> (min_rows) {
     where("matrices.num_rows >= ?", min_rows)

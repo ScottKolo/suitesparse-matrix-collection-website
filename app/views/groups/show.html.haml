@@ -1,0 +1,12 @@
+=provide(:title, "#{@group.name}")
+%h2= "Group #{@group.name}"
+
+%table.table.table-striped
+  %tbody
+    %tr
+      %th Group Description
+      %td
+        %pre= @group.notes
+
+#matrix-list
+  = render partial: 'groups/list', locals: { matrices: @matrices }

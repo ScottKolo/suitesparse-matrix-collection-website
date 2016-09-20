@@ -26,7 +26,7 @@
   %tbody
     - matrices.each do |matrix|
       %tr
-        %td{class: "column-group"}= link_to "#{matrix.group}", matrices_path(:'filter[group]'=>matrix.group)
+        %td{class: "column-group"}= link_to "#{matrix.group}", "#{groups_path}/#{matrix.group}"
         %td{class: "column-name"}= link_to "#{matrix.name}", "#{matrices_path}/#{matrix.group}/#{matrix.name}"
         %td{class: "column-num_rows"}= number_with_delimiter(matrix.num_rows, :delimiter => ',')
         %td{class: "column-num_cols"}= number_with_delimiter(matrix.num_cols, :delimiter => ',')

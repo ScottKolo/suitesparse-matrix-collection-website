@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :groups
+  
   get 'groups' => 'matrices#groups'
   
   get 'matrices/groups'

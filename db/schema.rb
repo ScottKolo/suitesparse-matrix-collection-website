@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,17 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914001431) do
+ActiveRecord::Schema.define(version: 20160920003129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "num_matrices"
+    t.text     "notes"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "matrices", force: :cascade do |t|
     t.string   "group"
     t.string   "name"
     t.integer  "num_rows"
     t.integer  "num_cols"
-    t.integer  "nonzeros",                          limit: 8
+    t.bigint   "nonzeros"
     t.string   "kind"
     t.integer  "date"
     t.string   "author"
@@ -30,11 +37,11 @@ ActiveRecord::Schema.define(version: 20160914001431) do
     t.string   "matlab_url"
     t.string   "rutherford_boeing_url"
     t.string   "matrix_market_url"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "description"
     t.string   "problem_2D_or_3D"
-    t.integer  "num_explicit_zeros",                limit: 8
+    t.bigint   "num_explicit_zeros"
     t.integer  "num_strongly_connected_components"
     t.integer  "num_dmperm_blocks"
     t.string   "structural_full_rank"
@@ -57,8 +64,8 @@ ActiveRecord::Schema.define(version: 20160914001431) do
     t.text     "aux_fields"
     t.integer  "matrix_id"
     t.string   "rb_type"
+    t.index ["group"], name: "index_matrices_on_group", using: :btree
+    t.index ["matrix_id"], name: "index_matrices_on_matrix_id", using: :btree
   end
-
-  add_index "matrices", ["matrix_id"], name: "index_matrices_on_matrix_id", using: :btree
 
 end
