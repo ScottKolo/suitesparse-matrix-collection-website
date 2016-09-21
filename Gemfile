@@ -4,8 +4,9 @@ ruby '2.3.1'
 
 # Need the Rails gem
 gem 'rails', '~> 5.0.0.1'
-# Use postgresql as the database for Active Record
-gem 'pg'
+# Use postgresql or mysql as the database for Active Record
+gem 'pg', require: false
+gem 'mysql2', require: false
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
