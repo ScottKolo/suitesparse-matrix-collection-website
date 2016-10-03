@@ -3,25 +3,36 @@ class MatricesController < ApplicationController
   ### Resources methods ########################################################
 
   def index
+    permitted_params = params.permit([{filterrific: [:reset_filterrific, :sorted_by, :search_query,
+      :min_rows, :max_rows, :min_cols, :max_cols, :min_nonzeros, :max_nonzeros,
+      :min_pattern_symmetry, :max_pattern_symmetry, :min_numerical_symmetry,
+      :max_numerical_symmetry, :min_strongly_connected_components,
+      :max_strongly_connected_components, :positive_definite]}, :page, :per_page, :utf8, :_])
+
     @filterrific = initialize_filterrific(
       Matrix,
-      params[:filterrific],
+      permitted_params[:filterrific],
       select_options: {
         sorted_by: Matrix.options_for_sorted_by,
         positive_definite_options: ['Yes', 'No'],
       }
     ) or return
     
-    @matrices = @filterrific.find.page(params[:page])
+    @matrices = @filterrific.find.page(permitted_params[:page])
 
-    @per_page = helpers.per_page(params, session)
+    @per_page = helpers.per_page(permitted_params, session)
     
-    @matrices = @matrices.paginate(page: params[:page], per_page: @per_page)
+    @matrices = @matrices.paginate(page: permitted_params[:page], per_page: @per_page)
 
     respond_to do |format|
       format.html
       format.js
     end
+
+  rescue ActiveRecord::RecordNotFound => e
+    # There is an issue with the persisted param_set. Reset it.
+    puts "Had to reset filterrific params: #{ e.message }"
+    redirect_to(reset_filterrific_url(format: :html)) and return
   end
 
   def show
