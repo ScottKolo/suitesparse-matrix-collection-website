@@ -43,6 +43,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "recaptcha", require: "recaptcha/rails"
 # Use Filterrific for AJAX filtering
 gem 'filterrific'
+#gem 'filterrific', '~> 2.0.6', :git => 'https://github.com/ScottKolo/filterrific.git', branch: 'rails5'
 # Use Slick for image carousels
 gem 'jquery-slick-rails'
 
