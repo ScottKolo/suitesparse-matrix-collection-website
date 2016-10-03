@@ -89,6 +89,6 @@ Given /^there are (\d+) matrices$/ do |total_entries|
 end
 
 Given /^(?:|I )am on page number (\d+) of the (.+) page with (\d+|All) per page$/ do |page_num, page_name, per_page|
-    path = "#{page_name}?page=#{page_num}&per_page=#{per_page}"
+    path = "?page=#{page_num}&per_page=#{per_page}"
     visit path
 end

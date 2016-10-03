@@ -12,7 +12,7 @@ RSpec.feature "Page titles", :type => :feature do
 
   scenario "User views a specific matrix" do
     matrix = FactoryGirl.create(:matrix, :id => 1, :group => "GroupName_1", :name => "MatrixName_1")
-    visit "/matrices/#{matrix.id}"
+    visit "/GroupName_1/MatrixName_1"
     expect(page).to have_title "GroupName_1/MatrixName_1 | SuiteSparse Matrix Collection"
   end
 
@@ -22,7 +22,7 @@ RSpec.feature "Page titles", :type => :feature do
   end
 
   scenario "User enters a non-existent matrix" do
-    visit "/matrices/987324"
+    visit "/HB/fake_matrix"
     expect(page).to have_title "Not Found | SuiteSparse Matrix Collection"
   end
 end

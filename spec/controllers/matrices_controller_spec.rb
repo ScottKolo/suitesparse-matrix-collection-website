@@ -21,15 +21,15 @@ RSpec.describe MatricesController, type: :controller do
   describe "showing the details page" do
 
     it "should render the details view when the matrix exists" do
-      matrix = create(:matrix, :id => 1)
-      get :show, params: {:id => matrix.id}
+      matrix = create(:matrix, id: 1, name: 'MatrixName', group: 'GroupName')
+      get :show, params: {group: 'GroupName', name: 'MatrixName'}
       expect(response).to render_template :show
     end
 
     it "should show a sad page when the matrix doesn't exist" do
       matrix = double('matrix1')
       allow(matrix).to receive(:id).and_return(1)
-      get :show, params: {:id => matrix.id}
+      get :show, params: {group: 'FakeGroup', name: 'FakeMatrix'}
       expect(response).to render_template :not_found
     end
 

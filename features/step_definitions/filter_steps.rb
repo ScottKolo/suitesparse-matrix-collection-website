@@ -7,9 +7,9 @@ Given /^(?:|I )fill in "([^"]*)" for the input field "([^"]*)"$/ do |value, filt
 end
 
 When /^(?:|I )search for the string "([^"]*)"$/ do |str|
-    visit "/matrices/index?filterrific%5Bsearch_query%5D=#{str}"
+    visit "/?filterrific%5Bsearch_query%5D=#{str}"
 end
 
 When /^(?:|I )filter matrices by "([^"]*)" "([^"]*)"$/ do |filter_by, value|
-    visit "/matrices/index?filterrific%5B#{filter_by}%5D=#{value}"
+    visit "/?filterrific%5B#{filter_by}%5D=#{value}"
 end
