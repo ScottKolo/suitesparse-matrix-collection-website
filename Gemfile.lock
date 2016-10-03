@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/ScottKolo/filterrific.git
+  revision: eebfc41c2dafe3a1d6d4bee77384854bc7835eeb
+  branch: rails5
+  specs:
+    filterrific (2.0.6)
+      rails (>= 5.0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -96,8 +104,6 @@ GEM
     execjs (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
-    filterrific (2.0.5)
-      rails (>= 3.1.0)
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
     gherkin (4.0.0)
@@ -280,7 +286,7 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   factory_girl
-  filterrific
+  filterrific (~> 2.0.6)!
   font-awesome-rails
   haml (~> 4.0.7)
   haml-contrib (~> 1.0.0.1)
