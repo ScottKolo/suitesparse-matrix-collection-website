@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
 
   def show
     # Get group info from the params
-    group_name = params[:id]
+    group_name = params[:group]
     @group = Group.find_by(name: group_name)
     
     if !@group
