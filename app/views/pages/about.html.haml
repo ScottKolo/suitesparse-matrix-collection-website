@@ -1,329 +1,220 @@
 =provide(:title, "About")
 %h2 About
 %p
-  I am now at Texas A&amp;M University, with a home page of
-  ==#{link_to "http://faculty.cse.tamu.edu/davis", "http://faculty.cse.tamu.edu/davis"}.
-  The UF Sparse Matrix Collection is still hosted at this site by the University of Florida.
-%p
-  ==My #{link_to "SuiteSparse", "http://suitesparse.com"} package of sparse matrix solvers is hosted at
-  ==#{link_to "suitesparse.com", "http://suitesparse.com"}.
+  The SuiteSparse Matrix Collection (formerly known as the University of
+  Florida Sparse Matrix Collection), is a large and actively growing set of
+  sparse matrices that arise in real applications.  The Collection is widely
+  used by the numerical linear algebra community for the development and
+  performance evaluation of sparse matrix algorithms. It allows for robust
+  and repeatable experiments: robust because performance results with
+  artificially-generated matrices can be misleading, and repeatable because
+  matrices are curated and made publicly available in many formats.  Its
+  matrices cover a wide spectrum of domains, include those arising from
+  problems with underlying 2D or 3D geometry (as structural engineering,
+  computational fluid dynamics, model reduction, electromagnetics,
+  semiconductor devices, thermodynamics, materials, acoustics, computer
+  graphics/vision, robotics/kinematics, and other discretizations) and those
+  that typically do not have such geometry (optimization, circuit simulation,
+  economic and financial modeling, theoretical and quantum chemistry,
+  chemical process simulation, mathematics and statistics, power networks,
+  and other networks and graphs).  We provide software for accessing and
+  managing the Collection, from MATLAB, Mathematica, Fortran, and C, as well
+  as an online search capability.  Graph visualization of the matrices is
+  provided on this site via 
+  ==#{link_to "graphviz", "http://www.graphviz.org"}.
+  The Collection is hosted here, and also mirrored at the University of Florida at
+  ==#{link_to "www.cise.ufl.edu/research/sparse/matrices", "http://www.cise.ufl.edu/research/sparse/matrices"}.
+  The Collection is maintained by
+  ==#{link_to "Tim Davis, Texas A&M University", "http://faculty.cse.tamu.edu/davis"}
+  (email: davis@tamu.edu), 
+  ==#{link_to "Yifan Hu, Yahoo! Labs", "http://yifanhu.net/"},
+  and 
+  ==#{link_to "Scott Kolodziej, Texas A&M University", "http://www.scottkolo.com"}.
 
+%h2 General-audience description
 %p
-  For a general-audience description of the matrices and images
-  posted here, see our short note on
-  ==#{link_to "Visualizing Sparse Matrices", "https://www.cise.ufl.edu/research/sparse/matrices/synopsis"}.
-%p
-  ==#{link_to "Click here", "http://faculty.cse.tamu.edu/davis/matrices.html"} for a presentation at the Harn Museum, University of Florida
-%p
-  %table{ :class => "table-space"}
-    %tr
-      %td{:class => "table-flash"}
-        %object{:classid => "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000",
-        :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0", :height => "334", :vmode => "transparent", :width => "305"}
-          %param{:name => "movie", :value => "Wolfram/graphplotbluedots.swf"}
-            %param{:name => "play", :value => "true"}
-              %param{:name => "loop", :value => "true"}
-                %param{:name => "quality", :value => "high"}
-                  %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer",
-                  :src => "https://www.cise.ufl.edu/research/sparse/matrices/Wolfram/graphplotbluedots.swf",
-                  :type => "application/x-shockwave-flash", :vmode => "transparent", :width => "305"}
-      %td{:class => "table-image"}
-        %img{:height => "300", :src => "https://www.cise.ufl.edu/research/sparse/Harn/UF_Matrix_Collection/Slide01.jpg"}
-%p
-  (click reload to see a replay of the animation).
-  %hr
-    Maintained by #{link_to  "Tim Davis", "http://faculty.cse.tamu.edu/davis"}
-    ==#{link_to "Yifan Hu, Yahoo! Labs", "http://yifanhu.net"}.
-    %blockquote
-      From the abstract of the paper
-      ==#{link_to "The University of Florida Sparse Matrix Collection:", "http://faculty.cse.tamu.edu/davis/publications.html"}
-      %ul
-        We describe the University of Florida Sparse Matrix Collection, a large
-        and actively growing set of sparse matrices that arise in real applications.
-        The Collection is widely used by the numerical linear algebra community for
-        the development and performance evaluation of sparse matrix algorithms. It
-        allows for robust and repeatable experiments:
-        robust because performance results with artificially-generated matrices can be
-        misleading, and repeatable because matrices are curated and made publicly
-        available in many formats.
-        Its matrices cover a wide spectrum of domains, include those arising from
-        problems with underlying 2D or 3D geometry (as structural engineering,
-        computational fluid dynamics, model reduction, electromagnetics, semiconductor
-        devices, thermodynamics, materials, acoustics, computer graphics/vision,
-        robotics/kinematics, and other discretizations) and those that typically do not
-        have such geometry (optimization, circuit simulation, economic and
-        financial modeling, theoretical and quantum chemistry, chemical process
-        simulation, mathematics and statistics, power networks, and other networks and
-        graphs).
-        We provide software for accessing and managing the Collection, from
-        MATLAB, Mathematica, Fortran, and C, as well as an
-        online search capability.  Graph visualization of the matrices is provided, and
-        a new multilevel coarsening scheme is proposed to facilitate this task.
-%p
-%h2 Archival Data for Reproducible Research
-%p
-  %ul
-    The Collection serves a vital role in the sparse matrix algorithms
-    community, as a benchmark for algorithmic testing and development.
-    Results in journal articles that use these matrices can be repeated
-    by other researchers.  The matrices are given unique ID numbers and
-    they do not change once they are included in the collection.  The
-    collection also appears widely in other repositories or citation
-    indices:
-    %ul
-      ==#{link_to image_tag("https://www.cise.ufl.edu/research/sparse/matrices/DCI_button.png",height: "100"), "http://wokinfo.com/products_tools/multidisciplinary/dci/"}
-      \&nbsp;
-      \&nbsp;
-      \&nbsp;
-      ==#{link_to image_tag("https://www.cise.ufl.edu/research/sparse/matrices/logo_aws.gif",height:'80'),"http://developer.amazonwebservices.com/connect/entry.jspa?externalID=2379&categoryID=276"}
-      //==#{link_to image_tag("https://www.cise.ufl.edu/research/sparse/matrices/tr_ahz_rgb_pos.png"), "http://thomsonreuters.com/en/products-services/scholarly-scientific-research/scholarly-search-and-discovery/data-citation-index.html"}
-      ==#{link_to image_tag("https://www.cise.ufl.edu/research/sparse/matrices/re3data_Logo_RGB_header.png", height:'80'),"http://service.re3data.org/repository/r3d100010208"}
+  ==#{link_to "Click here", "http://faculty.cse.tamu.edu/davis/matrices.html"}
+  for an easy-to-understand description of the SuiteSparse Matrix Collection and its images.
+  The page includes a video of a talk I gave at the Harn Museum at the University of Florida,
+  for general audiences.
+
 %h2 Sample Gallery of the University of Florida Sparse Matrix Collection:
 %p
-  Click on the thumbnails below for a close-up.
-  %p
-    %table{:class => "about-images"}
-      %tr
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Alemdar@Alemdar.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Alemdar/Alemdar.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrews@Andrews.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrews/Andrews.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@ex3sta1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/ex3sta1.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@fxm3_6.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/fxm3_6.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@fxm4_6.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/fxm4_6.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@lp1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/lp1.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@lpl1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/lpl1.html"}
-      %tr
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@mip1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/mip1.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@net25.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/net25.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/ATandT@pre2.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/ATandT/pre2.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Barabasi@NotreDame_www.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Barabasi/NotreDame_www.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bates@Chem97Zt.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Bates/Chem97Zt.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bomhof@circuit_2.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Bomhof/circuit_2.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Chen@pkustk01.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Chen/pkustk01.html"}
-      %tr
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Chen@pkustk12.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Chen/pkustk12.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@aug3d.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_indef/aug3d.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@dawson5.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_indef/dawson5.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@ncvxqp9.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_indef/ncvxqp9.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@jnlbrng1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/jnlbrng1.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@pds10.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/pds10.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Gleich@wikipedia-20070206.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Gleich/wikipedia-20070206.html"}
-      %tr
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Grund@poli_large.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Grund/poli_large.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Gupta@gupta3.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Gupta/gupta3.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Hamm@hcircuit.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Hamm/hcircuit.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@illc1033.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/HB/illc1033.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@lock1074.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/HB/lock1074.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@lock_700.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/HB/lock_700.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@aircraft.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/aircraft.html"}
-      %tr
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@cep1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/cep1.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@ex3sta1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/ex3sta1.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@lpl3.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/lpl3.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@nemscem.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/nemscem.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@pltexpa.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/pltexpa.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Mittelmann@spal_004.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Mittelmann/spal_004.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@barth5.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Pothen/barth5.html"}
-      %tr
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@skirt.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Pothen/skirt.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/QCD@conf5_0-4x4-10.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/QCD/conf5_0-4x4-10.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/QCD@conf5_4-8x8-05.APlusAT.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/QCD/conf5_4-8x8-05.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Rothberg@gearbox.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Rothberg/gearbox.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Wissgott@parabolic_fem.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Wissgott/parabolic_fem.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@sstmodel.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/HB/sstmodel.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@commanche_dual.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Pothen/commanche_dual.html"}
-      %tr
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@finance256.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/finance256.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Boeing@pct20stif.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Boeing/pct20stif.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Cote@mplate.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Cote/mplate.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bai@rw5151.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Bai/rw5151.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@ncvxbqp1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_indef/ncvxbqp1.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@ford2.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/ford2.html"}
-        %td
-          ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@opt1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/opt1.html"}
+  %table{:class => "about-images"}
+    %tr
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Alemdar@Alemdar.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Alemdar/Alemdar.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrews@Andrews.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrews/Andrews.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@ex3sta1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/ex3sta1.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@fxm3_6.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/fxm3_6.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@fxm4_6.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/fxm4_6.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@lp1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/lp1.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@lpl1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/lpl1.html"}
+    %tr
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@mip1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/mip1.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Andrianov@net25.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Andrianov/net25.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/ATandT@pre2.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/ATandT/pre2.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Barabasi@NotreDame_www.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Barabasi/NotreDame_www.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bates@Chem97Zt.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Bates/Chem97Zt.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bomhof@circuit_2.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Bomhof/circuit_2.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Chen@pkustk01.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Chen/pkustk01.html"}
+    %tr
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Chen@pkustk12.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Chen/pkustk12.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@aug3d.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_indef/aug3d.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@dawson5.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_indef/dawson5.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@ncvxqp9.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_indef/ncvxqp9.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@jnlbrng1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/jnlbrng1.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@pds10.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/pds10.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Gleich@wikipedia-20070206.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Gleich/wikipedia-20070206.html"}
+    %tr
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Grund@poli_large.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Grund/poli_large.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Gupta@gupta3.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Gupta/gupta3.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Hamm@hcircuit.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Hamm/hcircuit.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@illc1033.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/HB/illc1033.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@lock1074.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/HB/lock1074.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@lock_700.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/HB/lock_700.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@aircraft.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/aircraft.html"}
+    %tr
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@cep1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/cep1.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@ex3sta1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/ex3sta1.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@lpl3.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/lpl3.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@nemscem.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/nemscem.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Meszaros@pltexpa.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Meszaros/pltexpa.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Mittelmann@spal_004.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Mittelmann/spal_004.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@barth5.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Pothen/barth5.html"}
+    %tr
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@skirt.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Pothen/skirt.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/QCD@conf5_0-4x4-10.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/QCD/conf5_0-4x4-10.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/QCD@conf5_4-8x8-05.APlusAT.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/QCD/conf5_4-8x8-05.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Rothberg@gearbox.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Rothberg/gearbox.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Wissgott@parabolic_fem.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Wissgott/parabolic_fem.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/HB@sstmodel.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/HB/sstmodel.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Pothen@commanche_dual.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Pothen/commanche_dual.html"}
+    %tr
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@finance256.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/finance256.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Boeing@pct20stif.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Boeing/pct20stif.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Cote@mplate.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Cote/mplate.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/Bai@rw5151.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/Bai/rw5151.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_indef@ncvxbqp1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_indef/ncvxbqp1.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@ford2.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/ford2.html"}
+      %td
+        ==#{link_to image_tag("http://yifanhu.net/GALLERY/GRAPHS/GIF_THUMBNAIL/GHS_psdef@opt1.gif", border:'0'),"https://www.cise.ufl.edu/research/sparse/matrices/GHS_psdef/opt1.html"}
 %br
 %p
-  The images above of matrices in the UF Sparse Matrix Collection were created by
-  ==#{link_to "Yifan Hu, AT&T","http://yifanhu.net"}.
-  As of June 2015, it contains 2757 problems (some of which are sequences of
-  dozens of matrices).  The largest has a dimension of 118 million, and the
-  matrix with the most nonzero entries has almost 2 billion of them.  The
-  matrices are available in three formats: MATLAB mat-file, Rutherford-Boeing,
-  and Matrix Market.
-%p
-  This collection is managed by Tim Davis, with images created by Yifan Hu.
-  ``Editors'' of other collections
-  are attributed, via the Problem.ed field in each problem set.  Problem.author
-  is the matrix creator.  Other collections are always welcome.
-%p
-  ==#{link_to "Click here for a paper describing the collection", "http://faculty.cse.tamu.edu/davis/publications.html"}
-  (look in the list for Davis and Hu, 2011)
-  %h2 Statistics:
-  %ul
-    %li
-      ==#{link_to "A description of the statistics for each matrix", "https://www.cise.ufl.edu/research/sparse/matrices/stats.html"}
-    %li
-      ==#{link_to "Problem domains", "https://www.cise.ufl.edu/research/sparse/matrices/kind.html"}
-  %h2
-    ==#{link_to "DIMACS10","https://www.cise.ufl.edu/research/sparse/dimacs10"}
-  %ul
-    The
-    ==#{link_to "DIMACS10", "http://www.cc.gatech.edu/dimacs10"}
-    Challenge Problems can be accessed in the UF Collection, using the
-    ==#{link_to "DIMACS10","https://www.cise.ufl.edu/research/sparse/dimacs10"} toolbox.
-  %h2 Software:
-  %ul
-    The
-    ==#{link_to "SuiteSparse", "https://www.cise.ufl.edu/research/sparse/SuiteSparse"}
-    collection of packages includes
-    all of the software that I used to generate these web pages, and to
-    manage the matrices themselves (creating the Matrix Market and Rutherford/
-    Boeing files, for example).
-    You don't need SuiteSparse to access the matrices, however.
-  %h2 References:
-  %ul
-    %li
-      To cite this collection, use the following:
-      The University of Florida Sparse Matrix Collection,
-      T. A. Davis and Y. Hu,
-      ACM Transactions on Mathematical Software, Vol 38, Issue 1, 2011, pp 1:1 - 1:25.
-      ==#{link_to "http://www.cise.ufl.edu/research/sparse/matrices", "http://www.cise.ufl.edu/research/sparse/matrices"}.
-    %li
-      When using matrices in the LAW/ group in the collection,
-      please follow the citation instructions at
-      ==#{link_to "http://law.di.unimi.it/datasets.php", "http://law.di.unimi.it/datasets.php"}.
-    %li
-      For additional background, see: Duff, I.S, Grimes, R. G, and Lewis, J. G,
-      ==#{link_to "Sparse matrix test problems", "http://doi.acm.org/10.1145/62038.62043"},
-      ACM Transactions on Mathematical Software,
-      vol 15, no. 1, pp 1-14, 1989.
-      This describes the Harwell-Boeing collection which is the starting point
-      of the UF Sparse Matrix Collection (the first 292 matrices).
-    %li
-      The Rutherford-Boeing format is described in the document
-      ==#{link_to "Rutherford-Boeing Sparse Matrix Collection", "http://www.cise.ufl.edu/DOC/rb.pdf"}
-    %li
-      See the #{link_to "Matrix Market", "http://math.nist.gov/MatrixMarket"}
-      for a description of the Matrix Market format.
-  %h2 To submit matrices to this collection:
-  %ul
-    Sparse matrices from real applications are critical to the development of
-    sparse matrix algorithms.  Many sparse matrix algorithm developers
-    use the matrices at this site to test their methods.  If you would like
-    the next generation of sparse matrix methods to work well on matrices
-    from your problem domain, then please submit matrices to the collection,
-    #{link_to "at this address.","/matrices/new"}.
-    %p
-      %b
-        Please include details about the matrix.
-      In particular, include a paragraph or more about the problem the matrix
-      represents.  Include any citations: journal articles, web pages,
-      conference papers, books, etc that give more details.
-      You cannot include this description in the
-      form, so please include it an uploaded file, or email it to me.
-    %p
-      Use any reasonable format; just tell me what you use.  I prefer either the
-      Matrix Market format, or a MATLAB *.mat file.
-    %p
-      Another simple method is the triplet format.  The triplet format is a simple
-      ascii file with nz lines; each line contains a row index, column index, and
-      numerical value of one entry in the matrix (two values for a complex matrix,
-      the real part followed by the imaginary part).  Duplicates are OK - these are
-      summed in the output matrix.  The triplets can be in any order.  If the matrix
-      dimension cannot be inferred from the row and column indices, please tell me
-      what they are in another file or email message.
-    %p
-      If you wish to include other data (right-hand-sides, solutions,
-      cost vector c for a linear programming problem, and so on),
-      use a separate file for each matrix in your
-      problem.  A dense vector of length n should appear as a file with n lines, and
-      one entry per line (or use the Matrix Market format for dense matrices).
-      Right-hand sides are particularly important for testing
-      iterative solvers for sparse linear systems.
-%hr
-  %h2 Graph drawings, by Yifan Hu
-  #{link_to "Yifan Hu", "http://yifanhu.net"} at Yahoo! Labs has created a
-  #{link_to "graph drawing program", "http://yifanhu.net/PUB/graph_draw_small.pdf"}
-  that can generate truly beautiful drawings of a large graph, based solely on
+  Click on an image above for more details on each matrix.
+  The images were created by
+  ==#{link_to "Yifan Hu", "http://yifanhu.net/"} 
+  at Yahoo! Labs, with a
+  ==#{link_to "graph drawing program", "http://yifanhu.net/PUB/graph_draw_small.pdf"} 
+  that can generate truly beautiful drawings large graphs, based solely on
   the connectivity (that is, a sparse matrix).  Take a look at his
-  ==#{link_to "drawings of the matrices in the UF Sparse Matrix Collection", "http://yifanhu.net/gallery.html"}.
+  ==#{link_to "drawings of the matrices in the Collection", "http://yifanhu.net/gallery.html"},
+  which are also mirrored here on the web page for each matrix.
 
+%h2 Publications
+%p
+  Full details of the Collection are provided in our paper entitled
+  The University of Florida Sparse Matrix Collection,
+  by T. Davis and Y. Hu, published in the
+  ACM Transactions on Mathematical Software, Vol 38, Issue 1, 2011, pages 1:1-1:25
+  <a href="http://dl.acm.org/authorize?6504337">(click here for PDF)</a>.
+  Please cite that paper when using this Collection.
+  For additional background, see Duff, I.S, Grimes, R. G, and Lewis, J. G,
+  <a href="http://doi.acm.org/10.1145/62038.62043">Sparse matrix test problems</a>,
+  ACM Trans. on Mathematical Software, vol 15, no. 1, pp 1-14, 1989, which
+  describes the Harwell-Boeing Collection.
+  See also 
+  ==#{link_to "how to cite LAW group", "http://law.di.unimi.it/datasets.php"}.
 
-  Each square matrix in the UF Sparse Matrix Collection
-  has a link to his graph drawings; clicking on them
-  will bring up his web page for that matrix, including a link to a higher
-  resolution image.
+%h2 Archival data for reproducible research
 %p
-  For a demo of how Yifan's algorithm works, see the
-  ==#{link_to "GraphPlot","http://www.wolfram.com/products/mathematica/newin51/graphlayout.html"}
-  function, which he wrote for #{link_to "Mathematica", "http://www.wolfram.com"}
-  or you can view it here by right-clicking the figure below and selecting "Play".
-  (or just click "reload" on your browser).
+  The Collection serves a vital role in the sparse matrix algorithms
+  community, as a benchmark for algorithmic testing and development.  Results
+  in journal articles that use these matrices can be repeated by other
+  researchers.
+  The Collection also appears widely in other repositories or citation indices:
   %ul
-    %object{:classid => "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000",
-    :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0",
-    :height => "334", :vmode => "transparent", :width => "305"}
-      %param{:name => "movie", :value => "Wolfram/graphplotbluedots.swf"}
-        %param{:name => "play", :value => "true"}
-          %param{:name => "loop", :value => "true"}
-            %param{:name => "quality", :value => "high"}
-              %embed{:height => "334", :loop => "true", :play => "true", :pluginspace => "http://www.macromedia.com/go/getflashplayer",
-              :src => "https://www.cise.ufl.edu/research/sparse/matrices/Wolfram/graphplotbluedots.swf",
-              :type => "application/x-shockwave-flash", :vmode => "transparent",
-              :width => "305"}
+    %li
+      ==#{link_to "Thomson Reuters Data Citation Index", "http://wokinfo.com/products_tools/multidisciplinary/dci/"} (search for "sparse")
+    %li
+      ==#{link_to "Amazon Web Services", "http://developer.amazonwebservices.com/connect/entry.jspa?externalID=2379&amp;categoryID=276"}
+    %li
+      ==#{link_to "Re3Data.org", "http://service.re3data.org/repository/r3d100010208"}
+
+%h2 To access the Collection
 %p
-  Below is Yifan Hu's graph drawing of the
-  #{link_to "Chen/ptusk01", "https://www.cise.ufl.edu/research/sparse/matrices/Chen/pkustk01.html"} matrix that
-  I obtained from #{link_to "Pu Chen", "https://www.cise.ufl.edu/research/sparse/matrices/Chen"}, Beijing University.
-  The matrix is a model of the #{link_to "Beijing Botanical Garden Conservatory","http://www.beijingbg.com"}.
-  Overlayed on top of the graph is a picture of the actual building.
-%p
+  There are several ways to download matrices from this Collection.
+
   %ul
-    ==#{link_to image_tag("https://www.cise.ufl.edu/research/sparse/matrices/Wolfram/graphlayout-dome.gif"), "https://www.cise.ufl.edu/research/sparse/matrices/Chen/pkustk01.html"}
+    %li 
+      Via your web browser.  Click on the 
+      ==#{link_to "Index", "/"} 
+      tab in the top menu bar on this page.
+    %li Via MATLAB with the UFget / SSget function.
+    %li Via a stand-alone Java GUI.
+    %li Via Julia.
+
+%p
+  See the
+  ==#{link_to "Interfaces", "/interfaces"} 
+  tab at the top of this page
+  for details on UFget, the Java GUI, and the Julia interface.
+  Matrices are provided in three formats: MATLAB *.mat file, Rutherford-Boeing, and Matrix Market.
+  The Rutherford-Boeing format is described in a document on the
+  ==#{link_to "Rutherford-Boeing Sparse Matrix Collection", "rb.pdf"}.
+  See the 
+  ==#{link_to "Matrix Market", "http://math.nist.gov/MatrixMarket"}
+  for a description of the Matrix Market format.
+
+%h2 To submit matrices to the Collection:
+%p
+  Click on the 
+  ==#{link_to "Submit Matrix", "/submit"}.
+  tab in the top menu bar on this page to submit matrices to the Collection.
