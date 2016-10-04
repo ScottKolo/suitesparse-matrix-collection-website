@@ -2,6 +2,7 @@
 %html{:lang => "en"}
   %head
     %title= full_title(yield(:title))
+    %meta{name: "viewport", content: "width=device-width,initial-scale=1.0"}
     = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Cutive"
     = stylesheet_link_tag 'application', media: 'all', :'data-turbolinks-track' => true
     = javascript_include_tag 'application', :'data-turbolinks-track' => true
