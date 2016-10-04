@@ -54,7 +54,6 @@
   Right-hand sides are particularly important for testing
   iterative solvers for sparse linear systems.
 
-
 = form_for :matrix, method: "post", url: "submit" do |f|
   %h2 Submitter Information
   %table{class: "table"}
@@ -103,7 +102,7 @@
         = f.select :submitter_confidentiality, [['Display Publically', false], ['Not for Public Release', true]]
     %tr
       %td
-        = #recaptcha_tags
+        = recaptcha_tags
   = submit_tag("Submit My Matrix")
 %br
 %br
