@@ -25,6 +25,8 @@ $link-color: #265986;
 
 body {
   padding-top: 70px;
+  min-width: 640px;
+  width: auto;
 }
 
 $navbar-inverse-bg: rgb(0, 0, 0);
@@ -77,10 +79,6 @@ $navbar-inverse-bg: rgb(0, 0, 0);
     .navbar-header {
         float:none;
     }
-}
-
-.about-images {
-  background-color: black;
 }
 
 @media only screen and (width: 760px) {
@@ -144,6 +142,10 @@ $navbar-inverse-bg: rgb(0, 0, 0);
 
 .slick-list {
   height: 384px;
+}
+
+.slick-arrow {
+  z-index: 10;
 }
 
 #notice {
