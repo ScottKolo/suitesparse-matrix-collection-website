@@ -3,7 +3,7 @@
   %head
     %title= full_title(yield(:title))
     = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Cutive"
-    = stylesheet_link_tag    'application', media: 'all', :'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all', :'data-turbolinks-track' => true
     = javascript_include_tag 'application', :'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
@@ -30,7 +30,7 @@
               = link_to "Interfaces", "/other_interfaces"
             %li{:class => ("active" if yield(:title) == 'Submit Matrix')}
               = link_to "Submit Matrix", "submit"
-    .container.theme-showcase{:role => "main"}
+    .container.theme-showcase.main{role: "main", id: "#{yield(:title).downcase.gsub(' ', '-')}-main"}
       - if flash[:notice]
         %div.alert.alert-danger
           = flash[:notice]
