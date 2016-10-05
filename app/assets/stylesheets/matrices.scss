@@ -10,14 +10,11 @@ img {
 
 #index-main > .well {
     min-width: 640px;
-}
-
-#filter-dropdown {
-    margin-bottom: 10px;
+    padding-left: 0px;
 }
 
 .filter-column {
-    border-right: 1px solid #e3e3e3;
+    padding: 0px;
 }
 
 .slick-prev:before, .slick-next:before {

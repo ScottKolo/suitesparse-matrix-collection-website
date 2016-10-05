@@ -9,42 +9,42 @@
   for more information.
 
 .well.container-fluid
-  .col-xs-2.column.text-center.filter-column
-    %br
-    .dropdown
-      %button.btn.btn-default.dropdown-toggle{type: "button", id: "filter-dropdown", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
-        %i.fa.fa-filter{'aria-hidden': "true"}
-        Filters
-        %i.fa.fa-caret-down{'aria-hidden': "true"}
-      %ul.dropdown-menu{'aria-labelledby': 'filter-dropdown'}
-        %li
-          .small{'data-target': ".rows-checkbox", tabIndex: "-1"}
-            = check_box_tag :rows_checkbox, 'enable', false, class: "filter-checkbox rows-checkbox", 'data-target': "#rows-filter"
-            = label_tag :rows_checkbox, "Rows"
-        %li
-          .small{'data-target': ".columns-checkbox", tabIndex: "-1"}
-            = check_box_tag :columns_checkbox, 'enable', false, class: "filter-checkbox columns-checkbox", 'data-target': "#columns-filter"
-            = label_tag :columns_checkbox, "Columns"
-        %li
-          .small{'data-target': ".nonzeros-checkbox", tabIndex: "-1"}
-            = check_box_tag :nonzeros_checkbox, 'enable', false, class: "filter-checkbox nonzeros-checkbox", 'data-target': "#nonzeros-filter"
-            = label_tag :nonzeros_checkbox, "Nonzeros"
-        %li
-          .small{'data-target': ".pattern-symmetry-checkbox", tabIndex: "-1"}
-            = check_box_tag :pattern_symmetry_checkbox, 'enable', false, class: "filter-checkbox pattern-symmetry-checkbox", 'data-target': "#pattern-symmetry-filter"
-            = label_tag :pattern_symmetry_checkbox, "Pattern Symmetry"
-        %li
-          .small{'data-target': ".numerical-symmetry-checkbox", tabIndex: "-1"}
-            = check_box_tag :numerical_symmetry_checkbox, 'enable', false, class: "filter-checkbox numerical-symmetry-checkbox", 'data-target': "#numerical-symmetry-filter"
-            = label_tag :numerical_symmetry_checkbox, "Numerical Symmetry"
-        %li
-          .small{'data-target': ".strongly-connected-components-checkbox", tabIndex: "-1"}
-            = check_box_tag :strongly_connected_components_checkbox, 'enable', false, class: "filter-checkbox strongly-connected-components-checkbox", 'data-target': "#strongly-connected-components-filter"
-            = label_tag :strongly_connected_components_checkbox, "Strongly Connected Components"
-        %li
-          .small{'data-target': ".positive-definite-checkbox", tabIndex: "-1"}
-            = check_box_tag :positive_definite_checkbox, 'enable', false, class: "filter-checkbox positive-definite-checkbox", 'data-target': "#positive-definite-filter"
-            = label_tag :positive_definite_checkbox, "Positive Definiteness"
+  .col-xs-2.column
+    .text-center.filter-column
+      .dropdown
+        %button.btn.btn-default.dropdown-toggle{type: "button", id: "filter-dropdown", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
+          %i.fa.fa-filter{'aria-hidden': "true"}
+          Filters
+          %i.fa.fa-caret-down{'aria-hidden': "true"}
+        %ul.dropdown-menu{'aria-labelledby': 'filter-dropdown'}
+          %li
+            .small{'data-target': ".rows-checkbox", tabIndex: "-1"}
+              = check_box_tag :rows_checkbox, 'enable', false, class: "filter-checkbox rows-checkbox", 'data-target': "#rows-filter"
+              = label_tag :rows_checkbox, "Rows"
+          %li
+            .small{'data-target': ".columns-checkbox", tabIndex: "-1"}
+              = check_box_tag :columns_checkbox, 'enable', false, class: "filter-checkbox columns-checkbox", 'data-target': "#columns-filter"
+              = label_tag :columns_checkbox, "Columns"
+          %li
+            .small{'data-target': ".nonzeros-checkbox", tabIndex: "-1"}
+              = check_box_tag :nonzeros_checkbox, 'enable', false, class: "filter-checkbox nonzeros-checkbox", 'data-target': "#nonzeros-filter"
+              = label_tag :nonzeros_checkbox, "Nonzeros"
+          %li
+            .small{'data-target': ".pattern-symmetry-checkbox", tabIndex: "-1"}
+              = check_box_tag :pattern_symmetry_checkbox, 'enable', false, class: "filter-checkbox pattern-symmetry-checkbox", 'data-target': "#pattern-symmetry-filter"
+              = label_tag :pattern_symmetry_checkbox, "Pattern Symmetry"
+          %li
+            .small{'data-target': ".numerical-symmetry-checkbox", tabIndex: "-1"}
+              = check_box_tag :numerical_symmetry_checkbox, 'enable', false, class: "filter-checkbox numerical-symmetry-checkbox", 'data-target': "#numerical-symmetry-filter"
+              = label_tag :numerical_symmetry_checkbox, "Numerical Symmetry"
+          %li
+            .small{'data-target': ".strongly-connected-components-checkbox", tabIndex: "-1"}
+              = check_box_tag :strongly_connected_components_checkbox, 'enable', false, class: "filter-checkbox strongly-connected-components-checkbox", 'data-target': "#strongly-connected-components-filter"
+              = label_tag :strongly_connected_components_checkbox, "Strongly Connected Components"
+          %li
+            .small{'data-target': ".positive-definite-checkbox", tabIndex: "-1"}
+              = check_box_tag :positive_definite_checkbox, 'enable', false, class: "filter-checkbox positive-definite-checkbox", 'data-target': "#positive-definite-filter"
+              = label_tag :positive_definite_checkbox, "Positive Definiteness"
   <!-- Set up the filter form -->
   .col-xs-10.column.text-center{style: "margin-left: -1px; border-left: 1px solid #e3e3e3;"}
     = form_for_filterrific @filterrific do |f|
