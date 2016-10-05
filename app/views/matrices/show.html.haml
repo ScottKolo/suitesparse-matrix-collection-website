@@ -120,11 +120,10 @@
             %td
               - if @matrix.notes
                 %pre= @matrix.notes
-:javascript
-  $(function() {
-      $('.carousel').slick({
-          adaptiveHeight: true,
-          slidesToShow: 1,
-          dots: true
-      });
-  });
+:coffeescript
+  $(document).on 'turbolinks:load', ->
+    $('.carousel').slick({
+      adaptiveHeight: true,
+      slidesToShow: 1,
+      dots: true
+    });
