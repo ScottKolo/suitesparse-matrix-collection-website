@@ -12,34 +12,35 @@
     = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
 
 <!-- Layout the matrix table -->
-%table{:id => "matrices", :class => "table table-striped"}
-  %thead
-    %tr{:id => 'sort-selector'}
-      %th= filterrific_sorting_link(@filterrific, :group)
-      %th= filterrific_sorting_link(@filterrific, :name)
-      %th= filterrific_sorting_link(@filterrific, :rows)
-      %th= filterrific_sorting_link(@filterrific, :cols)
-      %th= filterrific_sorting_link(@filterrific, :nonzeros)
-      %th= filterrific_sorting_link(@filterrific, :kind)
-      %th= filterrific_sorting_link(@filterrific, :date)
-      %th{:id => 'download-header'} Download File
-  %tbody
-    - matrices.each do |matrix|
-      %tr
-        %td{class: "column-group"}= link_to "#{matrix.group}", "#{matrix.group}"
-        %td{class: "column-name"}= link_to "#{matrix.name}", "#{matrix.group}/#{matrix.name}"
-        %td{class: "column-num_rows"}= number_with_delimiter(matrix.num_rows, :delimiter => ',')
-        %td{class: "column-num_cols"}= number_with_delimiter(matrix.num_cols, :delimiter => ',')
-        %td{class: "column-nonzeros"}= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
-        %td{class: "column-kind"}= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
-        %td{class: "column-date"}= matrix.date
-        %td{style: "min-width: 380px"}
-          = link_to matrix.get_url(:matlab), class: "btn btn-default btn-sm" do
-            = "MATLAB #{fa_icon 'download'}".html_safe
-          = link_to matrix.get_url(:rutherford_boeing), class: "btn btn-default btn-sm" do
-            = "Rutherford Boeing #{fa_icon 'download'}".html_safe
-          = link_to matrix.get_url(:matrix_market), class: "btn btn-default btn-sm" do
-            = "Matrix Market #{fa_icon 'download'}".html_safe
+.col-sm-12
+  %table.table.table-striped#matrices
+    %thead
+      %tr#sort-selector
+        %th= filterrific_sorting_link(@filterrific, :group)
+        %th= filterrific_sorting_link(@filterrific, :name)
+        %th= filterrific_sorting_link(@filterrific, :rows)
+        %th= filterrific_sorting_link(@filterrific, :cols)
+        %th= filterrific_sorting_link(@filterrific, :nonzeros)
+        %th= filterrific_sorting_link(@filterrific, :kind)
+        %th= filterrific_sorting_link(@filterrific, :date)
+        %th#download-header.hidden-xs Download File
+    %tbody
+      - matrices.each do |matrix|
+        %tr
+          %td.column-group= link_to "#{matrix.group}", "#{matrix.group}"
+          %td.column-name= link_to "#{matrix.name}", "#{matrix.group}/#{matrix.name}"
+          %td.column-num_rows= number_with_delimiter(matrix.num_rows, :delimiter => ',')
+          %td.column-num_cols= number_with_delimiter(matrix.num_cols, :delimiter => ',')
+          %td.column-nonzeros= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
+          %td.column-kind= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
+          %td.column-date= matrix.date
+          %td.hidden-xs
+            = link_to matrix.get_url(:matlab), class: "btn btn-default btn-sm" do
+              = "MATLAB #{fa_icon 'download'}".html_safe
+            = link_to matrix.get_url(:rutherford_boeing), class: "btn btn-default btn-sm" do
+              = "Rutherford Boeing #{fa_icon 'download'}".html_safe
+            = link_to matrix.get_url(:matrix_market), class: "btn btn-default btn-sm" do
+              = "Matrix Market #{fa_icon 'download'}".html_safe
 
 <!-- Bottom Pagination Bar -->
 .pagination-container

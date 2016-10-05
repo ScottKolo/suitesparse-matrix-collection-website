@@ -128,30 +128,6 @@ $navbar-inverse-bg: rgb(0, 0, 0);
   margin-bottom: 0px;
 }
 
-.slick-prev:before, .slick-next:before {
-  color: black;
-}
-
-.slick-slide img {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  margin: auto;
-  max-height: 384px;
-}
-
-.slick-slide {
-  height: 384px;
-}
-
-.slick-list {
-  height: 384px;
-}
-
-.slick-arrow {
-  z-index: 10;
-}
-
 #notice {
   color: green;
 }

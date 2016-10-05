@@ -9,7 +9,7 @@
   for more information.
 
 .well.container-fluid
-  .col-xs-2.column.text-center{style: "border-right: 1px solid #e3e3e3;"}
+  .col-sm-2.column.text-center.filter-column
     %br
     .dropdown
       %button.btn.btn-default.dropdown-toggle{type: "button", id: "filter-dropdown", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
@@ -46,7 +46,7 @@
             = check_box_tag :positive_definite_checkbox, 'enable', false, class: "filter-checkbox positive-definite-checkbox", 'data-target': "#positive-definite-filter"
             = label_tag :positive_definite_checkbox, "Positive Definiteness"
   <!-- Set up the filter form -->
-  .col-xs-10.column.text-center{style: "margin-left: -1px; border-left: 1px solid #e3e3e3;"}
+  .col-sm-10.column.text-center{style: "margin-left: -1px; border-left: 1px solid #e3e3e3;"}
     = form_for_filterrific @filterrific do |f|
       #search.well.well-sm
         = f.label :search_query, "Search"
