@@ -122,7 +122,7 @@
                 %pre= @matrix.notes
 :coffeescript
   $(document).on 'turbolinks:load', ->
-    $('.carousel').slick({
+    $('.carousel').not('.slick-initialized').slick({
       adaptiveHeight: true,
       slidesToShow: 1,
       dots: true
