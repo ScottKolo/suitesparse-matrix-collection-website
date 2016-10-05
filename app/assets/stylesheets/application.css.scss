@@ -95,6 +95,12 @@ $navbar-inverse-bg: rgb(0, 0, 0);
   text-align: center;
 }
 
+.filter-text {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 3px;
+}
+
 .filter-hidden {
   display: none;
 }
