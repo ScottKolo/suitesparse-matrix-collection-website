@@ -163,20 +163,20 @@ class Matrix < ActiveRecord::Base
 
   # Filter by pattern symmetry
   scope :min_pattern_symmetry, -> (min_pattern_symmetry) {
-    where("matrices.pattern_symmetry >= ?", min_pattern_symmetry/100)
+    where("matrices.pattern_symmetry >= ?", min_pattern_symmetry.to_f/100)
   }
 
   scope :max_pattern_symmetry, -> (max_pattern_symmetry) {
-    where("matrices.pattern_symmetry <= ?", max_pattern_symmetry/100)
+    where("matrices.pattern_symmetry <= ?", max_pattern_symmetry.to_f/100)
   }
 
   # Filter by numerical symmetry
   scope :min_numerical_symmetry, -> (min_numerical_symmetry) {
-    where("matrices.numeric_symmetry >= ?", min_numerical_symmetry/100)
+    where("matrices.numeric_symmetry >= ?", min_numerical_symmetry.to_f/100)
   }
 
   scope :max_numerical_symmetry, -> (max_numerical_symmetry) {
-    where("matrices.numeric_symmetry <= ?", max_numerical_symmetry/100)
+    where("matrices.numeric_symmetry <= ?", max_numerical_symmetry.to_f/100)
   }
 
   # Filter by number of strongly connected components
