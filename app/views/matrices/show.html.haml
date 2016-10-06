@@ -105,6 +105,9 @@
             %tr
               %th Full Numerical Rank?
               %td= @matrix.full_numerical_rank
+            %tr
+              %th Download Singular Values
+              %td= link_to "MATLAB #{fa_icon 'download'}".html_safe, @matrix.get_url(:svd), class: "btn btn-default"
   .row
     .col-md-12
       %table.table.table-striped

@@ -16,6 +16,8 @@ class Matrix < ActiveRecord::Base
       return "#{base_url}RB/#{self.group}/#{self.name}.tar.gz"
     elsif file_format == :matrix_market
       return "#{base_url}MM/#{self.group}/#{self.name}.tar.gz"
+    elsif file_format == :svd
+      return "#{base_url}svd/#{self.group}/#{self.name}_SVD.mat"
     else
       raise ArgumentError.new("Unknown matrix file type - only :matlab, :rutherford_boeing, and :matrix_market allowed")
     end
