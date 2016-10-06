@@ -27,6 +27,14 @@ img {
     transform: scale(1.5, 1.5);
 }
 
+.slick-prev {
+    margin-left: 10px;
+}
+
+.slick-next {
+    margin-right: 6px;
+}
+
 .slick-slide:before {
     content: ' ';
     display: inline-block;
@@ -52,7 +60,7 @@ img {
 
 .slick-dots {
     position: relative;
-    top: -6px;
+    top: 6px;
 }
 
 .slick-arrow {
