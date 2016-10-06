@@ -8,14 +8,18 @@
       .carousel
         %figure.slick-slide
           %a{href: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif"}
-            %img.img-responsive{src: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}/
+            %img.img-responsive{src: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}
         %figure.slick-slide
           %a{href: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png"}
-            %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", alt: "Nonzero Pattern of #{@matrix.group}/#{@matrix.name}"}/
+            %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", alt: "Nonzero Pattern of #{@matrix.group}/#{@matrix.name}"}
         -if @matrix.norm
           %figure.slick-slide
             %a{href: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_svd.png"}
-              %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_svd.png", alt: "Singular Values of #{@matrix.group}/#{@matrix.name}"}/
+              %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_svd.png", alt: "Singular Values of #{@matrix.group}/#{@matrix.name}"}
+        -if @matrix.aux_fields.include? 'coord:'
+          %figure.slick-slide
+            %a{href: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_gplot.png"}
+              %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_gplot.png", alt: "3D Graph Plot of #{@matrix.group}/#{@matrix.name}"}
     .col-md-6.col-md-pull-6
       %table.table.table-striped
         %tbody
