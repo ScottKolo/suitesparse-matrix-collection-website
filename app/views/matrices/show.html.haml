@@ -16,7 +16,7 @@
           %figure.slick-slide
             %a{href: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_svd.png"}
               %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_svd.png", alt: "Singular Values of #{@matrix.group}/#{@matrix.name}"}
-        -if @matrix.aux_fields.include? 'coord:'
+        -if @matrix.aux_fields and @matrix.aux_fields.include? 'coord:'
           %figure.slick-slide
             %a{href: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_gplot.png"}
               %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_gplot.png", alt: "3D Graph Plot of #{@matrix.group}/#{@matrix.name}"}
