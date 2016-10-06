@@ -37,7 +37,7 @@
         %tbody
           %tr
             %th Group
-            %td= @matrix.group
+            %td= link_to "#{@matrix.group}", "/#{@matrix.group}"
           %tr
             %th Name
             %td= @matrix.name
@@ -144,7 +144,8 @@
             %th Notes
             %td
               - if @matrix.notes
-                %pre= @matrix.notes
+                .notesbox
+                  %pre.pre-scrollable= @matrix.notes
 :coffeescript
   $(document).on 'turbolinks:load', ->
     $('.carousel').not('.slick-initialized').slick({

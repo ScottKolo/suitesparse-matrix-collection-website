@@ -6,7 +6,8 @@
     %tr
       %th Group Description
       %td
-        %pre= @group.notes
+        .notesbox
+          %pre.pre-scrollable= @group.notes
 
 #matrix-list
   = render partial: 'groups/list', locals: { matrices: @matrices }
