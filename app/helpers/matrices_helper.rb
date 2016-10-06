@@ -19,6 +19,7 @@ module MatricesHelper
     return @kinds
   end
 
+  # Creates a list of possible matrix types for new matrices
   def kind_submission_list
     @kinds = kind_list
 
@@ -30,5 +31,22 @@ module MatricesHelper
 
     # Add an option for an "Other" kind if the submission is really different
     @kinds.push("Other")
+  end
+
+  def has_scc_plot(matrix)
+    matrix.num_strongly_connected_components and 
+    matrix.num_strongly_connected_components > 1 and
+    matrix.num_rows and
+    matrix.num_cols and
+    !matrix.structural_full_rank.nil? and
+    not (has_dmperm_plot(matrix) and matrix.num_rows == matrix.num_cols and matrix.structural_full_rank)
+  end
+
+  def has_dmperm_plot(matrix)
+    matrix.num_dmperm_blocks and matrix.num_dmperm_blocks > 1 and not matrix.kind.include? 'graph'
+  end
+
+  def has_gplot(matrix)
+    matrix.aux_fields and matrix.aux_fields.include? 'coord:'
   end
 end

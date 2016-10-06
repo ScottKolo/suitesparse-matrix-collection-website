@@ -9,6 +9,10 @@
         %figure.slick-slide
           %a{href: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif"}
             %img.img-responsive{src: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}
+        -if @matrix.rb_type and @matrix.rb_type == 'complex'
+          %figure.slick-slide
+            %a{href: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.APlusAT.gif"}
+              %img.img-responsive{src: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.APlusAT.gif", alt: "Graph Visualization of A+A' for #{@matrix.group}/#{@matrix.name}"}
         %figure.slick-slide
           %a{href: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png"}
             %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}.png", alt: "Nonzero Pattern of #{@matrix.group}/#{@matrix.name}"}
@@ -16,15 +20,15 @@
           %figure.slick-slide
             %a{href: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_svd.png"}
               %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_svd.png", alt: "Singular Values of #{@matrix.group}/#{@matrix.name}"}
-        -if @matrix.aux_fields and @matrix.aux_fields.include? 'coord:'
+        -if has_gplot(@matrix)
           %figure.slick-slide
             %a{href: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_gplot.png"}
               %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_gplot.png", alt: "3D Graph Plot of #{@matrix.group}/#{@matrix.name}"}
-        -if @matrix.num_dmperm_blocks > 1
+        -if has_dmperm_plot(@matrix)
           %figure.slick-slide
             %a{href: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_dmperm.png"}
               %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_dmperm.png", alt: "Dulmage-Mendelsohn Permutation of #{@matrix.group}/#{@matrix.name}"}
-        -if @matrix.num_strongly_connected_components > 1 and not (@matrix.num_rows == @matrix.num_cols and @matrix.structurally_full_rank)
+        -if has_scc_plot(@matrix)
           %figure.slick-slide
             %a{href: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_scc.png"}
               %img.img-responsive{src: "#{Matrix.get_base_url}matrices/#{@matrix.group}/#{@matrix.name}_scc.png", alt: "Connected Components of the Bipartite Graph of #{@matrix.group}/#{@matrix.name}"}
