@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # Route for sparse.tamu.edu/group_name/matrix_name
   get '/:group/:name', to: 'matrices#show'
   
+  # Route for sparse.tamu.edu/groups (groups list)
+  get '/groups', to: 'groups#index'
+
   # Route for sparse.tamu.edu/group_name
   get '/:group', to: 'groups#show'
 end
