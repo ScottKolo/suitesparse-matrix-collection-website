@@ -54,6 +54,7 @@ class MatricesController < ApplicationController
   def submit
     # Verify the reCaptcha
     if verify_recaptcha
+      AdminNotifierMailer.send_matrix_submitted_email.deliver_now
       flash[:notice] = "Matrix submitted successfully!"
       redirect_to :index
     else

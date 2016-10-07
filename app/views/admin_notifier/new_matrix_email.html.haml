@@ -1,0 +1,42 @@
+!!! 5
+%html{:lang => "en"}
+  %head
+    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Cutive"
+    = stylesheet_link_tag 'application', media: 'all'
+  %body
+    %nav{:class => "navbar navbar-inverse navbar-fixed-top"}
+      .container
+        .navbar-header
+          = link_to root_path, class: "navbar-brand" do
+            .pull-left{style: "margin-left: -200px; margin-top: -40px;"}
+              = image_tag('logo.png', alt: "SuiteSparse Matrix Collection Logo")
+            %h1
+              SuiteSparse Matrix Collection
+              %small Formerly the University of Florida Sparse Matrix Collection
+    .container.theme-showcase.main{role: "main"}
+      %table.table.table-striped
+        %tbody
+          %tr
+            %th Submitter Name
+            %td 
+          %tr
+            %th Submitter Email
+            %td
+          %tr
+            %th Display Publically?
+            %td 
+          %tr
+            %th Matrix Name
+            %td
+          %tr
+            %th Kind/Problem Domain
+            %td
+          %tr
+            %th Notes
+            %td
+          %tr
+            %th Matrix File URL
+            %td
+          %tr
+            %th Permission Granted to Display Publically
+            %td

@@ -85,5 +85,7 @@ group :production do
   gem 'puma'
   # Enable better logging and support on Heroku
   gem 'rails_12factor'
+  # Use Mailgun for sending notification emails
+  gem 'mailgun_rails'
 end
 
