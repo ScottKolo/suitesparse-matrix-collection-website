@@ -21,8 +21,8 @@
   sparse matrix algorithms.  Many sparse matrix algorithm developers
   use the matrices at this site to test their methods.  If you would like
   the next generation of sparse matrix methods to work well on matrices
-  from your problem domain, then please submit matrices to the Collection
-  ==#{link_to "by clicking here", "/submit"}.
+  from your problem domain, then please submit matrices to the Collection by
+  filling out the form below.
 
 %p
   %strong
@@ -41,13 +41,15 @@
   Another simple method is the triplet format.  The triplet format is a simple
   ascii file with nz lines; each line contains a row index, column index, and
   numerical value of one entry in the matrix (two values for a complex matrix,
-  the real part followed by the imaginary part).  Duplicates are OK - these are
+  the real part followed by the imaginary part).  Duplicates are acceptable - these are
   summed in the output matrix.  The triplets can be in any order.  If the matrix
   dimension cannot be inferred from the row and column indices, please tell me
   what they are in another file or email message.
 %p
-  If you wish to include other data (right-hand-sides, solutions,
-  cost vector c for a linear programming problem, and so on),
+  If you wish to include other data (right-hand sides, solutions,
+  cost vector 
+  %em c 
+  for a linear programming problem, and so on),
   use a separate file for each matrix in your
   problem.  A dense vector of length n should appear as a file with n lines, and
   one entry per line (or use the Matrix Market format for dense matrices).
@@ -103,6 +105,8 @@
     %tr
       %td
         = recaptcha_tags
-  = submit_tag("Submit My Matrix")
+    %tr
+      %td
+        = submit_tag("Submit My Matrix")
 %br
 %br
