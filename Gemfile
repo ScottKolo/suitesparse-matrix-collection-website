@@ -46,6 +46,8 @@ gem "recaptcha", require: "recaptcha/rails"
 gem 'filterrific', '~> 2.0.6', :git => 'https://github.com/ScottKolo/filterrific.git', branch: 'rails5'
 # Use Slick for image carousels
 gem 'jquery-slick-rails'
+# Use Roadie to inline CSS styles in email
+gem 'roadie-rails', '~> 1.0'
 
 group :development, :test do
   # Use Cucumber for BDD testing
@@ -87,7 +89,5 @@ group :production do
   gem 'rails_12factor'
   # Use Mailgun for sending notification emails
   gem 'mailgun_rails'
-  # Use Roadie to inline CSS styles in email
-  gem 'roadie-rails', '~> 1.0'
 end
 
