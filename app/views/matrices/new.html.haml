@@ -39,7 +39,9 @@
 
 %p
   Another simple method is the triplet format.  The triplet format is a simple
-  ascii file with nz lines; each line contains a row index, column index, and
+  ASCII file with 
+  %em nz 
+  lines; each line contains a row index, column index, and
   numerical value of one entry in the matrix (two values for a complex matrix,
   the real part followed by the imaginary part).  Duplicates are acceptable - these are
   summed in the output matrix.  The triplets can be in any order.  If the matrix
@@ -51,12 +53,16 @@
   %em c 
   for a linear programming problem, and so on),
   use a separate file for each matrix in your
-  problem.  A dense vector of length n should appear as a file with n lines, and
+  problem.  A dense vector of length 
+  %em n 
+  should appear as a file with 
+  %em n 
+  lines, and
   one entry per line (or use the Matrix Market format for dense matrices).
   Right-hand sides are particularly important for testing
   iterative solvers for sparse linear systems.
 
-= form_for :matrix, method: "post", url: "submit" do |f|
+= form_for @new_matrix, method: "post", url: "/submit" do |f|
   %h2 Submitter Information
   %table{class: "table"}
     %tr

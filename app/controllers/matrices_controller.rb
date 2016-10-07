@@ -49,17 +49,24 @@ class MatricesController < ApplicationController
   def new
     # Get a list of kinds currently in the collection
     @kinds = helpers.kind_submission_list
+    @new_matrix = SubmittedMatrix.new
   end
 
   def submit
     # Verify the reCaptcha
     if verify_recaptcha
-      AdminNotifierMailer.send_matrix_submitted_email.deliver_now
+      permitted_params = params[:submitted_matrix].permit(:submitter_name, 
+                :submitter_email, :display_email, :name, :kind, :notes, 
+                :submitter_url, :submitter_confidentiality)
+      @new_matrix = SubmittedMatrix.new(permitted_params)
+      logger.debug @new_matrix.submitter_name
+      email = AdminNotifierMailer.send_matrix_submitted_email(@new_matrix)
+      email.deliver
       flash[:notice] = "Matrix submitted successfully!"
       redirect_to :index
     else
       flash[:notice] = "Please verify that you are not a robot."
-      redirect_to :new
+      redirect_to :submit
     end
   end
 

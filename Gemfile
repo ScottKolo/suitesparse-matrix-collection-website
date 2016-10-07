@@ -87,5 +87,7 @@ group :production do
   gem 'rails_12factor'
   # Use Mailgun for sending notification emails
   gem 'mailgun_rails'
+  # Use Roadie to inline CSS styles in email
+  gem 'roadie-rails', '~> 1.0'
 end
 

@@ -1,8 +1,10 @@
 class AdminNotifierMailer < ApplicationMailer
+  include Roadie::Rails::Automatic
   default :from => ENV['EMAIL_LOGIN']
 
-  # send a notification email with the new matrix information
-  def send_matrix_submitted_email
+  # Send a notification email with the new matrix information
+  def send_matrix_submitted_email(new_matrix)
+    @new_matrix = new_matrix
     mail( to: ENV['DESTINATION_EMAIL'],
           subject: 'New Matrix Submitted!',
           template_path: 'admin_notifier',
