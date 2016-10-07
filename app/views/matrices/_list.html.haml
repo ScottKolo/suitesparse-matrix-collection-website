@@ -16,8 +16,8 @@
   %table.table.table-striped#matrices
     %thead
       %tr#sort-selector
-        %th= filterrific_sorting_link(@filterrific, :group)
         %th= filterrific_sorting_link(@filterrific, :name)
+        %th= filterrific_sorting_link(@filterrific, :group)
         %th= filterrific_sorting_link(@filterrific, :rows)
         %th= filterrific_sorting_link(@filterrific, :cols)
         %th= filterrific_sorting_link(@filterrific, :nonzeros)
@@ -27,8 +27,8 @@
     %tbody
       - matrices.each do |matrix|
         %tr
-          %td.column-group= link_to "#{matrix.group}", "#{matrix.group}"
           %td.column-name= link_to "#{matrix.name}", "#{matrix.group}/#{matrix.name}"
+          %td.column-group= link_to "#{matrix.group}", "#{matrix.group}"
           %td.column-num_rows= number_with_delimiter(matrix.num_rows, :delimiter => ',')
           %td.column-num_cols= number_with_delimiter(matrix.num_cols, :delimiter => ',')
           %td.column-nonzeros= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
