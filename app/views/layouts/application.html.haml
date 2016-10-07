@@ -30,7 +30,7 @@
             %li{:class => ("active" if yield(:title) == 'Interfaces')}
               = link_to "Interfaces", "/other_interfaces"
             %li{:class => ("active" if yield(:title) == 'Submit Matrix')}
-              = link_to "Submit Matrix", "submit"
+              = link_to "Submit Matrix", "/submit"
     .container.theme-showcase.main{role: "main", id: "#{yield(:title).downcase.gsub(' ', '-')}-main"}
       - if flash[:notice]
         %div.alert.alert-danger
