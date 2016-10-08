@@ -1,39 +1,36 @@
 !!! 5
 %html{:lang => "en"}
   %head
-    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Cutive"
-    = stylesheet_link_tag 'application', media: 'all'
+    %meta{'http-equiv': "Content-Type", content: "text/html; charset=utf-8"}
   %body
-    %nav{:class => "navbar navbar-inverse navbar-fixed-top"}
-      .container
-        .navbar-header
-          %h1
-            SuiteSparse Matrix Collection
-            %small Formerly the University of Florida Sparse Matrix Collection
-    .container.theme-showcase.main{role: "main"}
+    %div{style: "height: 50px; margin-bottom: 20px; background-color: #000;"}
+      %h1{style: "margin-top: -6px; font-size: 20.7px; font-family: 'cutive'; color: #fff;"}
+        SuiteSparse Matrix Collection
+        %small Formerly the University of Florida Sparse Matrix Collection
+    .main{role: "main"}
       %p
         A new matrix has been submitted to the Collection:
-      %table.table.table-striped
+      %table
         %tbody
-          %tr
+          %tr{style: "background-color: #f9f9f9;"}
             %th Submitter Name
             %td= @new_matrix.submitter_name
           %tr
             %th Submitter Email
             %td= @new_matrix.submitter_email
-          %tr
+          %tr{style: "background-color: #f9f9f9;"}
             %th Display Publically?
             %td= @new_matrix.display_email
           %tr
             %th Matrix Name
             %td= @new_matrix.name
-          %tr
+          %tr{style: "background-color: #f9f9f9;"}
             %th Kind/Problem Domain
             %td= @new_matrix.kind
           %tr
             %th Notes
             %td= @new_matrix.notes
-          %tr
+          %tr{style: "background-color: #f9f9f9;"}
             %th Matrix File URL
             %td= @new_matrix.submitter_url
           %tr
