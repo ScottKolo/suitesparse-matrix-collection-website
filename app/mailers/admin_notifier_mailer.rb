@@ -1,6 +1,4 @@
 class AdminNotifierMailer < ApplicationMailer
-  include Roadie::Rails::Automatic
-  self.asset_host = nil
   default :from => ENV['EMAIL_LOGIN']
 
   # Send a notification email with the new matrix information

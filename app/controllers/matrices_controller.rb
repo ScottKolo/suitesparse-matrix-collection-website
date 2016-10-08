@@ -61,7 +61,7 @@ class MatricesController < ApplicationController
       @new_matrix = SubmittedMatrix.new(permitted_params)
       logger.debug @new_matrix.submitter_name
       email = AdminNotifierMailer.send_matrix_submitted_email(@new_matrix)
-      email.deliver
+      email.deliver_now
       flash[:notice] = "Matrix submitted successfully!"
       redirect_to :index
     else
