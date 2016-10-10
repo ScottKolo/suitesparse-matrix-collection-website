@@ -8,5 +8,9 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
-  
+
+  def paginate(collection, params= {})
+    will_paginate collection, params.merge(:renderer => WillPaginateHelper::LinkRenderer)
+  end
+
 end

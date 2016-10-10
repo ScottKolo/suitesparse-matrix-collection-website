@@ -6,7 +6,7 @@
 
 <!-- Top Pagination Bar -->
 .pagination-container
-  = will_paginate matrices, renderer: BootstrapPagination::Rails
+  = paginate matrices
   .pull-right.pagination
     = label_tag :per_page_top, "Display per page:"
     = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
@@ -44,7 +44,7 @@
 
 <!-- Bottom Pagination Bar -->
 .pagination-container
-  = will_paginate matrices, renderer: BootstrapPagination::Rails
+  = paginate matrices
   .pull-right.pagination
     = label_tag :per_page_bottom, "Display per page:"
     = select_tag :per_page_bottom, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
