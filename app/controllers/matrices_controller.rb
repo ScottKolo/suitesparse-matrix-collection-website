@@ -59,7 +59,7 @@ class MatricesController < ApplicationController
                 :submitter_email, :display_email, :name, :kind, :notes, 
                 :submitter_url, :submitter_confidentiality)
       @new_matrix = SubmittedMatrix.new(permitted_params)
-      logger.debug @new_matrix.submitter_name
+      @new_matrix.ip = request.remote_ip
       email = AdminNotifierMailer.send_matrix_submitted_email(@new_matrix)
       email.deliver_now
       flash[:notice] = "Matrix submitted successfully!"

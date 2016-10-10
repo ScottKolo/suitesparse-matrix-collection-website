@@ -2,37 +2,40 @@
 %html{:lang => "en"}
   %head
     %meta{'http-equiv': "Content-Type", content: "text/html; charset=utf-8"}
-  %body
-    %div{style: "height: 50px; margin-bottom: 20px; background-color: #000;"}
-      %h1{style: "margin-top: -6px; font-size: 20.7px; font-family: 'cutive'; color: #fff;"}
-        SuiteSparse Matrix Collection
-        %small Formerly the University of Florida Sparse Matrix Collection
-    .main{role: "main"}
+  %body{style: "font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px;"}
+    %div{style: "height: 60px; margin-bottom: 20px; background-color: #000;"}
+      = email_image_tag('logoemail.png')
+    .main{style: "margin-left: 170px;"}
       %p
-        A new matrix has been submitted to the Collection:
-      %table
+        A new matrix has been submitted to the Collection. The request originated from 
+        ==#{@new_matrix.ip} on #{DateTime.now.strftime('%A, %d %b %Y at %l:%M %p')}.
+      %table{style: "width: 800px;"}
         %tbody
           %tr{style: "background-color: #f9f9f9;"}
-            %th Submitter Name
-            %td= @new_matrix.submitter_name
+            %th{style: "padding: 4px; text-align: left; width: 200px;"} Submitter Name
+            %td{style: "padding: 4px;"}= @new_matrix.submitter_name
           %tr
-            %th Submitter Email
-            %td= @new_matrix.submitter_email
+            %th{style: "padding: 4px; text-align: left;"} Submitter Email
+            %td{style: "padding: 4px;"}= @new_matrix.submitter_email
           %tr{style: "background-color: #f9f9f9;"}
-            %th Display Publically?
-            %td= @new_matrix.display_email
+            %th{style: "padding: 4px; text-align: left;"} Display Email Publically?
+            %td{style: "padding: 4px;"}= @new_matrix.display_email ? "Yes" : "No"
           %tr
-            %th Matrix Name
-            %td= @new_matrix.name
+            %th{style: "padding: 4px; text-align: left;"} Matrix Name
+            %td{style: "padding: 4px;"}= @new_matrix.name
           %tr{style: "background-color: #f9f9f9;"}
-            %th Kind/Problem Domain
-            %td= @new_matrix.kind
+            %th{style: "padding: 4px; text-align: left;"} Kind/Problem Domain
+            %td{style: "padding: 4px;"}= @new_matrix.kind
           %tr
-            %th Notes
-            %td= @new_matrix.notes
+            %th{style: "padding: 4px; text-align: left;"} Notes
+            %td{style: "padding: 4px;"}
+              %pre= @new_matrix.notes
           %tr{style: "background-color: #f9f9f9;"}
-            %th Matrix File URL
-            %td= @new_matrix.submitter_url
+            %th{style: "padding: 4px; text-align: left;"} Matrix File URL
+            %td{style: "padding: 4px;"}= @new_matrix.submitter_url
           %tr
-            %th Permission Granted to Display Publically
-            %td= @new_matrix.submitter_confidentiality
+            %th{style: "padding: 4px; text-align: left;"} Display Matrix Publically?
+            %td{style: "padding: 4px;"}= @new_matrix.submitter_confidentiality ? "Yes" : "No"
+    %div{style: "height: 60px; margin: 20px 0; background-color: #000; color: #777; padding: 46px 0 0 170px; font-size: 8pt;"}
+      This email was sent by sparse.tamu.edu. If you believe you have received 
+      this email in error, please contact davis@tamu.edu.
