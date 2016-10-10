@@ -45,6 +45,8 @@
             .small{'data-target': ".positive-definite-checkbox", tabIndex: "-1"}
               = check_box_tag :positive_definite_checkbox, 'enable', false, class: "filter-checkbox positive-definite-checkbox", 'data-target': "#positive-definite-filter"
               = label_tag :positive_definite_checkbox, "Positive Definiteness"
+    .filterrific_spinner{style: "display:none; margin: 30px 40%;"}
+      = image_tag('ajax-loader.gif')
   <!-- Set up the filter form -->
   .col-xs-10.column.text-center{style: "margin-left: -1px; border-left: 1px solid #e3e3e3;"}
     = form_for_filterrific @filterrific do |f|
@@ -105,7 +107,6 @@
       .well.well-sm
         = f.label :sorted_by, "Sorted by"
         = f.select :sorted_by, @filterrific.select_options[:sorted_by]
-    = render_filterrific_spinner
 
 #filterrific_results
   = render partial: 'matrices/list', locals: { matrices: @matrices }
