@@ -1,6 +1,6 @@
 <!-- Top Pagination Bar -->
 .pagination-container
-  = will_paginate @matrices, renderer: BootstrapPagination::Rails
+  = paginate @matrices
   .pull-left.pagination
     = page_entries_info @matrices, model: 'Matrix'
   .pull-right.pagination
@@ -39,7 +39,7 @@
 
 <!-- Bottom Pagination Bar -->
 .pagination-container
-  = will_paginate @matrices, renderer: BootstrapPagination::Rails
+  = paginate @matrices
   .pull-left.pagination
     = page_entries_info @matrices, model: 'Matrix'
   .pull-right.pagination
