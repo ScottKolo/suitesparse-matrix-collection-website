@@ -138,6 +138,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-slick-rails (1.6.0.2)
       railties (>= 3.1)
+    jquery-turbolinks (2.1.0)
+      railties (>= 3.1.0)
+      turbolinks
     js_cookie_rails (2.1.2)
       railties (>= 3.1)
     json (1.8.3)
@@ -310,6 +313,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-slick-rails
+  jquery-turbolinks
   js_cookie_rails
   json
   launchy
