@@ -18,6 +18,15 @@ class MatricesController < ApplicationController
       }
     ) or return
     
+    @checked = {}
+    @checked[:rows] = helpers.is_checked([:min_rows, :max_rows], @filterrific)
+    @checked[:cols] = helpers.is_checked([:min_cols, :max_cols], @filterrific)
+    @checked[:nonzeros] = helpers.is_checked([:min_nonzeros, :max_nonzeros], @filterrific)
+    @checked[:pattern_symmetry] = helpers.is_checked([:min_pattern_symmetry, :max_pattern_symmetry], @filterrific)
+    @checked[:numerical_symmetry] = helpers.is_checked([:min_numerical_symmetry, :max_numerical_symmetry], @filterrific)
+    @checked[:strongly_connected_components] = helpers.is_checked([:min_strongly_connected_components, :max_strongly_connected_components], @filterrific)
+    @checked[:positive_definite] = helpers.is_checked([:positive_definite], @filterrific)
+
     @matrices = @filterrific.find.page(permitted_params[:page])
 
     @per_page = helpers.per_page(permitted_params, session)

@@ -33,6 +33,16 @@ module MatricesHelper
     @kinds.push("Other")
   end
 
+  def is_checked(properties, filterrific)
+    is_checked = false
+    params = filterrific.to_hash
+    properties.each do |property|
+      is_checked ||= params[property.to_s]
+    end
+    puts is_checked
+    is_checked
+  end
+
   def has_scc_plot(matrix)
     matrix.num_strongly_connected_components and 
     matrix.num_strongly_connected_components > 1 and
