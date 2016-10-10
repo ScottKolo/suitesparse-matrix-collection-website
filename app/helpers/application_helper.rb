@@ -8,12 +8,5 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
-
-  def render_ajax_loading_animation
-    %(
-      <span class="filterrific_spinner" style="display:none;">
-          #{ image_tag('ajax_loader.gif') }
-      </span>
-    ).html_safe
-  end
+  
 end
