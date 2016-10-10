@@ -39,7 +39,6 @@ module MatricesHelper
     properties.each do |property|
       is_checked ||= params[property.to_s]
     end
-    puts is_checked
     is_checked
   end
 
