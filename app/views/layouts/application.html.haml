@@ -32,7 +32,10 @@
             %li{:class => ("active" if yield(:title) == 'Submit Matrix')}
               = link_to "Submit Matrix", "/submit"
     .container.theme-showcase.main{role: "main", id: "#{yield(:title).downcase.gsub(' ', '-')}-main"}
-      - if flash[:notice]
+      - if flash[:danger]
         %div.alert.alert-danger
-          = flash[:notice]
+          = flash[:danger]
+      - if flash[:success]
+        %div.alert.alert-success
+          = flash[:success]
       = yield

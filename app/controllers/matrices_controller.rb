@@ -71,10 +71,10 @@ class MatricesController < ApplicationController
       @new_matrix.ip = request.remote_ip
       email = AdminNotifierMailer.send_matrix_submitted_email(@new_matrix)
       email.deliver_now
-      flash[:notice] = "Matrix submitted successfully!"
+      flash[:success] = "Matrix submitted successfully!"
       redirect_to :index
     else
-      flash[:notice] = "Please verify that you are not a robot."
+      flash[:danger] = "Please verify that you are not a robot."
       redirect_to :submit
     end
   end
