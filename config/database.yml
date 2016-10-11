@@ -81,6 +81,16 @@ test: &test
 #
 production:
   <<: *default
+  adapter:  mysql2
+  url:      ENV['DATABASE_URL']
+  database: SuiteSparseMatrixCollectionWebsite_production
+  username: SuiteSparseMatrixCollectionWebsite
+  password: <%= ENV['SUITESPARSEMATRIXCOLLECTIONWEBSITE_DATABASE_PASSWORD'] %>
+
+# Use a separate Heroku environment
+production_heroku:
+  <<: *default
+  url:      ENV['DATABASE_URL']
   database: SuiteSparseMatrixCollectionWebsite_production
   username: SuiteSparseMatrixCollectionWebsite
   password: <%= ENV['SUITESPARSEMATRIXCOLLECTIONWEBSITE_DATABASE_PASSWORD'] %>
