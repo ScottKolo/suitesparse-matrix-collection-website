@@ -83,7 +83,7 @@ group :development do
   gem 'spring'
 end
 
-group :production do
+group :production, :production_heroku do
   # Use puma webserver for production
   gem 'puma'
   # Enable better logging and support on Heroku
