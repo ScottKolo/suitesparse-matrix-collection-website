@@ -85,8 +85,8 @@ class Matrix < ActiveRecord::Base
     [
       ['ID (High to Low)',       'id_desc'      ],
       ['ID (Low to High)',       'id_asc'       ],
-      ['Group (A to Z)',         'group_desc'   ],
-      ['Group (Z to A)',         'group_asc'    ],
+      ['Group (A to Z)',         'group_asc'   ],
+      ['Group (Z to A)',         'group_desc'    ],
       ['Name (A to Z)',          'name_asc'     ],
       ['Name (Z to A)',          'name_desc'    ],
       ['Rows (High to Low)',     'rows_desc'    ],
