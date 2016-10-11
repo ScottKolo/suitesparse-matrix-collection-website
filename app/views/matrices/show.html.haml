@@ -36,11 +36,14 @@
       %table.table.table-striped
         %tbody
           %tr
+            %th Name
+            %td= @matrix.name
+          %tr
             %th Group
             %td= link_to "#{@matrix.group}", "/#{@matrix.group}"
           %tr
-            %th Name
-            %td= @matrix.name
+            %th Matrix ID
+            %td= @matrix.matrix_id
           %tr
             %th Num Rows
             %td= number_with_delimiter(@matrix.num_rows, :delimiter => ',')
