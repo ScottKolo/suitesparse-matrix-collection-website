@@ -12,7 +12,7 @@ Find a problem with the website? Report it as an [Issue](https://github.com/Scot
 
 This website was originally part of a Software Engineering course project. The original team members are listed below:
 
-* [Scott Kolodziej](https://www.scottkolo.com) (current maintainer)
+* [Scott Kolodziej](http://www.scottkolo.com) (current maintainer)
 * [Read Sandström](https://parasol.tamu.edu/people/readamus/)
 * [Mohsen Aznaveh](https://parasol.tamu.edu/people/aznaveh/)
 * [Jarrett David](https://parasol.tamu.edu/people/jld6827/)
