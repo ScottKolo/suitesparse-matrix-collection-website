@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://sparse.tamu.edu"
+SitemapGenerator::Sitemap.default_host = "http://sparse.tamu.edu/matrices"
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
