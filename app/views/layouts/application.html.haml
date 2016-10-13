@@ -39,3 +39,10 @@
         %div.alert.alert-success
           = flash[:success]
       = yield
+%footer.text-center
+  .container
+    = link_to "Texas A&M University", "https://www.tamu.edu"
+    = " | "
+    = link_to "Computer Science & Engineering Department", "https://engineering.tamu.edu/cse/"
+    = " | "
+    = link_to "Code on GitHub #{fa_icon 'github'}".html_safe, "https://github.com/ScottKolo/suitesparse-matrix-collection-website"
