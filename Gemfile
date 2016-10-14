@@ -4,9 +4,6 @@ ruby '2.3.1'
 
 # Need the Rails gem
 gem 'rails', '~> 5.0.0.1'
-# Use postgresql or mysql as the database for Active Record
-gem 'pg', require: false
-gem 'mysql2', require: false
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
@@ -92,3 +89,12 @@ group :production, :production_heroku do
   gem 'mailgun_rails'
 end
 
+group :production_heroku, :development, :test do
+  # Use postgresql as the database for Active Record
+  gem 'pg', require: false
+end
+
+group :production do
+  # Use mysql as the database for Active Record on production
+  gem 'mysql2', require: false
+end
