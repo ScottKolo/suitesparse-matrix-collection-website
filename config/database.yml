@@ -82,6 +82,7 @@ test: &test
 production:
   <<: *default
   adapter:  mysql2
+  encoding: UTF8
   url:      <%= ENV['DATABASE_URL'] %>
   database: SuiteSparseMatrixCollectionWebsite_production
   username: <%= ENV['SUITESPARSEMATRIXCOLLECTIONWEBSITE_DATABASE_USERNAME'] %>
