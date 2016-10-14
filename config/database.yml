@@ -83,7 +83,7 @@ production:
   <<: *default
   adapter:  mysql2
   encoding: utf8
-  url:      <%= ENV['DATABASE_URL'] %>
+  host:     <%= ENV['DATABASE_URL'] %>
   port:     <%= ENV['DATABASE_PORT'] %>
   database: SuiteSparseMatrixCollectionWebsite_production
   username: <%= ENV['SUITESPARSEMATRIXCOLLECTIONWEBSITE_DATABASE_USERNAME'] %>
