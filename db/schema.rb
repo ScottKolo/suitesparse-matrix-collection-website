@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20161015124434) do
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.integer  "num_matrices"
-    t.text     "notes"
+    t.text     "notes",        limit: 16.megabytes - 1
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
