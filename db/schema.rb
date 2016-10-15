@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20161015124434) do
     t.integer  "sprank_minus_rank"
     t.integer  "null_space_dimension"
     t.string   "full_numerical_rank"
-    t.decimal  "svd_gap"
+    t.decimal  "svd_gap",           precision: 63
     t.text     "b_field"
     t.text     "x_field"
     t.text     "aux_fields"
