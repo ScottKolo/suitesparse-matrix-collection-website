@@ -91,10 +91,10 @@ end
 
 group :production_heroku, :development, :test do
   # Use postgresql as the database for Active Record
-  gem 'pg', require: false
+  gem 'pg'
 end
 
 group :production do
   # Use mysql as the database for Active Record on production
-  gem 'mysql2', require: false
+  gem 'mysql2'
 end
