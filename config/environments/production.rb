@@ -3,6 +3,7 @@ Rails.application.configure do
 
   # Operate in the subdirectory sparse.tamu.edu/matrix
   config.action_controller.relative_url_root = '/matrix'
+  config.assets.prefix = '/matrix/assets'
 
   # Code is not reloaded between requests.
   config.cache_classes = true
