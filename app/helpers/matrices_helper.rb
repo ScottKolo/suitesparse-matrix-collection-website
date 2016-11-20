@@ -58,4 +58,42 @@ module MatricesHelper
   def has_gplot(matrix)
     matrix.aux_fields and matrix.aux_fields.include? 'coord:'
   end
+
+  def tooltip_text(property)
+    if property == :num_rows
+      return "Number of rows in the sparse matrix (often referred to as m)"
+    elsif property == :num_cols
+      return "Number of columns in the sparse matrix (often referred to as n)"
+    elsif property == :nonzeros
+      return "Number of nonzero (and explicit zero) elements in the sparse matrix"
+    elsif property == :kind
+      return "The general problem category, domain, or field this matrix arises from"
+    elsif property == :symmetric
+      return "Whether the matrix is structurally and numerically symmetric"
+    elsif property == :date
+      return "The year this matrix was added to the Collection"
+    elsif property == :author
+      return "Person(s) responsible for creating or discovering this matrix"
+    elsif property == :editor
+      return "Person(s) responsible for gathering and formatting the metadata associated with this matrix"
+    elsif property == :num_dmperm_blocks
+      return "Number of blocks obtained from the Dulmage-Mendelsohn decomposition"
+    elsif property == :num_strongly_connected_components
+      return "Number of (strongly) connected components in the resulting graph of this matrix"
+    elsif property == :num_explicit_zeros
+      return "Number of nonzero elements that have a value of zero"
+    elsif property == :pattern_symmetry
+      return "The percentage of nonzero entries that have a matching nonzero entry across the diagonal (but the value may be different)"
+    elsif property == :numeric_symmetry
+      return "The percentage of nonzero entries that are numerically symmetric"
+    elsif property == :cholesky_candidate
+      return "Whether the matrix can be decomposed using a Cholesky factorization"
+    elsif property == :positive_definite
+      return "Whether the matrix is positive definite (all eigenvalues are positive)"
+    elsif property == :rb_type
+      return "Rutherford-Boeing type: real, complex, integer, or binary"
+    else
+      raise ArgumentError.new("Unknown matrix property")
+    end
+  end
 end

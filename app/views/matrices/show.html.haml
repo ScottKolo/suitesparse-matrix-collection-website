@@ -45,28 +45,60 @@
             %th Matrix ID
             %td= @matrix.matrix_id
           %tr
-            %th Num Rows
+            %th
+              %p
+                Num Rows
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_rows)}
+                  = fa_icon 'question-circle'
             %td= number_with_delimiter(@matrix.num_rows, :delimiter => ',')
           %tr
-            %th Num Cols
+            %th 
+              %p
+                Num Cols
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_cols)}
+                  = fa_icon 'question-circle'
             %td= number_with_delimiter(@matrix.num_cols, :delimiter => ',')
           %tr
-            %th Nonzeros
+            %th
+              %p
+                Nonzeros
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_cols)}
+                  = fa_icon 'question-circle'
             %td= number_with_delimiter(@matrix.nonzeros, :delimiter => ',')
           %tr
-            %th Kind
+            %th
+              %p
+                Kind
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:kind)}
+                  = fa_icon 'question-circle'
             %td= @matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless @matrix.kind.nil?
           %tr
-            %th Symmetric
+            %th
+              %p
+                Symmetric
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:symmetric)}
+                  = fa_icon 'question-circle'
             %td= @matrix.structure == "symmetric" ? "Yes" : "No"
           %tr
-            %th Date
+            %th
+              %p
+                Date
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:date)}
+                  = fa_icon 'question-circle'
             %td= @matrix.date
           %tr
-            %th Author
+            %th
+              %p
+                Author
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:author)}
+                  = fa_icon 'question-circle'
             %td= @matrix.author
           %tr
-            %th Editor
+            %th
+              %p
+                Editor
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:editor)}
+                  = fa_icon 'question-circle'
             %td= @matrix.editor
 
   .row
@@ -80,28 +112,60 @@
             %th Structural Rank Full
             %td= @matrix.structural_full_rank
           %tr
-            %th Num Dmperm Blocks
+            %th
+              %p
+                Num Dmperm Blocks
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_dmperm_blocks)}
+                  = fa_icon 'question-circle'
             %td= @matrix.num_dmperm_blocks
           %tr
-            %th Strongly Connect Components
+            %th
+              %p
+                Strongly Connect Components
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_strongly_connected_components)}
+                  = fa_icon 'question-circle'
             %td= @matrix.num_strongly_connected_components
           %tr
-            %th Num Explicit Zeros
+            %th
+              %p
+                Num Explicit Zeros
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_explicit_zeros)}
+                  = fa_icon 'question-circle'
             %td= @matrix.num_explicit_zeros
           %tr
-            %th Pattern Symmetry
+            %th
+              %p
+                Pattern Symmetry
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:pattern_symmetry)}
+                  = fa_icon 'question-circle'
             %td= number_to_percentage(@matrix.pattern_symmetry ? @matrix.pattern_symmetry*100 : nil, precision:0)
           %tr
-            %th Numeric Symmetry
+            %th
+              %p
+                Numeric Symmetry
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:numeric_symmetry)}
+                  = fa_icon 'question-circle'
             %td= number_to_percentage(@matrix.numeric_symmetry ? @matrix.numeric_symmetry*100 : nil, precision:0)
           %tr
-            %th Cholesky Candidate
+            %th
+              %p
+                Cholesky Candidate
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:cholesky_candidate)}
+                  = fa_icon 'question-circle'
             %td= @matrix.cholesky_candidate
           %tr
-            %th Positive Definite
+            %th
+              %p
+                Positive Definite
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:positive_definite)}
+                  = fa_icon 'question-circle'
             %td= @matrix.positive_definite
           %tr
-            %th Type
+            %th
+              %p
+                Type
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:rb_type)}
+                  = fa_icon 'question-circle'
             %td{colspan: 2}= @matrix.rb_type
     - if @matrix.norm
       .col-md-6
@@ -156,3 +220,7 @@
       slidesToShow: 1,
       dots: true
     });
+:javascript
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+  });
