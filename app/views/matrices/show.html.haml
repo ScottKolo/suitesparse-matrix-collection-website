@@ -62,7 +62,7 @@
             %th
               %p
                 Nonzeros
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_cols)}
+                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:nonzeros)}
                   = fa_icon 'question-circle'
             %td= number_with_delimiter(@matrix.nonzeros, :delimiter => ',')
           %tr
