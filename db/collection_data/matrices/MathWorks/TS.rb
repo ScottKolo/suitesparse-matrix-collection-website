@@ -1,0 +1,41 @@
+{
+    matrix_id: '2256',
+    name: 'TS',
+    group: 'MathWorks',
+    description: 'x=A\b triggers a bug in MATLAB R2009a and earlier',
+    author: 'P. Quillen',
+    editor: 'T. Davis',
+    date: '2009',
+    kind: 'counter-example problem',
+    problem_2D_or_3D: '0',
+    num_rows: '2142',
+    num_cols: '2142',
+    nonzeros: '45262',
+    num_explicit_zeros: '0',
+    num_strongly_connected_components: '183',
+    num_dmperm_blocks: '92',
+    structural_full_rank: 'false',
+    structural_rank: '2140',
+    pattern_symmetry: '0.953',
+    numeric_symmetry: '0.041',
+    rb_type: 'real',
+    structure: 'unsymmetric',
+    cholesky_candidate: 'no',
+    positive_definite: 'no',
+    notes: 'This is a structurally singular matrix that triggers a bug in the   
+2-by-2 pivoting strategy in UMFPACK versions 4.1 through 5.3.       
+The bug thus exists in MATLAB R2006b through R2009a.  It was        
+fixed in UMFPACK 5.4 and MATLAB R2009b.  Contributed by Pat Quillen,
+The MathWorks, Inc.  The sprank(A) and rank(A) are 2140.            
+',
+    b_field: 'sparse 2142-by-1
+',
+    norm: '4.434200e+02',
+    min_singular_value: '1.961143e-15',
+    condition_number: '226102814163171296',
+    svd_rank: '2140',
+    sprank_minus_rank: '0',
+    null_space_dimension: '2',
+    full_numerical_rank: 'no',
+    svd_gap: '20546247364842.902344',
+}

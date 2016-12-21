@@ -1,0 +1,28 @@
+{
+    matrix_id: '2275',
+    name: 'transient',
+    group: 'Freescale',
+    description: 'Small circuit from K. Gullapalli, Freescale Semiconductor',
+    author: 'K. Gullapalli',
+    editor: 'T. Davis',
+    date: '2010',
+    kind: 'circuit simulation problem',
+    problem_2D_or_3D: '0',
+    num_rows: '178866',
+    num_cols: '178866',
+    nonzeros: '961368',
+    num_explicit_zeros: '422',
+    num_strongly_connected_components: '21',
+    num_dmperm_blocks: '21',
+    structural_full_rank: 'true',
+    structural_rank: '178866',
+    pattern_symmetry: '1.000',
+    numeric_symmetry: '0.244',
+    rb_type: 'real',
+    structure: 'unsymmetric',
+    cholesky_candidate: 'no',
+    positive_definite: 'no',
+    notes: 'Small circuit from Kiran Gullapalli, Freescale Semiconductor       
+Factorization is fast, but dominates the transient simulation time.
+',
+}

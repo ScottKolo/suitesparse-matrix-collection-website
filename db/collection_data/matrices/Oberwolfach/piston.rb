@@ -1,0 +1,37 @@
+{
+    matrix_id: '1441',
+    name: 'piston',
+    group: 'Oberwolfach',
+    description: 'Oberwolfach: axi-symmetryic infinite el.',
+    author: 'K. Meerbergen',
+    editor: 'E. Rudnyi',
+    date: '2006',
+    kind: 'model reduction problem',
+    problem_2D_or_3D: '1',
+    num_rows: '2025',
+    num_cols: '2025',
+    nonzeros: '100015',
+    num_explicit_zeros: '0',
+    num_strongly_connected_components: '1',
+    num_dmperm_blocks: '1',
+    structural_full_rank: 'true',
+    structural_rank: '2025',
+    pattern_symmetry: '1.000',
+    numeric_symmetry: '0.033',
+    rb_type: 'real',
+    structure: 'unsymmetric',
+    cholesky_candidate: 'no',
+    positive_definite: 'no',
+    notes: 'Primary matrix in this model reduction problem is the Oberwolfach K matrix
+',
+    aux_fields: 'M: sparse 2025-by-2025
+B: sparse 2025-by-1
+E: sparse 2025-by-2025
+',    norm: '5.094381e+03',
+    min_singular_value: '9.538262e-07',
+    condition_number: '5.340995e+09',
+    svd_rank: '2025',
+    sprank_minus_rank: '0',
+    null_space_dimension: '0',
+    full_numerical_rank: 'yes',
+}

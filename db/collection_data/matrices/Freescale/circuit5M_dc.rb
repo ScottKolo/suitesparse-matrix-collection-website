@@ -1,0 +1,28 @@
+{
+    matrix_id: '2277',
+    name: 'circuit5M_dc',
+    group: 'Freescale',
+    description: 'Large circuit (DC analysis) K. Gullapalli, Freescale Semiconductor',
+    author: 'K. Gullapalli',
+    editor: 'T. Davis',
+    date: '2010',
+    kind: 'circuit simulation problem',
+    problem_2D_or_3D: '0',
+    num_rows: '3523317',
+    num_cols: '3523317',
+    nonzeros: '14865409',
+    num_explicit_zeros: '4328784',
+    num_strongly_connected_components: '1062',
+    num_dmperm_blocks: '1062',
+    structural_full_rank: 'true',
+    structural_rank: '3523317',
+    pattern_symmetry: '0.907',
+    numeric_symmetry: '0.715',
+    rb_type: 'real',
+    structure: 'unsymmetric',
+    cholesky_candidate: 'no',
+    positive_definite: 'no',
+    notes: 'Large circuit from Kiran Gullapalli, Freescale Semiconductor
+DC analysis, related to Freescale/circuit5M matrix.         
+',
+}

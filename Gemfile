@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '~> 2.3.1'
 
 # Need the Rails gem
 gem 'rails', '~> 5.0.0.1'

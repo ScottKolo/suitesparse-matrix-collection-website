@@ -1,0 +1,30 @@
+{
+    matrix_id: '2653',
+    name: 'Delor338K',
+    group: 'ANSYS',
+    description: 'underdetermined system from ANSYS',
+    author: 'E. Delor',
+    editor: 'T. Davis',
+    date: '2011',
+    kind: 'least squares problem',
+    problem_2D_or_3D: '0',
+    num_rows: '343236',
+    num_cols: '887058',
+    nonzeros: '4211599',
+    num_explicit_zeros: '0',
+    num_strongly_connected_components: '437423',
+    num_dmperm_blocks: '1',
+    structural_full_rank: 'true',
+    structural_rank: '343236',
+    pattern_symmetry: '0.000',
+    numeric_symmetry: '0.000',
+    rb_type: 'real',
+    structure: 'rectangular',
+    cholesky_candidate: 'no',
+    positive_definite: 'no',
+    notes: 'Goal is to find a permutation or factorization        
+that places A in upper trapezoidal form, [R1 R2] where
+R1 is well-conditioned, square, and upper triangular, 
+and where R1\R2 is as sparse as possible.             
+',
+}

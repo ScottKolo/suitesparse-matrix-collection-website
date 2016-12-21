@@ -1,0 +1,41 @@
+{
+    matrix_id: '2002',
+    name: 'f855_mat9',
+    group: 'JGD_Groebner',
+    description: 'Groebner basis from Jean-Charles Fauge`res',
+    author: 'J.-C. Faugeres',
+    editor: 'J.-G. Dumas',
+    date: '2008',
+    kind: 'combinatorial problem',
+    problem_2D_or_3D: '0',
+    num_rows: '2456',
+    num_cols: '2511',
+    nonzeros: '171214',
+    num_explicit_zeros: '0',
+    num_strongly_connected_components: '1',
+    num_dmperm_blocks: '1',
+    structural_full_rank: 'true',
+    structural_rank: '2456',
+    pattern_symmetry: '0.000',
+    numeric_symmetry: '0.000',
+    rb_type: 'integer',
+    structure: 'rectangular',
+    cholesky_candidate: 'no',
+    positive_definite: 'no',
+    notes: 'Gro"bner basis from Jean-Charles Fauge`res,                 
+From Jean-Guillaume Dumas\' Sparse Integer Matrix Collection,
+http://ljk.imag.fr/membres/Jean-Guillaume.Dumas/simc.html   
+                                                            
+http://www-calfor.lip6.fr/~jcf/                             
+                                                            
+Filename in JGD collection: Grobner/f855_mat9               
+',
+    norm: '5.899028e+06',
+    min_singular_value: '7.651436e-12',
+    condition_number: '770970052654365696',
+    svd_rank: '2228',
+    sprank_minus_rank: '228',
+    null_space_dimension: '228',
+    full_numerical_rank: 'no',
+    svd_gap: '1.015405',
+}

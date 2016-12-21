@@ -1,0 +1,68 @@
+{
+    matrix_id: '609',
+    name: 'lp_cre_a',
+    group: 'LPnetlib',
+    description: 'Netlib LP problem cre_a: minimize c\'*x, where Ax=b, lo<=x<=hi',
+    author: 'J. Kennington',
+    editor: 'I. Lustig',
+    date: '1990',
+    kind: 'linear programming problem',
+    problem_2D_or_3D: '0',
+    num_rows: '3516',
+    num_cols: '7248',
+    nonzeros: '18168',
+    num_explicit_zeros: '0',
+    num_strongly_connected_components: '89',
+    num_dmperm_blocks: '8',
+    structural_full_rank: 'false',
+    structural_rank: '3428',
+    pattern_symmetry: '0.000',
+    numeric_symmetry: '0.000',
+    rb_type: 'real',
+    structure: 'rectangular',
+    cholesky_candidate: 'no',
+    positive_definite: 'no',
+    notes: 'A Netlib LP problem, in lp/data/kennington.  For more information             
+send email to netlib@ornl.gov with the message:                               
+                                                                              
+	 send index from lp                                                          
+	 send readme from lp/data                                                    
+	 send readme from lp/data/kennington                                         
+                                                                              
+The following are relevant excerpts from lp/data/kennington/readme:           
+                                                                              
+The "Kennington" problems: sixteen problems described in "An Empirical        
+Evaluation of the KORBX Algorithms for Military Airlift Applications"         
+by W. J. Carolan, J. E. Hill, J. L. Kennington, S. Niemi, S. J.               
+Wichmann (Operations Research vol. 38, no. 2 (1990), pp. 240-248).            
+                                                                              
+The following table gives some statistics for the "Kennington"                
+problems.  The number of columns excludes slacks and surpluses.               
+The bounds column tells how many entries appear in the BOUNDS                 
+section of the MPS file.  The mpc column shows the bytes in                   
+the problem after "uncompress" and before "emps"; MPS shows                   
+the bytes after "emps".  The optimal values were computed by                  
+Vanderbei\'s ALPO, running on an SGI computer (with binary IEEE                
+arithmetic).                                                                  
+                                                                              
+Name       rows  columns  nonzeros  bounds      mpc      MPS     optimal value
+CRE-A      3517    4067     19054        0    152726    659682   2.3595407e+07
+                                                                              
+Submitted to Netlib by Irv Lustig.                                            
+                                                                              
+',
+    b_field: 'full 3516-by-1
+',
+    aux_fields: 'c: full 7248-by-1
+lo: full 7248-by-1
+hi: full 7248-by-1
+z0: full 1-by-1
+',    norm: '1.930152e+02',
+    min_singular_value: '0',
+    condition_number: 'Inf',
+    svd_rank: '3423',
+    sprank_minus_rank: '5',
+    null_space_dimension: '93',
+    full_numerical_rank: 'no',
+    svd_gap: '6165840814517.946289',
+}

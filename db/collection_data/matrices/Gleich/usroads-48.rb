@@ -1,0 +1,23 @@
+{
+    matrix_id: '2332',
+    name: 'usroads-48',
+    group: 'Gleich',
+    description: 'Continental US road network (with xy coordinates)',
+    author: 'D. Gleich',
+    editor: 'T. Davis',
+    date: '2010',
+    kind: 'undirected graph',
+    problem_2D_or_3D: '0',
+    num_rows: '126146',
+    num_cols: '126146',
+    nonzeros: '323900',
+    num_explicit_zeros: '0',
+    num_strongly_connected_components: '1',
+    pattern_symmetry: '1.000',
+    numeric_symmetry: '1.000',
+    rb_type: 'binary',
+    structure: 'symmetric',
+    cholesky_candidate: 'no',
+    positive_definite: 'no',
+    aux_fields: 'coord: full 126146-by-2
+',}

@@ -1,0 +1,37 @@
+{
+    matrix_id: '1443',
+    name: 'rail_20209',
+    group: 'Oberwolfach',
+    description: 'Oberwolfach: heat transfer, steel profile cooling',
+    author: 'P. Benner, J. Saak',
+    editor: 'E. Rudnyi',
+    date: '2002',
+    kind: 'model reduction problem',
+    problem_2D_or_3D: '1',
+    num_rows: '20209',
+    num_cols: '20209',
+    nonzeros: '139233',
+    num_explicit_zeros: '0',
+    num_strongly_connected_components: '1',
+    num_dmperm_blocks: '1',
+    structural_full_rank: 'true',
+    structural_rank: '20209',
+    pattern_symmetry: '1.000',
+    numeric_symmetry: '1.000',
+    rb_type: 'real',
+    structure: 'symmetric',
+    cholesky_candidate: 'no',
+    positive_definite: 'no',
+    notes: 'Primary matrix in this model reduction problem is the Oberwolfach A matrix
+',
+    aux_fields: 'E: sparse 20209-by-20209
+B: sparse 20209-by-7
+C: sparse 6-by-20209
+',    norm: '5.587503e-05',
+    min_singular_value: '2.383230e-10',
+    condition_number: '2.344509e+05',
+    svd_rank: '20209',
+    sprank_minus_rank: '0',
+    null_space_dimension: '0',
+    full_numerical_rank: 'yes',
+}

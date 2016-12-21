@@ -1,0 +1,37 @@
+{
+    matrix_id: '1632',
+    name: 'rdb2048_noL',
+    group: 'Bai',
+    description: 'REACTION-DIFFUSION BRUSSELATOR MODEL',
+    author: 'K. Meerbergen',
+    editor: 'Z. Bai, D. Day, J. Demmel, J. Dongarra',
+    date: '1994',
+    kind: 'computational fluid dynamics problem',
+    problem_2D_or_3D: '1',
+    num_rows: '2048',
+    num_cols: '2048',
+    nonzeros: '12032',
+    num_explicit_zeros: '0',
+    num_strongly_connected_components: '1',
+    num_dmperm_blocks: '1',
+    structural_full_rank: 'true',
+    structural_rank: '2048',
+    pattern_symmetry: '1.000',
+    numeric_symmetry: '0.795',
+    rb_type: 'real',
+    structure: 'unsymmetric',
+    cholesky_candidate: 'no',
+    positive_definite: 'no',
+    notes: 'This matrix (Bai/rdb2048_noL) is the NEP RDB2048 matrix.  It      
+differs from the Bai/rdb2048 matrix.  The Bai/rdb2048 and NEP     
+RDB2048L matrices are identical.  See the notes in Bai/rdb2048 for
+more details.                                                     
+',
+    norm: '2.822079e+02',
+    min_singular_value: '1.015965e-01',
+    condition_number: '2.777733e+03',
+    svd_rank: '2048',
+    sprank_minus_rank: '0',
+    null_space_dimension: '0',
+    full_numerical_rank: 'yes',
+}
