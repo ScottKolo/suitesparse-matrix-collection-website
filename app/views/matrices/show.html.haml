@@ -8,11 +8,11 @@
       .carousel
         %figure.slick-slide
           %a{href: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif"}
-            %img.img-responsive{src: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.gif", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}
-        -if @matrix.rb_type and @matrix.rb_type == 'complex'
+            %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_graph.gif", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}
+        -if @matrix.num_rows and @matrix.num_cols and @matrix.num_rows == @matrix.num_cols and @matrix.pattern_symmetry and @matrix.pattern_symmetry < 1
           %figure.slick-slide
             %a{href: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.APlusAT.gif"}
-              %img.img-responsive{src: "http://yifanhu.net/GALLERY/GRAPHS/GIF_SMALL/#{@matrix.group}@#{@matrix.name}.APlusAT.gif", alt: "Graph Visualization of A+A' for #{@matrix.group}/#{@matrix.name}"}
+              %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_APlusAT_graph.gif", alt: "Graph Visualization of A+A' for #{@matrix.group}/#{@matrix.name}"}
         %figure.slick-slide
           %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}.png"}
             %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}.png", alt: "Nonzero Pattern of #{@matrix.group}/#{@matrix.name}"}
