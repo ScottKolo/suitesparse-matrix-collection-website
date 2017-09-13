@@ -93,10 +93,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default(from: ENV['EMAIL_ADDRESS'])
   config.action_mailer.smtp_settings = {
-    address:              'smtp-relay.tamu.edu',
+    address:              ENV['EMAIL_HOSTNAME'],
     port:                 465,
     user_name:            ENV['EMAIL_LOGIN'],
-    password:             ENV['EMAIL_PW'],
+    password:             ENV['EMAIL_PASSWORD'],
     authentication:       'plain',
     enable_starttls_auto: true
   }
