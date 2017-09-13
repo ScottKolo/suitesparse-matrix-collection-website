@@ -1,5 +1,5 @@
 class AdminNotifierMailer < ApplicationMailer
-  default :from => ENV['EMAIL_LOGIN']
+  default :from => ENV['EMAIL_ADDRESS']
   add_template_helper(EmailHelpers)
 
   # Send a notification email with the new matrix information
