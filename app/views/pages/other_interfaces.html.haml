@@ -4,26 +4,23 @@
 %p
   Here are some other ways to access the collection.
 
-%hr
-
-%h2 UFgui Java interface
+%h3 Java Graphical Interface (ssgui)
 %p
-  The #{link_to "UFget", "https://www.cise.ufl.edu/research/sparse/mat/UFget.html"}
-  package includes a Java program (UFgui) for browsing and downloading the
-  matrices in any format on any platform. Below is a screenshot (click on it to
-  download the code):
+  The #{link_to "ssget", "https://sparse.tamu.edu/files/ssget.tar.gz"}
+  package includes a Java program (ssgui) for browsing and downloading the
+  matrices in any format on any platform.
 
 %div
-  #{link_to image_tag("https://www.cise.ufl.edu/research/sparse/mat/UFgui_screenshot.png", alt: "UFgui screenshot"), "https://www.cise.ufl.edu/research/sparse/mat/UFget.html"}
+  #{link_to image_tag("https://sparse.tamu.edu/files/ssget_java.png", alt: "UFgui screenshot"), "https://sparse.tamu.edu/files/ssget.tar.gz"}
 
 %hr
 
-%h2 MATLAB and Stand-alone Java GUI
+%h3 MATLAB Interface (ssget)
 %p
-  #{link_to "Click here for the UFget MATLAB and UFgui Java interfaces","https://www.cise.ufl.edu/research/sparse/mat/UFget.html"}. 
-  UFget.m provides
+  #{link_to "Click here for the ssget MATLAB and ssgui Java interfaces","https://sparse.tamu.edu/files/ssget.tar.gz"}. 
+  ssget.m provides
   for simple access to the collection, right inside your MATLAB workspace.
-  From inside MATLAB, UFget will download a matrix, cache it locally, and
+  From inside MATLAB, ssget will download a matrix, cache it locally, and
   load it into your MATLAB workspace.  No need to use a browser to get a matrix.
   You can even use the built-in index to search for matrices that fit your
   criteria, all inside MATLAB.
@@ -33,17 +30,17 @@
   %pre
     = preserve do
       :escaped
-        index = UFget ;           % get index of the UF Sparse Matrix Collection
+        index = ssget ;           % get index of the SuiteSparse Matrix Collection
         ids = find (index.numerical_symmetry == 1) ;
         [ignore, i] = sort (index.nnz (ids)) ;
         ids = ids (i) ;
         for id = ids
-          Prob = UFget (id)     % Prob is a struct (matrix, name, meta-data, ...)
+          Prob = ssget (id)     % Prob is a struct (matrix, name, meta-data, ...)
           A = Prob.A ;          % A is a symmetric sparse matrix
 
 %hr
 
-%h2 Julia Interface
+%h3 Julia Interface
 %p
   #{link_to "Weijian Zhang", "http://www.maths.manchester.ac.uk/~weijian/"}, at the University of Manchester, has created a
-  #{link_to "Julia interface to the UF collection", "http://matrixdepotjl.readthedocs.org/en/latest/interface.html#interfaces"}.
+  #{link_to "Julia interface to the SuiteSparse collection", "http://matrixdepotjl.readthedocs.org/en/latest/interface.html#interfaces"}.
