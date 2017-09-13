@@ -94,7 +94,6 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp-relay.tamu.edu',
     port:                 465,
-    domain:               'example.com',
     user_name:            ENV['EMAIL_LOGIN'],
     password:             ENV['EMAIL_PW'],
     authentication:       'plain',
