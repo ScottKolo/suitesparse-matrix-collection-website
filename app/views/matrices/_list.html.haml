@@ -36,7 +36,7 @@
           %td.column-nonzeros= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
           %td.column-kind= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
           %td.column-date= matrix.date
-          %td.hidden-xs
+          %td.column-download.hidden-xs
             = link_to matrix.get_url(:matlab), class: "btn btn-default btn-sm" do
               = "MATLAB #{fa_icon 'download'}".html_safe
             = link_to matrix.get_url(:rutherford_boeing), class: "btn btn-default btn-sm" do
