@@ -49,6 +49,10 @@ Given /^(?:|I )am on the home page$/ do
   visit '/'
 end
 
+Given /^(?:|I )am on the groups page$/ do
+  visit '/groups'
+end
+
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
