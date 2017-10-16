@@ -20,7 +20,7 @@
         %tr
           %td= link_to "#{group.name}", "/#{group.name}"
           %td{style: "text-align: center;"}= group.num_matrices
-          %td= group.notes.lines.first
+          %td= group.notes.lines.first unless group.notes.nil?
 
 <!-- Bottom Pagination Bar -->
 .pagination-container
