@@ -21,6 +21,8 @@ module NavigationHelpers
       '/matrices'
     when /^the groups page$/
       '/groups'
+    when /^the group page for group (.+)$/
+      "/#{$1}"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
