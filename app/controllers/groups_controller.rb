@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
 
   def index
+    @per_page = helpers.per_page(params, session)
     @groups = Group.paginate(page: params[:page], per_page: @per_page)
   end
 
