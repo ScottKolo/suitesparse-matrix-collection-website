@@ -4,10 +4,13 @@ class MatricesController < ApplicationController
 
   def index
     permitted_params = params.permit([{filterrific: [:reset_filterrific, :sorted_by, :search_query,
-      :min_rows, :max_rows, :min_cols, :max_cols, :min_nonzeros, :max_nonzeros,
-      :min_pattern_symmetry, :max_pattern_symmetry, :min_numerical_symmetry,
-      :max_numerical_symmetry, :min_strongly_connected_components,
-      :max_strongly_connected_components, :positive_definite]}, :page, :per_page, :utf8, :_])
+      :min_rows,               :max_rows, 
+      :min_cols,               :max_cols, 
+      :min_nonzeros,           :max_nonzeros,
+      :min_pattern_symmetry,   :max_pattern_symmetry, 
+      :min_numerical_symmetry, :max_numerical_symmetry, 
+      :min_strongly_connected_components, :max_strongly_connected_components,
+      :positive_definite]}, :page, :per_page, :utf8, :_])
 
     @filterrific = initialize_filterrific(
       Matrix,
