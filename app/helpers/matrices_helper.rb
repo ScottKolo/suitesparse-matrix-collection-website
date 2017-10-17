@@ -42,21 +42,37 @@ module MatricesHelper
     is_checked
   end
 
-  def has_scc_plot(matrix)
-    matrix.num_strongly_connected_components and 
-    matrix.num_strongly_connected_components > 1 and
-    matrix.num_rows and
-    matrix.num_cols and
-    !matrix.structural_full_rank.nil? and
-    not (has_dmperm_plot(matrix) and matrix.num_rows == matrix.num_cols and matrix.structural_full_rank)
+  def is_valid_image_url(url)
+    response = Net::HTTP.get_response(URI.parse(url))
+    return (response.code.to_i >= 200 && response.code.to_i < 400)
   end
 
-  def has_dmperm_plot(matrix)
-    matrix.num_dmperm_blocks and matrix.num_dmperm_blocks > 1 and not matrix.kind.include? 'graph'
+  def has_graph_plot(matrix)
+    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_graph.gif")
+  end
+
+  def has_AplusAT_plot(matrix)
+    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_APlusAT_graph.gif")
+  end
+
+  def has_pattern_plot(matrix)
+    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}.png")
+  end
+
+  def has_svd_plot(matrix)
+    return is_valid_image_url("#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_svd.png")
   end
 
   def has_gplot(matrix)
-    matrix.aux_fields and matrix.aux_fields.include? 'coord:'
+    return is_valid_image_url("#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_gplot.png")
+  end
+
+  def has_dmperm_plot(matrix)
+    return is_valid_image_url("#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_dmperm.png")
+  end
+
+  def has_scc_plot(matrix)
+    return is_valid_image_url("#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_scc.png")
   end
 
   def tooltip_text(property)
