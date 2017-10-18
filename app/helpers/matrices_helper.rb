@@ -60,19 +60,19 @@ module MatricesHelper
   end
 
   def has_svd_plot(matrix)
-    return is_valid_image_url("#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_svd.png")
+    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_svd.png")
   end
 
   def has_gplot(matrix)
-    return is_valid_image_url("#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_gplot.png")
+    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_gplot.png")
   end
 
   def has_dmperm_plot(matrix)
-    return is_valid_image_url("#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_dmperm.png")
+    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_dmperm.png")
   end
 
   def has_scc_plot(matrix)
-    return is_valid_image_url("#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_scc.png")
+    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_scc.png")
   end
 
   def tooltip_text(property)
