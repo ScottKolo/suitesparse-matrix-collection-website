@@ -3,9 +3,16 @@
   %head
     %title= full_title(yield(:title))
     %meta{name: "viewport", content: "width=device-width,initial-scale=0.6"}
+    = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
+    :javascript
+      WebFont.load({
+        google: {
+          families: ['Cutive']
+        }
+      });
     = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Cutive"
     = stylesheet_link_tag 'application', media: 'all', :'data-turbolinks-track' => true
-    = javascript_include_tag 'application', :'data-turbolinks-track' => true
+    = javascript_include_tag 'application', :'data-turbolinks-track' => true, async: Rails.env.production?
     = csrf_meta_tags
     %meta{name:"google-site-verification", content:"r2pRTzxj91fBd9LQN4oiboo32gfV1c8PpalflcYY8XE"}
   %body
