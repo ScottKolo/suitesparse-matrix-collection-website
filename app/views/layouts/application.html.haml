@@ -3,14 +3,6 @@
   %head
     %title= full_title(yield(:title))
     %meta{name: "viewport", content: "width=device-width,initial-scale=0.6"}
-    = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
-    :javascript
-      WebFont.load({
-        google: {
-          families: ['Cutive']
-        }
-      });
-    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Cutive"
     = stylesheet_link_tag 'application', media: 'all', :'data-turbolinks-track' => true
     = javascript_include_tag 'application', :'data-turbolinks-track' => true, async: Rails.env.production?
     = csrf_meta_tags
@@ -54,3 +46,15 @@
       = link_to "Computer Science & Engineering Department", "https://engineering.tamu.edu/cse/"
       = " | "
       = link_to "Code on GitHub #{fa_icon 'github'}".html_safe, "https://github.com/ScottKolo/suitesparse-matrix-collection-website"
+      :javascript
+        WebFontConfig = {
+          google: { families: ['Cutive'] }
+        };
+        (function() {
+          var wf = document.createElement('script');
+          wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+          wf.type = 'text/javascript';
+          wf.async = 'true';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(wf, s);
+        })();
