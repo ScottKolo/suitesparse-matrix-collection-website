@@ -4,7 +4,7 @@
     %title= full_title(yield(:title))
     %meta{name: "viewport", content: "width=device-width,initial-scale=0.6"}
     = stylesheet_link_tag 'application', media: 'all', :'data-turbolinks-track' => true, media: 'none', onload: "if(media!='all')media='all'"
-    = javascript_include_tag 'application', :'data-turbolinks-track' => true, async: Rails.env.production?
+    = javascript_include_tag 'application', :'data-turbolinks-track' => true
     = csrf_meta_tags
     %meta{name:"google-site-verification", content:"r2pRTzxj91fBd9LQN4oiboo32gfV1c8PpalflcYY8XE"}
   %body
