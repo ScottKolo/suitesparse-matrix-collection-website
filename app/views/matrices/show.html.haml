@@ -8,11 +8,11 @@
       .carousel
         -if has_graph_plot(@matrix)
           %figure.slick-slide
-            %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}@#{@matrix.name}.gif"}
+            %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}.gif"}
               %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_graph.gif", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}
         -if has_AplusAT_plot(@matrix)
           %figure.slick-slide
-            %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}@#{@matrix.name}.APlusAT.gif"}
+            %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}.APlusAT.gif"}
               %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_APlusAT_graph.gif", alt: "Graph Visualization of A+A' for #{@matrix.group}/#{@matrix.name}"}
         -if has_pattern_plot(@matrix)
           %figure.slick-slide
