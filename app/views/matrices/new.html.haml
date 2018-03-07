@@ -69,12 +69,12 @@
       %th{style: "width: 30%"}
         %label{for: "submitter-name"} Name
       %td
-        = f.text_field :submitter_name, class: "form-control", maxlength: "100"
+        = f.text_field :submitter_name, class: "form-control", maxlength: "100", required: true
     %tr
       %th
         %label{for: "submitter-email"} Email
       %td
-        = f.email_field :submitter_email, class: "form-control", maxlength: "100"
+        = f.email_field :submitter_email, class: "form-control", maxlength: "100", required: true
     %tr
       %th
         %label{for: "display-email"} Have this email displayed publically?
