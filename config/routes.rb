@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'statistics' => 'pages#statistics'
   
   get 'submit' => 'matrices#new'
-  post 'submit' => 'matrices#submit'\
+  post 'submit' => 'matrices#submit'
 
   # Route for sparse.tamu.edu/matrix_id
   get '/:matrix_id', to: 'matrices#show', constraints: { matrix_id: /\d+/ }
