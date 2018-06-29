@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Root routes to matrix index
   root 'matrices#index'
   get 'index' => 'matrices#index'
+  get '/' => 'matrices#index'
 
   # Static page routes
   # Keep these first to avoid conflict with group_name route
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   get '/:matrix_id', to: 'matrices#show', constraints: { matrix_id: /\d+/ }
 
   # Route for sparse.tamu.edu/group_name/matrix_name
-  get '/:group/:name', to: 'matrices#show', as: 'matrix'
+  get '/:group/:name', to: 'matrices#show', as: 'matrix', constraints: { group: /(?!assets).*/ }
   
   # Route for sparse.tamu.edu/groups (groups list)
   get '/groups', to: 'groups#index'
