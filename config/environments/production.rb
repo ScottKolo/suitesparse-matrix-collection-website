@@ -2,9 +2,9 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Operate in the subdirectory sparse.tamu.edu/matrix
-  config.action_controller.relative_url_root = '/matrix'
-  config.relative_url_root = '/matrix'
-  config.assets.prefix = '/matrix/assets'
+  #config.action_controller.relative_url_root = '/matrix'
+  #config.relative_url_root = '/matrix'
+  #config.assets.prefix = '/matrix/assets'
 
   # Code is not reloaded between requests.
   config.cache_classes = true
