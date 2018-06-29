@@ -1,6 +1,6 @@
 require 'rails_helper'
 require 'factories/matrix.rb'
-require 'support/factory_girl.rb'
+require 'support/factory_bot.rb'
 
 RSpec.describe MatricesController, type: :controller do
 

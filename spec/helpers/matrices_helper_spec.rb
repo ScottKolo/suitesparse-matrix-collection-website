@@ -1,13 +1,13 @@
 require 'rails_helper'
 require 'factories/matrix.rb'
-require 'support/factory_girl.rb'
+require 'support/factory_bot.rb'
 
 RSpec.describe MatricesHelper, type: :helper do
 
   describe "per_page helper function" do
     before(:all) do
         for i in 1..54
-          FactoryGirl.create(:matrix)
+          FactoryBot.create(:matrix)
         end
     end
     after(:all) do

@@ -12,15 +12,28 @@ Background: matrices have been added to database
   | HB     | pencil   | 34       | 435       | Paul   |
   | Bai    | long     | 44       | 23333     | Greg   |
   | Gset   | asdf     | 46902    | 343       | Lass   |
-  And I am on the home page
+    And I am on the home page
+    And I follow "Reset Filters"
+    And I wait 2 seconds
 
-@wip
 @javascript
-Scenario: filter by string attribute
+Scenario: filter by group name
   When I press "Filters"
-  And  I check "Group"
-  And  I fill in "HB" for "filter-input-group"
-  And  I press "Apply Filters"
-  Then I should be on the index page
-  And  I should see "pencil"
-  But  I should not see "asdf"
+    And I check "Metadata"
+    And I fill in "HB" for "filter-input-group"
+    And I wait 2 seconds
+  Then I should see "pencil"
+  But I should not see "asdf"
+    And I should not see "airplane"
+    And I should not see "long"
+
+@javascript
+Scenario: filter by matrix name
+  When I press "Filters"
+    And I check "Metadata"
+    And I fill in "long" for "filter-input-name"
+    And I wait 2 seconds
+  Then I should see "long"
+  But I should not see "asdf"
+    And I should not see "airplane"
+    And I should not see "pencil"

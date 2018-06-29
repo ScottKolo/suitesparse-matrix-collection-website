@@ -1,4 +1,4 @@
-require 'factory_girl'
+require 'factory_bot'
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
 

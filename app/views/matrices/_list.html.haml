@@ -1,52 +1,66 @@
-.well.well-small
-  .pull-right
-    = link_to "Reset filters", reset_filterrific_url, :class => 'btn btn-default btn-sm'
-  %div
-    = page_entries_info @matrices, model: 'Matrix'
+.card.card-body.bg-light.container.p-1.my-2
+  .d-flex.justify-content-between.align-items-center
+    .p-2
+      = (page_entries_info @matrices, model: 'Matrix').gsub(/b>/, 'strong>').html_safe
+    .p-2
+      = link_to reset_filterrific_url do
+        %button.btn.btn-outline-dark.btn-sm
+          Reset Filters
+          %span.fas.fa-sync-alt{'aria-hidden':'true'}
 
-<!-- Top Pagination Bar -->
-.pagination-container
-  = paginate matrices
-  .pull-right.pagination
-    = label_tag :per_page_top, "Display per page:"
-    = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
+- unless @matrices.empty?
+  <!-- Top Pagination Bar -->
+  .pagination-container.container.px-2
+    .row
+      .col
+      .col-md-auto.p-0
+        = paginate matrices
+      .col.col-lg-3.p-2.text-right
+        = label_tag :per_page_top, "Display per page:"
+        = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
 
-<!-- Layout the matrix table -->
-.col-sm-12
-  %table.table.table-striped#matrices
-    %thead
-      %tr#sort-selector
-        %th= filterrific_sorting_link(@filterrific, :id)
-        %th= filterrific_sorting_link(@filterrific, :name)
-        %th= filterrific_sorting_link(@filterrific, :group)
-        %th= filterrific_sorting_link(@filterrific, :rows)
-        %th= filterrific_sorting_link(@filterrific, :cols)
-        %th= filterrific_sorting_link(@filterrific, :nonzeros)
-        %th= filterrific_sorting_link(@filterrific, :kind)
-        %th= filterrific_sorting_link(@filterrific, :date)
-        %th#download-header.hidden-xs Download File
-    %tbody
-      - matrices.each do |matrix|
-        %tr
-          %td.column-id= "#{matrix.matrix_id}"
-          %td.column-name= link_to "#{matrix.name}", "#{matrix.group}/#{matrix.name}"
-          %td.column-group= link_to "#{matrix.group}", "#{matrix.group}"
-          %td.column-num_rows= number_with_delimiter(matrix.num_rows, :delimiter => ',')
-          %td.column-num_cols= number_with_delimiter(matrix.num_cols, :delimiter => ',')
-          %td.column-nonzeros= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
-          %td.column-kind= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
-          %td.column-date= matrix.date
-          %td.column-download.hidden-xs
-            = link_to matrix.get_url(:matlab), class: "btn btn-default btn-sm" do
-              = "MATLAB #{fa_icon 'download'}".html_safe
-            = link_to matrix.get_url(:rutherford_boeing), class: "btn btn-default btn-sm" do
-              = "Rutherford Boeing #{fa_icon 'download'}".html_safe
-            = link_to matrix.get_url(:matrix_market), class: "btn btn-default btn-sm" do
-              = "Matrix Market #{fa_icon 'download'}".html_safe
+  <!-- Layout the matrix table -->
+  .col-sm-12.m-0.p-0
+    %table.table.table-sm.table-striped#matrices
+      %thead
+        %tr#sort-selector.text-nowrap
+          %th= filterrific_sorting_link(@filterrific, :id,       filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :name,     filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :group,    filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :rows,     filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :cols,     filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :nonzeros, filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :kind,     filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :date,     filterrific_options())
+          %th#download-header.d-none.d-lg-table-cell Download File
+      %tbody
+        - matrices.each do |matrix|
+          %tr
+            %td.column-id= "#{matrix.matrix_id}"
+            %td.column-name= link_to "#{matrix.name}", "/#{matrix.group}/#{matrix.name}"
+            %td.column-group= link_to "#{matrix.group}", "/#{matrix.group}"
+            %td.column-num_rows= number_with_delimiter(matrix.num_rows, :delimiter => ',')
+            %td.column-num_cols= number_with_delimiter(matrix.num_cols, :delimiter => ',')
+            %td.column-nonzeros= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
+            %td.column-kind= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
+            %td.column-date= matrix.date
+            %td.column-download.d-none.d-lg-table-cell
+              = link_to matrix.get_url(:matlab), {class: 'btn btn-outline-dark btn-sm'} do
+                MATLAB
+                %span.fa.fa-download{'aria-hidden':'true'}
+              = link_to matrix.get_url(:rutherford_boeing), {class: 'btn btn-outline-dark btn-sm'} do
+                Rutherford Boeing
+                %span.fa.fa-download{'aria-hidden':'true'}
+              = link_to matrix.get_url(:matrix_market), {class: 'btn btn-outline-dark btn-sm'} do
+                Matrix Market
+                %span.fa.fa-download{'aria-hidden':'true'}
 
-<!-- Bottom Pagination Bar -->
-.pagination-container
-  = paginate matrices
-  .pull-right.pagination
-    = label_tag :per_page_bottom, "Display per page:"
-    = select_tag :per_page_bottom, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
+  <!-- Bottom Pagination Bar -->
+  .pagination-container.container.px-2
+    .row
+      .col
+      .col-md-auto.p-0
+        = paginate matrices
+      .col.col-lg-3.p-2.text-right
+        = label_tag :per_page_top, "Display per page:"
+        = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"

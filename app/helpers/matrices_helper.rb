@@ -12,8 +12,10 @@ module MatricesHelper
 
   # Creates a list of all matrix kinds currently in the database
   def kind_list
+    # Find all unique kinds in the database
     @kinds = Matrix.order('kind asc').distinct.pluck(:kind)
     @kinds.map! do |x| 
+      # Titleize everything, and capitalize 2D and 3D
       x.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D')
     end
     return @kinds
@@ -23,6 +25,8 @@ module MatricesHelper
   def kind_submission_list
     @kinds = kind_list
 
+    # Restrict submission types - remove sequences, duplicates, and subsequent
+    # from submission types.
     @kinds.delete_if { |kind| 
       (kind.include? "Sequence") or 
       (kind.include? "Duplicate") or 
@@ -42,8 +46,12 @@ module MatricesHelper
     is_checked
   end
 
+  # Checks if an image exists on a server
   def is_valid_image_url(url)
+    # Check if this image exists by sending a HTTP GET request
     response = Net::HTTP.get_response(URI.parse(url))
+
+    # If the response is normal-ish, we say it exists.
     return (response.code.to_i >= 200 && response.code.to_i < 400)
   end
 
@@ -75,6 +83,7 @@ module MatricesHelper
     return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_scc.png")
   end
 
+  # Define tooltip text for a variety of fields/properties
   def tooltip_text(property)
     if property == :num_rows
       return "Number of rows in the sparse matrix (often referred to as m)"

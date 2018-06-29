@@ -2,35 +2,34 @@
 %html{:lang => "en"}
   %head
     %title= full_title(yield(:title))
-    %meta{name: "viewport", content: "width=device-width,initial-scale=0.6"}
-    = stylesheet_link_tag 'application', media: 'all', :'data-turbolinks-track' => true, media: 'none', onload: "if(media!='all')media='all'"
-    = javascript_include_tag 'application', :'data-turbolinks-track' => true
+    %meta{charset: 'utf-8'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no'}
+    = stylesheet_link_tag 'application', 'data-turbolinks-track': true, media: 'none', onload: "if(media!='all')media='all'"
+    = javascript_include_tag 'application', 'data-turbolinks-track': true #'data-turbolinks-eval': false 
     = csrf_meta_tags
     %meta{name:"google-site-verification", content:"r2pRTzxj91fBd9LQN4oiboo32gfV1c8PpalflcYY8XE"}
   %body
-    %nav{:class => "navbar navbar-inverse navbar-fixed-top"}
+    %nav.navbar.fixed-top.navbar-expand-lg.navbar-dark
       .container
-        .navbar-header
-          .navbar-toggle.btn{:'data-toggle' => 'collapse', :'data-target' => '#navbar'}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          = link_to root_path, class: "navbar-brand" do
-            .pull-left{style: "margin-left: -200px; margin-top: -40px;"}
-              = image_tag('logo.png', alt: "SuiteSparse Matrix Collection Logo")
+        .navbar-brand
+          .logo
+            = image_tag('logo.png', alt: "SuiteSparse Matrix Collection Logo")
+          %a{href: root_path}
             %h1
               SuiteSparse Matrix Collection
               %small Formerly the University of Florida Sparse Matrix Collection
-        .collapse.navbar-collapse{:id => "navbar"}
-          %ul{:class => "nav navbar-nav navbar-right"}
-            %li{:class => ("active" if yield(:title) == 'Index')}
-              = link_to "Index", root_path
-            %li{:class => ("active" if yield(:title) == 'About')}
-              = link_to "About", about_path
-            %li{:class => ("active" if yield(:title) == 'Interfaces')}
-              = link_to "Interfaces", "/other_interfaces"
-            %li{:class => ("active" if yield(:title) == 'Submit Matrix')}
-              = link_to "Submit Matrix", "/submit"
+        %button.navbar-toggler{type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-controls': "navbarNav", 'aria-expanded': false, 'aria-label': "Toggle navigation"}
+          %span.navbar-toggler-icon
+        #navbar.collapse.navbar-collapse
+          %ul.ml-auto.navbar-nav.nav-pills
+            %li.nav-item
+              = link_to "Index", root_path, class: ["nav-link", ("active" if yield(:title) == 'Index')]
+            %li.nav-item
+              = link_to "About", about_path, class: ["nav-link", ("active" if yield(:title) == 'About')]
+            %li.nav-item
+              = link_to "Interfaces", "/other_interfaces", class: ["nav-link", ("active" if yield(:title) == 'Interfaces')]
+            %li.nav-item
+              = link_to "Submit Matrix", "/submit", class: ["nav-link", ("active" if yield(:title) == 'Submit Matrix')]
     .container.theme-showcase.main{role: "main", id: "#{yield(:title).downcase.gsub(' ', '-')}-main"}
       - if flash[:danger]
         %div.alert.alert-danger
@@ -45,16 +44,18 @@
       = " | "
       = link_to "Computer Science & Engineering Department", "https://engineering.tamu.edu/cse/"
       = " | "
-      = link_to "Code on GitHub #{fa_icon 'github'}".html_safe, "https://github.com/ScottKolo/suitesparse-matrix-collection-website"
-      :javascript
-        WebFontConfig = {
-          google: { families: ['Cutive'] }
-        };
-        (function() {
-          var wf = document.createElement('script');
-          wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-          wf.type = 'text/javascript';
-          wf.async = 'true';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(wf, s);
-        })();
+      = link_to "https://github.com/ScottKolo/suitesparse-matrix-collection-website" do
+        Code on GitHub
+        %span.fab.fa-github{'aria-hidden': "true"}
+  :javascript
+    WebFontConfig = {
+      google: { families: ['Cutive'] }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();

@@ -13,16 +13,15 @@ Background: matrices have been added to database
   | Bai    | long     | no                |
   | Gset   | asdf     | no                |
   And I am on the home page
+  And I follow "Reset Filters"
+  And I wait 2 seconds
 
-@wip
 @javascript
 Scenario: filter by positive_definite
   When I press "Filters"
-  And  I check "Positive Definite"
-  And  I select "Yes" from "filter-input-positive_definite"
-  And  I press "Apply Filters"
-  Then I should be on the index page
-  And  I should see "airplane"
-  And  I should see "pencil"
-  But  I should not see "long"
-  And  I should not see "asdf"
+    And I check "Structure and Entry Types"
+    And I select "Yes" from "filter-input-positive_definite"
+  Then I should see "airplane"
+    And I should see "pencil"
+  But I should not see "long"
+    And I should not see "asdf"

@@ -1,0 +1,145 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ */
+
+/********** SASS Variable Overrides **********/
+
+$link-color: #337ab7;
+/* #265986; */
+
+/********** SASS Imports **********/
+
+@import 'bootstrap';                 // Bootstrap 4
+@import 'font_awesome5_webfont.css'; // Font Awesome 5
+@import 'index.scss';
+@import 'pages.scss';                // Static page styles
+@import 'show_matrix.scss';
+@import 'groups.scss';
+
+
+body {
+  min-width: 640px;
+  width: auto;
+  padding-top: 70px;
+}
+
+/********** Navbar styles **********/
+
+$navbar-bg: rgb(0, 0, 0);
+
+.navbar {
+  background-color: $navbar-bg;
+  border-color: #090909;
+  color: #fff;
+  height: 50px;
+  padding-top: 0;
+  display: block;
+}
+
+.navbar .container {
+  height: 50px;
+  position: relative;
+}
+
+.navbar-toggler {
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+
+.navbar-collapse.show, .navbar-collapse.collapsing {
+  z-index: 1000;
+  position: absolute;
+  top: 50px;
+  width: 100%;
+}
+
+.navbar a {
+  color: #fff;
+}
+
+.navbar-brand {
+  font-family: "cutive";
+  overflow: visible;
+  padding: 0;
+}
+
+.navbar-brand h1 {
+  position: absolute;
+  top: 8px;
+  font-size: 100%;
+  color: #fff;
+  display: block;
+}
+
+.navbar-brand small {
+  display:block;
+  font-size:60%;
+  color: #fff;
+}
+
+.logo {
+  margin-left: -200px;
+  display:inline-block;
+  position: absolute;
+  top: -24px;
+}
+
+.nav > li {
+  padding: 10px;
+}
+
+.nav-pills {
+  background-color: $navbar-bg;
+  padding: 4px;
+}
+
+.nav-pills .nav-link.active, .nav-link:hover, .nav-link:focus {
+  color: #fff;
+  background-color: #222;
+}
+
+li.nav-item {
+  padding-left: 8px;
+}
+
+/********** Flash/Notice styles **********/
+
+#notice {
+  color: green;
+}
+
+/********** Button styles **********/
+
+a.btn {
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: 83%;
+}
+
+/********** Footer Styles **********/
+
+footer {
+  background-color: $navbar-bg;
+  color: #9d9d9d;
+  padding: 20px;
+  margin-bottom: 0;
+  font-size: 9pt;
+}
+
+footer a {
+  color: #9d9d9d;
+}
+
+footer a:active, footer a:hover {
+  color: #fff;
+}

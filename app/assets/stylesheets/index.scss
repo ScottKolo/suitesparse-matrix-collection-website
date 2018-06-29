@@ -1,0 +1,126 @@
+// Place all the styles related to the index page here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/********** Pagination Styles **********/
+
+ul.pagination {
+  margin: 0;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: $link-color;
+  border-color: $link-color;
+}
+
+.pagination-perpage {
+  min-width: 220px;
+}
+
+/********** Filter Styles **********/
+
+.reset-button {
+  position: relative;
+}
+
+.filter-text {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 3px;
+}
+
+.filter-hidden {
+  display: none;
+}
+
+#size-filter, #structure-filter, #metadata-filter {
+  border-top: 1px solid #e3e3e3;
+  margin-top: 4px;
+}
+
+.filter .card-body {
+  padding: 1rem 0.5rem 1rem 0.5rem;
+}
+
+.filter-column {
+    padding: 0px;
+}
+
+.filter {
+  overflow: none;
+}
+
+.filter label {
+  margin-bottom: 0;
+}
+
+.filter .card {
+  margin-bottom: 6px;
+}
+
+.filter h2 {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.filter .card-body {
+}
+
+.filter .card-header {
+  font-size: 0.95rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.dropdown-menu {
+  width: 200px;
+}
+
+.dropdown-menu li {
+  margin-left: 6px;
+}
+
+.dropdown {
+  margin-left: -10px;
+}
+
+.input-with-label {
+  display: inline-block;
+}
+
+.input-with-label input {
+  width: 100%;
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+.input-with-label label {
+  font-size: $font-size-sm;
+  display: block;
+  float: left;
+  width: 100%;
+  margin: 0 auto; 
+  color: $gray-600;
+  margin-bottom: 0px;
+}
+
+/********** Index Table Styles **********/
+
+.column-name {
+  min-width: 100px;
+  word-break: break-all;
+}
+
+.column-num_rows, .column-num_cols, .column-nonzeros {
+  text-align: right;
+}
+
+.column-download {
+  min-width: 343px;
+}
+
+.column-download .btn {
+  font-size: 0.725rem;
+}

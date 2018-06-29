@@ -1,14 +1,14 @@
-require 'factory_girl'
+require 'factory_bot'
 
 RSpec.configure do |config|
   # Setup syntax and method usage
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   # Build and validate factories before the test, clean up after
   config.before(:suite) do
     begin
       DatabaseCleaner.start
-      FactoryGirl.lint
+      FactoryBot.lint
     ensure
       DatabaseCleaner.clean
     end

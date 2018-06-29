@@ -30,6 +30,10 @@ class Matrix < ActiveRecord::Base
     available_filters: [
       :sorted_by,
       :search_query,
+      :min_id,
+      :max_id,
+      :min_year,
+      :max_year,
       :min_rows,
       :max_rows,
       :min_cols,
@@ -42,6 +46,17 @@ class Matrix < ActiveRecord::Base
       :max_numerical_symmetry,
       :min_strongly_connected_components,
       :max_strongly_connected_components,
+      :min_dmperm_blocks, 
+      :max_dmperm_blocks,
+      :rb_type,
+      :shape,
+      :structure,
+      :name_query, 
+      :group_query, 
+      :description_query, 
+      :author_query, 
+      :editor_query, 
+      :notes_query,
       :positive_definite,
     ]
   )
@@ -129,6 +144,48 @@ class Matrix < ActiveRecord::Base
     )
   }
 
+  scope :name_query, -> (query) { 
+    return nil if query.blank?
+
+    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
+    where("LOWER(matrices.name) LIKE ?", query.downcase)
+  }
+
+  scope :group_query, -> (query) { 
+    return nil if query.blank?
+
+    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
+    where("LOWER(matrices.group) LIKE ?", query.downcase)
+  }
+
+  scope :description_query, -> (query) { 
+    return nil if query.blank?
+
+    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
+    where("LOWER(matrices.description) LIKE ?", query.downcase)
+  }
+
+  scope :author_query, -> (query) { 
+    return nil if query.blank?
+
+    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
+    where("LOWER(matrices.author) LIKE ?", query.downcase)
+  }
+
+  scope :editor_query, -> (query) { 
+    return nil if query.blank?
+
+    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
+    where("LOWER(matrices.editor) LIKE ?", query.downcase)
+  }
+
+  scope :notes_query, -> (query) { 
+    return nil if query.blank?
+
+    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
+    where("LOWER(matrices.notes) LIKE ?", query.downcase)
+  }
+
   # Filter by group name
   scope :group_name, -> (group) {
     where("matrices.group = ?", group)
@@ -159,6 +216,47 @@ class Matrix < ActiveRecord::Base
 
   scope :max_nonzeros, -> (max_nonzeros) {
     where("matrices.nonzeros <= ?", max_nonzeros)
+  }
+
+  # Filter by shape
+  scope :shape, -> (shape) {
+    if shape == "Square"
+      where("matrices.num_rows = matrices.num_cols")
+    elsif shape == "Rectangular"
+      where.not("matrices.num_rows = matrices.num_cols")
+    else
+      nil
+    end
+  }
+
+  scope :structure, -> (structure) {
+    if structure == "Hermitian"
+      where("matrices.structure = ?", structure)
+    else
+      where("matrices.structure = ?", structure.downcase)
+    end
+  }
+
+  scope :rb_type, -> (rb_type) {
+    where("matrices.rb_type = ?", rb_type.downcase)
+  }
+
+  # Filter by ID
+  scope :min_id, -> (min_id) {
+    where("matrices.matrix_id >= ?", min_id)
+  }
+
+  scope :max_id, -> (max_id) {
+    where("matrices.matrix_id <= ?", max_id)
+  }
+
+  # Filter by year
+  scope :min_year, -> (min_year) {
+    where("matrices.date >= ?", min_year)
+  }
+
+  scope :max_year, -> (max_year) {
+    where("matrices.date <= ?", max_year)
   }
 
   # Filter by pattern symmetry

@@ -16,7 +16,7 @@ Background: matrices have been added to database
 
 Scenario: filter by number of strongly connected components
   Given I am on the home page
-    And I follow "Reset filters"
+    And I follow "Reset Filters"
   When I filter matrices between "10" and "1000" "strongly_connected_components"
     And I should see "Can't Buy Me Love"
     And I should see "For You Blue"

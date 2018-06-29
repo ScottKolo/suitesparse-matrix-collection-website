@@ -1,0 +1,193 @@
+=provide(:title, "Statistics")
+%h2 Statistics computed for the SuiteSparse Matrix Collection
+%p
+  The index for the UF Collection contains a set of statistics about each matrix in the collection. A table of these statistics can be loaded into MATLAB via index=UFget, and by list=UFkinds. Below is a summary of what they are and how they are computed. The first two are for the whole collection, and the rest are statistics for each matrix.
+
+%dl.row
+  %dt.col-lg-2
+    LastRevisionDate
+  %dd.col-lg-10
+    This is a single string kept in the UF_index MATLAB struct that states when the collection or the index was last modified.
+  %dt.col-lg-2
+    DownloadTimeStamp
+  %dd.col-lg-10
+    The date and time the index that you last downloaded the index.
+  %dt.col-lg-2
+    Group
+  %dd.col-lg-10
+    A cell array. Group{id} is the group name for the matrix whose serial number is 'id'. Each matrix has a unique id number in the range of 1 to the number of matrices in the collection. Once an id is assigned to a matrix, it never changes.
+  %dt.col-lg-2
+    Name
+  %dd.col-lg-10
+    Name{id} is the name of the matrix (excluding the Group). Name{id} is not unique. The full name of a matrix should always be given as Group/Name.
+  %dt.col-lg-2
+    nrows
+  %dd.col-lg-10
+    The number of rows in the matrix.
+  %dt.col-lg-2
+    ncols
+  %dd.col-lg-10
+    The number of columns in the matrix.
+  %dt.col-lg-2
+    nnz
+  %dd.col-lg-10
+    The number of numerically nonzero entries in the matrix, or nnz(Problem.A) in MATLAB, where Problem=UFget(id) is a struct containing the MATLAB format of the problem. This statistic can differ from the number of 'entries' explicitly stored in the matrix, however, since some of these entries may be numerically zero. In the MATLAB format, these explicit zero entries are stored in the binary Problem.Zeros matrix, since MATLAB drops all explicit zeros from its sparse matrix storage. The Problem.A matrix in MATLAB has nnz entries in it, with no explicit zeros. In the Matrix Market and Rutherford-Boeing format, a single file holds all entries, both nonzero and the explicit zero entries.
+  %dt.col-lg-2
+    nzero
+  %dd.col-lg-10
+    The number of explicit entries present in the matrix that are provided by the matrix author but which are numerically zero. nzero(id) is nnz(Problem.Zeros).
+  %dt.col-lg-2
+    pattern_symmetry
+  %dd.col-lg-10
+    Let S=spones(Problem.A) be the binary pattern of the explicit nonzeros in the matrix. Let pmatched be the number of matched offdiagonal entries, where both S(i,j) and S(j,i) are one, with i not equal to j. Let nzoffdiag be the number of offdiagonal entries in S. Then pattern_symmetry is the ratio of pmatched/nzoffdiag. Note that if S(i,j) and S(j,i) are both one, then this pair of entries is counted twice in both pmatched and nzoffdiag. If the matrix is rectangular, this statistic is zero. If there are no offdiagonal entries, the statistic is 1.
+  %dt.col-lg-2
+    numerical_symmetry
+  %dd.col-lg-10
+    Let xmatched be the number of matched offdiagonal entries, where A(i,j) is equal to the complex conjugate of A(j,i) and where i and j are not equal. Then numerical_symmetry is the ration xmatched / nzoffdiag (or 1 if nzoffdiag is zero). This statistic is zero for rectangular matrices. Note that this statistic measures how close a matrix is to being Hermitian (A=A' in MATLAB). For complex symmetric matrices (A=A.' in MATLAB), this ratio will be less than one (unless all offdiagonal entries are real).
+  %dt.col-lg-2
+    isBinary
+  %dd.col-lg-10
+    1 if the matrix is binary (all entries are 0 or 1), 0 otherwise.
+  %dt.col-lg-2
+    isReal
+  %dd.col-lg-10
+    1 if the matrix is real, 0 if complex.
+  %dt.col-lg-2
+    nnzdiag
+  %dd.col-lg-10
+    The number of numerically nonzero entries on the diagonal (nnz (diag (Problem.A)) in MATLAB notation). This statistic ignores explicit zero entries (Problem.Zeros in the MATLAB struct).
+  %dt.col-lg-2
+    posdef
+  %dd.col-lg-10
+    1 if the matrix is known to be symmetric positive definite (or Hermitian positive definite for the complex case), 0 if it is known not to be, -1 if it is symmetric (or Hermitian) but with unknown positive-definiteness. If the statistic is unknown (-1) this may be revised in subsequent versions of the index.
+  %dt.col-lg-2
+    amd_lnz
+  %dd.col-lg-10
+    Let C=S+S' where S=spones(A) is the binary pattern of A. Then amd_lnz is number of nonzeros in the Cholesky factorization of the matrix C(p,p) (assuming C is positive definite) where p=amd(C) is the AMD fill-reducing ordering. This statistic is -2 for rectangular matrices or for graph problems. It is -1 if it is not computed. This figure gives an estimate of the memory requirements for x=A\b in MATLAB for square matrices.
+  %dt.col-lg-2
+    amd_flops
+  %dd.col-lg-10
+    The floating-point operation count for computing the Cholesky factorization of C(p,p) (see above).
+  %dt.col-lg-2
+    amd_vnz
+  %dd.col-lg-10
+    The number of entries in a Householder-vector representation of the Q factor of R (but not the QR in MATLAB), after a COLAMD fill-reducing ordering. This is an upper bound on L for the LU factorization of A.
+  %dt.col-lg-2
+    amd_rnz
+  %dd.col-lg-10
+    The number of entries in R for the QR factorization of A, after a COLAMD fill-reducing ordering. This is an upper bound on U for the LU factorization of A.
+  %dt.col-lg-2
+    nblocks
+  %dd.col-lg-10
+    The number of blocks from dmperm (see dmperm in MATLAB).
+  %dt.col-lg-2
+    sprank
+  %dd.col-lg-10
+    The structural rank of the matrix, which is the number of maximual number of nonzero entries that can be permuted to the diagonal (see dmperm, or sprank in MATLAB). This statistic is not computed for problems that represent graphs, since in those cases the diagonal of the matrix is often not relevant (self-edges are often ignored).
+  %dt.col-lg-2
+    RBtype
+  %dd.col-lg-10
+    The Rutherford Boeing type of the matrix (ignoring explicit zeros in Problem.Zeros). RBtype is a a 3-letter lower-case string. The first letter is:
+    %dl.row
+      %dt.col-1
+        r
+      %dd.col-11
+        if A is real but not binary
+      %dt.col-1
+        p
+      %dd.col-11
+        if A is binary
+      %dt.col-1
+        c
+      %dd.col-11
+        if A is complex
+      %dt.col-1
+        i
+      %dd.col-11
+        if A is integer
+    The second letter:
+    %dl.row
+      %dt.col-1
+        r
+      %dd.col-11
+        if A is rectangular
+      %dt.col-1
+        u
+      %dd.col-11
+        if A is square and unsymmetric
+      %dt.col-1
+        s
+      %dd.col-11
+        if A is symmetric (nnz(A-A.') is zero in MATLAB)
+      %dt.col-1
+        h
+      %dd.col-11
+        if A is Hermitian (nnz(A-A') is zero in MATLAB)
+      %dt.col-1
+        z
+      %dd.col-11
+        if A is skew-symmetric (nnz(A+A.') is zero in MATLAB)
+    The third letter is always 'a' (for 'assembled'). The RB format allows for unassembled finite-element matrices, but they are converted to assembled format for this collection.
+  %dt.col-lg-2
+    cholcand
+  %dd.col-lg-10
+    1 if the matrix is symmetric (Hermitian if complex) and if all the diagonal entries are postive and real. Zero otherwise. If 1, the matrix is a candidate for a Cholesky factorization, which MATLAB will first try when computing x=A\b.
+  %dt.col-lg-2
+    ncc
+  %dd.col-lg-10
+    The number of of strongly-connected components in the graph of A (if A is square) or in the bipartite graph if A is rectangular. The diagonal is ignored.
+  %dt.col-lg-2
+    isND
+  %dd.col-lg-10
+    1 if the problem comes from a 2D/3D discretization, zero otherwise. This determination is not a property of the matrix, but a qualitative assesment of the kind of problem the matrix represents.
+  %dt.col-lg-2
+    isGraph
+  %dd.col-lg-10
+    1 if the problem is best considered as a graph rather than a system of equations, zero otherwise. This determination is not a property of the matrix, but a qualitative assesment of the kind of problem the matrix represents.
+
+%h3 UFstats.csv
+
+%p
+  A CSV file is also available with some of this index information (UFstats.csv). The first line of the CSV file gives the number of matrices in the collection, and the second line gives the LastRevisionDate. Line k+2 in the file lists the following statistics for the matrix whose id number is k: Group, Name, nrows, ncols, nnz, isReal, isBinary, isND, posdef, pattern_symmetry, numerical_symmetry, and kind.
+
+%h3 SVD-based statistics
+
+%p
+  The following statistics are not (yet) in the UFindex. They are currently available only on the web page for each matrix. You can also download the singular values at www.cise.ufl.edu/research/sparse/svd. These were typically calculated with s=svd(full(A)) in MATLAB, are are thus only available for modest-sized matrices.
+%dl.row
+  %dt.col-lg-2
+    norm(A)
+  %dd.col-lg-10
+    The 2-norm of A (the largest singular value)
+  %dt.col-lg-2
+    min(svd(A))
+  %dd.col-lg-10
+    The smallest singular value
+  %dt.col-lg-2
+    cond(A)
+  %dd.col-lg-10
+    The 2-norm condition number, which is the ratio of the largest over the smallest singular value.
+  %dt.col-lg-2
+    rank(A)
+  %dd.col-lg-10
+    The rank of the matrix, which is the number of singular values larger than the tolerance of max(m,n)*eps(norm(A)). This tolerance is plotted in green in the figure.
+  %dt.col-lg-2
+    sprank(A)-rank(A)
+  %dd.col-lg-10
+    sprank(A) (see above) is an upper bound on the rank of A.
+  %dt.col-lg-2
+    null space dimension
+  %dd.col-lg-10
+    The dimension of the null space (zero if it has full numerical rank). This is simply min(m,n)-rank(A).
+  %dt.col-lg-2
+    full numerical rank?
+  %dd.col-lg-10
+    'yes' or 'no'.
+  %dt.col-lg-2
+    singular value gap
+  %dd.col-lg-10
+    If k=rank(A), and the matrix is rank deficient, then this is the ratio s(k)/s(k+1). A red line between the kth and (k+1)st singular value is drawn to illustrate this gap.
+  %dt.col-lg-2
+    singular values
+  %dd.col-lg-10
+    These can be downloaded as a MATLAB MAT-file. Each file contains a struct with the fields: s (a vector containing the singular values), how (a string stating how the SVD was computed), and status (a string that is either 'ok' or a warning). If the status shows that the SVD did not converge, the singular values are probably not computed accurately.

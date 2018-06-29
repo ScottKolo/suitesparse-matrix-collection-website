@@ -13,10 +13,10 @@ Background: matrices have been added to database
   | Abbey Road           | Come Together        | yes               |
   | Let It Be            | For You Blue         | no                |
   | Beatles For Sale     | Eight Days A Week    | no                |
+    And I am on the home page
+    And I follow "Reset Filters"
 
 Scenario: filter by positive definiteness
-  Given I am on the home page
-    And I follow "Reset filters"
   When I filter matrices by "positive_definite" "Yes"
   Then I should see "All You Need Is Love"
     And I should see "Can't Buy Me Love"
@@ -25,8 +25,6 @@ Scenario: filter by positive definiteness
     And I should not see "Eight Days A Week"
 
 Scenario: filter by no positive definiteness
-  Given I am on the home page
-    And I follow "Reset filters"
   When I filter matrices by "positive_definite" "No"
   Then I should not see "All You Need Is Love"
     And I should not see "Can't Buy Me Love"
@@ -35,8 +33,6 @@ Scenario: filter by no positive definiteness
     And I should see "Eight Days A Week"
 
 Scenario: filter by any positive definiteness
-  Given I am on the home page
-    And I follow "Reset filters"
   When I filter matrices by "positive_definite" "Any"
   Then I should see "All You Need Is Love"
     And I should see "Can't Buy Me Love"

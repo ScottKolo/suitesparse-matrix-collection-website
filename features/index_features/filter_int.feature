@@ -13,11 +13,10 @@ Background: matrices have been added to database
   | Abbey Road           | Come Together        | 100      | 418      | J. Lennon               |
   | Let It Be            | For You Blue         | 1687642  | 232      | G. Harrison             |
   | Beatles For Sale     | Eight Days A Week    | 1964     | 244      | J. Lennon, P. McCartney |
-
+    And I am on the home page
+    And I follow "Reset Filters"
 
 Scenario: filter by rows
-  Given I am on the home page
-    And I follow "Reset filters"
   When I filter matrices between "100" and "5000" "rows"
     And I should see "Can't Buy Me Love"
     And I should see "Come Together"
@@ -26,8 +25,6 @@ Scenario: filter by rows
     And I should not see "For You Blue"
 
 Scenario: filter by columns
-  Given I am on the home page
-    And I follow "Reset filters"
   When I filter matrices between "232" and "357" "cols"
     And I should see "For You Blue"
     And I should see "Eight Days A Week"

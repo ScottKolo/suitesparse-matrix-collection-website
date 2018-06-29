@@ -3,7 +3,7 @@ require 'cgi'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 require File.expand_path(File.join(File.dirname(__FILE__), "../..", "spec", "factories", "matrix.rb"))
-require 'factory_girl'
+require 'factory_bot'
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
 
@@ -53,30 +53,28 @@ end
 
 Then /^I should see (\d+) links? to the next page of pagination$/ do |num_links|
   expect(page).to have_css('ul.pagination', count: num_links)
-  expect(page).to have_css("li.next")
-  expect(page).to have_css("a[rel='next']")
-  expect(page).to_not have_css("li.next.disabled")
+  expect(page).to have_css("ul.pagination li.page-item:last-child")
+  expect(page).to_not have_css("ul.pagination li.page-item.disabled:last-child")
+  expect(page).to have_css("a.page-link[rel='next']")
 end
 
 Then /^I should see (\d+) links? to the previous page of pagination$/ do |num_links|
   expect(page).to have_css('ul.pagination', count: num_links)
-  expect(page).to have_css("li.prev")
-  expect(page).to have_css("a[rel='prev']")
-  expect(page).to_not have_css("li.prev.disabled")
+  expect(page).to have_css("ul.pagination li.page-item:first-child")
+  expect(page).to_not have_css("ul.pagination li.page-item.disabled:first-child")
+  expect(page).to have_css("a.page-link[rel='prev']")
 end
 
 Then /^I should see (\d+) disabled links? to the next page of pagination$/ do |num_links|
   expect(page).to have_css('ul.pagination', count: num_links)
-  expect(page).to have_css("li.next")
-  expect(page).to_not have_css("a[rel='next']")
-  expect(page).to have_css("li.next.disabled")
+  expect(page).to have_css("ul.pagination li.page-item.disabled:last-child")
+  expect(page).to_not have_css("a.page-link[rel='next']")
 end
 
 Then /^I should see (\d+) disabled links? to the previous page of pagination$/ do |num_links|
   expect(page).to have_css('ul.pagination', count: num_links)
-  expect(page).to have_css("li.prev")
-  expect(page).to_not have_css("a[rel='prev']")
-  expect(page).to have_css("li.prev.disabled")
+  expect(page).to have_css("ul.pagination li.page-item.disabled:first-child")
+  expect(page).to_not have_css("a.page-link[rel='prev']")
 end
 
 When /^I click the next page link$/ do
@@ -85,7 +83,7 @@ end
 
 Given /^there are (\d+) matrices$/ do |total_entries|
   DatabaseCleaner.clean_with(:truncation)
-  FactoryGirl.create_list(:matrix, total_entries.to_i)
+  FactoryBot.create_list(:matrix, total_entries.to_i)
 end
 
 Given /^(?:|I )am on page number (\d+) of the (.+) page with (\d+|All) per page$/ do |page_num, page_name, per_page|

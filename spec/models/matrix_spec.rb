@@ -4,7 +4,7 @@ require 'factories/matrix'
 RSpec.describe Matrix, type: :model do
   describe "keyword search scopes" do
     before(:all) do
-        @matrix1 = FactoryGirl.create(:matrix, 
+        @matrix1 = FactoryBot.create(:matrix, 
           matrix_id: 68,
           group: "a", 
           name: "b",
@@ -15,7 +15,7 @@ RSpec.describe Matrix, type: :model do
           description: "Lucy in the sky with diamonds.",
           notes: "The unique query string is 'Ringo'"
           )
-        @matrix2 = FactoryGirl.create(:matrix, 
+        @matrix2 = FactoryBot.create(:matrix, 
           matrix_id: 11,
           group: "Bravo", 
           name: "c",
@@ -26,7 +26,7 @@ RSpec.describe Matrix, type: :model do
           description: "Help! I need somebody.",
           notes: "A fancy matrix."
           )
-        @matrix3 = FactoryGirl.create(:matrix, 
+        @matrix3 = FactoryBot.create(:matrix, 
           matrix_id: 10000,
           group: "Z", 
           name: "Twist and Shout",
@@ -74,7 +74,7 @@ RSpec.describe Matrix, type: :model do
 
   describe "filtering scopes" do
     before(:all) do
-        @matrix1 = FactoryGirl.create(:matrix, 
+        @matrix1 = FactoryBot.create(:matrix, 
           matrix_id: 68,
           group: "a", 
           name: "b",
@@ -88,7 +88,7 @@ RSpec.describe Matrix, type: :model do
           num_strongly_connected_components: 1,
           positive_definite: "no"
           )
-        @matrix2 = FactoryGirl.create(:matrix, 
+        @matrix2 = FactoryBot.create(:matrix, 
           matrix_id: 11,
           group: "B", 
           name: "c",
@@ -102,7 +102,7 @@ RSpec.describe Matrix, type: :model do
           num_strongly_connected_components: 10,
           positive_definite: "yes"
           )
-        @matrix3 = FactoryGirl.create(:matrix, 
+        @matrix3 = FactoryBot.create(:matrix, 
           matrix_id: 10000,
           group: "Z", 
           name: "D",
@@ -207,7 +207,7 @@ RSpec.describe Matrix, type: :model do
 
   describe "sorting scopes" do
     before(:all) do
-        @matrix1 = FactoryGirl.create(:matrix, 
+        @matrix1 = FactoryBot.create(:matrix, 
           matrix_id: 68,
           group: "a", 
           name: "b",
@@ -217,7 +217,7 @@ RSpec.describe Matrix, type: :model do
           kind: "2D Mesh",
           date: 1991
           )
-        @matrix2 = FactoryGirl.create(:matrix, 
+        @matrix2 = FactoryBot.create(:matrix, 
           matrix_id: 11,
           group: "B", 
           name: "c",
@@ -227,7 +227,7 @@ RSpec.describe Matrix, type: :model do
           kind: "Fancy type",
           date: 2001
           )
-        @matrix3 = FactoryGirl.create(:matrix, 
+        @matrix3 = FactoryBot.create(:matrix, 
           matrix_id: 10000,
           group: "Z", 
           name: "D",
@@ -315,7 +315,7 @@ RSpec.describe Matrix, type: :model do
 
   describe "getting correct download URL" do
     before(:all) do
-        @matrix = FactoryGirl.create(:matrix, :group => "groupName_1", :name => "matrixName_1")
+        @matrix = FactoryBot.create(:matrix, :group => "groupName_1", :name => "matrixName_1")
     end
     after(:all) do
         Matrix.destroy(@matrix.id)

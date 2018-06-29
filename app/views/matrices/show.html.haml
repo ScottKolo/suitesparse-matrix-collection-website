@@ -4,36 +4,6 @@
 %div{style: "padding-bottom: 20px;"}
   .h4= @matrix.description
   .row
-    .col-md-6.col-md-push-6
-      .carousel
-        -if has_graph_plot(@matrix)
-          %figure.slick-slide
-            %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_graph.gif"}
-              %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_graph.gif", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}
-        -if has_AplusAT_plot(@matrix)
-          %figure.slick-slide
-            %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_APlusAT_graph.gif"}
-              %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_APlusAT_graph.gif", alt: "Graph Visualization of A+A' for #{@matrix.group}/#{@matrix.name}"}
-        -if has_pattern_plot(@matrix)
-          %figure.slick-slide
-            %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}.png"}
-              %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}.png", alt: "Nonzero Pattern of #{@matrix.group}/#{@matrix.name}"}
-        -if has_svd_plot(@matrix)
-          %figure.slick-slide
-            %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_svd.png"}
-              %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_svd.png", alt: "Singular Values of #{@matrix.group}/#{@matrix.name}"}
-        -if has_gplot(@matrix)
-          %figure.slick-slide
-            %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_gplot.png"}
-              %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_gplot.png", alt: "3D Graph Plot of #{@matrix.group}/#{@matrix.name}"}
-        -if has_dmperm_plot(@matrix)
-          %figure.slick-slide
-            %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_dmperm.png"}
-              %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_dmperm.png", alt: "Dulmage-Mendelsohn Permutation of #{@matrix.group}/#{@matrix.name}"}
-        -if has_scc_plot(@matrix)
-          %figure.slick-slide
-            %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_scc.png"}
-              %img.img-responsive{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_scc.png", alt: "Connected Components of the Bipartite Graph of #{@matrix.group}/#{@matrix.name}"}
     .col-md-6.col-md-pull-6
       %table.table.table-striped
         %tbody
@@ -48,60 +18,107 @@
             %td= @matrix.matrix_id
           %tr
             %th
-              %p
-                Num Rows
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_rows)}
-                  = fa_icon 'question-circle'
+              Num Rows
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_rows)}
+                %span.fas.fa-question-circle
             %td= number_with_delimiter(@matrix.num_rows, :delimiter => ',')
           %tr
             %th 
-              %p
-                Num Cols
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_cols)}
-                  = fa_icon 'question-circle'
+              Num Cols
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_cols)}
+                %span.fas.fa-question-circle
             %td= number_with_delimiter(@matrix.num_cols, :delimiter => ',')
           %tr
             %th
-              %p
-                Nonzeros
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:nonzeros)}
-                  = fa_icon 'question-circle'
+              Nonzeros
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:nonzeros)}
+                %span.fas.fa-question-circle
             %td= number_with_delimiter(@matrix.nonzeros, :delimiter => ',')
           %tr
             %th
-              %p
-                Kind
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:kind)}
-                  = fa_icon 'question-circle'
+              Kind
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:kind)}
+                %span.fas.fa-question-circle
             %td= @matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless @matrix.kind.nil?
           %tr
             %th
-              %p
-                Symmetric
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:symmetric)}
-                  = fa_icon 'question-circle'
+              Symmetric
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:symmetric)}
+                %span.fas.fa-question-circle
             %td= @matrix.structure == "symmetric" ? "Yes" : "No"
           %tr
             %th
-              %p
-                Date
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:date)}
-                  = fa_icon 'question-circle'
+              Date
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:date)}
+                %span.fas.fa-question-circle
             %td= @matrix.date
           %tr
             %th
-              %p
-                Author
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:author)}
-                  = fa_icon 'question-circle'
+              Author
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:author)}
+                %span.fas.fa-question-circle
             %td= @matrix.author
           %tr
             %th
-              %p
-                Editor
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:editor)}
-                  = fa_icon 'question-circle'
+              Editor
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:editor)}
+                %span.fas.fa-question-circle
             %td= @matrix.editor
+    .col-md-6.col-md-push-6
+      #figures.carousel.slide{'data-ride': "carousel"}
+        %ol.carousel-indicators
+          - fig_num = -1;
+          -if has_graph_plot(@matrix)
+            %li.active{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
+          -if has_AplusAT_plot(@matrix)
+            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
+          -if has_pattern_plot(@matrix)
+            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
+          -if has_svd_plot(@matrix)
+            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
+          -if has_gplot(@matrix)
+            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
+          -if has_dmperm_plot(@matrix)
+            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
+          -if has_scc_plot(@matrix)
+            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
+        .carousel-inner
+          -if has_graph_plot(@matrix)
+            .carousel-item.active
+              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_graph.gif"}
+                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_graph.gif", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}
+          -if has_AplusAT_plot(@matrix)
+            .carousel-item
+              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_APlusAT_graph.gif"}
+                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_APlusAT_graph.gif", alt: "Graph Visualization of A+A' for #{@matrix.group}/#{@matrix.name}"}
+          -if has_pattern_plot(@matrix)
+            .carousel-item
+              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}.png"}
+                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}.png", alt: "Nonzero Pattern of #{@matrix.group}/#{@matrix.name}"}
+          -if has_svd_plot(@matrix)
+            .carousel-item
+              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_svd.png"}
+                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_svd.png", alt: "Singular Values of #{@matrix.group}/#{@matrix.name}"}
+          -if has_gplot(@matrix)
+            .carousel-item
+              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_gplot.png"}
+                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_gplot.png", alt: "3D Graph Plot of #{@matrix.group}/#{@matrix.name}"}
+          -if has_dmperm_plot(@matrix)
+            .carousel-item
+              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_dmperm.png"}
+                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_dmperm.png", alt: "Dulmage-Mendelsohn Permutation of #{@matrix.group}/#{@matrix.name}"}
+          -if has_scc_plot(@matrix)
+            .carousel-item
+              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_scc.png"}
+                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_scc.png", alt: "Connected Components of the Bipartite Graph of #{@matrix.group}/#{@matrix.name}"}
+        %a.carousel-control-prev{href:'#figures', role: 'button', :'data-slide' => 'prev'}
+          %span.carousel-control-prev-icon{'aria-hidden': 'true'}
+          %span.sr-only
+            Previous
+        %a.carousel-control-next{href:'#figures', role: 'button', :'data-slide' => 'next'}
+          %span.carousel-control-next-icon{'aria-hidden': 'true'}
+          %span.sr-only
+            Next
 
   .row
     .col-md-6
@@ -115,59 +132,51 @@
             %td= @matrix.structural_full_rank
           %tr
             %th
-              %p
-                Num Dmperm Blocks
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_dmperm_blocks)}
-                  = fa_icon 'question-circle'
+              Num Dmperm Blocks
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_dmperm_blocks)}
+                %span.fas.fa-question-circle
             %td= @matrix.num_dmperm_blocks
           %tr
             %th
-              %p
-                Strongly Connect Components
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_strongly_connected_components)}
-                  = fa_icon 'question-circle'
+              Strongly Connect Components
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_strongly_connected_components)}
+                %span.fas.fa-question-circle
             %td= @matrix.num_strongly_connected_components
           %tr
             %th
-              %p
-                Num Explicit Zeros
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:num_explicit_zeros)}
-                  = fa_icon 'question-circle'
+              Num Explicit Zeros
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_explicit_zeros)}
+                %span.fas.fa-question-circle
             %td= @matrix.num_explicit_zeros
           %tr
             %th
-              %p
-                Pattern Symmetry
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:pattern_symmetry)}
-                  = fa_icon 'question-circle'
+              Pattern Symmetry
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:pattern_symmetry)}
+                %span.fas.fa-question-circle
             %td= number_to_percentage(@matrix.pattern_symmetry ? @matrix.pattern_symmetry*100 : nil, precision:0)
           %tr
             %th
-              %p
-                Numeric Symmetry
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:numeric_symmetry)}
-                  = fa_icon 'question-circle'
+              Numeric Symmetry
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:numeric_symmetry)}
+                %span.fas.fa-question-circle
             %td= number_to_percentage(@matrix.numeric_symmetry ? @matrix.numeric_symmetry*100 : nil, precision:0)
           %tr
             %th
-              %p
-                Cholesky Candidate
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:cholesky_candidate)}
-                  = fa_icon 'question-circle'
+              Cholesky Candidate
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:cholesky_candidate)}
+                %span.fas.fa-question-circle
             %td= @matrix.cholesky_candidate
           %tr
             %th
-              %p
-                Positive Definite
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:positive_definite)}
-                  = fa_icon 'question-circle'
+              Positive Definite
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:positive_definite)}
+                %span.fas.fa-question-circle
             %td= @matrix.positive_definite
           %tr
             %th
-              %p
-                Type
-                %a.small{href: '#', 'data-toggle': 'tooltip', title: tooltip_text(:rb_type)}
-                  = fa_icon 'question-circle'
+              Type
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:rb_type)}
+                %span.fas.fa-question-circle
             %td{colspan: 2}= @matrix.rb_type
     - if @matrix.norm
       .col-md-6
@@ -198,7 +207,10 @@
               %td= @matrix.full_numerical_rank
             %tr
               %th Download Singular Values
-              %td= link_to "MATLAB #{fa_icon 'download'}".html_safe, @matrix.get_url(:svd), class: "btn btn-default"
+              %td
+                = link_to @matrix.get_url(:svd), {class: 'btn btn-outline-dark btn-sm'} do
+                  MATLAB
+                  %span.fa.fa-download{'aria-hidden':'true'}
   .row
     .col-md-12
       %table.table.table-striped
@@ -206,22 +218,21 @@
           %tr
             %th Download
             %td
-              = link_to "MATLAB #{fa_icon 'download'}".html_safe, @matrix.get_url(:matlab), class: "btn btn-default"
-              = link_to "Rutherford Boeing #{fa_icon 'download'}".html_safe, @matrix.get_url(:rutherford_boeing), class: "btn btn-default"
-              = link_to "Matrix Market #{fa_icon 'download'}".html_safe, @matrix.get_url(:matrix_market), class: "btn btn-default"
+              = link_to @matrix.get_url(:matlab), {class: 'btn btn-outline-dark btn-sm'} do
+                MATLAB
+                %span.fa.fa-download{'aria-hidden':'true'}
+              = link_to @matrix.get_url(:rutherford_boeing), {class: 'btn btn-outline-dark btn-sm'} do
+                Rutherford Boeing
+                %span.fa.fa-download{'aria-hidden':'true'}
+              = link_to @matrix.get_url(:matrix_market), {class: 'btn btn-outline-dark btn-sm'} do
+                Matrix Market
+                %span.fa.fa-download{'aria-hidden':'true'}
           %tr
             %th Notes
             %td
               - if @matrix.notes
                 .notesbox
                   %pre.pre-scrollable= @matrix.notes
-:coffeescript
-  $(document).on 'turbolinks:load', ->
-    $('.carousel').not('.slick-initialized').slick({
-      adaptiveHeight: true,
-      slidesToShow: 1,
-      dots: true
-    });
 :javascript
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 

@@ -13,21 +13,29 @@ Background: matrices have been added to database
   | Gset   | airplane | 46902    | 46902     | Lass   | 1.00             | 1.00             |
 
 Scenario: Symmetry for Rectangular Matrix
-  Given I am on the show page for a matrix with name "dingbat" and group "Boeing"
-  Then the "Pattern Symmetry" property should be "0%"
-  Then the "Numeric Symmetry" property should be "0%"
+  When I am on the show page for a matrix with name "dingbat" and group "Boeing"
+  Then the "Name" property should be "dingbat"
+    And the "Group" property should be "Boeing"
+    And the "Pattern Symmetry" property should be "0%"
+    And the "Numeric Symmetry" property should be "0%"
 
 Scenario: Symmetry for Unsymmetric Matrix
-  Given I am on the show page for a matrix with name "canoe" and group "Bai"
-  Then the "Pattern Symmetry" property should be "0%"
-  Then the "Numeric Symmetry" property should be "0%"
+  When I am on the show page for a matrix with name "canoe" and group "Bai"
+  Then the "Name" property should be "canoe"
+    And the "Group" property should be "Bai"
+    And the "Pattern Symmetry" property should be "0%"
+    And the "Numeric Symmetry" property should be "0%"
 
 Scenario: Symmetry for Pattern Symmetric Matrix
-  Given I am on the show page for a matrix with name "banana" and group "HB"
-  Then the "Pattern Symmetry" property should be "100%"
-  Then the "Numeric Symmetry" property should be "53%"
+  When I am on the show page for a matrix with name "banana" and group "HB"
+  Then the "Name" property should be "banana"
+    And the "Group" property should be "HB"
+    And the "Pattern Symmetry" property should be "100%"
+    And the "Numeric Symmetry" property should be "53%"
 
 Scenario: Symmetry for Symmetric Matrix
-  Given I am on the show page for a matrix with name "airplane" and group "Gset"
-  Then the "Pattern Symmetry" property should be "100%"
-  Then the "Numeric Symmetry" property should be "100%"
+  When I am on the show page for a matrix with name "airplane" and group "Gset"
+  Then the "Name" property should be "airplane"
+    And the "Group" property should be "Gset"
+    And the "Pattern Symmetry" property should be "100%"
+    And the "Numeric Symmetry" property should be "100%"

@@ -67,17 +67,26 @@
   %table{class: "table"}
     %tr
       %th{style: "width: 30%"}
-        %label{for: "submitter-name"} Name
+        %label{for: "submitter-name"}
+          Name
+          .small
+            Required
       %td
         = f.text_field :submitter_name, class: "form-control", maxlength: "100", required: true
     %tr
       %th
-        %label{for: "submitter-email"} Email
+        %label{for: "submitter-email"}
+          Email
+          .small
+            Required
       %td
         = f.email_field :submitter_email, class: "form-control", maxlength: "100", required: true
     %tr
       %th
-        %label{for: "display-email"} Have this email displayed publically?
+        %label{for: "display-email"}
+          Have this email displayed publically?
+          .small
+            We need your email to contact you, but you can choose to keep it private and unassociated with the matrix.
       %td
         = f.select :display_email, [['Display Publically', true], ['Hide', false]]
 
@@ -95,17 +104,23 @@
         = f.select(:kind, @kinds)
     %tr
       %th
-        %label{for: "matrix-notes"} Notes
+        %label{for: "matrix-notes"} Notes about the matrix
       %td
         = f.text_area :notes, class: "form-control", rows: "8", placeholder: "Bibliographic Information, Nature of Problem, Application, Numerical Issues, Matrix Creator, Why is it Interesting?", maxlength: "5000"
     %tr
       %th
-        %label{for: "submitter-url"} Matrix File URL
+        %label{for: "submitter-url"}
+          How can we obtain the matrix?
+          .small
+            Required
       %td
-        = f.text_field :submitter_url, class: "form-control", placeholder: "URL of matrix data file (Matrix Market, MATLAB, or Rutherford-Boeing format)", maxlength: "200"
+        = f.text_area :submitter_url, class: "form-control", rows: "3", placeholder: "URL of matrix data file or other instructions for obtaining the matrix data", maxlength: "5000", required: true
     %tr
       %th
-        %label{for: "submitter-confidentiality"} Do you grant permission to display this matrix publically?
+        %label{for: "submitter-confidentiality"}
+          Do you grant permission to display this matrix publically?
+          .small
+            Sometimes submitters are concerned about confidentiality of the matrix data. If your matrix isn't yet ready for public release, let us know.
       %td
         = f.select :submitter_confidentiality, [['Display Publically', false], ['Not for Public Release', true]]
     %tr

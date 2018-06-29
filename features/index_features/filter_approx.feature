@@ -18,7 +18,7 @@ Background: matrices have been added to database
 @javascript
 Scenario: filter by string attribute
   Given I am on the home page
-    And I follow "Reset filters"
+    And I follow "Reset Filters"
   When I fill in "You" for the input field "filterrific_search_query"
   Then I should see "All You Need Is Love"
     And I should see "For You Blue"
@@ -29,7 +29,7 @@ Scenario: filter by string attribute
 @javascript
 Scenario: filter by string attribute with wildcards
   Given I am on the home page
-    And I follow "Reset filters"
+    And I follow "Reset Filters"
   When I fill in "a*love" for the input field "filterrific_search_query"
   Then I should see "All You Need Is Love"
     And I should see "Can't Buy Me Love"

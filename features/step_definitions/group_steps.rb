@@ -1,6 +1,6 @@
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
-require 'factory_girl'
+require 'factory_bot'
 require File.expand_path(File.join(File.dirname(__FILE__), "../..", "spec", "factories", "group.rb"))
 
 
@@ -12,7 +12,7 @@ end
 
 Given(/^there are (\d+) groups$/) do |num_groups|
   for i in 1..(num_groups.to_i)
-  	FactoryGirl.create(:group, name: "Group#{i}")
-  	FactoryGirl.create(:matrix, id: i, :group => "Group#{i}", :name => "Matrix#{i}")
+  	FactoryBot.create(:group, name: "Group#{i}")
+  	FactoryBot.create(:matrix, id: i, :group => "Group#{i}", :name => "Matrix#{i}")
   end
 end

@@ -13,4 +13,12 @@ module ApplicationHelper
     will_paginate collection, params.merge(:renderer => WillPaginateHelper::LinkRenderer)
   end
 
+  def filterrific_options()
+    opts = {
+        :ascending_indicator => '<span class="fas fa-sort-up"></span>'.html_safe,
+        :descending_indicator => '<span class="fas fa-sort-down"></span>'.html_safe,
+        :html_attrs => {}
+      }
+  end
+
 end

@@ -5,4 +5,4 @@ require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
 
-task :default => ['spec', 'cucumber', 'brakeman:run']
+task :default => ['spec', 'cucumber']

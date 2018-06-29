@@ -19,7 +19,7 @@ Background: matrices have been added to database
 
 Scenario: sort matrices by name by clicking header
   Given I am on the home page
-  When I follow "Reset filters"
+  When I follow "Reset Filters"
     And I click on the table header "Name"
   Then I should see "All You Need Is Love" before "Can't Buy Me Love"
     And I should see "Can't Buy Me Love" before "Come Together"
@@ -27,7 +27,7 @@ Scenario: sort matrices by name by clicking header
 
 Scenario: reverse sort matrices by name by clicking header twice
   Given I am on the home page
-  When I follow "Reset filters"
+  When I follow "Reset Filters"
     And I click on the table header "Name"
     And I click on the table header "Name"
   Then I should see "For You Blue" before "Come Together"
@@ -36,7 +36,7 @@ Scenario: reverse sort matrices by name by clicking header twice
 
 Scenario: sort matrices in increasing number of rows by clicking header
   Given I am on the home page
-  When I follow "Reset filters"
+  When I follow "Reset Filters"
     And I click on the table header "Rows"
   Then I should see "All You Need Is Love" before "Come Together"
     And I should see "Come Together" before "Can't Buy Me Love"
@@ -44,7 +44,7 @@ Scenario: sort matrices in increasing number of rows by clicking header
 
 Scenario: sort matrices in decreasing number of rows by clicking header twice
   Given I am on the home page
-  When I follow "Reset filters"
+  When I follow "Reset Filters"
     And I click on the table header "Rows"
     And I click on the table header "Rows"
   Then I should see "For You Blue" before "Can't Buy Me Love"
@@ -53,7 +53,7 @@ Scenario: sort matrices in decreasing number of rows by clicking header twice
 
 Scenario: sort matrices in increasing number of columns by clicking header
   Given I am on the home page
-  When I follow "Reset filters"
+  When I follow "Reset Filters"
     And I click on the table header "Cols"
   Then I should see "Can't Buy Me Love" before "For You Blue"
     And I should see "For You Blue" before "All You Need Is Love"
@@ -61,7 +61,7 @@ Scenario: sort matrices in increasing number of columns by clicking header
 
 Scenario: sort matrices in decreasing number of columns by clicking header twice
   Given I am on the home page
-  When I follow "Reset filters"
+  When I follow "Reset Filters"
     And I click on the table header "Cols"
     And I click on the table header "Cols"
   Then I should see "Come Together" before "All You Need Is Love"

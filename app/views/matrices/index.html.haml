@@ -1,112 +1,188 @@
 =provide(:title, "Index")
 
 .alert.alert-info.alert-dismissible.about-alert
-  %button.close.about-close{:type => "button", :'data-dismiss' => "alert", :'aria-label' => "Close"}
+  %button.close.about-close{type: "button", 'data-dismiss': "alert", 'aria-label': "Close"}
     %span{:'aria-hidden' => "true"}
       &times;
   The SuiteSparse Matrix Collection (formerly the University of Florida Sparse Matrix Collection) is a widely used set of sparse matrix benchmarks collected from a wide range of applications. See the
   = link_to "about page", about_path, class: "alert-link"
   for more information.
 
-.well.container-fluid
-  .col-xs-2.column
-    .text-center.filter-column
-      .dropdown
-        %button.btn.btn-default.dropdown-toggle{type: "button", id: "filter-dropdown", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
-          %i.fa.fa-filter{'aria-hidden': "true"}
-          Filters
-          %i.fa.fa-caret-down{'aria-hidden': "true"}
-        %ul.dropdown-menu{'aria-labelledby': 'filter-dropdown'}
-          %li
-            .small{'data-target': ".rows-checkbox", tabIndex: "-1"}
-              = check_box_tag :rows_checkbox, 'enable', @checked[:rows], class: "filter-checkbox rows-checkbox", 'data-target': "#rows-filter"
-              = label_tag :rows_checkbox, "Rows"
-          %li
-            .small{'data-target': ".columns-checkbox", tabIndex: "-1"}
-              = check_box_tag :columns_checkbox, 'enable', @checked[:cols], class: "filter-checkbox columns-checkbox", 'data-target': "#columns-filter"
-              = label_tag :columns_checkbox, "Columns"
-          %li
-            .small{'data-target': ".nonzeros-checkbox", tabIndex: "-1"}
-              = check_box_tag :nonzeros_checkbox, 'enable', @checked[:nonzeros], class: "filter-checkbox nonzeros-checkbox", 'data-target': "#nonzeros-filter"
-              = label_tag :nonzeros_checkbox, "Nonzeros"
-          %li
-            .small{'data-target': ".pattern-symmetry-checkbox", tabIndex: "-1"}
-              = check_box_tag :pattern_symmetry_checkbox, 'enable', @checked[:pattern_symmetry], class: "filter-checkbox pattern-symmetry-checkbox", 'data-target': "#pattern-symmetry-filter"
-              = label_tag :pattern_symmetry_checkbox, "Pattern Symmetry"
-          %li
-            .small{'data-target': ".numerical-symmetry-checkbox", tabIndex: "-1"}
-              = check_box_tag :numerical_symmetry_checkbox, 'enable', @checked[:numerical_symmetry], class: "filter-checkbox numerical-symmetry-checkbox", 'data-target': "#numerical-symmetry-filter"
-              = label_tag :numerical_symmetry_checkbox, "Numerical Symmetry"
-          %li
-            .small{'data-target': ".strongly-connected-components-checkbox", tabIndex: "-1"}
-              = check_box_tag :strongly_connected_components_checkbox, 'enable', @checked[:strongly_connected_components], class: "filter-checkbox strongly-connected-components-checkbox", 'data-target': "#strongly-connected-components-filter"
-              = label_tag :strongly_connected_components_checkbox, "Strongly Connected Components"
-          %li
-            .small{'data-target': ".positive-definite-checkbox", tabIndex: "-1"}
-              = check_box_tag :positive_definite_checkbox, 'enable', @checked[:positive_definite], class: "filter-checkbox positive-definite-checkbox", 'data-target': "#positive-definite-filter"
-              = label_tag :positive_definite_checkbox, "Positive Definiteness"
-    .filterrific_spinner{style: "display:none; margin: 30px 40%;"}
-      = image_tag('ajax-loader.gif')
-  <!-- Set up the filter form -->
-  .col-xs-10.column.text-center{style: "margin-left: -1px; border-left: 1px solid #e3e3e3;"}
-    = form_for_filterrific @filterrific do |f|
-      #search.well.well-sm
-        = f.label :search_query, "Search"
-        = f.text_field :search_query, class: 'filterrific-periodically-observed'
-      #rows-filter.filter.filter-hidden.well.well-sm
-        .input-with-label
-          = f.text_field :min_rows, class: 'filterrific-periodically-observed', id: "filter-input-rows-min"
-          = label_tag 'filter-input-rows-min', "Min"
-        .filter-text &le; Number of Rows &le;
-        .input-with-label
-          = f.text_field :max_rows, class: 'filterrific-periodically-observed', id: "filter-input-rows-max"
-          = label_tag 'filter-input-rows-max', "Max"
-      #columns-filter.filter.filter-hidden.well.well-sm
-        .input-with-label
-          = f.text_field :min_cols, class: 'filterrific-periodically-observed', id: 'filter-input-columns-min'
-          = label_tag 'filter-input-columns-min', "Min"
-        .filter-text &le; Number of Columns &le;
-        .input-with-label
-          = f.text_field :max_cols, class: 'filterrific-periodically-observed', id: 'filter-input-columns-max'
-          = label_tag 'filter-input-columns-max', "Max"
-      #nonzeros-filter.filter.filter-hidden.well.well-sm
-        .input-with-label
-          = f.text_field :min_nonzeros, class: 'filterrific-periodically-observed', id: 'filter-input-nonzeros-min'
-          = label_tag 'filter-input-nonzeros-min', "Min"
-        .filter-text &le; Number of Nonzeros &le;
-        .input-with-label
-          = f.text_field :max_nonzeros, class: 'filterrific-periodically-observed', id: 'filter-input-nonzeros-max'
-          = label_tag 'filter-input-nonzeros-max', "Max"
-      #pattern-symmetry-filter.filter.filter-hidden.well.well-sm
-        .input-with-label
-          = f.text_field :min_pattern_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-pattern_symmetry-min'
-          = label_tag 'filter-input-pattern_symmetry-min', "Min (%)"
-        .filter-text &le; Pattern Symmetry &le;
-        .input-with-label
-          = f.text_field :max_pattern_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-pattern_symmetry-max'
-          = label_tag 'filter-input-pattern_symmetry-max', "Max (%)"
-      #numerical-symmetry-filter.filter.filter-hidden.well.well-sm
-        .input-with-label
-          = f.text_field :min_numerical_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-numerical_symmetry-min'
-          = label_tag 'filter-input-numerical_symmetry-min', "Min (%)"
-        .filter-text &le; Numerical Symmetry &le;
-        .input-with-label
-          = f.text_field :max_numerical_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-numerical_symmetry-max'
-          = label_tag 'filter-input-numerical_symmetry-max', "Max (%)"
-      #strongly-connected-components-filter.filter.filter-hidden.well.well-sm
-        .input-with-label
-          = f.text_field :min_strongly_connected_components, class: 'filterrific-periodically-observed', id: 'filter-input-strongly_connected_components-min'
-          = label_tag 'filter-input-strongly_connected_components-min', "Min"
-        .filter-text &le; Number of Strongly Connected Components &le;
-        .input-with-label
-          = f.text_field :max_strongly_connected_components, class: 'filterrific-periodically-observed', id: 'filter-input-strongly_connected_components-max'
-          = label_tag 'filter-input-strongly_connected_components-max', "Max"
-      #positive-definite-filter.filter.filter-hidden.well.well-sm
-        = f.label :positive_definite, 'Positive Definite?'
-        = f.select :positive_definite, @filterrific.select_options[:positive_definite_options], { include_blank: 'Any', selected: 'Any' }
-      .well.well-sm
-        = f.label :sorted_by, "Sorted by"
-        = f.select :sorted_by, @filterrific.select_options[:sorted_by]
+.card.card-body.bg-light
+  .row
+    .col-lg-2
+      .text-center.filter-column
+        .dropdown
+          %button.btn.btn-outline-dark.btn-md.dropdown-toggle.mb-2{type: "button", id: "filter-dropdown", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
+            %span.fa.fa-filter{'aria-hidden': "true"}
+            Filters
+          %ul.dropdown-menu{'aria-labelledby': 'filter-dropdown', 'data-no-turbolink': 'true'}
+            %li
+              .small{'data-target': ".size-checkbox", tabIndex: "-1"}
+                = check_box_tag :size_checkbox, 'enable', @checked[:size], class: "filter-checkbox size-checkbox", 'data-target': "#size-filter"
+                = label_tag :size_checkbox, "Size and Shape"
+            %li
+              .small{'data-target': ".structure-checkbox", tabIndex: "-1"}
+                = check_box_tag :structure_checkbox, 'enable', @checked[:structure], class: "filter-checkbox structure-checkbox", 'data-target': "#structure-filter"
+                = label_tag :structure_checkbox, "Structure and Entry Types"
+            %li
+              .small{'data-target': ".metadata-checkbox", tabIndex: "-1"}
+                = check_box_tag :metadata_checkbox, 'enable', @checked[:metadata], class: "filter-checkbox metadata-checkbox", 'data-target': "#metadata-filter"
+                = label_tag :metadata_checkbox, "Metadata"
+      .filterrific_spinner{style: "display:none; margin: 30px 40%;"}
+        = image_tag('ajax-loader.gif')
+    <!-- Set up the filter form -->
+    .col-lg-10.text-center{style: "margin-left: -1px; border-left: 1px solid #e3e3e3;"}
+      = form_for_filterrific @filterrific do |f|
+        .row.filter
+          .col-md-6
+            #search.card
+              %legend.card-header
+                = f.label :search_query, "Keyword Search"
+              .card-body
+                = f.text_field :search_query, class: 'filterrific-periodically-observed'
+          .col-md-6
+            .card
+              %legend.card-header
+                = f.label :sorted_by, "Sorted by"
+              .card-body
+                = f.select :sorted_by, @filterrific.select_options[:sorted_by]
+        #size-filter.filter.filter-hidden
+          %h2.py-2
+            Filter by Matrix Size and Shape
+          .row
+            .col-md-4
+              .card
+                %legend.card-header
+                  Rows
+                .card-body.d-flex.justify-content-between.py-1
+                  .input-with-label.p-1
+                    = f.text_field :min_rows, class: 'filterrific-periodically-observed', id: "filter-input-rows-min"
+                    = label_tag 'filter-input-rows-min', "Min"
+                  .input-with-label.p-1
+                    = f.text_field :max_rows, class: 'filterrific-periodically-observed', id: "filter-input-rows-max"
+                    = label_tag 'filter-input-rows-max', "Max"
+            .col-md-4
+              .card
+                %legend.card-header
+                  Columns
+                .card-body.d-flex.justify-content-between.py-1
+                  .input-with-label.p-1
+                    = f.text_field :min_cols, class: 'filterrific-periodically-observed', id: 'filter-input-columns-min'
+                    = label_tag 'filter-input-columns-min', "Min"
+                  .input-with-label.p-1
+                    = f.text_field :max_cols, class: 'filterrific-periodically-observed', id: 'filter-input-columns-max'
+                    = label_tag 'filter-input-columns-max', "Max"
+            .col-md-4
+              .card
+                %legend.card-header
+                  Nonzeros
+                .card-body.d-flex.justify-content-between.py-1
+                  .input-with-label.p-1
+                    = f.text_field :min_nonzeros, class: 'filterrific-periodically-observed', id: 'filter-input-nonzeros-min'
+                    = label_tag 'filter-input-nonzeros-min', "Min"
+                  .input-with-label.p-1
+                    = f.text_field :max_nonzeros, class: 'filterrific-periodically-observed', id: 'filter-input-nonzeros-max'
+                    = label_tag 'filter-input-nonzeros-max', "Max"
+        #structure-filter.filter.filter-hidden
+          %h2.py-2
+            Filter by Matrix Structure and Entry Type
+          .row
+            .col-md-4.column
+              .card
+                %legend.card-header
+                  Pattern Symmetry
+                .card-body.d-flex.justify-content-between.py-1
+                  .input-with-label.p-1
+                    = f.text_field :min_pattern_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-pattern_symmetry-min'
+                    = label_tag 'filter-input-pattern_symmetry-min', "Min (%)"
+                  .input-with-label.p-1
+                    = f.text_field :max_pattern_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-pattern_symmetry-max'
+                    = label_tag 'filter-input-pattern_symmetry-max', "Max (%)"
+            .col-md-4.column
+              .card
+                %legend.card-header
+                  Numerical Symmetry
+                .card-body.d-flex.justify-content-between.py-1
+                  .input-with-label.p-1
+                    = f.text_field :min_numerical_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-numerical_symmetry-min'
+                    = label_tag 'filter-input-numerical_symmetry-min', "Min (%)"
+                  .input-with-label.p-1
+                    = f.text_field :max_numerical_symmetry, class: 'filterrific-periodically-observed', id: 'filter-input-numerical_symmetry-max'
+                    = label_tag 'filter-input-numerical_symmetry-max', "Max (%)"
+            .col-md-4.column
+              .card
+                %legend.card-header
+                  Strongly Connected Components
+                .card-body.d-flex.justify-content-between.py-1
+                  .input-with-label.p-1
+                    = f.text_field :min_strongly_connected_components, class: 'filterrific-periodically-observed', id: 'filter-input-strongly_connected_components-min'
+                    = label_tag 'filter-input-strongly_connected_components-min', "Min"
+                  .input-with-label.p-1
+                    = f.text_field :max_strongly_connected_components, class: 'filterrific-periodically-observed', id: 'filter-input-strongly_connected_components-max'
+                    = label_tag 'filter-input-strongly_connected_components-max', "Max"
+          .row
+            .col-md-4.column
+              .card
+                %legend.card-header
+                  %label{for: 'filter-input-rb_type'}
+                    Rutherford-Boeing Type
+                .card-body
+                  = f.select :rb_type, @filterrific.select_options[:rutherford_boeing_options], { include_blank: 'Any', selected: 'Any' }, id: 'filter-input-rb_type'
+            .col-md-4.column
+              .card
+                %legend.card-header
+                  %label{for: 'filter-input-structure'}
+                    Special Structure
+                .card-body
+                  = f.select :structure, @filterrific.select_options[:structure_options], { include_blank: 'Any', selected: 'Any' }, id: 'filter-input-structure'
+            .col-md-4.column
+              .card
+                %legend.card-header
+                  %label{for: 'filter-input-positive_definite'}
+                    Positive Definite
+                .card-body
+                  = f.select :positive_definite, @filterrific.select_options[:positive_definite_options], { include_blank: 'Any', selected: 'Any'}, id: 'filter-input-positive_definite'
+        #metadata-filter.filter.filter-hidden
+          %h2.py-2
+            Filter by Matrix Metadata
+          .row
+            .col-md-3.col-6.column
+              .card
+                %label.card-header{for: 'filter-input-name'}
+                  Matrix Name
+                .card-body
+                  = f.text_field :name_query, class: 'filterrific-periodically-observed', id: 'filter-input-name', style: 'width: 80%;'
+            .col-md-3.col-6.column
+              .card
+                %label.card-header{for: 'filter-input-group'}
+                  Group Name
+                .card-body
+                  = f.text_field :group_query, class: 'filterrific-periodically-observed', id: 'filter-input-group', style: 'width: 80%;'
+            .col-md-3.col-6.column
+              .card
+                %legend.card-header
+                  Matrix ID
+                .card-body.d-flex.justify-content-between.py-1
+                  .input-with-label.p-1
+                    = f.text_field :min_id, class: 'filterrific-periodically-observed', id: 'filter-input-id-min'
+                    %label{for: 'filter-input-id-min'}
+                      Min
+                  .input-with-label.p-1
+                    = f.text_field :max_id, class: 'filterrific-periodically-observed', id: 'filter-input-id-max'
+                    %label{for: 'filter-input-id-max'}
+                      Max
+            .col-md-3.col-6.column
+              .card
+                %legend.card-header
+                  Year
+                .card-body.d-flex.justify-content-between.py-1
+                  .input-with-label.p-1
+                    = f.text_field :min_year, class: 'filterrific-periodically-observed', id: 'filter-input-year-min'
+                    = label_tag 'filter-input-year-min', "Min"
+                  .input-with-label.p-1
+                    = f.text_field :max_year, class: 'filterrific-periodically-observed', id: 'filter-input-year-max'
+                    = label_tag 'filter-input-year-max', "Max"
 
 #filterrific_results
   = render partial: 'matrices/list', locals: { matrices: @matrices }

@@ -1,15 +1,19 @@
 =provide(:title, "Group Index")
 
+%h2 Group Index
+
 <!-- Top Pagination Bar -->
-.pagination-container
-  = will_paginate @groups, renderer: BootstrapPagination::Rails
-  .pull-right.pagination
+.pagination-container.d-flex.justify-content-between
+  .p-2.pagination-perpage
+  .p-0
+    = paginate @groups
+  .p-2.pagination-perpage
     = label_tag :per_page_top, "Display per page:"
     = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
 
 <!-- Layout the matrix table -->
 .col-sm-12
-  %table.table.table-striped#groups
+  %table.table.table-sm.table-striped#groups
     %thead
       %tr
         %th Group Name
@@ -23,9 +27,11 @@
           %td= group.notes.lines.first unless group.notes.nil?
 
 <!-- Bottom Pagination Bar -->
-.pagination-container
-  = will_paginate @groups, renderer: BootstrapPagination::Rails
-  .pull-right.pagination
-    = label_tag :per_page_bottom, "Display per page:"
-    = select_tag :per_page_bottom, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
+.pagination-container.d-flex.justify-content-between
+  .p-2.pagination-perpage
+  .p-0
+    = paginate @groups
+  .p-2.pagination-perpage
+    = label_tag :per_page_top, "Display per page:"
+    = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
 
