@@ -66,3 +66,7 @@ Capybara.javascript_driver = :poltergeist
 #     config.allow_url("fonts.googleapis.com")
 #     config.allow_url("www.cise.ufl.edu")
 # end
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, {:js_errors => false})
+end
