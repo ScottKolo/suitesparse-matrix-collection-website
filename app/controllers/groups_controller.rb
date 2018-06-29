@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
   def show
     # List of permitted fields for params
     permitted_params = params.permit([{filterrific: [:reset_filterrific, :sorted_by]},
-      :page, :per_page, :utf8, :_])
+      :group, :page, :per_page, :utf8, :_])
 
     # Initialize filterrific filtering system
     @filterrific = initialize_filterrific(

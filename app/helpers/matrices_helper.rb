@@ -3,7 +3,7 @@ module MatricesHelper
   # Reads from the params and session hashes, but also handles the special
   # case of displaying "All" matrices that match the given filters.
   def per_page(params, session)
-    @per_page = params[:per_page] || session[:per_page] || 20
+    @per_page = params[:per_page].to_i || session[:per_page].to_i || 20
     if @per_page == "All"
       @per_page = Matrix.count
     end

@@ -13,6 +13,10 @@ module ApplicationHelper
     will_paginate collection, params.merge(:renderer => WillPaginateHelper::LinkRenderer)
   end
 
+  def replace_bold_tags(html_text)
+    return html_text.gsub(/b>/, 'strong>').html_safe
+  end
+
   def filterrific_options()
     opts = {
         :ascending_indicator => '<span class="fas fa-sort-up"></span>'.html_safe,
