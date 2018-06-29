@@ -28,6 +28,7 @@ SitemapGenerator::Sitemap.create do
   # Add static pages
   add '/about'
   add '/other_interfaces'
+  add '/statistics'
   add '/submit'
 
   # Add group listing
