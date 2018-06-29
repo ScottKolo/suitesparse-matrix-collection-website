@@ -89,7 +89,7 @@ class MatricesController < ApplicationController
 
   def submit
     # Verify the reCaptcha
-    if verify_recaptcha secret_key: Rails.application.secrets[:RECAPTCHA_SECRET_KEY]
+    if verify_recaptcha
       permitted_params = params[:submitted_matrix].permit(:submitter_name, 
                 :submitter_email, :display_email, :name, :kind, :notes, 
                 :submitter_url, :submitter_confidentiality)
