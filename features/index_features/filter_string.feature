@@ -14,14 +14,14 @@ Background: matrices have been added to database
   | Gset   | asdf     | 46902    | 343       | Lass   |
     And I am on the home page
     And I follow "Reset Filters"
-    And I wait 2 seconds
+    And I wait 1 second
 
 @javascript
 Scenario: filter by group name
   When I press "Filters"
     And I check "Metadata"
     And I fill in "HB" for "filter-input-group"
-    And I wait 2 seconds
+    And I wait 1 second
   Then I should see "pencil"
   But I should not see "asdf"
     And I should not see "airplane"
@@ -32,7 +32,7 @@ Scenario: filter by matrix name
   When I press "Filters"
     And I check "Metadata"
     And I fill in "long" for "filter-input-name"
-    And I wait 2 seconds
+    And I wait 1 second
   Then I should see "long"
   But I should not see "asdf"
     And I should not see "airplane"

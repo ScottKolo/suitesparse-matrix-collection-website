@@ -158,7 +158,10 @@
         null,
         null,
         null,
-        null
+        null,
+        null,
+        null,
+        1
       ],
       "/Users/scott/Documents/Software/suitesparse-matrix-collection-website/config/initializers/backtrace_silencers.rb": [
         null,
@@ -227,6 +230,15 @@
         null,
         null,
         1
+      ],
+      "/Users/scott/Documents/Software/suitesparse-matrix-collection-website/config/initializers/recaptcha.rb": [
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
       ],
       "/Users/scott/Documents/Software/suitesparse-matrix-collection-website/config/initializers/session_store.rb": [
         null,
@@ -1516,7 +1528,7 @@
         null
       ]
     },
-    "timestamp": 1530243924
+    "timestamp": 1530296667
   },
   "Cucumber Features": {
     "coverage": {
@@ -1615,7 +1627,10 @@
         null,
         null,
         null,
-        null
+        null,
+        null,
+        null,
+        1
       ],
       "/Users/scott/Documents/Software/suitesparse-matrix-collection-website/config/initializers/backtrace_silencers.rb": [
         null,
@@ -1684,6 +1699,15 @@
         null,
         null,
         1
+      ],
+      "/Users/scott/Documents/Software/suitesparse-matrix-collection-website/config/initializers/recaptcha.rb": [
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
       ],
       "/Users/scott/Documents/Software/suitesparse-matrix-collection-website/config/initializers/session_store.rb": [
         null,
@@ -2985,6 +3009,6 @@
         null
       ]
     },
-    "timestamp": 1530243970
+    "timestamp": 1530296703
   }
 }

@@ -14,26 +14,26 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-06-28T22:46:10-05:00">2018-06-28T22:46:10-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-06-29T13:25:03-05:00">2018-06-29T13:25:03-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">83.8%</span></span>
+    (<span class="covered_percent"><span class="yellow">83.87%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         21.15
+         21.07
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>55</b> files in total.
-    <b>889</b> relevant lines. 
-    <span class="green"><b>745</b> lines covered</span> and
+    <b>56</b> files in total.
+    <b>893</b> relevant lines. 
+    <span class="green"><b>749</b> lines covered</span> and
     <span class="red"><b>144</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -253,9 +253,9 @@
       <tr>
         <td class="strong"><a href="#0bb8c355b2150388f3d64d8b1f3a382e0d50d9bc" class="src_link" title="config/initializers/assets.rb">config/initializers/assets.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>11</td>
-        <td>1</td>
-        <td>1</td>
+        <td>14</td>
+        <td>2</td>
+        <td>2</td>
         <td>0</td>
         <td>2.0</td>
       </tr>
@@ -316,6 +316,16 @@
         <td>20</td>
         <td>4</td>
         <td>4</td>
+        <td>0</td>
+        <td>2.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#b7dbb6954ebe24e2dfe72994868e81122e103e43" class="src_link" title="config/initializers/recaptcha.rb">config/initializers/recaptcha.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>7</td>
+        <td>3</td>
+        <td>3</td>
         <td>0</td>
         <td>2.0</td>
       </tr>
@@ -5483,8 +5493,8 @@
     <h3>config/initializers/assets.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>1</b> relevant lines. 
-      <span class="green"><b>1</b> lines covered</span> and
+      <b>2</b> relevant lines. 
+      <span class="green"><b>2</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -5556,6 +5566,24 @@
           
           
           <code class="ruby"># Rails.application.config.assets.precompile += %w(  )</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby"># Add Font Awesome 5 webfont to assets pipeline</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="14">
+          <span class="hits">2</span>
+          
+          <code class="ruby">Rails.application.config.assets.precompile += %w(font_awesome5_webfont.css)</code>
         </li>
       
     </ol>
@@ -6013,6 +6041,67 @@
 </div>
 
       
+        <div class="source_table" id="b7dbb6954ebe24e2dfe72994868e81122e103e43">
+  <div class="header">
+    <h3>config/initializers/recaptcha.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>3</b> relevant lines. 
+      <span class="green"><b>3</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="never" data-hits="" data-linenumber="1">
+          
+          
+          <code class="ruby"># config/initializers/recaptcha.rb</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="2">
+          <span class="hits">2</span>
+          
+          <code class="ruby">Recaptcha.configure do |config|</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="3">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  config.site_key  = ENV[&#39;RECAPTCHA_SITE_KEY&#39;]</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="4">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  config.secret_key = ENV[&#39;RECAPTCHA_SECRET_KEY&#39;]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">  # Uncomment the following line if you are using a proxy server:</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">  # config.proxy = &#39;http://myproxy.com.au:8080&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
         <div class="source_table" id="6a70c5fee0f24d451b6ca1645956d6645d2d10db">
   <div class="header">
     <h3>config/initializers/session_store.rb</h3>
@@ -6242,7 +6331,7 @@
         <li class="covered" data-hits="2" data-linenumber="13">
           <span class="hits">2</span>
           
-          <code class="ruby">  post &#39;submit&#39; =&gt; &#39;matrices#submit&#39;\</code>
+          <code class="ruby">  post &#39;submit&#39; =&gt; &#39;matrices#submit&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
