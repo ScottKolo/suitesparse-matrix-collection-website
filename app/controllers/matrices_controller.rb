@@ -81,11 +81,15 @@ class MatricesController < ApplicationController
     end
   end
 
+  include Recaptcha::ClientHelper
+  
   def new
     # Get a list of kinds currently in the collection
     @kinds = helpers.kind_submission_list
     @new_matrix = SubmittedMatrix.new
   end
+
+  include Recaptcha::Verify
 
   def submit
     # Verify the reCaptcha
