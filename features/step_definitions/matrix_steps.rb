@@ -8,5 +8,5 @@ Given /the following matri(?:x|ces) exist/ do |matrices_table|
 end
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  page.assert_text(:visible, /#{e1}.*#{e2}/)
+  assert_text(:all, /#{e1}.*#{e2}/)
 end
