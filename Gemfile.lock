@@ -318,7 +318,7 @@ DEPENDENCIES
   rails (~> 5.1.5)
   rails-controller-testing
   rails_12factor
-  recaptcha
+  recaptcha (~> 4.9.0)
   rspec-rails (~> 3.5)
   sdoc (~> 0.4.0)
   simplecov

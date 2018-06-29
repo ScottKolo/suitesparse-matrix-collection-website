@@ -1,6 +1,4 @@
 class MatricesController < ApplicationController
-  include Recaptcha::ClientHelper
-  include Recaptcha::Verify
 
   ### Resources methods ########################################################
 
