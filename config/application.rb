@@ -14,7 +14,5 @@ module SuiteSparseMatrixCollectionWebsite
 
     # Enable compression
     config.middleware.use Rack::Deflater
-
-    config.autoload_paths += %W(#{config.root}/initializers)
   end
 end
