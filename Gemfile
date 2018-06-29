@@ -73,8 +73,6 @@ group :development do
 end
 
 group :production, :production_heroku do
-  # Use puma webserver for production
-  gem 'puma'
   # Enable better logging and support on Heroku
   gem 'rails_12factor'
   # Use Mailgun for sending notification emails
@@ -84,6 +82,11 @@ end
 group :production_heroku, :development, :test do
   # Use postgresql as the database for Active Record
   gem 'pg'
+end
+
+group :production_heroku, :development, :test, :development do
+  # Use puma webserver
+  gem 'puma'
 end
 
 group :production do
