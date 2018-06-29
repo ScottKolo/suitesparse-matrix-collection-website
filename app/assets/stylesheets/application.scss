@@ -9,6 +9,8 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
+ *
+ *= require font_awesome5_webfont
  */
 
 /********** SASS Variable Overrides **********/
@@ -19,7 +21,6 @@ $link-color: #337ab7;
 /********** SASS Imports **********/
 
 @import 'bootstrap';                 // Bootstrap 4
-@import 'font_awesome5_webfont.css'; // Font Awesome 5
 @import 'index.scss';
 @import 'pages.scss';                // Static page styles
 @import 'show_matrix.scss';
