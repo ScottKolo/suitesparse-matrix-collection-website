@@ -125,7 +125,7 @@
         = f.select :submitter_confidentiality, [['Display Publically', false], ['Not for Public Release', true]]
     %tr
       %td
-        = recaptcha_tags site_key: ENV['RECAPTCHA_SITE_KEY']
+        = recaptcha_tags site_key: Rails.application.secrets[:RECAPTCHA_SITE_KEY]
     %tr
       %td
         = submit_tag("Submit My Matrix")
