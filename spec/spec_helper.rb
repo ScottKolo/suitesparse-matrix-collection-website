@@ -43,6 +43,11 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  # Reset Poltergeist/PhantomJS after each test for consistency
+  config.after :each do |example|
+      page.driver.restart if defined?(page.driver.restart)
+  end
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

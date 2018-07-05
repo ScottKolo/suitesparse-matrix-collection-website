@@ -22,6 +22,7 @@ Background: matrices have been added to database
 @javascript
 Scenario: sort matrices by name using dropdown
   When I select "Name (A to Z)" from "filterrific[sorted_by]"
+    And I wait 1 second
   Then I should see "All You Need Is Love" before "Can't Buy Me Love"
     And I should see "Can't Buy Me Love" before "Come Together"
     And I should see "Come Together" before "For You Blue"
@@ -29,6 +30,7 @@ Scenario: sort matrices by name using dropdown
 @javascript
 Scenario: reverse sort matrices by name using dropdown
   When I select "Name (Z to A)" from "filterrific[sorted_by]"
+    And I wait 1 second
   Then I should see "For You Blue" before "Come Together"
     And I should see "Come Together" before "Can't Buy Me Love"
     And I should see "Can't Buy Me Love" before "All You Need Is Love"
@@ -36,6 +38,7 @@ Scenario: reverse sort matrices by name using dropdown
 @javascript
 Scenario: sort matrices in increasing number of rows using dropdown
   When I select "Rows (Low to High)" from "filterrific[sorted_by]"
+    And I wait 1 second
   Then I should see "All You Need Is Love" before "Come Together"
     And I should see "Come Together" before "Can't Buy Me Love"
     And I should see "Can't Buy Me Love" before "For You Blue"
@@ -43,6 +46,7 @@ Scenario: sort matrices in increasing number of rows using dropdown
 @javascript
 Scenario: sort matrices in decreasing number of rows using dropdown
   When I select "Rows (High to Low)" from "filterrific[sorted_by]"
+    And I wait 1 second
   Then I should see "For You Blue" before "Can't Buy Me Love"
     And I should see "Can't Buy Me Love" before "Come Together"
     And I should see "Come Together" before "All You Need Is Love"
@@ -50,6 +54,7 @@ Scenario: sort matrices in decreasing number of rows using dropdown
 @javascript
 Scenario: sort matrices in increasing number of columns using dropdown
   When I select "Columns (Low to High)" from "filterrific[sorted_by]"
+    And I wait 1 second
   Then I should see "Can't Buy Me Love" before "For You Blue"
     And I should see "For You Blue" before "All You Need Is Love"
     And I should see "All You Need Is Love" before "Come Together"
@@ -57,6 +62,7 @@ Scenario: sort matrices in increasing number of columns using dropdown
 @javascript
 Scenario: sort matrices in decreasing number of columns using dropdown
   When I select "Columns (High to Low)" from "filterrific[sorted_by]"
+    And I wait 1 second
   Then I should see "Come Together" before "All You Need Is Love"
     And I should see "All You Need Is Love" before "For You Blue"
     And I should see "For You Blue" before "Can't Buy Me Love"

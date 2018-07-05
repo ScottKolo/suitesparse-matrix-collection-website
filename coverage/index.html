@@ -14,26 +14,26 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-06-29T13:25:03-05:00">2018-06-29T13:25:03-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-07-04T20:32:28-05:00">2018-07-04T20:32:28-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">83.87%</span></span>
+    (<span class="covered_percent"><span class="yellow">83.91%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         21.07
+         21.04
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>56</b> files in total.
-    <b>893</b> relevant lines. 
-    <span class="green"><b>749</b> lines covered</span> and
+    <b>895</b> relevant lines. 
+    <span class="green"><b>751</b> lines covered</span> and
     <span class="red"><b>144</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -323,9 +323,9 @@
       <tr>
         <td class="strong"><a href="#b7dbb6954ebe24e2dfe72994868e81122e103e43" class="src_link" title="config/initializers/recaptcha.rb">config/initializers/recaptcha.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>7</td>
-        <td>3</td>
-        <td>3</td>
+        <td>9</td>
+        <td>4</td>
+        <td>4</td>
         <td>0</td>
         <td>2.0</td>
       </tr>
@@ -353,9 +353,9 @@
       <tr>
         <td class="strong"><a href="#963300f43919f217ca076ae5aa7f7ea2a07e8bf6" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>26</td>
-        <td>12</td>
-        <td>12</td>
+        <td>27</td>
+        <td>13</td>
+        <td>13</td>
         <td>0</td>
         <td>2.0</td>
       </tr>
@@ -457,7 +457,7 @@
         <td>126</td>
         <td>52</td>
         <td>74</td>
-        <td>1.8</td>
+        <td>1.9</td>
       </tr>
       
       <tr>
@@ -6046,8 +6046,8 @@
     <h3>config/initializers/recaptcha.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>3</b> relevant lines. 
-      <span class="green"><b>3</b> lines covered</span> and
+      <b>4</b> relevant lines. 
+      <span class="green"><b>4</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -6064,34 +6064,46 @@
         <li class="covered" data-hits="2" data-linenumber="2">
           <span class="hits">2</span>
           
-          <code class="ruby">Recaptcha.configure do |config|</code>
+          <code class="ruby">require &#39;recaptcha&#39;</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="3">
-          <span class="hits">2</span>
+        <li class="never" data-hits="" data-linenumber="3">
           
-          <code class="ruby">  config.site_key  = ENV[&#39;RECAPTCHA_SITE_KEY&#39;]</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="4">
           <span class="hits">2</span>
           
-          <code class="ruby">  config.secret_key = ENV[&#39;RECAPTCHA_SECRET_KEY&#39;]</code>
+          <code class="ruby">Recaptcha.configure do |config|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="5">
+        <li class="covered" data-hits="2" data-linenumber="5">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  config.site_key  = Rails.application.secrets[:RECAPTCHA_SITE_KEY]</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="6">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  config.secret_key = Rails.application.secrets[:RECAPTCHA_SECRET_KEY]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
           
           
           <code class="ruby">  # Uncomment the following line if you are using a proxy server:</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="6">
+        <li class="never" data-hits="" data-linenumber="8">
           
           
           <code class="ruby">  # config.proxy = &#39;http://myproxy.com.au:8080&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="7">
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">end</code>
@@ -6247,8 +6259,8 @@
     <h3>config/routes.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>12</b> relevant lines. 
-      <span class="green"><b>12</b> lines covered</span> and
+      <b>13</b> relevant lines. 
+      <span class="green"><b>13</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -6280,133 +6292,139 @@
           <code class="ruby">  get &#39;index&#39; =&gt; &#39;matrices#index&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="5">
+        <li class="covered" data-hits="2" data-linenumber="5">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">  get &#39;/&#39; =&gt; &#39;matrices#index&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="6">
           
           
-          <code class="ruby">  # Static page routes</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
           
           
-          <code class="ruby">  # Keep these first to avoid conflict with group_name route</code>
+          <code class="ruby">  # Static page routes</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="8">
-          <span class="hits">2</span>
+        <li class="never" data-hits="" data-linenumber="8">
           
-          <code class="ruby">  get &#39;about&#39; =&gt; &#39;pages#about&#39;</code>
+          
+          <code class="ruby">  # Keep these first to avoid conflict with group_name route</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="9">
           <span class="hits">2</span>
           
-          <code class="ruby">  get &#39;other_interfaces&#39; =&gt; &#39;pages#other_interfaces&#39;</code>
+          <code class="ruby">  get &#39;about&#39; =&gt; &#39;pages#about&#39;</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="10">
           <span class="hits">2</span>
           
+          <code class="ruby">  get &#39;other_interfaces&#39; =&gt; &#39;pages#other_interfaces&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="11">
+          <span class="hits">2</span>
+          
           <code class="ruby">  get &#39;statistics&#39; =&gt; &#39;pages#statistics&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="11">
+        <li class="never" data-hits="" data-linenumber="12">
           
           
           <code class="ruby">  </code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="12">
-          <span class="hits">2</span>
-          
-          <code class="ruby">  get &#39;submit&#39; =&gt; &#39;matrices#new&#39;</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="13">
           <span class="hits">2</span>
           
-          <code class="ruby">  post &#39;submit&#39; =&gt; &#39;matrices#submit&#39;</code>
+          <code class="ruby">  get &#39;submit&#39; =&gt; &#39;matrices#new&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="covered" data-hits="2" data-linenumber="14">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">  post &#39;submit&#39; =&gt; &#39;matrices#submit&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
           <code class="ruby">  # Route for sparse.tamu.edu/matrix_id</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="16">
+        <li class="covered" data-hits="2" data-linenumber="17">
           <span class="hits">2</span>
           
           <code class="ruby">  get &#39;/:matrix_id&#39;, to: &#39;matrices#show&#39;, constraints: { matrix_id: /\d+/ }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="17">
+        <li class="never" data-hits="" data-linenumber="18">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="18">
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">  # Route for sparse.tamu.edu/group_name/matrix_name</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="19">
+        <li class="covered" data-hits="2" data-linenumber="20">
           <span class="hits">2</span>
           
-          <code class="ruby">  get &#39;/:group/:name&#39;, to: &#39;matrices#show&#39;, as: &#39;matrix&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="20">
-          
-          
-          <code class="ruby">  </code>
+          <code class="ruby">  get &#39;/:group/:name&#39;, to: &#39;matrices#show&#39;, as: &#39;matrix&#39;, constraints: { group: /(?!assets).*/ }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="21">
           
           
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
           <code class="ruby">  # Route for sparse.tamu.edu/groups (groups list)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="22">
+        <li class="covered" data-hits="2" data-linenumber="23">
           <span class="hits">2</span>
           
           <code class="ruby">  get &#39;/groups&#39;, to: &#39;groups#index&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="never" data-hits="" data-linenumber="24">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="never" data-hits="" data-linenumber="25">
           
           
           <code class="ruby">  # Route for sparse.tamu.edu/group_name</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="25">
+        <li class="covered" data-hits="2" data-linenumber="26">
           <span class="hits">2</span>
           
           <code class="ruby">  get &#39;/:group&#39;, to: &#39;groups#show&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="26">
+        <li class="never" data-hits="" data-linenumber="27">
           
           
           <code class="ruby">end</code>
@@ -9338,8 +9356,8 @@
           <code class="ruby">When /^I wait (\d+) seconds?$/ do |seconds|</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="262">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="11" data-linenumber="262">
+          <span class="hits">11</span>
           
           <code class="ruby">  sleep seconds.to_i</code>
         </li>
