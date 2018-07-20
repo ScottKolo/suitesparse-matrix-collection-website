@@ -47,6 +47,10 @@ module MatricesHelper
   end
 
   def image_list(matrix)
+    if matrix.nil? or matrix.image_files.nil?
+      return [];
+    end
+
     filename_list = matrix.image_files.split(',')
     image_list = [];
 
