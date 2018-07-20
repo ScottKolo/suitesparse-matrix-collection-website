@@ -117,13 +117,13 @@
               Pattern Symmetry
               %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:pattern_symmetry)}
                 %span.fas.fa-question-circle
-            %td= number_to_percentage(@matrix.pattern_symmetry ? @matrix.pattern_symmetry*100 : nil, precision:0)
+            %td= number_to_percentage(@matrix.pattern_symmetry ? @matrix.pattern_symmetry*100 : nil, options={precision:1, strip_insignificant_zeros:true})
           %tr
             %th
               Numeric Symmetry
               %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:numeric_symmetry)}
                 %span.fas.fa-question-circle
-            %td= number_to_percentage(@matrix.numeric_symmetry ? @matrix.numeric_symmetry*100 : nil, precision:0)
+            %td= number_to_percentage(@matrix.numeric_symmetry ? @matrix.numeric_symmetry*100 : nil, options={precision:1, strip_insignificant_zeros:true})
           %tr
             %th
               Cholesky Candidate
