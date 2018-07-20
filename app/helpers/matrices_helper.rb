@@ -46,13 +46,39 @@ module MatricesHelper
     is_checked
   end
 
-  # Checks if an image exists on a server
-  def is_valid_image_url(url)
-    # Check if this image exists by sending a HTTP GET request
-    response = Net::HTTP.get_response(URI.parse(url))
+  def image_list(matrix)
+    filename_list = matrix.image_files.split(',')
+    image_list = [];
 
-    # If the response is normal-ish, we say it exists.
-    return (response.code.to_i >= 200 && response.code.to_i < 400)
+    for filename in filename_list
+      image_hash = {};
+      image_hash[:url] = "#{Matrix.get_base_url}files/#{matrix.group}/#{filename}"
+      image_hash[:description] = get_image_description(filename, matrix)
+      image_hash[:first] = (filename == filename_list.first)
+      image_list.append(image_hash)
+    end
+
+    return image_list
+  end
+
+  def get_image_description(filename, matrix)
+    if filename.match(/.*_APlusAT_graph\..*/)
+      return "Graph Visualization of A+A' for #{matrix.group}/#{matrix.name}"
+    elsif filename.match(/.*_graph\..*/)
+      return "Force-Directed Graph Visualization of #{matrix.group}/#{matrix.name}"
+    elsif filename.match(/.*#{matrix.name}.png/)
+      return "Nonzero Pattern of #{matrix.group}/#{matrix.name}"
+    elsif filename.match(/.*_svd\..*/)
+      return "Singular Values of #{matrix.group}/#{matrix.name}"
+    elsif filename.match(/.*_gplot\..*/)
+      return "3D Graph Plot of #{matrix.group}/#{matrix.name}"
+    elsif filename.match(/.*_dmperm\..*/)
+      return "Dulmage-Mendelsohn Permutation of #{matrix.group}/#{matrix.name}"
+    elsif filename.match(/.*_scc\..*/)
+      return "Connected Components of the Bipartite Graph of #{matrix.group}/#{matrix.name}"
+    else
+      return filename
+    end
   end
 
   def has_graph_plot(matrix)

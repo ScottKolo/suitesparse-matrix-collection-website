@@ -31,4 +31,5 @@ minimize c\'*x, subject to A*x=b and lo <= x <= hi
 lo: full 515905-by-1
 hi: full 515905-by-1
 z0: full 1-by-1
-',}
+',    image_files: 'neos.png,neos_graph.gif,',
+}

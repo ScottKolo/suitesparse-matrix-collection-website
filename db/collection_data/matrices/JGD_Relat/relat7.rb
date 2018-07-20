@@ -39,4 +39,5 @@ Filename in JGD collection: Relat/relat7.mat
     null_space_dimension: '33',
     full_numerical_rank: 'no',
     svd_gap: '20721273807683.121094',
+    image_files: 'relat7.png,relat7_dmperm.png,relat7_scc.png,relat7_svd.png,relat7_graph.gif,',
 }

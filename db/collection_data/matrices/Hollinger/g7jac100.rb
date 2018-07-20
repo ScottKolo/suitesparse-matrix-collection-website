@@ -30,4 +30,5 @@
     null_space_dimension: '7639',
     full_numerical_rank: 'no',
     svd_gap: '1.023628',
+    image_files: 'g7jac100.png,g7jac100_dmperm.png,g7jac100_scc.png,g7jac100_svd.png,g7jac100_APlusAT_graph.gif,g7jac100_graph.gif,',
 }

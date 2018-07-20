@@ -42,4 +42,5 @@ original A matrix, use A = Problem.A + Problem.aux.shift ;
     b_field: 'sparse 680943-by-1
 ',
     aux_fields: 'shift: sparse 680943-by-680943
-',}
+',    image_files: '3Dspectralwave.png,3Dspectralwave_graph.gif,',
+}

@@ -29,4 +29,5 @@
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'tub100.png,tub100_svd.png,tub100_graph.gif,',
 }

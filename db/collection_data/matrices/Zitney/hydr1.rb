@@ -30,4 +30,5 @@
     null_space_dimension: '117',
     full_numerical_rank: 'no',
     svd_gap: '1.035763',
+    image_files: 'hydr1.png,hydr1_dmperm.png,hydr1_svd.png,hydr1_APlusAT_graph.gif,hydr1_graph.gif,',
 }

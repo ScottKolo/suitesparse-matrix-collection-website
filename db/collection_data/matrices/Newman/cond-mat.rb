@@ -45,4 +45,5 @@ one or more of:
     null_space_dimension: '1203',
     full_numerical_rank: 'no',
     svd_gap: '945336.742400',
+    image_files: 'cond-mat.png,cond-mat_scc.png,cond-mat_svd.png,cond-mat_graph.gif,',
 }

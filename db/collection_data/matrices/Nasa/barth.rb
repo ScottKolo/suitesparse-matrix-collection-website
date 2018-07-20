@@ -32,4 +32,5 @@
     null_space_dimension: '1',
     full_numerical_rank: 'no',
     svd_gap: '88041979283.592499',
+    image_files: 'barth.png,barth_dmperm.png,barth_svd.png,barth_APlusAT_graph.gif,barth_graph.gif,',
 }

@@ -68,49 +68,13 @@
       #figures.carousel.slide{'data-ride': "carousel"}
         %ol.carousel-indicators
           - fig_num = -1;
-          -if has_graph_plot(@matrix)
-            %li.active{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
-          -if has_AplusAT_plot(@matrix)
-            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
-          -if has_pattern_plot(@matrix)
-            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
-          -if has_svd_plot(@matrix)
-            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
-          -if has_gplot(@matrix)
-            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
-          -if has_dmperm_plot(@matrix)
-            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
-          -if has_scc_plot(@matrix)
-            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}"}
+          -for image in image_list(@matrix) do
+            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}", class: ("active" if image[:first])}
         .carousel-inner
-          -if has_graph_plot(@matrix)
-            .carousel-item.active
-              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_graph.gif"}
-                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_graph.gif", alt: "Force-Directed Graph Visualization of #{@matrix.group}/#{@matrix.name}"}
-          -if has_AplusAT_plot(@matrix)
-            .carousel-item
-              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_APlusAT_graph.gif"}
-                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_APlusAT_graph.gif", alt: "Graph Visualization of A+A' for #{@matrix.group}/#{@matrix.name}"}
-          -if has_pattern_plot(@matrix)
-            .carousel-item
-              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}.png"}
-                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}.png", alt: "Nonzero Pattern of #{@matrix.group}/#{@matrix.name}"}
-          -if has_svd_plot(@matrix)
-            .carousel-item
-              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_svd.png"}
-                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_svd.png", alt: "Singular Values of #{@matrix.group}/#{@matrix.name}"}
-          -if has_gplot(@matrix)
-            .carousel-item
-              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_gplot.png"}
-                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_gplot.png", alt: "3D Graph Plot of #{@matrix.group}/#{@matrix.name}"}
-          -if has_dmperm_plot(@matrix)
-            .carousel-item
-              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_dmperm.png"}
-                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_dmperm.png", alt: "Dulmage-Mendelsohn Permutation of #{@matrix.group}/#{@matrix.name}"}
-          -if has_scc_plot(@matrix)
-            .carousel-item
-              %a{href: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_scc.png"}
-                %img.img-fluid.d-block.w-100{src: "#{Matrix.get_base_url}files/#{@matrix.group}/#{@matrix.name}_scc.png", alt: "Connected Components of the Bipartite Graph of #{@matrix.group}/#{@matrix.name}"}
+          -for image in image_list(@matrix) do
+            .carousel-item{class: ("active" if image[:first])}
+              %a{href: "#{image[:url]}"}
+                %img.img-fluid.d-block.w-100{src: "#{image[:url]}", alt: "#{image[:description]}"}
         %a.carousel-control-prev{href:'#figures', role: 'button', :'data-slide' => 'prev'}
           %span.carousel-control-prev-icon{'aria-hidden': 'true'}
           %span.sr-only

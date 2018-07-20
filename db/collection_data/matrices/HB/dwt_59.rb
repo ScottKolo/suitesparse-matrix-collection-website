@@ -29,4 +29,5 @@
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'dwt_59.png,dwt_59_svd.png,dwt_59_graph.gif,',
 }

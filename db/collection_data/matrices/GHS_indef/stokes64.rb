@@ -30,4 +30,5 @@
     null_space_dimension: '2',
     full_numerical_rank: 'no',
     svd_gap: '1929355292.805831',
+    image_files: 'stokes64.png,stokes64_svd.png,stokes64_graph.gif,',
 }

@@ -45,4 +45,5 @@ Filename in JGD collection: Trefethen/trefethen_200.sms
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'Trefethen_200.png,Trefethen_200_svd.png,Trefethen_200_graph.gif,',
 }

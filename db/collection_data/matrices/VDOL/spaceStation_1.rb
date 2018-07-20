@@ -65,4 +65,5 @@ of the KKT matrices increases from 99 to 1640.
 ',
     aux_fields: 'rowname: full 99-by-97
 mapping: full 99-by-1
-',}
+',    image_files: 'spaceStation_1.png,spaceStation_1_dmperm.png,spaceStation_1_scc.png,spaceStation_1_graph.gif,',
+}

@@ -26,4 +26,5 @@
 ',
     x_field: 'full 41374-by-1
 ',
+    image_files: 'jan99jac120.png,jan99jac120_dmperm.png,jan99jac120_scc.png,jan99jac120_APlusAT_graph.gif,jan99jac120_graph.gif,',
 }

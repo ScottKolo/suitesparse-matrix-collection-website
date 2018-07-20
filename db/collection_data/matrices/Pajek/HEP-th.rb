@@ -51,4 +51,5 @@ http://vlado.fmf.uni-lj.si/pub/networks/data/.
     null_space_dimension: '6078',
     full_numerical_rank: 'no',
     svd_gap: '139479909.771099',
+    image_files: 'HEP-th.png,HEP-th_scc.png,HEP-th_svd.png,HEP-th_APlusAT_graph.gif,HEP-th_graph.gif,',
 }

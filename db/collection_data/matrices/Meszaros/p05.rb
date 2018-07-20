@@ -39,4 +39,5 @@ z0: full 1-by-1
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'p05.png,p05_dmperm.png,p05_scc.png,p05_svd.png,p05_graph.gif,',
 }

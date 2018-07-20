@@ -24,4 +24,5 @@
     positive_definite: 'no',
     b_field: 'full 70304-by-1
 ',
+    image_files: 'lhr71.png,lhr71_dmperm.png,lhr71_scc.png,lhr71_APlusAT_graph.gif,lhr71_graph.gif,',
 }

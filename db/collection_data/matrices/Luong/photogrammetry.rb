@@ -44,4 +44,5 @@ L = span<U(:,1:end-7) > = orthogonal(K) is isomorph to Im(A).
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'photogrammetry.png,photogrammetry_svd.png,photogrammetry_graph.gif,',
 }

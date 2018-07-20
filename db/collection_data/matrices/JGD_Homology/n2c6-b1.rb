@@ -38,4 +38,5 @@ Filename in JGD collection: Homology/n2c6.b1.105x15.sms
     null_space_dimension: '1',
     full_numerical_rank: 'no',
     svd_gap: '4336746419221201.500000',
+    image_files: 'n2c6-b1.png,n2c6-b1_svd.png,n2c6-b1_graph.gif,',
 }

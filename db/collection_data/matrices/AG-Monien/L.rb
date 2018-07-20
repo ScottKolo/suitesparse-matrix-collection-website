@@ -60,4 +60,5 @@ xy or xyz coordinates of each node, if present.
     null_space_dimension: '1',
     full_numerical_rank: 'no',
     svd_gap: '35278551585769.968750',
+    image_files: 'L.png,L_gplot.png,L_svd.png,L_graph.gif,',
 }

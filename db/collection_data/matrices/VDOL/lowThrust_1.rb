@@ -78,4 +78,5 @@ increases from 584 to 18476.
 ',
     aux_fields: 'rowname: full 584-by-79
 mapping: full 584-by-1
-',}
+',    image_files: 'lowThrust_1.png,lowThrust_1_dmperm.png,lowThrust_1_scc.png,lowThrust_1_graph.gif,',
+}

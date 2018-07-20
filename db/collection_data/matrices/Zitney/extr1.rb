@@ -30,4 +30,5 @@
     null_space_dimension: '1',
     full_numerical_rank: 'no',
     svd_gap: '2.726710',
+    image_files: 'extr1.png,extr1_dmperm.png,extr1_svd.png,extr1_APlusAT_graph.gif,extr1_graph.gif,',
 }

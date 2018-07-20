@@ -123,4 +123,5 @@ E: sparse 682-by-682
     null_space_dimension: '3',
     full_numerical_rank: 'no',
     svd_gap: '7592051615.361709',
+    image_files: 'M10PI_n.png,M10PI_n_dmperm.png,M10PI_n_svd.png,M10PI_n_graph.gif,',
 }

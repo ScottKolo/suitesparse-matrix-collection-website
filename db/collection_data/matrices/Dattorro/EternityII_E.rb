@@ -99,4 +99,5 @@ and https://ccrma.stanford.edu/~dattorro/ .
     null_space_dimension: '1',
     full_numerical_rank: 'no',
     svd_gap: '3437814406595.392090',
+    image_files: 'EternityII_E.png,EternityII_E_dmperm.png,EternityII_E_svd.png,EternityII_E_graph.gif,',
 }

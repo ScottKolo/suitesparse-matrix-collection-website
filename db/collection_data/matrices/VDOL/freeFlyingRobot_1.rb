@@ -73,4 +73,5 @@ to 6078.
 ',
     aux_fields: 'rowname: full 798-by-99
 mapping: full 798-by-1
-',}
+',    image_files: 'freeFlyingRobot_1.png,freeFlyingRobot_1_dmperm.png,freeFlyingRobot_1_scc.png,freeFlyingRobot_1_graph.gif,',
+}

@@ -123,4 +123,5 @@ E: sparse 4182-by-4182
     null_space_dimension: '3',
     full_numerical_rank: 'no',
     svd_gap: '2693115779.587982',
+    image_files: 'M80PI_n.png,M80PI_n_dmperm.png,M80PI_n_svd.png,M80PI_n_graph.gif,',
 }

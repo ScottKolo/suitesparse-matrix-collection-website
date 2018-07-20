@@ -20,4 +20,5 @@
     cholesky_candidate: 'no',
     positive_definite: 'no',
     aux_fields: 'coord: full 129164-by-2
-',}
+',    image_files: 'usroads.png,usroads_gplot.png,usroads_scc.png,usroads_graph.gif,',
+}

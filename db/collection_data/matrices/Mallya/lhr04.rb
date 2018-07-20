@@ -32,4 +32,5 @@
     null_space_dimension: '5',
     full_numerical_rank: 'no',
     svd_gap: '41914.204509',
+    image_files: 'lhr04.png,lhr04_dmperm.png,lhr04_scc.png,lhr04_svd.png,lhr04_APlusAT_graph.gif,lhr04_graph.gif,',
 }

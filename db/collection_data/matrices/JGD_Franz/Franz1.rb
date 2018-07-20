@@ -36,4 +36,5 @@ Filename in JGD collection: Franz/big1sparse
     null_space_dimension: '13',
     full_numerical_rank: 'no',
     svd_gap: '310459996085291.687500',
+    image_files: 'Franz1.png,Franz1_svd.png,Franz1_graph.gif,',
 }

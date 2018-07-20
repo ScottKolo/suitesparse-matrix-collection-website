@@ -26,4 +26,5 @@
 ',
     b_field: 'full 113076-by-1
 ',
+    image_files: 'barrier2-1.png,barrier2-1_graph.gif,',
 }

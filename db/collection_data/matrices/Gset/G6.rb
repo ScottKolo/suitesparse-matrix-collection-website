@@ -25,4 +25,5 @@
     svd_rank: '800',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'G6.png,G6_svd.png,G6_graph.gif,',
 }

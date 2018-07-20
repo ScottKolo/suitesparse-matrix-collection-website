@@ -30,4 +30,5 @@
     null_space_dimension: '131',
     full_numerical_rank: 'no',
     svd_gap: '55101733731501.734375',
+    image_files: 'Chem97Zt.png,Chem97Zt_dmperm.png,Chem97Zt_scc.png,Chem97Zt_svd.png,Chem97Zt_graph.gif,',
 }

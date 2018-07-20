@@ -35,4 +35,5 @@ C: sparse 1-by-14
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'LFAT5.png,LFAT5_dmperm.png,LFAT5_svd.png,LFAT5_graph.gif,',
 }

@@ -29,4 +29,5 @@
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'olm500.png,olm500_svd.png,olm500_APlusAT_graph.gif,olm500_graph.gif,',
 }

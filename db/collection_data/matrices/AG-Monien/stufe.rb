@@ -60,4 +60,5 @@ xy or xyz coordinates of each node, if present.
     null_space_dimension: '38',
     full_numerical_rank: 'no',
     svd_gap: '1039930301866.591919',
+    image_files: 'stufe.png,stufe_dmperm.png,stufe_gplot.png,stufe_svd.png,stufe_graph.gif,',
 }

@@ -30,4 +30,5 @@
     null_space_dimension: '1',
     full_numerical_rank: 'no',
     svd_gap: '8.999793',
+    image_files: 'ted_A.png,ted_A_dmperm.png,ted_A_svd.png,ted_A_unscaled.png,ted_A_unscaled_dmperm.png,ted_A_unscaled_svd.png,ted_A_APlusAT_graph.gif,ted_A_graph.gif,ted_A_unscaled_APlusAT_graph.gif,ted_A_unscaled_graph.gif,',
 }

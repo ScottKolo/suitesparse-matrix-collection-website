@@ -38,4 +38,5 @@ Filename in JGD collection: Homology/mk11.b4.10395x17325.sms
     null_space_dimension: '252',
     full_numerical_rank: 'no',
     svd_gap: '92455180847043.875000',
+    image_files: 'mk11-b4.png,mk11-b4_svd.png,mk11-b4_graph.gif,',
 }

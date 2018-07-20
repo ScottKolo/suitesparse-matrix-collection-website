@@ -29,4 +29,5 @@
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'bwm200.png,bwm200_svd.png,bwm200_graph.gif,',
 }

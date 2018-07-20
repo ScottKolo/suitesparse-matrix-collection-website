@@ -31,4 +31,5 @@
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'poli.png,poli_dmperm.png,poli_large.png,poli_large_dmperm.png,poli_large_svd.png,poli_svd.png,poli_APlusAT_graph.gif,poli_graph.gif,poli_large_APlusAT_graph.gif,poli_large_graph.gif,',
 }

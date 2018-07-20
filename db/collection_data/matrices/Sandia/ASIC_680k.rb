@@ -22,4 +22,5 @@
     structure: 'unsymmetric',
     cholesky_candidate: 'no',
     positive_definite: 'no',
+    image_files: 'ASIC_680k.png,ASIC_680k_dmperm.png,ASIC_680k_scc.png,ASIC_680k_graph.gif,',
 }

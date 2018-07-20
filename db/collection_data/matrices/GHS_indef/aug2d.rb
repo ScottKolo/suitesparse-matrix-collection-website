@@ -30,4 +30,5 @@
     null_space_dimension: '9800',
     full_numerical_rank: 'no',
     svd_gap: '535182214830.765320',
+    image_files: 'aug2d.png,aug2d_dmperm.png,aug2d_svd.png,aug2d_graph.gif,',
 }

@@ -10,60 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015124434) do
+ActiveRecord::Schema.define(version: 20180720010612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "num_matrices"
-    t.text     "notes",        limit: 16.megabytes - 1
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string "name"
+    t.integer "num_matrices"
+    t.text "notes",          limit: 16.megabytes - 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "matrices", force: :cascade do |t|
-    t.string   "group"
-    t.string   "name"
-    t.integer  "num_rows"
-    t.integer  "num_cols"
-    t.bigint   "nonzeros"
-    t.string   "kind"
-    t.integer  "date"
-    t.string   "author"
-    t.string   "editor"
-    t.text     "notes"
-    t.string   "matlab_url"
-    t.string   "rutherford_boeing_url"
-    t.string   "matrix_market_url"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.string   "description"
-    t.string   "problem_2D_or_3D"
-    t.bigint   "num_explicit_zeros"
-    t.integer  "num_strongly_connected_components"
-    t.integer  "num_dmperm_blocks"
-    t.string   "structural_full_rank"
-    t.integer  "structural_rank"
-    t.decimal  "pattern_symmetry"
-    t.decimal  "numeric_symmetry"
-    t.string   "structure"
-    t.string   "cholesky_candidate"
-    t.string   "positive_definite"
-    t.string   "norm"
-    t.string   "min_singular_value"
-    t.string   "condition_number"
-    t.integer  "svd_rank"
-    t.integer  "sprank_minus_rank"
-    t.integer  "null_space_dimension"
-    t.string   "full_numerical_rank"
-    t.decimal  "svd_gap",           precision: 63
-    t.text     "b_field"
-    t.text     "x_field"
-    t.text     "aux_fields"
-    t.integer  "matrix_id"
-    t.string   "rb_type"
+    t.string "group"
+    t.string "name"
+    t.integer "num_rows"
+    t.integer "num_cols"
+    t.bigint "nonzeros"
+    t.string "kind"
+    t.integer "date"
+    t.string "author"
+    t.string "editor"
+    t.text "notes"
+    t.string "matlab_url"
+    t.string "rutherford_boeing_url"
+    t.string "matrix_market_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "description"
+    t.string "problem_2D_or_3D"
+    t.bigint "num_explicit_zeros"
+    t.integer "num_strongly_connected_components"
+    t.integer "num_dmperm_blocks"
+    t.string "structural_full_rank"
+    t.integer "structural_rank"
+    t.decimal "pattern_symmetry"
+    t.decimal "numeric_symmetry"
+    t.string "structure"
+    t.string "cholesky_candidate"
+    t.string "positive_definite"
+    t.string "norm"
+    t.string "min_singular_value"
+    t.string "condition_number"
+    t.integer "svd_rank"
+    t.integer "sprank_minus_rank"
+    t.integer "null_space_dimension"
+    t.string "full_numerical_rank"
+    t.decimal "svd_gap", precision: 63
+    t.text "b_field"
+    t.text "x_field"
+    t.text "aux_fields"
+    t.integer "matrix_id"
+    t.string "rb_type"
+    t.boolean "has_graph_plot"
+    t.boolean "has_AplusAT_plot"
+    t.boolean "has_pattern_plot"
+    t.boolean "has_svd_plot"
+    t.boolean "has_gplot"
+    t.boolean "has_dmperm_plot"
+    t.boolean "has_scc_plot"
+    t.text "image_files"
     t.index ["group"], name: "index_matrices_on_group", using: :btree
     t.index ["matrix_id"], name: "index_matrices_on_matrix_id", using: :btree
   end

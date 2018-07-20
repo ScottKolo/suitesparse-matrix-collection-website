@@ -34,4 +34,5 @@
     null_space_dimension: '1130',
     full_numerical_rank: 'no',
     svd_gap: '1.004492',
+    image_files: 'jan99jac060.png,jan99jac060_dmperm.png,jan99jac060_scc.png,jan99jac060_svd.png,jan99jac060_APlusAT_graph.gif,jan99jac060_graph.gif,',
 }

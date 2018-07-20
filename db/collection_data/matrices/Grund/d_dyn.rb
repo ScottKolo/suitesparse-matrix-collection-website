@@ -31,4 +31,5 @@
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'd_dyn.png,d_dyn_dmperm.png,d_dyn_svd.png,d_dyn_APlusAT_graph.gif,d_dyn_graph.gif,',
 }

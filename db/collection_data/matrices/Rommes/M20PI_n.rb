@@ -123,4 +123,5 @@ E: sparse 1182-by-1182
     null_space_dimension: '3',
     full_numerical_rank: 'no',
     svd_gap: '10571044983.730537',
+    image_files: 'M20PI_n.png,M20PI_n_dmperm.png,M20PI_n_svd.png,M20PI_n_graph.gif,',
 }

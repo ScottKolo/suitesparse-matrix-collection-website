@@ -29,4 +29,5 @@
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'ex1.png,ex1_svd.png,ex1_graph.gif,',
 }

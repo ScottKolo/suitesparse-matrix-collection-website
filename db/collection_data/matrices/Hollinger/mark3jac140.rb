@@ -22,4 +22,5 @@
     structure: 'unsymmetric',
     cholesky_candidate: 'no',
     positive_definite: 'no',
+    image_files: 'mark3jac140.png,mark3jac140_dmperm.png,mark3jac140_scc.png,mark3jac140_APlusAT_graph.gif,mark3jac140_graph.gif,',
 }

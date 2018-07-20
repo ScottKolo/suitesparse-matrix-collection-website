@@ -39,4 +39,5 @@ z0: full 1-by-1
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'rosen1.png,rosen1_svd.png,rosen1_graph.gif,',
 }

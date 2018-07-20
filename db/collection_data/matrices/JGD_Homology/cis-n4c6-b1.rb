@@ -38,4 +38,5 @@ Filename in JGD collection: Homology/cis.n4c6.b1.210x21.sms
     null_space_dimension: '1',
     full_numerical_rank: 'no',
     svd_gap: '2827957654560364.000000',
+    image_files: 'cis-n4c6-b1.png,cis-n4c6-b1_svd.png,cis-n4c6-b1_graph.gif,',
 }

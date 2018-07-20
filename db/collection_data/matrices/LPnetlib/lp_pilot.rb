@@ -114,4 +114,5 @@ z0: full 1-by-1
     sprank_minus_rank: '0',
     null_space_dimension: '0',
     full_numerical_rank: 'yes',
+    image_files: 'lp_pilot.png,lp_pilot_dmperm.png,lp_pilot_ja.png,lp_pilot_ja_dmperm.png,lp_pilot_ja_svd.png,lp_pilot_svd.png,lp_pilot_we.png,lp_pilot_we_svd.png,lp_pilot_graph.gif,lp_pilot_ja_graph.gif,lp_pilot_we_graph.gif,',
 }

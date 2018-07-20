@@ -26,4 +26,5 @@
 ',
     b_field: 'full 49989-by-1
 ',
+    image_files: 'c-66.png,c-66_dmperm.png,c-66_graph.gif,',
 }
