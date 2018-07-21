@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180720010612) do
+ActiveRecord::Schema.define(version: 20180720194837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20180720010612) do
     t.integer "num_dmperm_blocks"
     t.string "structural_full_rank"
     t.integer "structural_rank"
-    t.decimal "pattern_symmetry"
-    t.decimal "numeric_symmetry"
+    t.decimal "pattern_symmetry", precision: 4, scale: 3
+    t.decimal "numeric_symmetry", precision: 4, scale: 3
     t.string "structure"
     t.string "cholesky_candidate"
     t.string "positive_definite"
