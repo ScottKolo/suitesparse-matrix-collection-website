@@ -230,7 +230,11 @@ class Matrix < ActiveRecord::Base
   }
 
   scope :structure, -> (structure) {
-    if structure == "Hermitian"
+    if structure == "Square"
+      where("matrices.num_rows = matrices.num_cols")
+    elsif structure == "Rectangular"
+      where.not("matrices.num_rows = matrices.num_cols")
+    elsif structure == "Hermitian"
       where("matrices.structure = ?", structure)
     else
       where("matrices.structure = ?", structure.downcase)
