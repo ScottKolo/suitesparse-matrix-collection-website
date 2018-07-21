@@ -25,7 +25,7 @@ class MatricesController < ApplicationController
       select_options: {
         sorted_by: Matrix.options_for_sorted_by,
         positive_definite_options: ['Yes', 'No'],
-        structure_options: ['Square', 'Rectangular', 'Symmetric', 'Unsymmetric', 'Hermitian', 'Skew-Symmetric', 'Rectangular'],
+        structure_options: ['Square', 'Rectangular', 'Symmetric', 'Unsymmetric', 'Hermitian', 'Skew-Symmetric'],
         rutherford_boeing_options: ['Real', 'Complex', 'Integer', 'Binary']
       }
     ) or return
