@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # Static page routes
   # Keep these first to avoid conflict with group_name route
   get 'about' => 'pages#about'
-  get 'other_interfaces' => 'pages#other_interfaces'
+  get 'interfaces' => 'pages#interfaces'
   get 'statistics' => 'pages#statistics'
   
   get 'submit' => 'matrices#new'
