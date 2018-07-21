@@ -156,7 +156,11 @@
               %td= @matrix.min_singular_value
             %tr
               %th Condition Number
-              %td= number_with_delimiter(@matrix.condition_number, :delimiter => ',')
+              %td
+                -if @matrix.condition_number.to_i < 1E9
+                  = number_with_delimiter(@matrix.condition_number, :delimiter => ',')
+                -else
+                  = "%e" %@matrix.condition_number
             %tr
               %th Rank
               %td= number_with_delimiter(@matrix.svd_rank, :delimiter => ',')
