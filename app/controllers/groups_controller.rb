@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
   def show
     # List of permitted fields for params
     permitted_params = params.permit([{filterrific: [:reset_filterrific, :sorted_by]},
-      :group, :page, :per_page, :utf8, :_])
+      :format, :group, :page, :per_page, :utf8, :_])
 
     # Initialize filterrific filtering system
     @filterrific = initialize_filterrific(
@@ -24,7 +24,7 @@ class GroupsController < ApplicationController
     @group = Group.find_by(name: group_name)
     
     if !@group
-      render :not_found
+      return render :not_found, status: 404, content_type: 'text/html', template: 'groups/not_found.html.haml'
     end
 
     @matrices = @filterrific.find.page(permitted_params[:page]).merge(Matrix.where(group: group_name))
@@ -33,10 +33,11 @@ class GroupsController < ApplicationController
     @matrices = @matrices.paginate(page: params[:page], per_page: @per_page)
 
     # Allow the index page to respond to HTML and javascript (ajax)
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    #   format.all { return render :not_found, status: 404, content_type: 'text/html'  }
+    # end
   end
 
 end

@@ -30,7 +30,7 @@ RSpec.describe MatricesController, type: :controller do
       matrix = double('matrix1')
       allow(matrix).to receive(:id).and_return(1)
       get :show, params: {group: 'FakeGroup', name: 'FakeMatrix'}
-      expect(response).to render_template :not_found
+      expect(response.status).to eq(404)
     end
 
   end

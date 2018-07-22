@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-07-04T20:32:28-05:00">2018-07-04T20:32:28-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-07-21T19:17:45-05:00">2018-07-21T19:17:45-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">83.91%</span></span>
+    (<span class="covered_percent"><span class="yellow">80.76%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         21.04
+         20.13
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>56</b> files in total.
-    <b>895</b> relevant lines. 
-    <span class="green"><b>751</b> lines covered</span> and
-    <span class="red"><b>144</b> lines missed </span>
+    <b>920</b> relevant lines. 
+    <span class="green"><b>743</b> lines covered</span> and
+    <span class="red"><b>177</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -62,10 +62,10 @@
       
       <tr>
         <td class="strong"><a href="#e980a29e17b6248161cbad71c6aa4a4d84158a3d" class="src_link" title="app/controllers/groups_controller.rb">app/controllers/groups_controller.rb</a></td>
-        <td class="green strong">94.12 %</td>
-        <td>42</td>
-        <td>17</td>
-        <td>16</td>
+        <td class="green strong">92.86 %</td>
+        <td>43</td>
+        <td>14</td>
+        <td>13</td>
         <td>1</td>
         <td>1.1</td>
       </tr>
@@ -122,12 +122,12 @@
       
       <tr>
         <td class="strong"><a href="#a4a91ad48526c2cdfb0f194af8b8da1efe502767" class="src_link" title="app/helpers/matrices_helper.rb">app/helpers/matrices_helper.rb</a></td>
-        <td class="green strong">93.33 %</td>
-        <td>124</td>
-        <td>75</td>
-        <td>70</td>
-        <td>5</td>
-        <td>82.2</td>
+        <td class="red strong">64.0 %</td>
+        <td>154</td>
+        <td>100</td>
+        <td>64</td>
+        <td>36</td>
+        <td>59.4</td>
       </tr>
       
       <tr>
@@ -182,12 +182,12 @@
       
       <tr>
         <td class="strong"><a href="#8f85666822480c67fac298593c08736c6d499274" class="src_link" title="app/models/matrix.rb">app/models/matrix.rb</a></td>
-        <td class="red strong">77.48 %</td>
-        <td>300</td>
-        <td>111</td>
+        <td class="red strong">76.11 %</td>
+        <td>304</td>
+        <td>113</td>
         <td>86</td>
-        <td>25</td>
-        <td>74.4</td>
+        <td>27</td>
+        <td>72.3</td>
       </tr>
       
       <tr>
@@ -353,9 +353,9 @@
       <tr>
         <td class="strong"><a href="#963300f43919f217ca076ae5aa7f7ea2a07e8bf6" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>27</td>
-        <td>13</td>
-        <td>13</td>
+        <td>29</td>
+        <td>14</td>
+        <td>14</td>
         <td>0</td>
         <td>2.0</td>
       </tr>
@@ -678,10 +678,10 @@
         <div class="source_table" id="e980a29e17b6248161cbad71c6aa4a4d84158a3d">
   <div class="header">
     <h3>app/controllers/groups_controller.rb</h3>
-    <h4><span class="green">94.12 %</span> covered</h4>
+    <h4><span class="green">92.86 %</span> covered</h4>
     <div>
-      <b>17</b> relevant lines. 
-      <span class="green"><b>16</b> lines covered</span> and
+      <b>14</b> relevant lines. 
+      <span class="green"><b>13</b> lines covered</span> and
       <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
@@ -752,7 +752,7 @@
         <li class="never" data-hits="" data-linenumber="11">
           
           
-          <code class="ruby">      :group, :page, :per_page, :utf8, :_])</code>
+          <code class="ruby">      :format, :group, :page, :per_page, :utf8, :_])</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="12">
@@ -848,7 +848,7 @@
         <li class="missed" data-hits="0" data-linenumber="27">
           
           
-          <code class="ruby">      render :not_found</code>
+          <code class="ruby">      return render :not_found, status: 404, content_type: &#39;text/html&#39;, template: &#39;groups/not_found.html.haml&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="28">
@@ -899,43 +899,49 @@
           <code class="ruby">    # Allow the index page to respond to HTML and javascript (ajax)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="36">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="36">
           
-          <code class="ruby">    respond_to do |format|</code>
+          
+          <code class="ruby">    # respond_to do |format|</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="37">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="37">
           
-          <code class="ruby">      format.html</code>
+          
+          <code class="ruby">    #   format.html</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="38">
           
-          <code class="ruby">      format.js</code>
+          
+          <code class="ruby">    #   format.js</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="39">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">    #   format.all { return render :not_found, status: 404, content_type: &#39;text/html&#39;  }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="40">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="41">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
           
           
           <code class="ruby">end</code>
@@ -1125,7 +1131,7 @@
         <li class="never" data-hits="" data-linenumber="28">
           
           
-          <code class="ruby">        structure_options: [&#39;Square&#39;, &#39;Rectangular&#39;, &#39;Symmetric&#39;, &#39;Unsymmetric&#39;, &#39;Hermitian&#39;, &#39;Skew-Symmetric&#39;, &#39;Rectangular&#39;],</code>
+          <code class="ruby">        structure_options: [&#39;Square&#39;, &#39;Rectangular&#39;, &#39;Symmetric&#39;, &#39;Unsymmetric&#39;, &#39;Hermitian&#39;, &#39;Skew-Symmetric&#39;],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="29">
@@ -1437,7 +1443,7 @@
         <li class="covered" data-hits="3" data-linenumber="80">
           <span class="hits">3</span>
           
-          <code class="ruby">      render :not_found</code>
+          <code class="ruby">      return render :not_found, status: 404, content_type: &#39;text/html&#39;, template: &#39;matrices/not_found.html.haml&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="81">
@@ -1962,11 +1968,11 @@
         <div class="source_table" id="a4a91ad48526c2cdfb0f194af8b8da1efe502767">
   <div class="header">
     <h3>app/helpers/matrices_helper.rb</h3>
-    <h4><span class="green">93.33 %</span> covered</h4>
+    <h4><span class="red">64.0 %</span> covered</h4>
     <div>
-      <b>75</b> relevant lines. 
-      <span class="green"><b>70</b> lines covered</span> and
-      <span class="red"><b>5</b> lines missed.</span>
+      <b>100</b> relevant lines. 
+      <span class="green"><b>64</b> lines covered</span> and
+      <span class="red"><b>36</b> lines missed.</span>
     </div>
   </div>
   
@@ -2261,28 +2267,28 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
-          
-          
-          <code class="ruby">  # Checks if an image exists on a server</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="50">
+        <li class="covered" data-hits="2" data-linenumber="49">
           <span class="hits">2</span>
           
-          <code class="ruby">  def is_valid_image_url(url)</code>
+          <code class="ruby">  def image_list(matrix)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="51">
+        <li class="covered" data-hits="12" data-linenumber="50">
+          <span class="hits">12</span>
           
-          
-          <code class="ruby">    # Check if this image exists by sending a HTTP GET request</code>
+          <code class="ruby">    if matrix.nil? or matrix.image_files.nil?</code>
         </li>
       
-        <li class="covered" data-hits="84" data-linenumber="52">
-          <span class="hits">84</span>
+        <li class="covered" data-hits="12" data-linenumber="51">
+          <span class="hits">12</span>
           
-          <code class="ruby">    response = Net::HTTP.get_response(URI.parse(url))</code>
+          <code class="ruby">      return [];</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="52">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
@@ -2291,427 +2297,607 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="54">
+        <li class="missed" data-hits="0" data-linenumber="54">
           
           
-          <code class="ruby">    # If the response is normal-ish, we say it exists.</code>
+          <code class="ruby">    filename_list = matrix.image_files.split(&#39;,&#39;)</code>
         </li>
       
-        <li class="covered" data-hits="84" data-linenumber="55">
-          <span class="hits">84</span>
+        <li class="missed" data-hits="0" data-linenumber="55">
           
-          <code class="ruby">    return (response.code.to_i &gt;= 200 &amp;&amp; response.code.to_i &lt; 400)</code>
+          
+          <code class="ruby">    image_list = [];</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="56">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="57">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="58">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="57">
           
-          <code class="ruby">  def has_graph_plot(matrix)</code>
-        </li>
-      
-        <li class="covered" data-hits="12" data-linenumber="59">
-          <span class="hits">12</span>
-          
-          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_graph.gif&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="60">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="61">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="62">
-          <span class="hits">2</span>
-          
-          <code class="ruby">  def has_AplusAT_plot(matrix)</code>
-        </li>
-      
-        <li class="covered" data-hits="12" data-linenumber="63">
-          <span class="hits">12</span>
-          
-          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_APlusAT_graph.gif&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="64">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="65">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="66">
-          <span class="hits">2</span>
-          
-          <code class="ruby">  def has_pattern_plot(matrix)</code>
-        </li>
-      
-        <li class="covered" data-hits="12" data-linenumber="67">
-          <span class="hits">12</span>
-          
-          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}.png&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="68">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="69">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="70">
-          <span class="hits">2</span>
-          
-          <code class="ruby">  def has_svd_plot(matrix)</code>
-        </li>
-      
-        <li class="covered" data-hits="12" data-linenumber="71">
-          <span class="hits">12</span>
-          
-          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_svd.png&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="72">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="73">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="74">
-          <span class="hits">2</span>
-          
-          <code class="ruby">  def has_gplot(matrix)</code>
-        </li>
-      
-        <li class="covered" data-hits="12" data-linenumber="75">
-          <span class="hits">12</span>
-          
-          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_gplot.png&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="76">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="77">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="78">
-          <span class="hits">2</span>
-          
-          <code class="ruby">  def has_dmperm_plot(matrix)</code>
-        </li>
-      
-        <li class="covered" data-hits="12" data-linenumber="79">
-          <span class="hits">12</span>
-          
-          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_dmperm.png&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="80">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="81">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="82">
-          <span class="hits">2</span>
-          
-          <code class="ruby">  def has_scc_plot(matrix)</code>
-        </li>
-      
-        <li class="covered" data-hits="12" data-linenumber="83">
-          <span class="hits">12</span>
-          
-          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_scc.png&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="84">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="85">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="86">
-          
-          
-          <code class="ruby">  # Define tooltip text for a variety of fields/properties</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="87">
-          <span class="hits">2</span>
-          
-          <code class="ruby">  def tooltip_text(property)</code>
-        </li>
-      
-        <li class="covered" data-hits="96" data-linenumber="88">
-          <span class="hits">96</span>
-          
-          <code class="ruby">    if property == :num_rows</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="89">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;Number of rows in the sparse matrix (often referred to as m)&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="90" data-linenumber="90">
-          <span class="hits">90</span>
-          
-          <code class="ruby">    elsif property == :num_cols</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="91">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;Number of columns in the sparse matrix (often referred to as n)&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="84" data-linenumber="92">
-          <span class="hits">84</span>
-          
-          <code class="ruby">    elsif property == :nonzeros</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="93">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;Number of nonzero (and explicit zero) elements in the sparse matrix&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="78" data-linenumber="94">
-          <span class="hits">78</span>
-          
-          <code class="ruby">    elsif property == :kind</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="95">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;The general problem category, domain, or field this matrix arises from&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="72" data-linenumber="96">
-          <span class="hits">72</span>
-          
-          <code class="ruby">    elsif property == :symmetric</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="97">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;Whether the matrix is structurally and numerically symmetric&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="66" data-linenumber="98">
-          <span class="hits">66</span>
-          
-          <code class="ruby">    elsif property == :date</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="99">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;The year this matrix was added to the Collection&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="60" data-linenumber="100">
-          <span class="hits">60</span>
-          
-          <code class="ruby">    elsif property == :author</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="101">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;Person(s) responsible for creating or discovering this matrix&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="54" data-linenumber="102">
-          <span class="hits">54</span>
-          
-          <code class="ruby">    elsif property == :editor</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="103">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;Person(s) responsible for gathering and formatting the metadata associated with this matrix&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="48" data-linenumber="104">
-          <span class="hits">48</span>
-          
-          <code class="ruby">    elsif property == :num_dmperm_blocks</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="105">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;Number of blocks obtained from the Dulmage-Mendelsohn decomposition&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="42" data-linenumber="106">
-          <span class="hits">42</span>
-          
-          <code class="ruby">    elsif property == :num_strongly_connected_components</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="107">
-          <span class="hits">6</span>
           
-          <code class="ruby">      return &quot;Number of (strongly) connected components in the resulting graph of this matrix&quot;</code>
+          <code class="ruby">    for filename in filename_list</code>
         </li>
       
-        <li class="covered" data-hits="36" data-linenumber="108">
-          <span class="hits">36</span>
+        <li class="missed" data-hits="0" data-linenumber="58">
           
-          <code class="ruby">    elsif property == :num_explicit_zeros</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="109">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;Number of nonzero elements that have a value of zero&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="30" data-linenumber="110">
-          <span class="hits">30</span>
-          
-          <code class="ruby">    elsif property == :pattern_symmetry</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="111">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;The percentage of nonzero entries that have a matching nonzero entry across the diagonal (but the value may be different)&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="24" data-linenumber="112">
-          <span class="hits">24</span>
-          
-          <code class="ruby">    elsif property == :numeric_symmetry</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="113">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return &quot;The percentage of nonzero entries that are numerically symmetric&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="18" data-linenumber="114">
-          <span class="hits">18</span>
-          
-          <code class="ruby">    elsif property == :cholesky_candidate</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="115">
-          <span class="hits">6</span>
           
-          <code class="ruby">      return &quot;Whether the matrix can be decomposed using a Cholesky factorization&quot;</code>
+          <code class="ruby">      image_hash = {};</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="116">
-          <span class="hits">12</span>
+        <li class="missed" data-hits="0" data-linenumber="59">
           
-          <code class="ruby">    elsif property == :positive_definite</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="117">
-          <span class="hits">6</span>
           
-          <code class="ruby">      return &quot;Whether the matrix is positive definite (all eigenvalues are positive)&quot;</code>
+          <code class="ruby">      image_hash[:url] = &quot;#{Matrix.get_base_url}files/#{matrix.group}/#{filename}&quot;</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="118">
-          <span class="hits">6</span>
+        <li class="missed" data-hits="0" data-linenumber="60">
           
-          <code class="ruby">    elsif property == :rb_type</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="119">
-          <span class="hits">6</span>
           
-          <code class="ruby">      return &quot;Rutherford-Boeing type: real, complex, integer, or binary&quot;</code>
+          <code class="ruby">      image_hash[:description] = get_image_description(filename, matrix)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="120">
+        <li class="missed" data-hits="0" data-linenumber="61">
           
           
-          <code class="ruby">    else</code>
+          <code class="ruby">      image_hash[:first] = (filename == filename_list.first)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="121">
+        <li class="missed" data-hits="0" data-linenumber="62">
           
           
-          <code class="ruby">      raise ArgumentError.new(&quot;Unknown matrix property&quot;)</code>
+          <code class="ruby">      image_list.append(image_hash)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="122">
+        <li class="never" data-hits="" data-linenumber="63">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="123">
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="65">
+          
+          
+          <code class="ruby">    return image_list</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="66">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="124">
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="68">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def get_image_description(filename, matrix)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="69">
+          
+          
+          <code class="ruby">    if filename.match(/.*_APlusAT_graph\..*/)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="70">
+          
+          
+          <code class="ruby">      return &quot;Graph Visualization of A+A&#39; for #{matrix.group}/#{matrix.name}&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="71">
+          
+          
+          <code class="ruby">    elsif filename.match(/.*_graph\..*/)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="72">
+          
+          
+          <code class="ruby">      return &quot;Force-Directed Graph Visualization of #{matrix.group}/#{matrix.name}&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="73">
+          
+          
+          <code class="ruby">    elsif filename.match(/.*#{matrix.name}.png/)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="74">
+          
+          
+          <code class="ruby">      return &quot;Nonzero Pattern of #{matrix.group}/#{matrix.name}&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="75">
+          
+          
+          <code class="ruby">    elsif filename.match(/.*_svd\..*/)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="76">
+          
+          
+          <code class="ruby">      return &quot;Singular Values of #{matrix.group}/#{matrix.name}&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="77">
+          
+          
+          <code class="ruby">    elsif filename.match(/.*_gplot\..*/)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="78">
+          
+          
+          <code class="ruby">      return &quot;3D Graph Plot of #{matrix.group}/#{matrix.name}&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="79">
+          
+          
+          <code class="ruby">    elsif filename.match(/.*_dmperm\..*/)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="80">
+          
+          
+          <code class="ruby">      return &quot;Dulmage-Mendelsohn Permutation of #{matrix.group}/#{matrix.name}&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="81">
+          
+          
+          <code class="ruby">    elsif filename.match(/.*_scc\..*/)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="82">
+          
+          
+          <code class="ruby">      return &quot;Connected Components of the Bipartite Graph of #{matrix.group}/#{matrix.name}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="83">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="84">
+          
+          
+          <code class="ruby">      return filename</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="85">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="86">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="87">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="88">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def has_graph_plot(matrix)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="89">
+          
+          
+          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_graph.gif&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="90">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="91">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="92">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def has_AplusAT_plot(matrix)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="93">
+          
+          
+          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_APlusAT_graph.gif&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="94">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="95">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="96">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def has_pattern_plot(matrix)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="97">
+          
+          
+          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}.png&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="98">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="99">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="100">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def has_svd_plot(matrix)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="101">
+          
+          
+          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_svd.png&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="102">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="103">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="104">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def has_gplot(matrix)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="105">
+          
+          
+          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_gplot.png&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="106">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="107">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="108">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def has_dmperm_plot(matrix)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="109">
+          
+          
+          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_dmperm.png&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="110">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="111">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="112">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def has_scc_plot(matrix)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="113">
+          
+          
+          <code class="ruby">    return is_valid_image_url(&quot;#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_scc.png&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="114">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="115">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="116">
+          
+          
+          <code class="ruby">  # Define tooltip text for a variety of fields/properties</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="117">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def tooltip_text(property)</code>
+        </li>
+      
+        <li class="covered" data-hits="96" data-linenumber="118">
+          <span class="hits">96</span>
+          
+          <code class="ruby">    if property == :num_rows</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="119">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Number of rows in the sparse matrix (often referred to as m)&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="90" data-linenumber="120">
+          <span class="hits">90</span>
+          
+          <code class="ruby">    elsif property == :num_cols</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="121">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Number of columns in the sparse matrix (often referred to as n)&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="84" data-linenumber="122">
+          <span class="hits">84</span>
+          
+          <code class="ruby">    elsif property == :nonzeros</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="123">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Number of nonzero (and explicit zero) elements in the sparse matrix&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="78" data-linenumber="124">
+          <span class="hits">78</span>
+          
+          <code class="ruby">    elsif property == :kind</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="125">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;The general problem category, domain, or field this matrix arises from&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="72" data-linenumber="126">
+          <span class="hits">72</span>
+          
+          <code class="ruby">    elsif property == :symmetric</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="127">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Whether the matrix is structurally and numerically symmetric&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="66" data-linenumber="128">
+          <span class="hits">66</span>
+          
+          <code class="ruby">    elsif property == :date</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="129">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;The year this matrix was added to the Collection&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="60" data-linenumber="130">
+          <span class="hits">60</span>
+          
+          <code class="ruby">    elsif property == :author</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="131">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Person(s) responsible for creating or discovering this matrix&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="54" data-linenumber="132">
+          <span class="hits">54</span>
+          
+          <code class="ruby">    elsif property == :editor</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="133">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Person(s) responsible for gathering and formatting the metadata associated with this matrix&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="48" data-linenumber="134">
+          <span class="hits">48</span>
+          
+          <code class="ruby">    elsif property == :num_dmperm_blocks</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="135">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Number of blocks obtained from the Dulmage-Mendelsohn decomposition&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="42" data-linenumber="136">
+          <span class="hits">42</span>
+          
+          <code class="ruby">    elsif property == :num_strongly_connected_components</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="137">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Number of (strongly) connected components in the resulting graph of this matrix&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="36" data-linenumber="138">
+          <span class="hits">36</span>
+          
+          <code class="ruby">    elsif property == :num_explicit_zeros</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="139">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Number of nonzero elements that have a value of zero&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="30" data-linenumber="140">
+          <span class="hits">30</span>
+          
+          <code class="ruby">    elsif property == :pattern_symmetry</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="141">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;The percentage of nonzero entries that have a matching nonzero entry across the diagonal (but the value may be different)&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="24" data-linenumber="142">
+          <span class="hits">24</span>
+          
+          <code class="ruby">    elsif property == :numeric_symmetry</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="143">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;The percentage of nonzero entries that are numerically symmetric&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="18" data-linenumber="144">
+          <span class="hits">18</span>
+          
+          <code class="ruby">    elsif property == :cholesky_candidate</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="145">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Whether the matrix can be decomposed using a Cholesky factorization&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="146">
+          <span class="hits">12</span>
+          
+          <code class="ruby">    elsif property == :positive_definite</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="147">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Whether the matrix is positive definite (all eigenvalues are positive)&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="148">
+          <span class="hits">6</span>
+          
+          <code class="ruby">    elsif property == :rb_type</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="149">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return &quot;Rutherford-Boeing type: real, complex, integer, or binary&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="150">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="151">
+          
+          
+          <code class="ruby">      raise ArgumentError.new(&quot;Unknown matrix property&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="152">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="153">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="154">
           
           
           <code class="ruby">end</code>
@@ -3084,11 +3270,11 @@
         <div class="source_table" id="8f85666822480c67fac298593c08736c6d499274">
   <div class="header">
     <h3>app/models/matrix.rb</h3>
-    <h4><span class="red">77.48 %</span> covered</h4>
+    <h4><span class="red">76.11 %</span> covered</h4>
     <div>
-      <b>111</b> relevant lines. 
+      <b>113</b> relevant lines. 
       <span class="green"><b>86</b> lines covered</span> and
-      <span class="red"><b>25</b> lines missed.</span>
+      <span class="red"><b>27</b> lines missed.</span>
     </div>
   </div>
   
@@ -3131,8 +3317,8 @@
           <code class="ruby">  def self.get_base_url</code>
         </li>
       
-        <li class="covered" data-hits="1588" data-linenumber="7">
-          <span class="hits">1588</span>
+        <li class="covered" data-hits="1504" data-linenumber="7">
+          <span class="hits">1504</span>
           
           <code class="ruby">    return &#39;https://sparse.tamu.edu/&#39;</code>
         </li>
@@ -4490,55 +4676,55 @@
         <li class="missed" data-hits="0" data-linenumber="233">
           
           
-          <code class="ruby">    if structure == &quot;Hermitian&quot;</code>
+          <code class="ruby">    if structure == &quot;Square&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="234">
           
           
-          <code class="ruby">      where(&quot;matrices.structure = ?&quot;, structure)</code>
+          <code class="ruby">      where(&quot;matrices.num_rows = matrices.num_cols&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="235">
           
           
-          <code class="ruby">    else</code>
+          <code class="ruby">    elsif structure == &quot;Rectangular&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="236">
           
           
-          <code class="ruby">      where(&quot;matrices.structure = ?&quot;, structure.downcase)</code>
+          <code class="ruby">      where.not(&quot;matrices.num_rows = matrices.num_cols&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="237">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">    elsif structure == &quot;Hermitian&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="238">
+        <li class="missed" data-hits="0" data-linenumber="238">
           
           
-          <code class="ruby">  }</code>
+          <code class="ruby">      where(&quot;matrices.structure = ?&quot;, structure)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="239">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="240">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="240">
           
-          <code class="ruby">  scope :rb_type, -&gt; (rb_type) {</code>
+          
+          <code class="ruby">      where(&quot;matrices.structure = ?&quot;, structure.downcase)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="241">
+        <li class="never" data-hits="" data-linenumber="241">
           
           
-          <code class="ruby">    where(&quot;matrices.rb_type = ?&quot;, rb_type.downcase)</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="242">
@@ -4553,46 +4739,46 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="244">
-          
-          
-          <code class="ruby">  # Filter by ID</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="245">
+        <li class="covered" data-hits="2" data-linenumber="244">
           <span class="hits">2</span>
           
-          <code class="ruby">  scope :min_id, -&gt; (min_id) {</code>
+          <code class="ruby">  scope :rb_type, -&gt; (rb_type) {</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="246">
+        <li class="missed" data-hits="0" data-linenumber="245">
           
           
-          <code class="ruby">    where(&quot;matrices.matrix_id &gt;= ?&quot;, min_id)</code>
+          <code class="ruby">    where(&quot;matrices.rb_type = ?&quot;, rb_type.downcase)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="247">
+        <li class="never" data-hits="" data-linenumber="246">
           
           
           <code class="ruby">  }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="248">
+        <li class="never" data-hits="" data-linenumber="247">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="248">
+          
+          
+          <code class="ruby">  # Filter by ID</code>
+        </li>
+      
         <li class="covered" data-hits="2" data-linenumber="249">
           <span class="hits">2</span>
           
-          <code class="ruby">  scope :max_id, -&gt; (max_id) {</code>
+          <code class="ruby">  scope :min_id, -&gt; (min_id) {</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="250">
           
           
-          <code class="ruby">    where(&quot;matrices.matrix_id &lt;= ?&quot;, max_id)</code>
+          <code class="ruby">    where(&quot;matrices.matrix_id &gt;= ?&quot;, min_id)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="251">
@@ -4607,46 +4793,46 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="253">
-          
-          
-          <code class="ruby">  # Filter by year</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="254">
+        <li class="covered" data-hits="2" data-linenumber="253">
           <span class="hits">2</span>
           
-          <code class="ruby">  scope :min_year, -&gt; (min_year) {</code>
+          <code class="ruby">  scope :max_id, -&gt; (max_id) {</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="255">
+        <li class="missed" data-hits="0" data-linenumber="254">
           
           
-          <code class="ruby">    where(&quot;matrices.date &gt;= ?&quot;, min_year)</code>
+          <code class="ruby">    where(&quot;matrices.matrix_id &lt;= ?&quot;, max_id)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="256">
+        <li class="never" data-hits="" data-linenumber="255">
           
           
           <code class="ruby">  }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="257">
+        <li class="never" data-hits="" data-linenumber="256">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="257">
+          
+          
+          <code class="ruby">  # Filter by year</code>
+        </li>
+      
         <li class="covered" data-hits="2" data-linenumber="258">
           <span class="hits">2</span>
           
-          <code class="ruby">  scope :max_year, -&gt; (max_year) {</code>
+          <code class="ruby">  scope :min_year, -&gt; (min_year) {</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="259">
           
           
-          <code class="ruby">    where(&quot;matrices.date &lt;= ?&quot;, max_year)</code>
+          <code class="ruby">    where(&quot;matrices.date &gt;= ?&quot;, min_year)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="260">
@@ -4661,46 +4847,46 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="262">
-          
-          
-          <code class="ruby">  # Filter by pattern symmetry</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="263">
+        <li class="covered" data-hits="2" data-linenumber="262">
           <span class="hits">2</span>
           
-          <code class="ruby">  scope :min_pattern_symmetry, -&gt; (min_pattern_symmetry) {</code>
+          <code class="ruby">  scope :max_year, -&gt; (max_year) {</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="264">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="263">
           
-          <code class="ruby">    where(&quot;matrices.pattern_symmetry &gt;= ?&quot;, min_pattern_symmetry.to_f/100)</code>
+          
+          <code class="ruby">    where(&quot;matrices.date &lt;= ?&quot;, max_year)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="265">
+        <li class="never" data-hits="" data-linenumber="264">
           
           
           <code class="ruby">  }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="266">
+        <li class="never" data-hits="" data-linenumber="265">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="266">
+          
+          
+          <code class="ruby">  # Filter by pattern symmetry</code>
+        </li>
+      
         <li class="covered" data-hits="2" data-linenumber="267">
           <span class="hits">2</span>
           
-          <code class="ruby">  scope :max_pattern_symmetry, -&gt; (max_pattern_symmetry) {</code>
+          <code class="ruby">  scope :min_pattern_symmetry, -&gt; (min_pattern_symmetry) {</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="268">
           <span class="hits">1</span>
           
-          <code class="ruby">    where(&quot;matrices.pattern_symmetry &lt;= ?&quot;, max_pattern_symmetry.to_f/100)</code>
+          <code class="ruby">    where(&quot;matrices.pattern_symmetry &gt;= ?&quot;, min_pattern_symmetry.to_f/100)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="269">
@@ -4715,46 +4901,46 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="271">
-          
-          
-          <code class="ruby">  # Filter by numerical symmetry</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="272">
+        <li class="covered" data-hits="2" data-linenumber="271">
           <span class="hits">2</span>
           
-          <code class="ruby">  scope :min_numerical_symmetry, -&gt; (min_numerical_symmetry) {</code>
+          <code class="ruby">  scope :max_pattern_symmetry, -&gt; (max_pattern_symmetry) {</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="273">
+        <li class="covered" data-hits="1" data-linenumber="272">
           <span class="hits">1</span>
           
-          <code class="ruby">    where(&quot;matrices.numeric_symmetry &gt;= ?&quot;, min_numerical_symmetry.to_f/100)</code>
+          <code class="ruby">    where(&quot;matrices.pattern_symmetry &lt;= ?&quot;, max_pattern_symmetry.to_f/100)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="274">
+        <li class="never" data-hits="" data-linenumber="273">
           
           
           <code class="ruby">  }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="275">
+        <li class="never" data-hits="" data-linenumber="274">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="275">
+          
+          
+          <code class="ruby">  # Filter by numerical symmetry</code>
+        </li>
+      
         <li class="covered" data-hits="2" data-linenumber="276">
           <span class="hits">2</span>
           
-          <code class="ruby">  scope :max_numerical_symmetry, -&gt; (max_numerical_symmetry) {</code>
+          <code class="ruby">  scope :min_numerical_symmetry, -&gt; (min_numerical_symmetry) {</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="277">
           <span class="hits">1</span>
           
-          <code class="ruby">    where(&quot;matrices.numeric_symmetry &lt;= ?&quot;, max_numerical_symmetry.to_f/100)</code>
+          <code class="ruby">    where(&quot;matrices.numeric_symmetry &gt;= ?&quot;, min_numerical_symmetry.to_f/100)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="278">
@@ -4769,46 +4955,46 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="280">
-          
-          
-          <code class="ruby">  # Filter by number of strongly connected components</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="281">
+        <li class="covered" data-hits="2" data-linenumber="280">
           <span class="hits">2</span>
           
-          <code class="ruby">  scope :min_strongly_connected_components, -&gt; (min_strongly_connected_components) {</code>
+          <code class="ruby">  scope :max_numerical_symmetry, -&gt; (max_numerical_symmetry) {</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="282">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="281">
+          <span class="hits">1</span>
           
-          <code class="ruby">    where(&quot;matrices.num_strongly_connected_components &gt;= ?&quot;, min_strongly_connected_components)</code>
+          <code class="ruby">    where(&quot;matrices.numeric_symmetry &lt;= ?&quot;, max_numerical_symmetry.to_f/100)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="283">
+        <li class="never" data-hits="" data-linenumber="282">
           
           
           <code class="ruby">  }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="284">
+        <li class="never" data-hits="" data-linenumber="283">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="284">
+          
+          
+          <code class="ruby">  # Filter by number of strongly connected components</code>
+        </li>
+      
         <li class="covered" data-hits="2" data-linenumber="285">
           <span class="hits">2</span>
           
-          <code class="ruby">  scope :max_strongly_connected_components, -&gt; (max_strongly_connected_components) {</code>
+          <code class="ruby">  scope :min_strongly_connected_components, -&gt; (min_strongly_connected_components) {</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="286">
           <span class="hits">2</span>
           
-          <code class="ruby">    where(&quot;matrices.num_strongly_connected_components &lt;= ?&quot;, max_strongly_connected_components)</code>
+          <code class="ruby">    where(&quot;matrices.num_strongly_connected_components &gt;= ?&quot;, min_strongly_connected_components)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="287">
@@ -4823,73 +5009,97 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="289">
+        <li class="covered" data-hits="2" data-linenumber="289">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">  # Filter by positive definiteness</code>
+          <code class="ruby">  scope :max_strongly_connected_components, -&gt; (max_strongly_connected_components) {</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="290">
           <span class="hits">2</span>
           
-          <code class="ruby">  scope :positive_definite, -&gt; (pos_def) {</code>
+          <code class="ruby">    where(&quot;matrices.num_strongly_connected_components &lt;= ?&quot;, max_strongly_connected_components)</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="291">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    if (pos_def == &quot;Any&quot;)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="292">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      nil</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="293">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="294">
-          <span class="hits">5</span>
-          
-          <code class="ruby">      where(&quot;matrices.positive_definite = ?&quot;, pos_def.downcase)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="295">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="296">
+        <li class="never" data-hits="" data-linenumber="291">
           
           
           <code class="ruby">  }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="297">
+        <li class="never" data-hits="" data-linenumber="292">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="298">
+        <li class="never" data-hits="" data-linenumber="293">
           
           
-          <code class="ruby">  ##############################################################################</code>
+          <code class="ruby">  # Filter by positive definiteness</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="294">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  scope :positive_definite, -&gt; (pos_def) {</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="295">
+          <span class="hits">7</span>
+          
+          <code class="ruby">    if (pos_def == &quot;Any&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="296">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      nil</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="297">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="298">
+          <span class="hits">5</span>
+          
+          <code class="ruby">      where(&quot;matrices.positive_definite = ?&quot;, pos_def.downcase)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="299">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="300">
+          
+          
+          <code class="ruby">  }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="301">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="302">
+          
+          
+          <code class="ruby">  ##############################################################################</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="303">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="304">
           
           
           <code class="ruby">end</code>
@@ -6259,8 +6469,8 @@
     <h3>config/routes.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>13</b> relevant lines. 
-      <span class="green"><b>13</b> lines covered</span> and
+      <b>14</b> relevant lines. 
+      <span class="green"><b>14</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -6325,7 +6535,7 @@
         <li class="covered" data-hits="2" data-linenumber="10">
           <span class="hits">2</span>
           
-          <code class="ruby">  get &#39;other_interfaces&#39; =&gt; &#39;pages#other_interfaces&#39;</code>
+          <code class="ruby">  get &#39;interfaces&#39; =&gt; &#39;pages#interfaces&#39;</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="11">
@@ -6425,6 +6635,18 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="28">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  get &#39;*path&#39;, to: redirect(&#39;/404&#39;), via: :all</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="29">
           
           
           <code class="ruby">end</code>
@@ -10209,7 +10431,7 @@
         <li class="covered" data-hits="1" data-linenumber="33">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(response).to render_template :not_found</code>
+          <code class="ruby">      expect(response.status).to eq(404)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">

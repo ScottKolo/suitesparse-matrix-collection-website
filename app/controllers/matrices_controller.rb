@@ -77,7 +77,7 @@ class MatricesController < ApplicationController
 
     if !@matrix
       # If we couldn't find the matrix, render the matrix not found page
-      render :not_found
+      return render :not_found, status: 404, content_type: 'text/html', template: 'matrices/not_found.html.haml'
     end
   end
 

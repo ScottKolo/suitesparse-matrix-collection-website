@@ -24,4 +24,6 @@ Rails.application.routes.draw do
 
   # Route for sparse.tamu.edu/group_name
   get '/:group', to: 'groups#show'
+
+  get '*path', to: redirect('/404'), via: :all
 end
