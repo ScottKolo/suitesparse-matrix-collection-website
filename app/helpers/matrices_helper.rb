@@ -120,7 +120,9 @@ module MatricesHelper
     elsif property == :num_cols
       return "Number of columns in the sparse matrix (often referred to as n)"
     elsif property == :nonzeros
-      return "Number of nonzero (and explicit zero) elements in the sparse matrix"
+      return "Number of numerically nonzero elements in the sparse matrix"
+    elsif property == :entries
+      return "Number of nonzero (and explicit zero) entries in the sparse matrix"
     elsif property == :kind
       return "The general problem category, domain, or field this matrix arises from"
     elsif property == :symmetric
@@ -136,7 +138,7 @@ module MatricesHelper
     elsif property == :num_strongly_connected_components
       return "Number of (strongly) connected components in the resulting graph of this matrix"
     elsif property == :num_explicit_zeros
-      return "Number of nonzero elements that have a value of zero"
+      return "Number of matrix entries that have a value of zero"
     elsif property == :pattern_symmetry
       return "The percentage of nonzero entries that have a matching nonzero entry across the diagonal (but the value may be different)"
     elsif property == :numeric_symmetry

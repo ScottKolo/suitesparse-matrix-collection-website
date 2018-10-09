@@ -36,6 +36,12 @@
             %td= number_with_delimiter(@matrix.nonzeros, :delimiter => ',')
           %tr
             %th
+              Pattern Entries
+              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:entries)}
+                %span.fas.fa-question-circle
+            %td= number_with_delimiter(@matrix.nonzeros+@matrix.num_explicit_zeros, :delimiter => ',')
+          %tr
+            %th
               Kind
               %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:kind)}
                 %span.fas.fa-question-circle
@@ -90,7 +96,7 @@
         %tbody
           %tr
             %th Structural Rank
-            %td= @matrix.structural_rank
+            %td= number_with_delimiter(@matrix.structural_rank, :delimiter => ',')
           %tr
             %th Structural Rank Full
             %td= @matrix.structural_full_rank
@@ -99,19 +105,19 @@
               Num Dmperm Blocks
               %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_dmperm_blocks)}
                 %span.fas.fa-question-circle
-            %td= @matrix.num_dmperm_blocks
+            %td= number_with_delimiter(@matrix.num_dmperm_blocks, :delimiter => ',')
           %tr
             %th
               Strongly Connect Components
               %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_strongly_connected_components)}
                 %span.fas.fa-question-circle
-            %td= @matrix.num_strongly_connected_components
+            %td= number_with_delimiter(@matrix.num_strongly_connected_components, :delimiter => ',')
           %tr
             %th
               Num Explicit Zeros
               %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_explicit_zeros)}
                 %span.fas.fa-question-circle
-            %td= @matrix.num_explicit_zeros
+            %td= number_with_delimiter(@matrix.num_explicit_zeros, :delimiter => ',')
           %tr
             %th
               Pattern Symmetry
@@ -153,7 +159,7 @@
               %td= number_with_delimiter(@matrix.norm, :delimiter => ',')
             %tr
               %th Minimum Singular Value
-              %td= @matrix.min_singular_value
+              %td= number_with_delimiter(@matrix.min_singular_value, :delimiter => ',')
             %tr
               %th Condition Number
               %td
