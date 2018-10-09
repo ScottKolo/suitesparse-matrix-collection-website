@@ -39,7 +39,7 @@
               Pattern Entries
               %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:entries)}
                 %span.fas.fa-question-circle
-            %td= number_with_delimiter(@matrix.nonzeros+@matrix.num_explicit_zeros, :delimiter => ',')
+            %td= number_with_delimiter(@matrix.nonzeros+@matrix.num_explicit_zeros, :delimiter => ',') unless (@matrix.nonzeros.nil? or @matrix.num_explicit_zeros.nil?)
           %tr
             %th
               Kind
