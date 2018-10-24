@@ -8,7 +8,7 @@
 /.bundle
 
 # Ignore local coverage
-/coverage
+/coverage/*
 
 # Ignore all logfiles and tempfiles.
 /log/*
