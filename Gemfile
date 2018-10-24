@@ -18,8 +18,11 @@ gem 'turbolinks', '~> 5.1.0'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-# Bootstrap-sass gem for using bootstrap themes
-gem 'bootstrap', '~>4.1.1'
+# Bootstrap gem for using bootstrap CSS
+gem 'bootstrap', '~>4.1.2'
+# sassc gem for using Sass CSS
+# TODO: Sass plug-in is now deprecated, but sassc requires Ruby >= 2.3.3
+# gem 'sassc'
 # Use haml for views
 gem 'haml', '~> 5.0'
 gem 'haml-rails'

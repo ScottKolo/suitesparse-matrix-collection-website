@@ -41,12 +41,12 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
-    autoprefixer-rails (8.6.4)
+    autoprefixer-rails (9.3.0)
       execjs
     backports (3.11.3)
     bcrypt (3.1.12)
     bindex (0.5.0)
-    bootstrap (4.1.1)
+    bootstrap (4.1.3)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
@@ -164,7 +164,7 @@ GEM
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
-    popper_js (1.12.9)
+    popper_js (1.14.3)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
@@ -232,7 +232,7 @@ GEM
     rspec-support (3.7.1)
     ruby_parser (3.11.0)
       sexp_processor (~> 4.9)
-    sass (3.5.6)
+    sass (3.6.0)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -290,7 +290,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
-  bootstrap (~> 4.1.1)
+  bootstrap (~> 4.1.2)
   brakeman
   byebug
   capybara
