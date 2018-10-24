@@ -87,34 +87,6 @@ module MatricesHelper
     return description
   end
 
-  def has_graph_plot(matrix)
-    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_graph.gif")
-  end
-
-  def has_AplusAT_plot(matrix)
-    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_APlusAT_graph.gif")
-  end
-
-  def has_pattern_plot(matrix)
-    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}.png")
-  end
-
-  def has_svd_plot(matrix)
-    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_svd.png")
-  end
-
-  def has_gplot(matrix)
-    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_gplot.png")
-  end
-
-  def has_dmperm_plot(matrix)
-    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_dmperm.png")
-  end
-
-  def has_scc_plot(matrix)
-    return is_valid_image_url("#{Matrix.get_base_url}files/#{matrix.group}/#{matrix.name}_scc.png")
-  end
-
   # Define tooltip text for a variety of fields/properties
   def tooltip_text(property)
     case property
