@@ -66,23 +66,25 @@ module MatricesHelper
   end
 
   def get_image_description(filename, matrix)
-    if filename.match(/.*_APlusAT_graph\..*/)
-      return "Graph Visualization of A+A' for #{matrix.group}/#{matrix.name}"
-    elsif filename.match(/.*_graph\..*/)
-      return "Force-Directed Graph Visualization of #{matrix.group}/#{matrix.name}"
-    elsif filename.match(/.*#{matrix.name}.png/)
-      return "Nonzero Pattern of #{matrix.group}/#{matrix.name}"
-    elsif filename.match(/.*_svd\..*/)
-      return "Singular Values of #{matrix.group}/#{matrix.name}"
-    elsif filename.match(/.*_gplot\..*/)
-      return "3D Graph Plot of #{matrix.group}/#{matrix.name}"
-    elsif filename.match(/.*_dmperm\..*/)
-      return "Dulmage-Mendelsohn Permutation of #{matrix.group}/#{matrix.name}"
-    elsif filename.match(/.*_scc\..*/)
-      return "Connected Components of the Bipartite Graph of #{matrix.group}/#{matrix.name}"
+    case filename
+    when /.*_APlusAT_graph\..*/
+      description = "Graph Visualization of A+A' for #{matrix.group}/#{matrix.name}"
+    when /.*_graph\..*/
+      description = "Force-Directed Graph Visualization of #{matrix.group}/#{matrix.name}"
+    when /.*#{matrix.name}.png/
+      description = "Nonzero Pattern of #{matrix.group}/#{matrix.name}"
+    when /.*_svd\..*/
+      description = "Singular Values of #{matrix.group}/#{matrix.name}"
+    when /.*_gplot\..*/
+      description = "3D Graph Plot of #{matrix.group}/#{matrix.name}"
+    when /.*_dmperm\..*/
+      description = "Dulmage-Mendelsohn Permutation of #{matrix.group}/#{matrix.name}"
+    when /.*_scc\..*/
+      description = "Connected Components of the Bipartite Graph of #{matrix.group}/#{matrix.name}"
     else
-      return filename
+      description = filename
     end
+    return description
   end
 
   def has_graph_plot(matrix)
@@ -115,42 +117,44 @@ module MatricesHelper
 
   # Define tooltip text for a variety of fields/properties
   def tooltip_text(property)
-    if property == :num_rows
-      return "Number of rows in the sparse matrix (often referred to as m)"
-    elsif property == :num_cols
-      return "Number of columns in the sparse matrix (often referred to as n)"
-    elsif property == :nonzeros
-      return "Number of numerically nonzero elements in the sparse matrix"
-    elsif property == :entries
-      return "Number of nonzero (and explicit zero) entries in the sparse matrix"
-    elsif property == :kind
-      return "The general problem category, domain, or field this matrix arises from"
-    elsif property == :symmetric
-      return "Whether the matrix is structurally and numerically symmetric"
-    elsif property == :date
-      return "The year this matrix was added to the Collection"
-    elsif property == :author
-      return "Person(s) responsible for creating or discovering this matrix"
-    elsif property == :editor
-      return "Person(s) responsible for gathering and formatting the metadata associated with this matrix"
-    elsif property == :num_dmperm_blocks
-      return "Number of blocks obtained from the Dulmage-Mendelsohn decomposition"
-    elsif property == :num_strongly_connected_components
-      return "Number of (strongly) connected components in the resulting graph of this matrix"
-    elsif property == :num_explicit_zeros
-      return "Number of matrix entries that have a value of zero"
-    elsif property == :pattern_symmetry
-      return "The percentage of nonzero entries that have a matching nonzero entry across the diagonal (but the value may be different)"
-    elsif property == :numeric_symmetry
-      return "The percentage of nonzero entries that are numerically symmetric"
-    elsif property == :cholesky_candidate
-      return "Whether the matrix can be decomposed using a Cholesky factorization"
-    elsif property == :positive_definite
-      return "Whether the matrix is positive definite (all eigenvalues are positive)"
-    elsif property == :rb_type
-      return "Rutherford-Boeing type: real, complex, integer, or binary"
-    else
-      raise ArgumentError.new("Unknown matrix property")
+    case property
+      when :num_rows
+        tooltip = "Number of rows in the sparse matrix (often referred to as m)"
+      when :num_cols
+        tooltip = "Number of columns in the sparse matrix (often referred to as n)"
+      when :nonzeros
+        tooltip = "Number of numerically nonzero elements in the sparse matrix"
+      when :entries
+        tooltip = "Number of nonzero (and explicit zero) entries in the sparse matrix"
+      when :kind
+        tooltip = "The general problem category, domain, or field this matrix arises from"
+      when :symmetric
+        tooltip = "Whether the matrix is structurally and numerically symmetric"
+      when :date
+        tooltip = "The year this matrix was added to the Collection"
+      when :author
+        tooltip = "Person(s) responsible for creating or discovering this matrix"
+      when :editor
+        tooltip = "Person(s) responsible for gathering and formatting the metadata associated with this matrix"
+      when :num_dmperm_blocks
+        tooltip = "Number of blocks obtained from the Dulmage-Mendelsohn decomposition"
+      when :num_strongly_connected_components
+        tooltip = "Number of (strongly) connected components in the resulting graph of this matrix"
+      when :num_explicit_zeros
+        tooltip = "Number of matrix entries that have a value of zero"
+      when :pattern_symmetry
+        tooltip = "The percentage of nonzero entries that have a matching nonzero entry across the diagonal (but the value may be different)"
+      when :numeric_symmetry
+        tooltip = "The percentage of nonzero entries that are numerically symmetric"
+      when :cholesky_candidate
+        tooltip = "Whether the matrix can be decomposed using a Cholesky factorization"
+      when :positive_definite
+        tooltip = "Whether the matrix is positive definite (all eigenvalues are positive)"
+      when :rb_type
+        tooltip = "Rutherford-Boeing type: real, complex, integer, or binary"
+      else
+        raise ArgumentError.new("Unknown matrix property")
     end
+    return tooltip
   end
 end
