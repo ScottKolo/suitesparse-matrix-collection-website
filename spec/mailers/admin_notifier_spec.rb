@@ -1,5 +1,26 @@
 require "rails_helper"
 
 RSpec.describe AdminNotifierMailer, type: :mailer do
-  #pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'Email notification' do
+  	let(:matrix) { SubmittedMatrix.new({submitter_name: "John Lennon and Paul McCartney", 
+                                      submitter_email: "paul@thebeatles.com", 
+                                      display_email: "false",
+                                      name: "Help!",
+                                      kind: "Other",
+                                      notes: "Help, I need somebody.\nHelp, not just anybody.\nHelp, you know I need someone.\nHelp!",
+                                      submitter_url: "www.google.com",
+                                      submitter_confidentiality: "true",
+                                      ip: "127.0.0.1"}) }
+    let(:mail) { AdminNotifierMailer.send_matrix_submitted_email(matrix) }
+
+    it 'renders the subject' do
+      expect(mail.subject).to eq('[SuiteSparse Matrix Collection] New Matrix Submitted!')
+    end
+
+    it 'renders the sender email' do
+      expect(mail.body.encoded)
+        .to match(/.*paul@thebeatles\.com.*/)
+    end
+  end
 end
