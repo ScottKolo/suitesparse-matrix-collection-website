@@ -7,12 +7,12 @@ Feature: display list of matrices filtered by attributes
 Background: matrices have been added to database
 
   Given the following matrices exist:
-  | group                | name                 | num_rows | num_cols | author                  |
-  | Magical Mystery Tour | All You Need Is Love | 1        | 357      | J. Lennon               |
-  | Hey Jude             | Can't Buy Me Love    | 5000     | 211      | P. McCartney            |
-  | Abbey Road           | Come Together        | 100      | 418      | J. Lennon               |
-  | Let It Be            | For You Blue         | 1687642  | 232      | G. Harrison             |
-  | Beatles For Sale     | Eight Days A Week    | 1964     | 244      | J. Lennon, P. McCartney |
+  | matrix_id | group                | name                 | num_rows | num_cols | author                  |
+  | 1         | Magical Mystery Tour | All You Need Is Love | 1        | 357      | J. Lennon               |
+  | 2         | Hey Jude             | Can't Buy Me Love    | 5000     | 211      | P. McCartney            |
+  | 3         | Abbey Road           | Come Together        | 100      | 418      | J. Lennon               |
+  | 4         | Let It Be            | For You Blue         | 1687642  | 232      | G. Harrison             |
+  | 5         | Beatles For Sale     | Eight Days A Week    | 1964     | 244      | J. Lennon, P. McCartney |
     And I am on the home page
     And I follow "Reset Filters"
 
@@ -31,3 +31,11 @@ Scenario: filter by columns
     And I should see "All You Need Is Love"
   But I should not see "Come Together"
     And I should not see "Can't Buy Me Love"
+
+Scenario: filter by matrix ID
+  When I filter matrices between "3" and "4" "id"
+  Then I should see "Abbey Road"
+   And I should see "Let It Be"
+  But I should not see "Beatles For Sale"
+   And I should not see "Magical Mystery Tour"
+   And I should not see "Hey Jude"

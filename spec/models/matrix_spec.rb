@@ -330,6 +330,9 @@ RSpec.describe Matrix, type: :model do
     it "should provide the correct Matrix Market download URL" do
         expect(@matrix.get_url(:matrix_market)).to eq("https://sparse.tamu.edu/MM/groupName_1/matrixName_1.tar.gz")
     end
+    it "should provide the correct SVD download URL" do
+        expect(@matrix.get_url(:svd)).to eq("https://sparse.tamu.edu/svd/groupName_1/matrixName_1_SVD.mat")
+    end
     it "should throw an exception if an unknown format is specified" do
       expect {
         @matrix.get_url(:foo_bar)
