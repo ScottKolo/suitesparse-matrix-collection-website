@@ -131,14 +131,16 @@ class Matrix < ActiveRecord::Base
     # configure number of OR conditions for provision
     # of interpolation arguments. Adjust this if you
     # change the number of OR conditions.
-    num_or_conds = 5
+    num_or_conds = 7
     where(
       terms.map {
         "LOWER(matrices.name) LIKE ?
           OR LOWER(matrices.description) LIKE ? 
           OR LOWER(matrices.kind) LIKE ? 
           OR LOWER(matrices.notes) LIKE ? 
-          OR LOWER(matrices.group) LIKE ?"
+          OR LOWER(matrices.group) LIKE ?
+          OR LOWER(matrices.author) LIKE ?
+          OR LOWER(matrices.editor) LIKE ?"
       }.join(' AND '),
       *terms.map { |e| [e] * num_or_conds }.flatten
     )
@@ -156,34 +158,6 @@ class Matrix < ActiveRecord::Base
 
     query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
     where("LOWER(matrices.group) LIKE ?", query.downcase)
-  }
-
-  scope :description_query, -> (query) { 
-    return nil if query.blank?
-
-    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
-    where("LOWER(matrices.description) LIKE ?", query.downcase)
-  }
-
-  scope :author_query, -> (query) { 
-    return nil if query.blank?
-
-    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
-    where("LOWER(matrices.author) LIKE ?", query.downcase)
-  }
-
-  scope :editor_query, -> (query) { 
-    return nil if query.blank?
-
-    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
-    where("LOWER(matrices.editor) LIKE ?", query.downcase)
-  }
-
-  scope :notes_query, -> (query) { 
-    return nil if query.blank?
-
-    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
-    where("LOWER(matrices.notes) LIKE ?", query.downcase)
   }
 
   # Filter by group name
