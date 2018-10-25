@@ -49,14 +49,9 @@ class Matrix < ActiveRecord::Base
       :min_dmperm_blocks, 
       :max_dmperm_blocks,
       :rb_type,
-      :shape,
       :structure,
       :name_query, 
       :group_query, 
-      :description_query, 
-      :author_query, 
-      :editor_query, 
-      :notes_query,
       :positive_definite,
     ]
   )
@@ -190,17 +185,6 @@ class Matrix < ActiveRecord::Base
 
   scope :max_nonzeros, -> (max_nonzeros) {
     where("matrices.nonzeros <= ?", max_nonzeros)
-  }
-
-  # Filter by shape
-  scope :shape, -> (shape) {
-    if shape == "Square"
-      where("matrices.num_rows = matrices.num_cols")
-    elsif shape == "Rectangular"
-      where.not("matrices.num_rows = matrices.num_cols")
-    else
-      nil
-    end
   }
 
   scope :structure, -> (structure) {
