@@ -37,9 +37,51 @@ RSpec.describe MatricesController, type: :controller do
 
   describe "showing the submit new matrix page" do
 
+    let(:submitted_matrix) { SubmittedMatrix.new({submitter_name: "John Lennon and Paul McCartney", 
+                                      submitter_email: "paul@thebeatles.com", 
+                                      display_email: "false",
+                                      name: "Help!",
+                                      kind: "Other",
+                                      notes: "Help, I need somebody.\nHelp, not just anybody.\nHelp, you know I need someone.\nHelp!",
+                                      submitter_url: "www.google.com",
+                                      submitter_confidentiality: "true",
+                                      ip: "127.0.0.1"}) }
+
     it "should render the matrix submission page" do
       get :new
       expect(response).to render_template :new
+    end
+
+    it 'should succeed with correct recaptcha' do
+      # verify_recaptcha defaults to true in test environment
+      post :submit, params: {submitted_matrix: {submitter_name: "John Lennon and Paul McCartney", 
+                                      submitter_email: "paul@thebeatles.com", 
+                                      display_email: "false",
+                                      name: "Help!",
+                                      kind: "Other",
+                                      notes: "Help, I need somebody.\nHelp, not just anybody.\nHelp, you know I need someone.\nHelp!",
+                                      submitter_url: "www.google.com",
+                                      submitter_confidentiality: "true",
+                                      ip: "127.0.0.1"}}
+      response.should redirect_to(:index)
+      expect(flash[:success]).to eq("Matrix submitted successfully!")
+    end
+
+    it 'should fail with incorrect recaptcha' do
+      # verify_recaptcha defaults to true in test environment
+      # Delete this check to have Recaptcha fail
+      Recaptcha.configuration.skip_verify_env.delete("test")
+      post :submit, params: {submitted_matrix: {submitter_name: "John Lennon and Paul McCartney", 
+                                      submitter_email: "paul@thebeatles.com", 
+                                      display_email: "false",
+                                      name: "Help!",
+                                      kind: "Other",
+                                      notes: "Help, I need somebody.\nHelp, not just anybody.\nHelp, you know I need someone.\nHelp!",
+                                      submitter_url: "www.google.com",
+                                      submitter_confidentiality: "true",
+                                      ip: "127.0.0.1"}}
+      response.should redirect_to(submit_path)
+      expect(flash[:danger]).to eq("Please verify that you are not a robot.")
     end
 
   end
