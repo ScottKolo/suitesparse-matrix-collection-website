@@ -96,7 +96,9 @@ class MatricesController < ApplicationController
       @new_matrix = SubmittedMatrix.new(permitted_params)
       @new_matrix.ip = request.remote_ip
       email = AdminNotifierMailer.send_matrix_submitted_email(@new_matrix)
-      email.deliver_now
+      if Rails.env.production?
+        email.deliver_now
+      end
       flash[:success] = "Matrix submitted successfully!"
       redirect_to :index
     else
