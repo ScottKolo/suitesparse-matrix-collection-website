@@ -11,7 +11,7 @@ Background: matrices have been added to database
   | Boeing | airplane | 50       | 50       | symmetric      |
   | HB     | pencil   | 60       | 60       | unsymmetric    |
   | Bai    | long     | 70       | 30       | rectangular    |
-  | Gset   | asdf     | 90       | 90       | hermitian      |
+  | Gset   | asdf     | 90       | 90       | Hermitian      |
   | HB     | test     | 10       | 10       | skew-symmetric |
   And I am on the home page
   And I follow "Reset Filters"
