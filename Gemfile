@@ -55,7 +55,7 @@ group :development, :test do
   # Use rspec for lower level unit testing
   gem 'rspec-rails', '~> 3.5'
   # Use simplecov for coverage testing
-  gem 'simplecov'
+  gem 'simplecov', require: false
   gem 'byebug'
   # Use Poltergeist/PhantomJS for javascript testing
   gem 'poltergeist'
