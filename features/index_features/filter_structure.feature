@@ -71,3 +71,25 @@ Scenario: filter for symmetric matrices
     And I should not see "long"
     And I should not see "test"
     And I should not see "asdf"
+
+@javascript
+Scenario: filter for Hermitian matrices
+  When I press "Filters"
+    And I check "Structure and Entry Types"
+    And I select "Hermitian" from "filter-input-structure"
+  Then I should see "asdf"
+  But I should not see "pencil"
+    And I should not see "long"
+    And I should not see "airplane"
+    And I should not see "test"
+
+@javascript
+Scenario: filter for skew-symmetric matrices
+  When I press "Filters"
+    And I check "Structure and Entry Types"
+    And I select "Skew-Symmetric" from "filter-input-structure"
+  Then I should see "test"
+  But I should not see "pencil"
+    And I should not see "long"
+    And I should not see "airplane"
+    And I should not see "asdf"
