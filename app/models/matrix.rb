@@ -1,4 +1,4 @@
-class Matrix < ActiveRecord::Base
+class Matrix < ApplicationRecord
 
   ### Download Helpers #########################################################
 
