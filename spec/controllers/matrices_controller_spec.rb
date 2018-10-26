@@ -63,7 +63,7 @@ RSpec.describe MatricesController, type: :controller do
                                       submitter_url: "www.google.com",
                                       submitter_confidentiality: "true",
                                       ip: "127.0.0.1"}}
-      response.should redirect_to(:index)
+      expect(response).to redirect_to(:index)
       expect(flash[:success]).to eq("Matrix submitted successfully!")
     end
 
@@ -80,7 +80,7 @@ RSpec.describe MatricesController, type: :controller do
                                       submitter_url: "www.google.com",
                                       submitter_confidentiality: "true",
                                       ip: "127.0.0.1"}}
-      response.should redirect_to(submit_path)
+      expect(response).to redirect_to(submit_path)
       expect(flash[:danger]).to eq("Please verify that you are not a robot.")
     end
 
