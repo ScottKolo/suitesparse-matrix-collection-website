@@ -23,6 +23,7 @@ module ApplicationHelper
         :descending_indicator => '<span class="fas fa-sort-down"></span>'.html_safe,
         :html_attrs => {}
       }
+    return opts
   end
 
 end
