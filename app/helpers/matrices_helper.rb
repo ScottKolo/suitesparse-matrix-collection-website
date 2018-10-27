@@ -14,10 +14,12 @@ module MatricesHelper
   def kind_list
     # Find all unique kinds in the database
     @kinds = Matrix.order('kind asc').distinct.pluck(:kind)
+
     @kinds.map! do |x| 
       # Titleize everything, and capitalize 2D and 3D
       x.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D')
     end
+    
     return @kinds
   end
 
@@ -35,6 +37,7 @@ module MatricesHelper
 
     # Add an option for an "Other" kind if the submission is really different
     @kinds.push("Other")
+    return @kinds
   end
 
   def is_checked(filterrific, filter_checkboxes)

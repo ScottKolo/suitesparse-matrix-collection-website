@@ -46,6 +46,52 @@ RSpec.describe MatricesController, type: :controller do
                                       submitter_url: "www.google.com",
                                       submitter_confidentiality: "true",
                                       ip: "127.0.0.1"}) }
+    before(:all) do
+        @matrix1 = FactoryBot.create(:matrix, 
+          matrix_id: 1,
+          group: "groupA", 
+          name: "alpha",
+          kind: "2D mesh",
+          )
+        @matrix2 = FactoryBot.create(:matrix, 
+          matrix_id: 2,
+          group: "groupB", 
+          name: "beta",
+          kind: "3D mesh",
+          )
+        @matrix3 = FactoryBot.create(:matrix, 
+          matrix_id: 3,
+          group: "groupA", 
+          name: "gamma",
+          kind: "zeta type",
+          )
+        @matrix4 = FactoryBot.create(:matrix, 
+          matrix_id: 4,
+          group: "groupB", 
+          name: "delta",
+          kind: "subsequent kind",
+          )
+        @matrix5 = FactoryBot.create(:matrix, 
+          matrix_id: 5,
+          group: "groupC", 
+          name: "epsilon",
+          kind: "duplicate kind",
+          )
+        @matrix6 = FactoryBot.create(:matrix, 
+          matrix_id: 6,
+          group: "groupC", 
+          name: "zeta",
+          kind: "kind sequence",
+          )
+    end
+    after(:all) do
+      Matrix.destroy(@matrix1.id)
+      Matrix.destroy(@matrix2.id)
+      Matrix.destroy(@matrix3.id)
+      Matrix.destroy(@matrix4.id)
+      Matrix.destroy(@matrix5.id)
+      Matrix.destroy(@matrix6.id)
+    end
 
     it "should render the matrix submission page" do
       get :new
