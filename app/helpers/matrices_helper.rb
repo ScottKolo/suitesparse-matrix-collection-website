@@ -65,66 +65,72 @@ module MatricesHelper
     return image_list
   end
 
+  IMAGE_FILE_REGEXPS = {
+    '.*%{name}_APlusAT_graph\..*': 'Graph Visualization of A+A\' for %{group}/%{name}',
+    '.*%{name}_graph\..*': 'Force-Directed Graph Visualization of %{group}/%{name}',
+    '.*%{name}.png': 'Nonzero Pattern of %{group}/%{name}',
+    '.*%{name}_svd\..*': 'Singular Values of %{group}/%{name}',
+    '.*%{name}_gplot\..*': '3D Graph Plot of %{group}/%{name}',
+    '.*%{name}_dmperm\..*': 'Dulmage-Mendelsohn Permutation of %{group}/%{name}',
+    '.*%{name}_scc\..*': 'Connected Components of the Bipartite Graph of %{group}/%{name}',
+  }
+
   def get_image_description(filename, matrix)
-    case filename
-    when /.*_APlusAT_graph\..*/
-      description = "Graph Visualization of A+A' for #{matrix.group}/#{matrix.name}"
-    when /.*_graph\..*/
-      description = "Force-Directed Graph Visualization of #{matrix.group}/#{matrix.name}"
-    when /.*#{matrix.name}.png/
-      description = "Nonzero Pattern of #{matrix.group}/#{matrix.name}"
-    when /.*_svd\..*/
-      description = "Singular Values of #{matrix.group}/#{matrix.name}"
-    when /.*_gplot\..*/
-      description = "3D Graph Plot of #{matrix.group}/#{matrix.name}"
-    when /.*_dmperm\..*/
-      description = "Dulmage-Mendelsohn Permutation of #{matrix.group}/#{matrix.name}"
-    when /.*_scc\..*/
-      description = "Connected Components of the Bipartite Graph of #{matrix.group}/#{matrix.name}"
-    else
-      description = filename
+    description = nil;
+    
+    IMAGE_FILE_REGEXPS.keys.each do |regexp|
+      filename_regexp = Regexp.new(regexp.to_s % {name: matrix.name})
+      if filename_regexp.match?(filename)
+        description = IMAGE_FILE_REGEXPS[regexp] % [group: matrix.group, name: matrix.name]
+      end
     end
+
+    description ||= filename
+
     return description
   end
 
+  TOOLTIPS = {
+    num_rows: 
+      "Number of rows in the sparse matrix (often referred to as m)",
+    num_cols:
+      "Number of columns in the sparse matrix (often referred to as n)",
+    nonzeros:
+      "Number of numerically nonzero elements in the sparse matrix",
+    entries:
+      "Number of nonzero (and explicit zero) entries in the sparse matrix",
+    kind:
+      "The general problem category, domain, or field this matrix arises from",
+    symmetric:
+      "Whether the matrix is structurally and numerically symmetric",
+    date:
+      "The year this matrix was added to the Collection",
+    author:
+      "Person(s) responsible for creating or discovering this matrix",
+    editor:
+      "Person(s) responsible for gathering and formatting the metadata associated with this matrix",
+    num_dmperm_blocks:
+      "Number of blocks obtained from the Dulmage-Mendelsohn decomposition",
+    num_strongly_connected_components:
+      "Number of (strongly) connected components in the resulting graph of this matrix",
+    num_explicit_zeros:
+      "Number of matrix entries that have a value of zero",
+    pattern_symmetry:
+      "The percentage of nonzero entries that have a matching nonzero entry across the diagonal (but the value may be different)",
+    numeric_symmetry:
+      "The percentage of nonzero entries that are numerically symmetric",
+    cholesky_candidate:
+      "Whether the matrix can be decomposed using a Cholesky factorization",
+    positive_definite:
+      "Whether the matrix is positive definite (all eigenvalues are positive)",
+    rb_type:
+      "Rutherford-Boeing type: real, complex, integer, or binary",
+  }
+
   # Define tooltip text for a variety of fields/properties
   def tooltip_text(property)
-    case property
-      when :num_rows
-        tooltip = "Number of rows in the sparse matrix (often referred to as m)"
-      when :num_cols
-        tooltip = "Number of columns in the sparse matrix (often referred to as n)"
-      when :nonzeros
-        tooltip = "Number of numerically nonzero elements in the sparse matrix"
-      when :entries
-        tooltip = "Number of nonzero (and explicit zero) entries in the sparse matrix"
-      when :kind
-        tooltip = "The general problem category, domain, or field this matrix arises from"
-      when :symmetric
-        tooltip = "Whether the matrix is structurally and numerically symmetric"
-      when :date
-        tooltip = "The year this matrix was added to the Collection"
-      when :author
-        tooltip = "Person(s) responsible for creating or discovering this matrix"
-      when :editor
-        tooltip = "Person(s) responsible for gathering and formatting the metadata associated with this matrix"
-      when :num_dmperm_blocks
-        tooltip = "Number of blocks obtained from the Dulmage-Mendelsohn decomposition"
-      when :num_strongly_connected_components
-        tooltip = "Number of (strongly) connected components in the resulting graph of this matrix"
-      when :num_explicit_zeros
-        tooltip = "Number of matrix entries that have a value of zero"
-      when :pattern_symmetry
-        tooltip = "The percentage of nonzero entries that have a matching nonzero entry across the diagonal (but the value may be different)"
-      when :numeric_symmetry
-        tooltip = "The percentage of nonzero entries that are numerically symmetric"
-      when :cholesky_candidate
-        tooltip = "Whether the matrix can be decomposed using a Cholesky factorization"
-      when :positive_definite
-        tooltip = "Whether the matrix is positive definite (all eigenvalues are positive)"
-      when :rb_type
-        tooltip = "Rutherford-Boeing type: real, complex, integer, or binary"
-      else
+    tooltip = TOOLTIPS[property]
+    if tooltip.nil?
         raise ArgumentError.new("Unknown matrix property")
     end
     return tooltip
