@@ -1,5 +1,14 @@
 class MatricesController < ApplicationController
 
+  FILTER_CHECKBOXES = {
+    size: [:min_rows, :max_rows, :min_cols, :max_cols, :min_nonzeros, :max_nonzeros],
+    structure: [:min_pattern_symmetry, :max_pattern_symmetry, 
+                :min_numerical_symmetry, :max_numerical_symmetry,
+                :min_strongly_connected_components, :max_strongly_connected_components,
+                :structure, :positive_definite, :rb_type],
+    metadata: [:name_query, :group_query, :min_id, :max_id, :min_year, :max_year],
+  }
+
   ### Resources methods ########################################################
 
   def index
@@ -13,9 +22,8 @@ class MatricesController < ApplicationController
       :min_pattern_symmetry,   :max_pattern_symmetry, 
       :min_numerical_symmetry, :max_numerical_symmetry, 
       :min_strongly_connected_components, :max_strongly_connected_components,
-      :min_dmperm_blocks, :max_dmperm_blocks,
-      :shape, :structure, :positive_definite, :rb_type,
-      :name_query, :group_query, :description_query, :author_query, :editor_query, :notes_query]},
+      :structure, :positive_definite, :rb_type,
+      :name_query, :group_query]},
       :page, :per_page, :utf8, :_])
 
     # Initialize filterrific filtering system
@@ -30,20 +38,14 @@ class MatricesController < ApplicationController
       }
     ) or return
     
-    # Determine which filters are enabled (checkboxes are checked)
-    # For example, if either min_rows or max_rows are present, we need to filter by number of rows
-    @checked = {}
-    @checked[:rows] = helpers.is_checked([:min_rows, :max_rows], @filterrific)
-    @checked[:cols] = helpers.is_checked([:min_cols, :max_cols], @filterrific)
-    @checked[:nonzeros] = helpers.is_checked([:min_nonzeros, :max_nonzeros], @filterrific)
-    @checked[:pattern_symmetry] = helpers.is_checked([:min_pattern_symmetry, :max_pattern_symmetry], @filterrific)
-    @checked[:numerical_symmetry] = helpers.is_checked([:min_numerical_symmetry, :max_numerical_symmetry], @filterrific)
-    @checked[:strongly_connected_components] = helpers.is_checked([:min_strongly_connected_components, :max_strongly_connected_components], @filterrific)
-    @checked[:positive_definite] = helpers.is_checked([:positive_definite], @filterrific)
-    @checked[:rb_type] = helpers.is_checked([:rb_type], @filterrific)
+    # Determine which filter checkboxes are checked
+    # For example, if we are filtering by matrix ID, the metadata filters should remain visible
+    @checked = helpers.is_checked(@filterrific, FILTER_CHECKBOXES)
 
+    # Determine which page we are displaying
     @matrices = @filterrific.find.page(permitted_params[:page])
 
+    # Determine how many matrices to display per page
     @per_page = helpers.per_page(permitted_params, session)
     
     @matrices = @matrices.paginate(page: permitted_params[:page], per_page: @per_page)

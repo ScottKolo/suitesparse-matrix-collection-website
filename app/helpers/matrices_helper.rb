@@ -37,13 +37,19 @@ module MatricesHelper
     @kinds.push("Other")
   end
 
-  def is_checked(properties, filterrific)
-    is_checked = false
+  def is_checked(filterrific, filter_checkboxes)
+    checked = {};
     params = filterrific.to_hash
-    properties.each do |property|
-      is_checked ||= params[property.to_s]
+
+    filter_checkboxes.keys.each do |checkbox|
+      properties = filter_checkboxes[checkbox]
+      checked[checkbox] = false;
+      properties.each do |property|
+        checked[checkbox] ||= params[property.to_s]
+      end
     end
-    is_checked
+
+    return checked
   end
 
   def image_list(matrix)
