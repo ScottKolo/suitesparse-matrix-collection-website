@@ -9,22 +9,29 @@ class MatricesController < ApplicationController
     metadata: [:name_query, :group_query, :min_id, :max_id, :min_year, :max_year],
   }
 
+  PERMITTED_PARAMTERS = [
+    {
+      filterrific: 
+        [ :reset_filterrific, :sorted_by, :search_query,
+          :min_id,                 :max_id,
+          :min_year,               :max_year,
+          :min_rows,               :max_rows, 
+          :min_cols,               :max_cols, 
+          :min_nonzeros,           :max_nonzeros,
+          :min_pattern_symmetry,   :max_pattern_symmetry, 
+          :min_numerical_symmetry, :max_numerical_symmetry, 
+          :min_strongly_connected_components, :max_strongly_connected_components,
+          :structure, :positive_definite, :rb_type,
+          :name_query, :group_query]
+    },
+    :page, :per_page, :utf8, :_
+  ]
+  
   ### Resources methods ########################################################
 
   def index
     # List of permitted fields for params
-    permitted_params = params.permit([{filterrific: [:reset_filterrific, :sorted_by, :search_query,
-      :min_id,                 :max_id,
-      :min_year,               :max_year,
-      :min_rows,               :max_rows, 
-      :min_cols,               :max_cols, 
-      :min_nonzeros,           :max_nonzeros,
-      :min_pattern_symmetry,   :max_pattern_symmetry, 
-      :min_numerical_symmetry, :max_numerical_symmetry, 
-      :min_strongly_connected_components, :max_strongly_connected_components,
-      :structure, :positive_definite, :rb_type,
-      :name_query, :group_query]},
-      :page, :per_page, :utf8, :_])
+    permitted_params = params.permit(PERMITTED_PARAMTERS)
 
     # Initialize filterrific filtering system
     @filterrific = initialize_filterrific(
@@ -38,8 +45,7 @@ class MatricesController < ApplicationController
       }
     ) or return
     
-    # Determine which filter checkboxes are checked
-    # For example, if we are filtering by matrix ID, the metadata filters should remain visible
+    # Determine which filters are visible / checkboxes are checked
     @checked = helpers.is_checked(@filterrific, FILTER_CHECKBOXES)
 
     # Determine which page we are displaying
@@ -58,7 +64,6 @@ class MatricesController < ApplicationController
 
   rescue ActiveRecord::RecordNotFound => e
     # There is an issue with the persisted param_set. Reset it.
-    puts "Had to reset filterrific params: #{ e.message }"
     redirect_to(reset_filterrific_url(format: :html)) and return
   end
 
