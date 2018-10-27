@@ -62,7 +62,7 @@ class MatricesController < ApplicationController
       format.js
     end
 
-  rescue ActiveRecord::RecordNotFound => e
+  rescue ActiveRecord::RecordNotFound
     # There is an issue with the persisted param_set. Reset it.
     redirect_to(reset_filterrific_url(format: :html)) and return
   end

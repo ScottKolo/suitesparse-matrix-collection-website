@@ -141,18 +141,22 @@ class Matrix < ApplicationRecord
     )
   }
 
+  def self.process_text_query(text_query)
+    processed_query = ('%' + text_query.tr('*', '%') + '%').gsub(/%+/, '%')
+    processed_query = processed_query.downcase
+    return processed_query
+  end
+
   scope :name_query, -> (query) { 
     return nil if query.blank?
-
-    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
-    where("LOWER(matrices.name) LIKE ?", query.downcase)
+    processed_query = Matrix.process_text_query(query)
+    where("LOWER(matrices.name) LIKE ?", processed_query)
   }
 
   scope :group_query, -> (query) { 
     return nil if query.blank?
-
-    query = ('%' + query.tr('*', '%') + '%').gsub(/%+/, '%')
-    where("LOWER(matrices.group) LIKE ?", query.downcase)
+    processed_query = Matrix.process_text_query(query)
+    where("LOWER(matrices.group) LIKE ?", processed_query)
   }
 
   # Filter by group name
