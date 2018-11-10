@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '~> 2.3.1'
+ruby '~> 2.5.3'
 
 # Need the Rails gem
-gem 'rails', '~> 5.1.5'
+gem 'rails', '~> 5.2.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -21,8 +21,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Bootstrap gem for using bootstrap CSS
 gem 'bootstrap', '~>4.1.2'
 # sassc gem for using Sass CSS
-# TODO: Sass plug-in is now deprecated, but sassc requires Ruby >= 2.3.3
-# gem 'sassc'
+gem 'sassc'
 # Use haml for views
 gem 'haml', '~> 5.0'
 gem 'haml-rails'
@@ -61,10 +60,7 @@ group :development, :test do
   gem 'poltergeist'
   # Use brakeman for security checks
   gem 'brakeman', :require => false
-end
-
-group :test do
-  gem "codeclimate-test-reporter", require: nil
+  gem 'loofah', '>= 2.2.3'
 end
 
 group :development do
