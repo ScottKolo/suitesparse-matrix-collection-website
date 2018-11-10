@@ -65,10 +65,10 @@ class Matrix < ApplicationRecord
       order("matrices.matrix_id #{ direction }")
     when /^group_/
       # Sort alphabetically by group name
-      order("LOWER(matrices.group) #{ direction }")
+      order(Arel.sql("LOWER(matrices.group) #{ direction }"))
     when /^name_/
       # Sort alphabetically by matrix name
-      order("LOWER(matrices.name) #{ direction }")
+      order(Arel.sql("LOWER(matrices.name) #{ direction }"))
     when /^rows_/
       # Sort by number of rows
       order("matrices.num_rows #{ direction }")
