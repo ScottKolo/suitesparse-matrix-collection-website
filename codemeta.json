@@ -1,0 +1,105 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "SuiteSparse Matrix Collection Website",
+  "description": "A web interface for the SuiteSparse Matrix Collection",
+  "name": "SuiteSparse Matrix Collection Website",
+  "codeRepository": "https://github.com/ScottKolo/suitesparse-matrix-collection-website",
+  "issueTracker": "https://github.com/ScottKolo/suitesparse-matrix-collection-website/issues",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Scott",
+      "familyName": "Kolodziej",
+      "email": "scottk@tamu.edu",
+      "@id": "https://orcid.org/0000-0001-8340-0824",
+      "affiliation": "Texas A&M University"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Mohsen",
+      "familyName": "Aznaveh",
+      "email": "aznaveh@tamu.edu",
+      "@id": "https://orcid.org/0000-0003-4860-4762",
+      "affiliation": "Texas A&M University"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Matthew",
+      "familyName": "Bullock",
+      "affiliation": "Texas A&M University"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Jarrett",
+      "familyName": "David",
+      "@id": "https://orcid.org/0000-0002-1491-0393",
+      "affiliation": "Texas A&M University"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Timothy",
+      "familyName": "Davis",
+      "email": "davis@tamu.edu",
+      "@id": "https://orcid.org/0000-0001-7614-6899",
+      "affiliation": "Texas A&M University"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Matthew",
+      "familyName": "Henderson",
+      "affiliation": "Texas A&M University"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Yifan",
+      "familyName": "Hu",
+      "email": "yifanhu@yahoo.com",
+      "@id": "https://orcid.org/0000-0003-2017-924X",
+      "affiliation": "Texas A&M University"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Read",
+      "familyName": "Sandström",
+      "email": "davis@tamu.edu",
+      "@id": "https://orcid.org/0000-0001-9205-1523",
+      "affiliation": "Texas A&M University"
+    }
+  ],
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Scott",
+      "familyName": "Kolodziej",
+      "email": "scottk@tamu.edu",
+      "@id": "https://orcid.org/0000-0001-8340-0824",
+      "affiliation": "Texas A&M University"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Timothy",
+      "familyName": "Davis",
+      "email": "davis@tamu.edu",
+      "@id": "https://orcid.org/0000-0001-7614-6899",
+      "affiliation": "Texas A&M University"
+    }
+  ],
+  "contIntegration": "https://semaphoreci.com/scottkolo/ufsmc-web",
+  "developmentStatus": "active",
+  "downloadUrl": "https://github.com/ScottKolo/suitesparse-matrix-collection-website/archive/master.zip",
+  "keywords": [
+    "sparse matrices",
+    "data repository",
+    "software",
+    "web application",
+    "website"
+  ],
+  "dateCreated":"2015-09-08",
+  "datePublished":"2015-09-08",
+  "dateModified":"2018-11-18",
+  "programmingLanguage": "Ruby",
+  "programmingLanguage": "HTML",
+  "programmingLanguage": "JavaScript"
+}
