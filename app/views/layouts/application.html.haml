@@ -2,6 +2,7 @@
 %html{:lang => "en"}
   %head
     %title= full_title(yield(:title))
+    %meta{name: 'Description', content: yield(:description)}
     %meta{charset: 'utf-8'}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
     = stylesheet_link_tag 'application', 'data-turbolinks-track': true, media: 'none', onload: "if(media!='all')media='all'"
