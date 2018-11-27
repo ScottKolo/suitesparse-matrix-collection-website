@@ -1,0 +1,3 @@
+- js = escape_javascript(render(partial: 'groups/list', 
+								locals: { groups: @groups }))
+$("#group_list").html("#{js}");

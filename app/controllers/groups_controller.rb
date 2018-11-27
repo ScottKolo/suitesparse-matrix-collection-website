@@ -1,8 +1,19 @@
 class GroupsController < ApplicationController
 
+  PERMITTED_PARAMTERS = [:page, :per_page, :utf8, :_]
+
   def index
-    @per_page = helpers.per_page(params, session)
-    @groups = Group.paginate(page: params[:page], per_page: @per_page)
+    # List of permitted fields for params
+    permitted_params = params.permit(PERMITTED_PARAMTERS)
+
+    @per_page = helpers.per_page(permitted_params, session)
+    @groups = Group.paginate(page: permitted_params[:page], per_page: @per_page)
+
+    # Allow the index page to respond to HTML and javascript (ajax)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

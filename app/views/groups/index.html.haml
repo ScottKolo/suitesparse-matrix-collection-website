@@ -3,36 +3,5 @@
 
 %h2 Group Index
 
-<!-- Top Pagination Bar -->
-.pagination-container.d-flex.justify-content-between
-  .p-2.pagination-perpage
-  .p-0
-    = paginate @groups
-  .p-2.pagination-perpage
-    = label_tag :per_page_top, "Display per page:"
-    = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
-
-<!-- Layout the matrix table -->
-.col-sm-12
-  %table.table.table-sm.table-striped#groups
-    %thead
-      %tr
-        %th Group Name
-        %th{style: "text-align: center;"} Number of Matrices
-        %th Description
-    %tbody
-      - @groups.each do |group|
-        %tr
-          %td= link_to "#{group.name}", "/#{group.name}"
-          %td{style: "text-align: center;"}= group.num_matrices
-          %td= group.notes.lines.first unless group.notes.nil?
-
-<!-- Bottom Pagination Bar -->
-.pagination-container.d-flex.justify-content-between
-  .p-2.pagination-perpage
-  .p-0
-    = paginate @groups
-  .p-2.pagination-perpage
-    = label_tag :per_page_top, "Display per page:"
-    = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
-
+#group_list
+  = render partial: 'groups/list', locals: { groups: @groups }
