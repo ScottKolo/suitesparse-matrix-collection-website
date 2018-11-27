@@ -30,8 +30,8 @@
           %th= filterrific_sorting_link(@filterrific, :rows,     filterrific_options())
           %th= filterrific_sorting_link(@filterrific, :cols,     filterrific_options())
           %th= filterrific_sorting_link(@filterrific, :nonzeros, filterrific_options())
-          %th= filterrific_sorting_link(@filterrific, :kind,     filterrific_options())
-          %th= filterrific_sorting_link(@filterrific, :date,     filterrific_options())
+          %th.d-none.d-md-table-cell= filterrific_sorting_link(@filterrific, :kind,     filterrific_options())
+          %th.d-none.d-md-table-cell= filterrific_sorting_link(@filterrific, :date,     filterrific_options())
           %th#download-header.d-none.d-lg-table-cell Download File
       %tbody
         - matrices.each do |matrix|
@@ -42,8 +42,8 @@
             %td.column-num_rows= number_with_delimiter(matrix.num_rows, :delimiter => ',')
             %td.column-num_cols= number_with_delimiter(matrix.num_cols, :delimiter => ',')
             %td.column-nonzeros= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
-            %td.column-kind= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
-            %td.column-date= matrix.date
+            %td.column-kind.d-none.d-md-table-cell= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
+            %td.column-date.d-none.d-md-table-cell= matrix.date
             %td.column-download.d-none.d-lg-table-cell
               = link_to matrix.get_url(:matlab), {class: 'btn btn-outline-dark btn-sm'} do
                 MATLAB
