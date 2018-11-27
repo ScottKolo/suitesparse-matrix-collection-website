@@ -1,0 +1,61 @@
+.card.card-body.bg-light.container.p-1.my-2
+  .d-flex.justify-content-between.align-items-center
+    .p-2
+      = replace_bold_tags(page_entries_info @matrices, model: 'Matrix')
+
+- unless @matrices.empty?
+  <!-- Top Pagination Bar -->
+  .pagination-container.container.px-2
+    .row
+      .col
+      .col-md-auto.p-0
+        = paginate matrices
+      .col.col-lg-3.p-2.text-right
+        = label_tag :per_page_top, "Display per page:"
+        = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"
+
+  <!-- Layout the matrix table -->
+  .col-sm-12.m-0.p-0
+    %table.table.table-sm.table-striped#matrices
+      %thead
+        %tr#sort-selector.text-nowrap
+          %th= filterrific_sorting_link(@filterrific, :id,       filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :name,     filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :group,    filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :rows,     filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :cols,     filterrific_options())
+          %th= filterrific_sorting_link(@filterrific, :nonzeros, filterrific_options())
+          %th.d-none.d-md-table-cell= filterrific_sorting_link(@filterrific, :kind,     filterrific_options())
+          %th.d-none.d-md-table-cell= filterrific_sorting_link(@filterrific, :date,     filterrific_options())
+          %th#download-header.d-none.d-lg-table-cell Download File
+      %tbody
+        - matrices.each do |matrix|
+          %tr
+            %td.column-id= "#{matrix.matrix_id}"
+            %td.column-name= link_to "#{matrix.name}", "/#{matrix.group}/#{matrix.name}"
+            %td.column-group= link_to "#{matrix.group}", "/#{matrix.group}"
+            %td.column-num_rows= number_with_delimiter(matrix.num_rows, :delimiter => ',')
+            %td.column-num_cols= number_with_delimiter(matrix.num_cols, :delimiter => ',')
+            %td.column-nonzeros= number_with_delimiter(matrix.nonzeros, :delimiter => ',')
+            %td.column-kind.d-none.d-md-table-cell= matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless matrix.kind.nil?
+            %td.column-date.d-none.d-md-table-cell= matrix.date
+            %td.column-download.d-none.d-lg-table-cell
+              = link_to matrix.get_url(:matlab), {class: 'btn btn-outline-dark btn-sm'} do
+                MATLAB
+                %span.fa.fa-download{'aria-hidden':'true'}
+              = link_to matrix.get_url(:rutherford_boeing), {class: 'btn btn-outline-dark btn-sm'} do
+                Rutherford Boeing
+                %span.fa.fa-download{'aria-hidden':'true'}
+              = link_to matrix.get_url(:matrix_market), {class: 'btn btn-outline-dark btn-sm'} do
+                Matrix Market
+                %span.fa.fa-download{'aria-hidden':'true'}
+
+  <!-- Bottom Pagination Bar -->
+  .pagination-container.container.px-2
+    .row
+      .col
+      .col-md-auto.p-0
+        = paginate matrices
+      .col.col-lg-3.p-2.text-right
+        = label_tag :per_page_top, "Display per page:"
+        = select_tag :per_page_top, options_for_select([20,50,100,"All"], params[:per_page]), :onchange => "if(this.value){window.location='?per_page='+this.value;}"

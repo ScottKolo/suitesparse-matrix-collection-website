@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
     ) or return
 
     # Get group info from the params
-    group_name = params[:group]
+    group_name = permitted_params[:group]
     @group = Group.find_by(name: group_name)
     
     if !@group
