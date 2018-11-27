@@ -8,6 +8,25 @@ ul.pagination {
   margin: 0;
 }
 
+ul.pagination li {
+  display: inline-block;
+}
+
+.page-link {
+  padding: 0.5rem;
+}
+
+@include media-breakpoint-up(md) {
+  ul.pagination li {
+    width: auto;
+    display: list-item;
+  }
+
+  .page-link {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
 .pagination .page-item.active .page-link {
   background-color: $link-color;
   border-color: $link-color;

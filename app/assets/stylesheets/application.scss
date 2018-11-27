@@ -15,8 +15,8 @@
 
 /********** SASS Variable Overrides **********/
 
-$link-color: #337ab7;
-/* #265986; */
+$link-color: #125896;
+$table-accent-bg: #fafafa;
 
 /********** SASS Imports **********/
 
@@ -28,7 +28,6 @@ $link-color: #337ab7;
 
 
 body {
-  min-width: 640px;
   width: auto;
   padding-top: 70px;
 }
@@ -76,23 +75,42 @@ $navbar-bg: rgb(0, 0, 0);
 
 .navbar-brand h1 {
   position: absolute;
-  top: 8px;
-  font-size: 100%;
+  top: 12px;
+  font-size: 90%;
   color: #fff;
   display: block;
 }
 
 .navbar-brand small {
-  display:block;
-  font-size:60%;
+  display: block;
+  font-size: 50%;
   color: #fff;
 }
 
 .logo {
-  margin-left: -200px;
+  margin-left: -300px;
   display:inline-block;
   position: absolute;
   top: -24px;
+}
+
+@include media-breakpoint-up(sm) {
+  .navbar-brand h1 {
+    top: 8px;
+    font-size: 100%;
+  }
+
+  .navbar-brand small {
+    font-size:60%;
+  }
+
+  .logo {
+    margin-left: -200px;
+  }
+}
+
+.navbar-dark .navbar-toggler {
+  background-color: #222;
 }
 
 .nav > li {
@@ -117,6 +135,11 @@ li.nav-item {
 
 #notice {
   color: green;
+}
+
+.alert-info {
+  background-color: lighten($link-color, 62%);
+  color: $link-color;
 }
 
 /********** Button styles **********/
