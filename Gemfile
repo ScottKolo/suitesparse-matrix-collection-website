@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.1'
 gem 'uglifier', '>= 1.3.0'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3.3'
 # js-cookie for modifying using cookies with JavaScript
 gem 'js_cookie_rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -19,7 +19,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Bootstrap gem for using bootstrap CSS
-gem 'bootstrap', '~>4.1.2'
+gem 'bootstrap', '~>4.1.3'
 # sassc gem for using Sass CSS
 gem 'sassc'
 # Use haml for views
