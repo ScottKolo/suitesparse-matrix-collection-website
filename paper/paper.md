@@ -1,3 +1,4 @@
+---
 title: 'The SuiteSparse Matrix Collection Website Interface'
 tags:
   - data repository
@@ -85,7 +86,7 @@ The SuiteSparse Matrix Collection web application allows real-time filtering by 
 
 Additionally, matrix details are displayed on each matrix's individual page, including the matrix's rank, condition number, and information regarding its singular value decomposition. A variety of visualizations are also presented, including sparsity patterns, force-directed graph (or bipartite graph) visualizations [@hu2005efficient], Dulmage-Mendelsohn permuted sparsity patterns, and singular values plotted in decreasing size.
 
-Matrices can also be quickly accessed by URL route matching. For example, the information page for the matrix HB/west0479 can be accessed directly by visiting https://sparse.tamu.edu/**HB/west0479**. Information on the Mycielski group of matrices can be accessed by visiting https://sparse.tamu.edu/**Mycielski**.
+Matrices can also be quickly accessed by URL route matching. For example, the information page for the matrix HB/west0479 can be accessed directly by visiting https://sparse.tamu.edu/HB/west0479. Information on the Mycielski group of matrices can be accessed by visiting https://sparse.tamu.edu/Mycielski.
 
 ## Matrix Data Download
 
