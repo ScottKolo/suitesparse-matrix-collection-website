@@ -4,6 +4,53 @@
 
 A web interface for the SuiteSparse Matrix Collection, formerly known as the University of Florida Sparse Matrix Collection. It is currently deployed at [https://sparse.tamu.edu](https://sparse.tamu.edu).
 
+## Features and Functionality
+
+The SuiteSparse Matrix Collection web application provides a variety of features to help the scientific computing community access the Collection more easily.
+
+### Matrix Property Search, Sorting, and Filtering
+
+The SuiteSparse Matrix Collection web application allows real-time filtering by the following matrix properties:
+
+#### Matrix Size and Shape
+  - **Rows** - The number of rows in the matrix.
+  - **Columns** - The number of columns in the matrix.
+  - **Nonzeros** - The number of nonzero entries in the matrix.
+
+#### Matrix Structure and Entry Type
+  - **Pattern symmetry** - The percent of entries that are mirrored across the matrix diagonal. The numeric value of the entries is irrelevant.
+  - **Numerical symmetry** - The percent of entries that are mirrored across the matrix diagonal with the identical numeric value.
+  - **Number of strongly connected components** - The number of strongly connected components present in the resulting graph of this sparse matrix.
+  - **Rutherford-Boeing type** - The type of entry in the sparse matrix. One of either Real, Complex, Integer, or Binary.
+  - **Structure** - Special matrix structure, including square, rectangular, symmetric, skew-symmetric, Hermitian, and unsymmetric.
+  - **Positive definiteness**
+
+#### Matrix Metadata
+  - **Matrix name** - The specific name of the matrix.
+  - **Matrix group** - The group name the matrix belongs to.
+  - **Matrix ID** - The numeric identification number of the matrix.
+  - **Matrix Year** - The year the matrix was added to the Collection.
+
+Additionally, matrix details are displayed on each matrix's individual page, including the matrix's rank, condition number, and information regarding its singular value decomposition. A variety of visualizations are also presented, including sparsity patterns, force-directed graph (or bipartite graph) visualizations (courtesy of Yifan Hu), Dulmage-Mendelsohn permuted sparsity patterns, and singular values plotted in decreasing size.
+
+### Quick Access via URL Routing
+
+Matrices can also be quickly accessed by URL route matching using the following URL routes:
+
+ * **Group name** and **matrix name** to go directly to a matrix page
+    * https://sparse.tamu.edu/**&lt;Group Name&gt;/&lt;Matrix Name&gt;**
+    * [https://sparse.tamu.edu/HB/west0479](https://sparse.tamu.edu/HB/west0479)
+ * **Matrix ID number** to go directly to a matrix page
+    * https://sparse.tamu.edu/**&lt;Matrix ID&gt;**
+    * [https://sparse.tamu.edu/1230](https://sparse.tamu.edu/1230) redirects to [https://sparse.tamu.edu/GHS_indef/copter2](https://sparse.tamu.edu/GHS_indef/copter2)
+ * **Group name** to go directly to a group information page
+    * https://sparse.tamu.edu/**&lt;Group Name&gt;**
+    * [https://sparse.tamu.edu/Mycielski](https://sparse.tamu.edu/Mycielski)
+
+## Other Interfaces to the Collection
+
+For more information about interfaces to the Collection, see the [Interfaces](https://sparse.tamu.edu/interfaces) page.
+
 ## Bugs and Feature Requests
 
 Find a problem with the website? Report it as an [Issue](https://github.com/ScottKolo/suitesparse-matrix-collection-website/issues), or suggest a fix via a [Pull Request](https://github.com/ScottKolo/suitesparse-matrix-collection-website/pulls).
