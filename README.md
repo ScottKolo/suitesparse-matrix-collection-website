@@ -38,13 +38,13 @@ Additionally, matrix details are displayed on each matrix's individual page, inc
 Matrices can also be quickly accessed by URL route matching using the following URL routes:
 
  * **Group name** and **matrix name** to go directly to a matrix page
-    * https://sparse.tamu.edu/**\<Group Name>/\<Matrix Name>**
+    * `https://sparse.tamu.edu/<Group Name>/<Matrix Name>`
     * [https://sparse.tamu.edu/HB/west0479](https://sparse.tamu.edu/HB/west0479)
  * **Matrix ID number** to go directly to a matrix page
-    * https://sparse.tamu.edu/**\<Matrix ID>**
+    * `https://sparse.tamu.edu/<Matrix ID>`
     * [https://sparse.tamu.edu/1230](https://sparse.tamu.edu/1230) redirects to [https://sparse.tamu.edu/GHS_indef/copter2](https://sparse.tamu.edu/GHS_indef/copter2)
  * **Group name** to go directly to a group information page
-    * https://sparse.tamu.edu/**\<Group Name>**
+    * `https://sparse.tamu.edu/<Group Name>`
     * [https://sparse.tamu.edu/Mycielski](https://sparse.tamu.edu/Mycielski)
 
 ## Other Interfaces to the Collection
