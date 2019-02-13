@@ -1,0 +1,30 @@
+{
+    matrix_id: '2848',
+    name: 'nxp1',
+    group: 'Freescale',
+    description: 'Freescale: circuit simulation',
+    author: 'K. Gullapalli',
+    editor: 'T. Davis',
+    date: '2018',
+    kind: 'circuit simulation problem',
+    problem_2D_or_3D: '0',
+    num_rows: '414604',
+    num_cols: '414604',
+    nonzeros: '2655880',
+    num_explicit_zeros: '297',
+    num_strongly_connected_components: '389',
+    num_dmperm_blocks: '875',
+    structural_full_rank: 'true',
+    structural_rank: '414604',
+    pattern_symmetry: '1.000',
+    numeric_symmetry: '0.822',
+    rb_type: 'real',
+    structure: 'unsymmetric',
+    cholesky_candidate: 'no',
+    positive_definite: 'no',
+    notes: 'Freescale: circuit simulation matrices from Freescale (now NXP)
+Circuit simulation matrix from Kiran Gullapalli, Freescale (now
+part of NXP Semiconductors).  Matrix added Jan 2019.           
+',
+    image_files: 'nxp1.png,nxp1_dmperm.png,nxp1_scc.png,',
+}
