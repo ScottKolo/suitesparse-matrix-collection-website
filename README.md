@@ -84,7 +84,7 @@ Once the Rails server starts, you can navigate to localhost:3000 to view the web
 
 ## Test Suite
 
-After building and running the applicaiton locally, you can run the test suite by running
+After building and running the application locally, you can run the test suite by running
 
 ```shell
 bundle exec rake
