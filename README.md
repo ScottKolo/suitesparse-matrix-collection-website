@@ -64,6 +64,10 @@ The only dependencies for running the application are listed below. They can be 
  * Ruby 2.5 or later
  * PostgreSQL 8.4 or later
 
+Many operating systems come with Ruby installed, and you can check which version you have with `ruby -v`. If no Ruby installation is found, or the version is incorrect, you can use your package manager to install a compatible version (see [ruby-lang.org](https://www.ruby-lang.org) for more information regarding obtaining and installing Ruby). You may also find Ruby Version Manager ([rvm.io](https://rvm.io)) to be helpful if you need to maintain multiple versions of Ruby.
+
+Note that after installing PostgreSQL, one needs to start it up so it is running in the background. The status can be checked using `pg_isready`. If this fails, the installation can be started manually, e.g. via `pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`, depending on the location of your installation. If PostgreSQL was installed from a package manager, post-install information is usually displayed about how to start the PostgreSQL daemon on your platform.
+
 For running the test suite, the following additional dependencies are required:
 
  * PhantomJS 2.1.1 or later
@@ -72,6 +76,7 @@ The application is a standard Ruby on Rails web application, and can be installe
 
 ```shell
 ruby -v                              # Check that Ruby 2.5+ is installed
+pg_isready                           # Check that PostgreSQL database is ready
 git clone https://github.com/ScottKolo/suitesparse-matrix-collection-website.git
 cd suitesparse-matrix-collection-website
 gem install bundler:1.16.6           # Dependency manager
