@@ -19,7 +19,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Bootstrap gem for using bootstrap CSS
-gem 'bootstrap', '~>4.1.3'
+gem 'bootstrap', '>= 4.1.3'
 # sassc gem for using Sass CSS
 gem 'sassc'
 # Use haml for views
