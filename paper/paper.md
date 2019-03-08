@@ -53,7 +53,7 @@ Examples of recent work that have utilized the Collection and its website to acc
 
  - Computing optimal solutions to the bipartitioning problem for 839 sparse matrices [@knigge2018improved].
  - The development of a novel hybrid graph partitioning library, especially effective at partitioning social networks [@davisalgorithm].
- - A metric-constrainted optimization method for computing lower bounds to the sparsest cut problem on undirected graphs [@veldt2018projection].
+ - A metric-constrained optimization method for computing lower bounds to the sparsest cut problem on undirected graphs [@veldt2018projection].
 
 Note that these projects required identifying matrices with specific properties, which is enabled by the Collection web application.
 
