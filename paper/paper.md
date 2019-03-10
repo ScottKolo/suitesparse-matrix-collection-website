@@ -38,9 +38,6 @@ date: 25 October 2018
 bibliography: bibliography.bib
 ---
 
-[![Index page with real-time filtering](index_small.png)](index.png)
-[![Specific matrix data and visualizations](west0479_small.png)](west0479.png)
-
 # Summary
 
 The SuiteSparse Matrix Collection (formerly known as the University of Florida Sparse Matrix Collection) [@SSCollection] has grown significantly since its introduction, with newly added matrices representing almost seven times as much data than the entirety of the original Collection. With this growth, searching the Collection for matrices with specific names, structures, and other properties has become increasingly difficult. To make the Collection more accessible to the scientific computing community, we have developed a web application that allows real-time search and filtering of the Collection matrices.
@@ -56,6 +53,9 @@ Examples of recent work that have utilized the Collection and its website to acc
  - A metric-constrained optimization method for computing lower bounds to the sparsest cut problem on undirected graphs [@veldt2018projection].
 
 Note that these projects required identifying matrices with specific properties, which is enabled by the Collection web application.
+
+[![Index page with real-time filtering](index_small.png)](index.png)
+[![Specific matrix data and visualizations](west0479_small.png)](west0479.png)
 
 # Features and Functionality
 
