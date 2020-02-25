@@ -58,7 +58,7 @@ group :development, :test do
   gem 'byebug'
   # Use Poltergeist/PhantomJS for javascript testing
   gem 'poltergeist'
-  gem 'nokogiri', '~> 1.10.4'
+  gem 'nokogiri', '~> 1.10.8'
   # Use brakeman for security checks
   gem 'brakeman', :require => false
   gem 'loofah', '>= 2.2.3'
