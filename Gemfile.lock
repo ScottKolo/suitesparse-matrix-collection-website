@@ -163,7 +163,7 @@ GEM
     mysql2 (0.5.2)
     netrc (0.11.0)
     nio4r (2.3.1)
-    nokogiri (1.10.5)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     pg (1.1.4)
     poltergeist (1.18.1)
@@ -319,7 +319,7 @@ DEPENDENCIES
   loofah (>= 2.2.3)
   mailgun_rails
   mysql2
-  nokogiri (~> 1.10.4)
+  nokogiri (~> 1.10.8)
   pg
   poltergeist
   puma
