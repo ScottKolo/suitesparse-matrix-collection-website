@@ -19,7 +19,7 @@ gem 'turbolinks', '~> 5.1.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # Bootstrap gem for using bootstrap CSS
-gem 'bootstrap', '>= 4.1.3'
+gem 'bootstrap', '~> 4.4.1'
 # sassc gem for using Sass CSS
 gem 'sassc'
 # Use haml for views
