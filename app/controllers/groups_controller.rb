@@ -23,10 +23,10 @@ class GroupsController < ApplicationController
 
     # Initialize filterrific filtering system
     @filterrific = initialize_filterrific(
-      Matrix,
+      CollectionMatrix,
       permitted_params[:filterrific],
       select_options: {
-        sorted_by: Matrix.options_for_sorted_by,
+        sorted_by: CollectionMatrix.options_for_sorted_by,
       }
     ) or return
 
@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
       return render :not_found, status: 404, content_type: 'text/html', template: 'groups/not_found.html.haml'
     end
 
-    @matrices = @filterrific.find.page(permitted_params[:page]).merge(Matrix.where(group: group_name))
+    @matrices = @filterrific.find.page(permitted_params[:page]).merge(CollectionMatrix.where(group: group_name))
     @per_page = helpers.per_page(params, session)
     # @matrices = Matrix.where(group: group_name)
     @matrices = @matrices.paginate(page: params[:page], per_page: @per_page)

@@ -2,7 +2,7 @@ require 'uri'
 require 'cgi'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
-require File.expand_path(File.join(File.dirname(__FILE__), "../..", "spec", "factories", "matrix.rb"))
+require File.expand_path(File.join(File.dirname(__FILE__), "../..", "spec", "factories", "collection_matrix.rb"))
 require 'factory_bot'
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
@@ -83,7 +83,7 @@ end
 
 Given /^there are (\d+) matrices$/ do |total_entries|
   DatabaseCleaner.clean_with(:truncation)
-  FactoryBot.create_list(:matrix, total_entries.to_i)
+  FactoryBot.create_list(:collection_matrix, total_entries.to_i)
 end
 
 Given /^(?:|I )am on page number (\d+) of the (.+) page with (\d+|All) per page$/ do |page_num, page_name, per_page|

@@ -3,7 +3,7 @@ require 'database_cleaner/cucumber'
 
 Given /the following matri(?:x|ces) exist/ do |matrices_table|
   matrices_table.hashes.each do |matrix|
-    Matrix.create!(matrix)
+    CollectionMatrix.create!(matrix)
   end
 end
 

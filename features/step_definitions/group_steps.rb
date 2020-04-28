@@ -13,6 +13,6 @@ end
 Given(/^there are (\d+) groups$/) do |num_groups|
   for i in 1..(num_groups.to_i)
   	FactoryBot.create(:group, name: "Group#{i}")
-  	FactoryBot.create(:matrix, id: i, :group => "Group#{i}", :name => "Matrix#{i}")
+  	FactoryBot.create(:collection_matrix, id: i, :group => "Group#{i}", :name => "Matrix#{i}")
   end
 end

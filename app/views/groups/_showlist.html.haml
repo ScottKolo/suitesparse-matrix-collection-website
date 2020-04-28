@@ -1,7 +1,7 @@
 .card.card-body.bg-light.container.p-1.my-2
   .d-flex.justify-content-between.align-items-center
     .p-2
-      = replace_bold_tags(page_entries_info @matrices, model: 'Matrix')
+      = replace_bold_tags(page_entries_info @matrices, model: 'CollectionMatrix')
 
 - unless @matrices.empty?
   <!-- Top Pagination Bar -->

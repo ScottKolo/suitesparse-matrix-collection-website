@@ -1,11 +1,11 @@
-module MatricesHelper
+module CollectionMatricesHelper
   # Determines how many matrices to display at a time via pagination
   # Reads from the params and session hashes, but also handles the special
   # case of displaying "All" matrices that match the given filters.
   def per_page(params, session)
     @per_page = params[:per_page] || session[:per_page] || 20
     if @per_page == "All"
-      @per_page = Matrix.count
+      @per_page = CollectionMatrix.count
     end
     return @per_page
   end
@@ -13,7 +13,7 @@ module MatricesHelper
   # Creates a list of all matrix kinds currently in the database
   def kind_list
     # Find all unique kinds in the database
-    @kinds = Matrix.order('kind asc').distinct.pluck(:kind)
+    @kinds = CollectionMatrix.order('kind asc').distinct.pluck(:kind)
 
     @kinds.map! do |x| 
       # Titleize everything, and capitalize 2D and 3D
@@ -65,7 +65,7 @@ module MatricesHelper
 
     for filename in filename_list
       image_hash = {};
-      image_hash[:url] = "#{Matrix.get_base_url}files/#{matrix.group}/#{filename}"
+      image_hash[:url] = "#{CollectionMatrix.get_base_url}files/#{matrix.group}/#{filename}"
       image_hash[:description] = get_image_description(filename, matrix)
       image_hash[:first] = (filename == filename_list.first)
       image_list.append(image_hash)

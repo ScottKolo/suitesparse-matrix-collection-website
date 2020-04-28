@@ -1,17 +1,17 @@
 require 'rails_helper'
-require 'factories/matrix.rb'
+require 'factories/collection_matrix.rb'
 require 'support/factory_bot.rb'
 
-RSpec.describe MatricesHelper, type: :helper do
+RSpec.describe CollectionMatricesHelper, type: :helper do
 
   describe "per_page helper function" do
     before(:all) do
         for i in 1..54
-          FactoryBot.create(:matrix)
+          FactoryBot.create(:collection_matrix)
         end
     end
     after(:all) do
-        Matrix.delete_all
+        CollectionMatrix.delete_all
     end
 
     it "should return all the matrices when 'All' is selected" do

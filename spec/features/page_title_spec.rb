@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'factories/matrix.rb'
+require 'factories/collection_matrix.rb'
 
 RSpec.feature "Page titles", :type => :feature do
     
@@ -11,7 +11,7 @@ RSpec.feature "Page titles", :type => :feature do
   end
 
   scenario "User views a specific matrix" do
-    matrix = FactoryBot.create(:matrix, :id => 1, :group => "GroupName_1", :name => "MatrixName_1")
+    matrix = FactoryBot.create(:collection_matrix, :id => 1, :group => "GroupName_1", :name => "MatrixName_1")
     visit "/GroupName_1/MatrixName_1"
     expect(page).to have_title "GroupName_1/MatrixName_1 | SuiteSparse Matrix Collection"
   end

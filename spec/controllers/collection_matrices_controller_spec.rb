@@ -1,8 +1,8 @@
 require 'rails_helper'
-require 'factories/matrix.rb'
+require 'factories/collection_matrix.rb'
 require 'support/factory_bot.rb'
 
-RSpec.describe MatricesController, type: :controller do
+RSpec.describe CollectionMatricesController, type: :controller do
 
   describe "showing the index page" do
 
@@ -21,7 +21,7 @@ RSpec.describe MatricesController, type: :controller do
   describe "showing the details page" do
 
     it "should render the details view when the matrix exists" do
-      matrix = create(:matrix, id: 1, name: 'MatrixName', group: 'GroupName')
+      matrix = create(:collection_matrix, id: 1, name: 'MatrixName', group: 'GroupName')
       get :show, params: {group: 'GroupName', name: 'MatrixName'}
       expect(response).to render_template :show
     end
@@ -47,37 +47,37 @@ RSpec.describe MatricesController, type: :controller do
                                       submitter_confidentiality: "true",
                                       ip: "127.0.0.1"}) }
     before(:all) do
-        @matrix1 = FactoryBot.create(:matrix, 
+        @matrix1 = FactoryBot.create(:collection_matrix, 
           matrix_id: 1,
           group: "groupA", 
           name: "alpha",
           kind: "2D mesh",
           )
-        @matrix2 = FactoryBot.create(:matrix, 
+        @matrix2 = FactoryBot.create(:collection_matrix, 
           matrix_id: 2,
           group: "groupB", 
           name: "beta",
           kind: "3D mesh",
           )
-        @matrix3 = FactoryBot.create(:matrix, 
+        @matrix3 = FactoryBot.create(:collection_matrix, 
           matrix_id: 3,
           group: "groupA", 
           name: "gamma",
           kind: "zeta type",
           )
-        @matrix4 = FactoryBot.create(:matrix, 
+        @matrix4 = FactoryBot.create(:collection_matrix, 
           matrix_id: 4,
           group: "groupB", 
           name: "delta",
           kind: "subsequent kind",
           )
-        @matrix5 = FactoryBot.create(:matrix, 
+        @matrix5 = FactoryBot.create(:collection_matrix, 
           matrix_id: 5,
           group: "groupC", 
           name: "epsilon",
           kind: "duplicate kind",
           )
-        @matrix6 = FactoryBot.create(:matrix, 
+        @matrix6 = FactoryBot.create(:collection_matrix, 
           matrix_id: 6,
           group: "groupC", 
           name: "zeta",
@@ -85,12 +85,12 @@ RSpec.describe MatricesController, type: :controller do
           )
     end
     after(:all) do
-      Matrix.destroy(@matrix1.id)
-      Matrix.destroy(@matrix2.id)
-      Matrix.destroy(@matrix3.id)
-      Matrix.destroy(@matrix4.id)
-      Matrix.destroy(@matrix5.id)
-      Matrix.destroy(@matrix6.id)
+      CollectionMatrix.destroy(@matrix1.id)
+      CollectionMatrix.destroy(@matrix2.id)
+      CollectionMatrix.destroy(@matrix3.id)
+      CollectionMatrix.destroy(@matrix4.id)
+      CollectionMatrix.destroy(@matrix5.id)
+      CollectionMatrix.destroy(@matrix6.id)
     end
 
     it "should render the matrix submission page" do

@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
-ruby '~> 2.5'
+ruby '~> 2.7'
 
 # Need the Rails gem
-gem 'rails', '~> 5.2.2.1'
+gem 'rails', '~> 6.0.2.2'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+
+gem 'webpacker'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '~> 4.3.3'
@@ -16,8 +18,6 @@ gem 'turbolinks', '~> 5.1.0'
 #gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
 # Bootstrap gem for using bootstrap CSS
 gem 'bootstrap', '>= 4.1.3'
 # sassc gem for using Sass CSS
@@ -29,22 +29,21 @@ gem 'haml-contrib', '~> 1.0.0.1'
 # Add Font Awesome
 gem 'font_awesome5_rails'
 # Add pagination
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate', '~> 3.3.0'
 gem 'will_paginate-bootstrap4'
-gem 'json'
+gem 'json', '~> 2.3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Use reCaptcha to prevent spam
 gem "recaptcha", require: "recaptcha/rails"
 # Use Filterrific for AJAX filtering
-gem 'filterrific', '~> 5.0.1'
-# gem 'filterrific', '~> 2.0.6', :git => 'https://github.com/ScottKolo/filterrific.git', branch: 'rails5'
+gem 'filterrific', '~> 5.2.1'
 # Generate a sitemap
 gem 'sitemap_generator'
 
 group :development, :test do
   # Use Cucumber for BDD testing
-  gem 'cucumber-rails', '~> 1.6.0', :require => false
+  gem 'cucumber-rails', require: false
   # Use Database Cleaner to clear the database between tests
   gem 'database_cleaner'
   gem 'capybara'
@@ -52,7 +51,7 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_bot'
   # Use rspec for lower level unit testing
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 4.0.0'
   # Use simplecov for coverage testing
   gem 'simplecov', require: false
   gem 'byebug'
@@ -60,8 +59,9 @@ group :development, :test do
   gem 'poltergeist'
   gem 'nokogiri', '~> 1.10.8'
   # Use brakeman for security checks
-  gem 'brakeman', :require => false
+  gem 'brakeman', require: false
   gem 'loofah', '>= 2.2.3'
+  gem 'listen'
 end
 
 group :development do

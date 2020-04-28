@@ -1,4 +1,4 @@
-class Matrix < ApplicationRecord
+class CollectionMatrix < ApplicationRecord
 
   ### Download Helpers #########################################################
 
@@ -9,7 +9,7 @@ class Matrix < ApplicationRecord
 
   # Get the download URL for a given matrix and file format
   def get_url(file_format)
-    base_url = Matrix.get_base_url
+    base_url = CollectionMatrix.get_base_url
     if file_format == :matlab
       return "#{base_url}mat/#{self.group}/#{self.name}.mat"
     elsif file_format == :rutherford_boeing
@@ -62,28 +62,28 @@ class Matrix < ApplicationRecord
     case sort_option.to_s
     when /^id_/
       # Sort by matrix ID
-      order("matrices.matrix_id #{ direction }")
+      order("collection_matrices.matrix_id #{ direction }")
     when /^group_/
       # Sort alphabetically by group name
-      order(Arel.sql("LOWER(matrices.group) #{ direction }"))
+      order(Arel.sql("LOWER(collection_matrices.group) #{ direction }"))
     when /^name_/
       # Sort alphabetically by matrix name
-      order(Arel.sql("LOWER(matrices.name) #{ direction }"))
+      order(Arel.sql("LOWER(collection_matrices.name) #{ direction }"))
     when /^rows_/
       # Sort by number of rows
-      order("matrices.num_rows #{ direction }")
+      order("collection_matrices.num_rows #{ direction }")
     when /^cols_/
       # Sort by number of columns
-      order("matrices.num_cols #{ direction }")
+      order("collection_matrices.num_cols #{ direction }")
     when /^nonzeros_/
       # Sort by number of nonzeros
-      order("matrices.nonzeros #{ direction }")
+      order("collection_matrices.nonzeros #{ direction }")
     when /^kind_/
       # Sort alphabetically by kind
-      order("matrices.kind #{ direction }")
+      order("collection_matrices.kind #{ direction }")
     when /^date_/
       # Sort by matrix date field
-      order("matrices.date #{ direction }")
+      order("collection_matrices.date #{ direction }")
     else
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end
@@ -129,13 +129,13 @@ class Matrix < ApplicationRecord
     num_or_conds = 7
     where(
       terms.map {
-        "LOWER(matrices.name) LIKE ?
-          OR LOWER(matrices.description) LIKE ? 
-          OR LOWER(matrices.kind) LIKE ? 
-          OR LOWER(matrices.notes) LIKE ? 
-          OR LOWER(matrices.group) LIKE ?
-          OR LOWER(matrices.author) LIKE ?
-          OR LOWER(matrices.editor) LIKE ?"
+        "LOWER(collection_matrices.name) LIKE ?
+          OR LOWER(collection_matrices.description) LIKE ? 
+          OR LOWER(collection_matrices.kind) LIKE ? 
+          OR LOWER(collection_matrices.notes) LIKE ? 
+          OR LOWER(collection_matrices.group) LIKE ?
+          OR LOWER(collection_matrices.author) LIKE ?
+          OR LOWER(collection_matrices.editor) LIKE ?"
       }.join(' AND '),
       *terms.map { |e| [e] * num_or_conds }.flatten
     )
@@ -149,107 +149,107 @@ class Matrix < ApplicationRecord
 
   scope :name_query, -> (query) { 
     return nil if query.blank?
-    processed_query = Matrix.process_text_query(query)
-    where("LOWER(matrices.name) LIKE ?", processed_query)
+    processed_query = CollectionMatrix.process_text_query(query)
+    where("LOWER(collection_matrices.name) LIKE ?", processed_query)
   }
 
   scope :group_query, -> (query) { 
     return nil if query.blank?
-    processed_query = Matrix.process_text_query(query)
-    where("LOWER(matrices.group) LIKE ?", processed_query)
+    processed_query = CollectionMatrix.process_text_query(query)
+    where("LOWER(collection_matrices.group) LIKE ?", processed_query)
   }
 
   # Filter by group name
   scope :group_name, -> (group) {
-    where("matrices.group = ?", group)
+    where("collection_matrices.group = ?", group)
   }
 
   # Filter by number of rows
   scope :min_rows, -> (min_rows) {
-    where("matrices.num_rows >= ?", min_rows)
+    where("collection_matrices.num_rows >= ?", min_rows)
   }
 
   scope :max_rows, -> (max_rows) {
-    where("matrices.num_rows <= ?", max_rows)
+    where("collection_matrices.num_rows <= ?", max_rows)
   }
 
   # Filter by number of columns
   scope :min_cols, -> (min_cols) {
-    where("matrices.num_cols >= ?", min_cols)
+    where("collection_matrices.num_cols >= ?", min_cols)
   }
 
   scope :max_cols, -> (max_cols) {
-    where("matrices.num_cols <= ?", max_cols)
+    where("collection_matrices.num_cols <= ?", max_cols)
   }
 
   # Filter by number of nonzeros
   scope :min_nonzeros, -> (min_nonzeros) {
-    where("matrices.nonzeros >= ?", min_nonzeros)
+    where("collection_matrices.nonzeros >= ?", min_nonzeros)
   }
 
   scope :max_nonzeros, -> (max_nonzeros) {
-    where("matrices.nonzeros <= ?", max_nonzeros)
+    where("collection_matrices.nonzeros <= ?", max_nonzeros)
   }
 
   scope :structure, -> (structure) {
     if structure == "Square"
-      where("matrices.num_rows = matrices.num_cols")
+      where("collection_matrices.num_rows = collection_matrices.num_cols")
     elsif structure == "Rectangular"
-      where.not("matrices.num_rows = matrices.num_cols")
+      where.not("collection_matrices.num_rows = collection_matrices.num_cols")
     elsif structure == "Hermitian"
-      where("matrices.structure = ?", structure)
+      where("collection_matrices.structure = ?", structure)
     else
-      where("matrices.structure = ?", structure.downcase)
+      where("collection_matrices.structure = ?", structure.downcase)
     end
   }
 
   scope :rb_type, -> (rb_type) {
-    where("matrices.rb_type = ?", rb_type.downcase)
+    where("collection_matrices.rb_type = ?", rb_type.downcase)
   }
 
   # Filter by ID
   scope :min_id, -> (min_id) {
-    where("matrices.matrix_id >= ?", min_id)
+    where("collection_matrices.matrix_id >= ?", min_id)
   }
 
   scope :max_id, -> (max_id) {
-    where("matrices.matrix_id <= ?", max_id)
+    where("collection_matrices.matrix_id <= ?", max_id)
   }
 
   # Filter by year
   scope :min_year, -> (min_year) {
-    where("matrices.date >= ?", min_year)
+    where("collection_matrices.date >= ?", min_year)
   }
 
   scope :max_year, -> (max_year) {
-    where("matrices.date <= ?", max_year)
+    where("collection_matrices.date <= ?", max_year)
   }
 
   # Filter by pattern symmetry
   scope :min_pattern_symmetry, -> (min_pattern_symmetry) {
-    where("matrices.pattern_symmetry >= ?", min_pattern_symmetry.to_f/100)
+    where("collection_matrices.pattern_symmetry >= ?", min_pattern_symmetry.to_f/100)
   }
 
   scope :max_pattern_symmetry, -> (max_pattern_symmetry) {
-    where("matrices.pattern_symmetry <= ?", max_pattern_symmetry.to_f/100)
+    where("collection_matrices.pattern_symmetry <= ?", max_pattern_symmetry.to_f/100)
   }
 
   # Filter by numerical symmetry
   scope :min_numerical_symmetry, -> (min_numerical_symmetry) {
-    where("matrices.numeric_symmetry >= ?", min_numerical_symmetry.to_f/100)
+    where("collection_matrices.numeric_symmetry >= ?", min_numerical_symmetry.to_f/100)
   }
 
   scope :max_numerical_symmetry, -> (max_numerical_symmetry) {
-    where("matrices.numeric_symmetry <= ?", max_numerical_symmetry.to_f/100)
+    where("collection_matrices.numeric_symmetry <= ?", max_numerical_symmetry.to_f/100)
   }
 
   # Filter by number of strongly connected components
   scope :min_strongly_connected_components, -> (min_strongly_connected_components) {
-    where("matrices.num_strongly_connected_components >= ?", min_strongly_connected_components)
+    where("collection_matrices.num_strongly_connected_components >= ?", min_strongly_connected_components)
   }
 
   scope :max_strongly_connected_components, -> (max_strongly_connected_components) {
-    where("matrices.num_strongly_connected_components <= ?", max_strongly_connected_components)
+    where("collection_matrices.num_strongly_connected_components <= ?", max_strongly_connected_components)
   }
 
   # Filter by positive definiteness
@@ -257,7 +257,7 @@ class Matrix < ApplicationRecord
     if (pos_def == "Any")
       nil
     else
-      where("matrices.positive_definite = ?", pos_def.downcase)
+      where("collection_matrices.positive_definite = ?", pos_def.downcase)
     end
   }
 

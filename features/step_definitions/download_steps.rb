@@ -4,7 +4,7 @@
 # data files
 
 Given /^there is a matrix with the group "(.+)" and the name "(.+)"$/ do |group, name|
-  Matrix.create(group: group, name: name)
+  CollectionMatrix.create(group: group, name: name)
 end
 
 Then /^I should be able to download a "([^"]*)" file called "([^"]*)"$/ do |format, filename|

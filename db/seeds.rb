@@ -30,6 +30,6 @@ end
 puts "Inserting matrices into database"
 matrices.each do |matrix|
 	puts "Inserting " + matrix[:name]
-  	Matrix.create!(matrix)
+  	CollectionMatrix.create!(matrix)
 end
 puts "Completed inserting matrices into database"

@@ -1,4 +1,4 @@
-class MatricesController < ApplicationController
+class CollectionMatricesController < ApplicationController
 
   FILTER_CHECKBOXES = {
     size: [:min_rows, :max_rows, :min_cols, :max_cols, :min_nonzeros, :max_nonzeros],
@@ -35,10 +35,10 @@ class MatricesController < ApplicationController
 
     # Initialize filterrific filtering system
     @filterrific = initialize_filterrific(
-      Matrix,
+      CollectionMatrix,
       permitted_params[:filterrific],
       select_options: {
-        sorted_by: Matrix.options_for_sorted_by,
+        sorted_by: CollectionMatrix.options_for_sorted_by,
         positive_definite_options: ['Yes', 'No'],
         structure_options: ['Square', 'Rectangular', 'Symmetric', 'Unsymmetric', 'Hermitian', 'Skew-Symmetric'],
         rutherford_boeing_options: ['Real', 'Complex', 'Integer', 'Binary']
@@ -76,15 +76,15 @@ class MatricesController < ApplicationController
 
     if matrix_id.nil?
       # If no matrix_id is given, search for the matrix by group/name
-      @matrix = Matrix.find_by(name: name, group: group)
+      @matrix = CollectionMatrix.find_by(name: name, group: group)
     else
       # If we have an id number, use that (it's faster)
-      @matrix = Matrix.find_by(matrix_id: matrix_id)
+      @matrix = CollectionMatrix.find_by(matrix_id: matrix_id)
     end
 
     if !@matrix
       # If we couldn't find the matrix, render the matrix not found page
-      return render :not_found, status: 404, content_type: 'text/html', template: 'matrices/not_found.html.haml'
+      return render :not_found, status: 404, content_type: 'text/html', template: 'collection_matrices/not_found.html.haml'
     end
   end
 

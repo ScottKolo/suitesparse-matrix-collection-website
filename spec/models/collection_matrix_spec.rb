@@ -1,10 +1,10 @@
 require 'rails_helper'
-require 'factories/matrix'
+require 'factories/collection_matrix'
 
-RSpec.describe Matrix, type: :model do
+RSpec.describe CollectionMatrix, type: :model do
   describe "keyword search scopes" do
     before(:all) do
-        @matrix1 = FactoryBot.create(:matrix, 
+        @matrix1 = FactoryBot.create(:collection_matrix, 
           matrix_id: 68,
           group: "a", 
           name: "b",
@@ -15,7 +15,7 @@ RSpec.describe Matrix, type: :model do
           description: "Lucy in the sky with diamonds.",
           notes: "The unique query string is 'Ringo'"
           )
-        @matrix2 = FactoryBot.create(:matrix, 
+        @matrix2 = FactoryBot.create(:collection_matrix, 
           matrix_id: 11,
           group: "Bravo", 
           name: "c",
@@ -26,7 +26,7 @@ RSpec.describe Matrix, type: :model do
           description: "Help! I need somebody.",
           notes: "A fancy matrix."
           )
-        @matrix3 = FactoryBot.create(:matrix, 
+        @matrix3 = FactoryBot.create(:collection_matrix, 
           matrix_id: 10000,
           group: "Z", 
           name: "Twist and Shout",
@@ -39,33 +39,33 @@ RSpec.describe Matrix, type: :model do
           )
     end
     after(:all) do
-        Matrix.destroy(@matrix1.id)
-        Matrix.destroy(@matrix2.id)
-        Matrix.destroy(@matrix3.id)
+        CollectionMatrix.destroy(@matrix1.id)
+        CollectionMatrix.destroy(@matrix2.id)
+        CollectionMatrix.destroy(@matrix3.id)
     end
 
     it "should be able to return a list related to the search query" do
-      @matrices = Matrix.search_query("")
+      @matrices = CollectionMatrix.search_query("")
       expect(@matrices).to include(@matrix1)
       expect(@matrices).to include(@matrix2)
       expect(@matrices).to include(@matrix3)
-      @matrices = Matrix.search_query("Lucy")
+      @matrices = CollectionMatrix.search_query("Lucy")
       expect(@matrices).to include(@matrix1)
       expect(@matrices).to_not include(@matrix2)
       expect(@matrices).to_not include(@matrix3)
-      @matrices = Matrix.search_query("Zeta")
+      @matrices = CollectionMatrix.search_query("Zeta")
       expect(@matrices).to_not include(@matrix1)
       expect(@matrices).to_not include(@matrix2)
       expect(@matrices).to include(@matrix3)
-      @matrices = Matrix.search_query("bravo")
+      @matrices = CollectionMatrix.search_query("bravo")
       expect(@matrices).to_not include(@matrix1)
       expect(@matrices).to include(@matrix2)
       expect(@matrices).to_not include(@matrix3)
-      @matrices = Matrix.search_query("shout")
+      @matrices = CollectionMatrix.search_query("shout")
       expect(@matrices).to_not include(@matrix1)
       expect(@matrices).to_not include(@matrix2)
       expect(@matrices).to include(@matrix3)
-      @matrices = Matrix.search_query("ringo")
+      @matrices = CollectionMatrix.search_query("ringo")
       expect(@matrices).to include(@matrix1)
       expect(@matrices).to_not include(@matrix2)
       expect(@matrices).to_not include(@matrix3)
@@ -74,7 +74,7 @@ RSpec.describe Matrix, type: :model do
 
   describe "filtering scopes" do
     before(:all) do
-        @matrix1 = FactoryBot.create(:matrix, 
+        @matrix1 = FactoryBot.create(:collection_matrix, 
           matrix_id: 68,
           group: "a", 
           name: "b",
@@ -88,7 +88,7 @@ RSpec.describe Matrix, type: :model do
           num_strongly_connected_components: 1,
           positive_definite: "no"
           )
-        @matrix2 = FactoryBot.create(:matrix, 
+        @matrix2 = FactoryBot.create(:collection_matrix, 
           matrix_id: 11,
           group: "B", 
           name: "c",
@@ -102,7 +102,7 @@ RSpec.describe Matrix, type: :model do
           num_strongly_connected_components: 10,
           positive_definite: "yes"
           )
-        @matrix3 = FactoryBot.create(:matrix, 
+        @matrix3 = FactoryBot.create(:collection_matrix, 
           matrix_id: 10000,
           group: "Z", 
           name: "D",
@@ -118,87 +118,87 @@ RSpec.describe Matrix, type: :model do
           )
     end
     after(:all) do
-        Matrix.destroy(@matrix1.id)
-        Matrix.destroy(@matrix2.id)
-        Matrix.destroy(@matrix3.id)
+        CollectionMatrix.destroy(@matrix1.id)
+        CollectionMatrix.destroy(@matrix2.id)
+        CollectionMatrix.destroy(@matrix3.id)
     end
 
     it "should be able to filter by specific groups" do
-      @matrices = Matrix.group_name("Z")
+      @matrices = CollectionMatrix.group_name("Z")
       expect(@matrices).to_not include(@matrix1)
       expect(@matrices).to_not include(@matrix2)
       expect(@matrices).to include(@matrix3)
     end
     it "should be able to return a list filtered by number of rows" do
-      @matrices = Matrix.min_rows(1500)
+      @matrices = CollectionMatrix.min_rows(1500)
       expect(@matrices).to_not include(@matrix1)
       expect(@matrices).to include(@matrix2)
       expect(@matrices).to include(@matrix3)
-      @matrices = Matrix.max_rows(1500)
+      @matrices = CollectionMatrix.max_rows(1500)
       expect(@matrices).to include(@matrix1)
       expect(@matrices).to_not include(@matrix2)
       expect(@matrices).to_not include(@matrix3)
     end
     it "should be able to return a list filtered by number of columns" do
-      @matrices = Matrix.min_cols(2)
+      @matrices = CollectionMatrix.min_cols(2)
       expect(@matrices).to_not include(@matrix1);
       expect(@matrices).to include(@matrix2);
       expect(@matrices).to include(@matrix3);
-      @matrices = Matrix.max_cols(1)
+      @matrices = CollectionMatrix.max_cols(1)
       expect(@matrices).to include(@matrix1);
       expect(@matrices).to_not include(@matrix2);
       expect(@matrices).to_not include(@matrix3);
     end
     it "should be able to return a list filtered by number of nonzeros" do
-      @matrices = Matrix.min_nonzeros(30)
+      @matrices = CollectionMatrix.min_nonzeros(30)
       expect(@matrices).to_not include(@matrix1);
       expect(@matrices).to include(@matrix2);
       expect(@matrices).to include(@matrix3);
-      @matrices = Matrix.max_nonzeros(10)
+      @matrices = CollectionMatrix.max_nonzeros(10)
       expect(@matrices).to include(@matrix1);
       expect(@matrices).to_not include(@matrix2);
       expect(@matrices).to_not include(@matrix3);
     end
     it "should be able to return a list filtered by pattern symmetry" do
-      @matrices = Matrix.min_pattern_symmetry(0.3)
+      @matrices = CollectionMatrix.min_pattern_symmetry(0.3)
       expect(@matrices).to_not include(@matrix1);
       expect(@matrices).to include(@matrix2);
       expect(@matrices).to include(@matrix3);
-      @matrices = Matrix.max_pattern_symmetry(0.2)
+      @matrices = CollectionMatrix.max_pattern_symmetry(0.2)
       expect(@matrices).to include(@matrix1);
       expect(@matrices).to_not include(@matrix2);
       expect(@matrices).to_not include(@matrix3);
     end
     it "should be able to return a list filtered by numerical symmetry" do
-      @matrices = Matrix.min_numerical_symmetry(0.3)
+      @matrices = CollectionMatrix.min_numerical_symmetry(0.3)
       expect(@matrices).to_not include(@matrix1);
       expect(@matrices).to include(@matrix2);
       expect(@matrices).to include(@matrix3);
-      @matrices = Matrix.max_numerical_symmetry(0.4)
+      @matrices = CollectionMatrix.max_numerical_symmetry(0.4)
       expect(@matrices).to include(@matrix1);
       expect(@matrices).to_not include(@matrix2);
       expect(@matrices).to_not include(@matrix3);
     end
     it "should be able to return a list filtered by number of strongly connected components" do
-      @matrices = Matrix.min_strongly_connected_components(5)
+      @matrices = CollectionMatrix.min_strongly_connected_components(5)
       expect(@matrices).to_not include(@matrix1);
       expect(@matrices).to include(@matrix2);
       expect(@matrices).to include(@matrix3);
-      @matrices = Matrix.max_strongly_connected_components(3)
+      @matrices = CollectionMatrix.max_strongly_connected_components(3)
       expect(@matrices).to include(@matrix1);
       expect(@matrices).to_not include(@matrix2);
       expect(@matrices).to_not include(@matrix3);
     end
     it "should be able to return a list filtered by positive definiteness" do
-      @matrices = Matrix.positive_definite("Yes")
+      @matrices = CollectionMatrix.positive_definite("Yes")
       expect(@matrices).to_not include(@matrix1);
       expect(@matrices).to include(@matrix2);
       expect(@matrices).to include(@matrix3);
-      @matrices = Matrix.positive_definite("No")
+      @matrices = CollectionMatrix.positive_definite("No")
       expect(@matrices).to include(@matrix1);
       expect(@matrices).to_not include(@matrix2);
       expect(@matrices).to_not include(@matrix3);
-      @matrices = Matrix.positive_definite("Any")
+      @matrices = CollectionMatrix.positive_definite("Any")
       expect(@matrices).to include(@matrix1);
       expect(@matrices).to include(@matrix2);
       expect(@matrices).to include(@matrix3);
@@ -207,7 +207,7 @@ RSpec.describe Matrix, type: :model do
 
   describe "sorting scopes" do
     before(:all) do
-        @matrix1 = FactoryBot.create(:matrix, 
+        @matrix1 = FactoryBot.create(:collection_matrix, 
           matrix_id: 68,
           group: "a", 
           name: "b",
@@ -217,7 +217,7 @@ RSpec.describe Matrix, type: :model do
           kind: "2D Mesh",
           date: 1991
           )
-        @matrix2 = FactoryBot.create(:matrix, 
+        @matrix2 = FactoryBot.create(:collection_matrix, 
           matrix_id: 11,
           group: "B", 
           name: "c",
@@ -227,7 +227,7 @@ RSpec.describe Matrix, type: :model do
           kind: "Fancy type",
           date: 2001
           )
-        @matrix3 = FactoryBot.create(:matrix, 
+        @matrix3 = FactoryBot.create(:collection_matrix, 
           matrix_id: 10000,
           group: "Z", 
           name: "D",
@@ -239,86 +239,86 @@ RSpec.describe Matrix, type: :model do
           )
     end
     after(:all) do
-        Matrix.destroy(@matrix1.id)
-        Matrix.destroy(@matrix2.id)
-        Matrix.destroy(@matrix3.id)
+        CollectionMatrix.destroy(@matrix1.id)
+        CollectionMatrix.destroy(@matrix2.id)
+        CollectionMatrix.destroy(@matrix3.id)
     end
 
     it "should be able to return a list sorted by id" do
-      @matrices = Matrix.sorted_by("id_asc")
+      @matrices = CollectionMatrix.sorted_by("id_asc")
       expect(@matrices.first).to eq(@matrix2);
       expect(@matrices.last).to eq(@matrix3);
-      @matrices = Matrix.sorted_by("id_desc")
+      @matrices = CollectionMatrix.sorted_by("id_desc")
       expect(@matrices.first).to eq(@matrix3);
       expect(@matrices.last).to eq(@matrix2);
     end
     it "should be able to return a list sorted by group" do
-      @matrices = Matrix.sorted_by("group_asc")
+      @matrices = CollectionMatrix.sorted_by("group_asc")
       expect(@matrices.first).to eq(@matrix1);
       expect(@matrices.last).to eq(@matrix3);
-      @matrices = Matrix.sorted_by("group_desc")
+      @matrices = CollectionMatrix.sorted_by("group_desc")
       expect(@matrices.first).to eq(@matrix3);
       expect(@matrices.last).to eq(@matrix1);
     end
     it "should be able to return a list sorted by name" do
-      @matrices = Matrix.sorted_by("name_asc")
+      @matrices = CollectionMatrix.sorted_by("name_asc")
       expect(@matrices.first).to eq(@matrix1);
       expect(@matrices.last).to eq(@matrix3);
-      @matrices = Matrix.sorted_by("name_desc")
+      @matrices = CollectionMatrix.sorted_by("name_desc")
       expect(@matrices.first).to eq(@matrix3);
       expect(@matrices.last).to eq(@matrix1);
     end
     it "should be able to return a list sorted by number of rows" do
-      @matrices = Matrix.sorted_by("rows_asc")
+      @matrices = CollectionMatrix.sorted_by("rows_asc")
       expect(@matrices.first).to eq(@matrix1);
       expect(@matrices.last).to eq(@matrix3);
-      @matrices = Matrix.sorted_by("rows_desc")
+      @matrices = CollectionMatrix.sorted_by("rows_desc")
       expect(@matrices.first).to eq(@matrix3);
       expect(@matrices.last).to eq(@matrix1);
     end
     it "should be able to return a list sorted by number of columns" do
-      @matrices = Matrix.sorted_by("cols_asc")
+      @matrices = CollectionMatrix.sorted_by("cols_asc")
       expect(@matrices.first).to eq(@matrix1);
       expect(@matrices.last).to eq(@matrix3);
-      @matrices = Matrix.sorted_by("cols_desc")
+      @matrices = CollectionMatrix.sorted_by("cols_desc")
       expect(@matrices.first).to eq(@matrix3);
       expect(@matrices.last).to eq(@matrix1);
     end
     it "should be able to return a list sorted by number of nonzeros" do
-      @matrices = Matrix.sorted_by("nonzeros_asc")
+      @matrices = CollectionMatrix.sorted_by("nonzeros_asc")
       expect(@matrices.first).to eq(@matrix1);
       expect(@matrices.last).to eq(@matrix3);
-      @matrices = Matrix.sorted_by("nonzeros_desc")
+      @matrices = CollectionMatrix.sorted_by("nonzeros_desc")
       expect(@matrices.first).to eq(@matrix3);
       expect(@matrices.last).to eq(@matrix1);
     end
     it "should be able to return a list sorted by kind" do
-      @matrices = Matrix.sorted_by("kind_asc")
+      @matrices = CollectionMatrix.sorted_by("kind_asc")
       expect(@matrices.first).to eq(@matrix1);
       expect(@matrices.last).to eq(@matrix3);
-      @matrices = Matrix.sorted_by("kind_desc")
+      @matrices = CollectionMatrix.sorted_by("kind_desc")
       expect(@matrices.first).to eq(@matrix3);
       expect(@matrices.last).to eq(@matrix1);
     end
     it "should be able to return a list sorted by date" do
-      @matrices = Matrix.sorted_by("date_asc")
+      @matrices = CollectionMatrix.sorted_by("date_asc")
       expect(@matrices.first).to eq(@matrix1);
       expect(@matrices.last).to eq(@matrix3);
-      @matrices = Matrix.sorted_by("date_desc")
+      @matrices = CollectionMatrix.sorted_by("date_desc")
       expect(@matrices.first).to eq(@matrix3);
       expect(@matrices.last).to eq(@matrix1);
     end
     it "should raise an exception if the sort does not exist" do
-      expect{Matrix.sorted_by("fugacity_desc")}.to raise_error(ArgumentError)
+      expect{CollectionMatrix.sorted_by("fugacity_desc")}.to raise_error(ArgumentError)
     end
   end
 
   describe "getting correct download URL" do
     before(:all) do
-        @matrix = FactoryBot.create(:matrix, :group => "groupName_1", :name => "matrixName_1")
+        @matrix = FactoryBot.create(:collection_matrix, :group => "groupName_1", :name => "matrixName_1")
     end
     after(:all) do
-        Matrix.destroy(@matrix.id)
+        CollectionMatrix.destroy(@matrix.id)
     end
 
     it "should provide the correct MATLAB download URL" do
@@ -327,7 +327,7 @@ RSpec.describe Matrix, type: :model do
     it "should provide the correct Rutherford-Boeing download URL" do
         expect(@matrix.get_url(:rutherford_boeing)).to eq("https://sparse.tamu.edu/RB/groupName_1/matrixName_1.tar.gz")
     end
-    it "should provide the correct Matrix Market download URL" do
+    it "should provide the correct CollectionMatrix.Market download URL" do
         expect(@matrix.get_url(:matrix_market)).to eq("https://sparse.tamu.edu/MM/groupName_1/matrixName_1.tar.gz")
     end
     it "should provide the correct SVD download URL" do
