@@ -16,6 +16,10 @@ ul.pagination li {
   padding: 0.5rem;
 }
 
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
 @include media-breakpoint-up(md) {
   ul.pagination li {
     width: auto;
