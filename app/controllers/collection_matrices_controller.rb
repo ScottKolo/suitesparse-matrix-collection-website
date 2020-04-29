@@ -103,7 +103,7 @@ class CollectionMatricesController < ApplicationController
       @new_matrix = SubmittedMatrix.new(permitted_params)
       @new_matrix.ip = request.remote_ip
       email = AdminNotifierMailer.send_matrix_submitted_email(@new_matrix)
-      if Rails.env.production?
+      if Rails.env.production? or Rails.env.production_heroku?
         email.deliver_now
       end
       flash[:success] = "Matrix submitted successfully!"
