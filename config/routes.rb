@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   get 'index' => 'collection_matrices#index'
   get '/' => 'collection_matrices#index'
 
+  # Redirect Testing
+  get '/test_redirect_1', to: redirect('http://apache.org/img/support-apache.jpg')
+  get '/test_redirect_2', to: redirect('http://apache.org/img/support-apache.jpg', status: 302)
+  get '/test_redirect_3', to: redirect('http://apache.org/img/support-apache.jpg', status: 307)
+  get '/test_redirect_4', to: redirect('http://apache.org/img/support-apache.jpg', status: 308)
+
   # Static page routes
   # Keep these first to avoid conflict with group_name route
   get 'about' => 'pages#about'
@@ -27,9 +33,4 @@ Rails.application.routes.draw do
 
   get '*path', to: redirect('/404'), via: :all
 
-  # Redirect Testing
-  get '/test_redirect_1', to: redirect('http://apache.org/img/support-apache.jpg')
-  get '/test_redirect_2', to: redirect('http://apache.org/img/support-apache.jpg', status: 302)
-  get '/test_redirect_3', to: redirect('http://apache.org/img/support-apache.jpg', status: 307)
-  get '/test_redirect_4', to: redirect('http://apache.org/img/support-apache.jpg', status: 308)
 end
