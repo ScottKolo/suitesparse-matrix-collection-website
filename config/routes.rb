@@ -26,4 +26,10 @@ Rails.application.routes.draw do
   get '/:group', to: 'groups#show'
 
   get '*path', to: redirect('/404'), via: :all
+
+  # Redirect Testing
+  get '/test_redirect_1', to: redirect('http://apache.org/img/support-apache.jpg')
+  get '/test_redirect_2', to: redirect('http://apache.org/img/support-apache.jpg', status: 302)
+  get '/test_redirect_3', to: redirect('http://apache.org/img/support-apache.jpg', status: 307)
+  get '/test_redirect_4', to: redirect('http://apache.org/img/support-apache.jpg', status: 308)
 end
