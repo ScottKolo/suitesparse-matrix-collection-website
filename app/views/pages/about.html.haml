@@ -3,33 +3,89 @@
 
 %h2 About
 %p
-  The SuiteSparse Matrix Collection (formerly known as the University of
+  The <b>SuiteSparse Matrix Collection</b> (formerly known as the University of
   Florida Sparse Matrix Collection), is a large and actively growing set of
   sparse matrices that arise in real applications.  The Collection is widely
   used by the numerical linear algebra community for the development and
-  performance evaluation of sparse matrix algorithms. It allows for robust
-  and repeatable experiments: robust because performance results with
-  artificially-generated matrices can be misleading, and repeatable because
-  matrices are curated and made publicly available in many formats.  Its
-  matrices cover a wide spectrum of domains, include those arising from
-  problems with underlying 2D or 3D geometry (as structural engineering,
-  computational fluid dynamics, model reduction, electromagnetics,
-  semiconductor devices, thermodynamics, materials, acoustics, computer
-  graphics/vision, robotics/kinematics, and other discretizations) and those
-  that typically do not have such geometry (optimization, circuit simulation,
-  economic and financial modeling, theoretical and quantum chemistry,
-  chemical process simulation, mathematics and statistics, power networks,
-  and other networks and graphs).  We provide software for accessing and
-  managing the Collection, from MATLAB, Mathematica, Fortran, and C, as well
-  as an online search capability.  Graph visualization of the matrices is
+  performance evaluation of sparse matrix algorithms. It allows for <b>robust</b>
+  and <b>repeatable</b> experiments: <b>robust</b> because performance results with
+  artificially-generated matrices can be misleading, and <b>repeatable</b> because
+  matrices are curated and made publicly available in many formats.  
+
+%p
+  The matrices in the Collection cover a wide spectrum of domains, including
+  .container
+    .row
+      %ul
+        %li
+          2D or 3D Geometric Domains
+          %ul.list-group.list-group-horizontal
+            .col
+              %li
+                Structural engineering
+              %li
+                Computational fluid dynamics
+              %li
+                Model reduction
+            .col
+              %li
+                Electromagnetics
+              %li
+                Semiconductor devices
+              %li
+                Thermodynamics
+            .col
+              %li
+                Material science
+              %li
+                Acoustics
+              %li
+                Computer graphics and vision
+            .col
+              %li
+                Robotics and kinematics
+              %li
+                Other spatial discretizations
+        %br
+        %li
+          Non-Geometric Domains
+          %ul.list-group.list-group-horizontal
+            .col
+              %li
+                Optimization
+              %li
+                Economic and financial modeling
+            .col
+              %li
+                Circuit simulation
+              %li
+                Theoretical and quantum chemistry
+            .col
+              %li
+                Chemical process simulation
+              %li
+                Mathematics and statistics
+            .col
+              %li
+                Power networks
+              %li
+                Other networks and graph-structured data
+%p
+  In addition to the matrices and associated metadata, we provide software for accessing the Collection via a number of 
+  ==#{link_to "interfaces", "/interfaces"},
+  from MATLAB, Mathematica, Fortran, and C, as well as this web application and index.  
+%p
+  Graph visualization of the matrices is
   provided on this site via 
   ==#{link_to "graphviz", "http://www.graphviz.org"}.
+%p
   The Collection is maintained by
   ==#{link_to "Tim Davis, Texas A&M University", "http://faculty.cse.tamu.edu/davis"}
   (email: davis@tamu.edu), 
   ==#{link_to "Yifan Hu, Yahoo! Labs", "http://yifanhu.net/"},
   and 
-  ==#{link_to "Scott Kolodziej, Texas A&M University", "http://www.scottkolo.com"}.
+  ==#{link_to "Scott Kolodziej", "http://www.scottkolo.com"}.
+
 
 %h2 General-audience description
 %p
@@ -37,6 +93,7 @@
   for an easy-to-understand description of the SuiteSparse Matrix Collection and its images.
   The page includes a video of a talk I gave at the Harn Museum at the University of Florida,
   for general audiences.
+
 
 %h2 Sample Gallery of the SuiteSparse Matrix Collection:
 %p
@@ -158,20 +215,33 @@
   ==#{link_to "drawings of the matrices in the Collection", "http://yifanhu.net/gallery.html"},
   which are also mirrored here on the web page for each matrix.
 
-%h2 Publications
+%h2 How to Cite
 %p
-  Full details of the Collection are provided in our paper entitled
-  The University of Florida Sparse Matrix Collection,
-  by T. Davis and Y. Hu, published in the
-  ACM Transactions on Mathematical Software, Vol 38, Issue 1, 2011, pages 1:1-1:25
-  <a href="http://dl.acm.org/authorize?6504337">(click here for PDF)</a>.
-  Please cite that paper when using this Collection.
-  For additional background, see Duff, I.S, Grimes, R. G, and Lewis, J. G,
-  <a href="http://doi.acm.org/10.1145/62038.62043">Sparse matrix test problems</a>,
-  ACM Trans. on Mathematical Software, vol 15, no. 1, pp 1-14, 1989, which
-  describes the Harwell-Boeing Collection.
-  See also 
-  ==#{link_to "how to cite LAW group", "http://law.di.unimi.it/datasets.php"}.
+  Here are some citation recommendations when the Collection or this web interface are used as part of academic research:
+  
+  %ul
+    %li
+      If you use this Collection as a data set, please cite the original ACM-TOMS paper:
+      %p.p-3
+        Timothy A. Davis and Yifan Hu. 2011. The University of Florida Sparse Matrix Collection. ACM Transactions on Mathematical Software 38, 1, Article 1 (December 2011), 25 pages. DOI: <a href="https://doi.org/10.1145/2049662.2049663">https://doi.org/10.1145/2049662.2049663</a> 
+    %li
+      If you use this web application a substantial amount in your research, you might also consider citing the following JOSS paper under a separate <a href="https://www.force11.org/software-citation-principles">software citation</a> section:
+      %p.p-3
+        Scott P. Kolodziej, Mohsen Aznaveh, Matthew Bullock, Jarrett David, Timothy A. Davis, Matthew Henderson, Yifan Hu, and Read Sandstrom. 2019. The SuiteSparse Matrix Collection Website Interface. Journal of Open Source Software 4, 35 (March 2019), 1244-1248. DOI: <a href="https://doi.org/10.21105/joss.01244">https://doi.org/10.21105/joss.01244</a>
+
+%h2 Related Publications
+%p
+  For additional background and information about subsets of the Collection:
+  %ul
+    %li
+      Duff, I.S, Grimes, R. G, and Lewis, J. G,
+      <a href="http://doi.acm.org/10.1145/62038.62043">Sparse matrix test problems</a>,
+      ACM Trans. on Mathematical Software, vol 15, no. 1, pp 1-14, 1989, which
+      describes the Harwell-Boeing Collection.
+      See also 
+    %li 
+      ==#{link_to "how to cite LAW group", "http://law.di.unimi.it/datasets.php"}.
+
 
 %h2 Archival data for reproducible research
 %p
