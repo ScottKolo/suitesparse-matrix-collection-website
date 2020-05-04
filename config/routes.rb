@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   get 'index' => 'collection_matrices#index'
   get '/' => 'collection_matrices#index'
 
-  # Redirect Testing
-  get '/test_redirect_1', to: redirect('http://apache.org/img/support-apache.jpg')
-  get '/test_redirect_2', to: redirect('http://apache.org/img/support-apache.jpg', status: 302)
-  get '/test_redirect_3', to: redirect('http://apache.org/img/support-apache.jpg', status: 307)
-  get '/test_redirect_4', to: redirect('http://apache.org/img/support-apache.jpg', status: 308)
+  # Redirects
+  get '/mat/:group/:name.mat', to: redirect('http://sparse-files.engr.tamu.edu/mat/%{group}/%{name}.mat', status: 308)
+  get '/RB/:group/:name.tar.gz', to: redirect('http://sparse-files.engr.tamu.edu/RB/%{group}/%{name}.tar.gz', status: 308)
+  get '/MM/:group/:name.tar.gz', to: redirect('http://sparse-files.engr.tamu.edu/MM/%{group}/%{name}.tar.gz', status: 308)
+  get '/svd/:group/:name_SVD.mat', to: redirect('http://sparse-files.engr.tamu.edu/svd/%{group}/%{name}_SVD.mat', status: 308)
+  get '/files/:file_path', to: redirect('http://sparse-files.engr.tamu.edu/files/%{file_path}', status: 308)
 
   # Static page routes
   # Keep these first to avoid conflict with group_name route
