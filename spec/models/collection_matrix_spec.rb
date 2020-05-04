@@ -322,16 +322,20 @@ RSpec.describe CollectionMatrix, type: :model do
     end
 
     it "should provide the correct MATLAB download URL" do
-        expect(@matrix.get_url(:matlab)).to eq("https://sparse.tamu.edu/mat/groupName_1/matrixName_1.mat")
+        #expect(@matrix.get_url(:matlab)).to eq("https://sparse.tamu.edu/mat/groupName_1/matrixName_1.mat")
+        expect(@matrix.get_url(:matlab)).to eq("https://suitesparse-collection-website.herokuapp.com/mat/groupName_1/matrixName_1.mat")
     end
     it "should provide the correct Rutherford-Boeing download URL" do
-        expect(@matrix.get_url(:rutherford_boeing)).to eq("https://sparse.tamu.edu/RB/groupName_1/matrixName_1.tar.gz")
+        #expect(@matrix.get_url(:rutherford_boeing)).to eq("https://sparse.tamu.edu/RB/groupName_1/matrixName_1.tar.gz")
+        expect(@matrix.get_url(:rutherford_boeing)).to eq("https://suitesparse-collection-website.herokuapp.com/RB/groupName_1/matrixName_1.tar.gz")
     end
     it "should provide the correct CollectionMatrix.Market download URL" do
-        expect(@matrix.get_url(:matrix_market)).to eq("https://sparse.tamu.edu/MM/groupName_1/matrixName_1.tar.gz")
+        #expect(@matrix.get_url(:matrix_market)).to eq("https://sparse.tamu.edu/MM/groupName_1/matrixName_1.tar.gz")
+        expect(@matrix.get_url(:matrix_market)).to eq("https://suitesparse-collection-website.herokuapp.com/MM/groupName_1/matrixName_1.tar.gz")
     end
     it "should provide the correct SVD download URL" do
-        expect(@matrix.get_url(:svd)).to eq("https://sparse.tamu.edu/svd/groupName_1/matrixName_1_SVD.mat")
+        #expect(@matrix.get_url(:svd)).to eq("https://sparse.tamu.edu/svd/groupName_1/matrixName_1_SVD.mat")
+        expect(@matrix.get_url(:svd)).to eq("https://suitesparse-collection-website.herokuapp.com/svd/groupName_1/matrixName_1_SVD.mat")
     end
     it "should throw an exception if an unknown format is specified" do
       expect {

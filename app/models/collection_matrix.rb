@@ -4,7 +4,8 @@ class CollectionMatrix < ApplicationRecord
 
   # Get the base URL for remote matrix downloads
   def self.get_base_url
-    return 'https://sparse.tamu.edu/'
+    #return 'https://sparse.tamu.edu/'
+    return 'https://suitesparse-collection-website.herokuapp.com/'
   end
 
   # Get the download URL for a given matrix and file format
