@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/RB/:group/:name.tar.gz', to: redirect('http://sparse-files.engr.tamu.edu/RB/%{group}/%{name}.tar.gz', status: 308)
   get '/MM/:group/:name.tar.gz', to: redirect('http://sparse-files.engr.tamu.edu/MM/%{group}/%{name}.tar.gz', status: 308)
   get '/svd/:group/:name_SVD.mat', to: redirect('http://sparse-files.engr.tamu.edu/svd/%{group}/%{name}_SVD.mat', status: 308)
-  get '/files/:file_path', to: redirect('http://sparse-files.engr.tamu.edu/files/%{file_path}', status: 308)
+  get '/files/*file_path', to: redirect('http://sparse-files.engr.tamu.edu/files/%{file_path}', status: 308), format: false
 
   # Static page routes
   # Keep these first to avoid conflict with group_name route
