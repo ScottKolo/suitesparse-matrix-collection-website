@@ -55,8 +55,9 @@ group :development, :test do
   # Use simplecov for coverage testing
   gem 'simplecov', '0.17.1', require: false
   gem 'byebug'
-  # Use Poltergeist/PhantomJS for javascript testing
-  gem 'poltergeist'
+  # Use Selenium for javascript testing
+  gem 'selenium-webdriver'
+  gem 'geckodriver-helper'
   gem 'nokogiri', '~> 1.10.8'
   # Use brakeman for security checks
   gem 'brakeman', require: false
