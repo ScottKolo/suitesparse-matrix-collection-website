@@ -57,7 +57,7 @@ group :development, :test do
   gem 'byebug'
   # Use Selenium for javascript testing
   gem 'selenium-webdriver'
-  gem 'geckodriver-helper'
+  gem 'webdrivers', '~> 4.0'
   gem 'nokogiri', '~> 1.10.8'
   # Use brakeman for security checks
   gem 'brakeman', require: false

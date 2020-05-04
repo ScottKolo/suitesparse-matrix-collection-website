@@ -58,15 +58,19 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 require "selenium/webdriver"
+require 'webdrivers'
 
-Capybara.register_driver :firefox_headless do |app|
-  options = ::Selenium::WebDriver::Firefox::Options.new
-  options.args << '--headless'
+Capybara.register_driver :headless_chrome do |app|
+	options = Selenium::WebDriver::Chrome::Options.new
+	options.add_argument('--headless')
+	options.add_argument('--disable-gpu')
+	options.add_argument('--window-size=1280,800')
 
-  Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
+	Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
-Capybara.javascript_driver = :firefox_headless
+Capybara.default_driver = :headless_chrome
+Capybara.javascript_driver = :headless_chrome
 
 Before do
 	page.driver.restart if defined?(page.driver.restart)
