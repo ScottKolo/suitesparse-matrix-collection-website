@@ -57,18 +57,16 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-Capybara.javascript_driver = :selenium_headless
-# Capybara.javascript_driver = :webkit
-# Capybara::Webkit.configure do |config|
-#     config.allow_url("ajax.googleapis.com")
-#     config.allow_url("fonts.googleapis.com")
-#     config.allow_url("www.cise.ufl.edu")
-# end
+require "selenium/webdriver"
 
-Capybara.register_driver :selenium do |app|
-  #Capybara::Poltergeist::Driver.new(app, {:js_errors => false})
-  Capybara::Selenium::Driver.new(app)
+Capybara.register_driver :firefox_headless do |app|
+  options = ::Selenium::WebDriver::Firefox::Options.new
+  options.args << '--headless'
+
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
 end
+
+Capybara.javascript_driver = :firefox_headless
 
 Before do
 	page.driver.restart if defined?(page.driver.restart)
