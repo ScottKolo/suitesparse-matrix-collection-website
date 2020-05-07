@@ -1,7 +1,7 @@
 {
-    name: 'Schenk_IBMNA',
-    num_matrices: '52',
-    notes: 'Non-linear optimization matrices, Olaf Schenk, Univ. of Basel.
+    name: 'Schenk_AFE',
+    num_matrices: '16',
+    notes: 'Sheet metal forming matrices, Olaf Schenk, Univ. of Basel.
 
 Univ. of Basel collection, Olaf Schenk (semiconductors, sheet metal forming
 problems, and non-linear optimization)

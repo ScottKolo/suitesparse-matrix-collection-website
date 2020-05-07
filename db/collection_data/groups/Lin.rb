@@ -1,7 +1,9 @@
 {
-    name: 'LiuWenzhuo',
+    name: 'Lin',
     num_matrices: '1',
-    notes: 'Power system simulation matrix from Wenzhou Liu, EPRI, China.
+    notes: 'Large sparse eigenvalue problem from Chun-hung (Martin) Lin.  NCHC, Taiwan.
+MartinLin AT nchc dot org dot tw.  National Center for High-Performance
+Computing.
 ',
 
 }

@@ -1,27 +1,38 @@
 {
-    name: 'Hohn',
-    num_matrices: '6',
-    notes: 'Single-material crack problem, Michael Hohn, Univ. of Utah.
+    name: 'Harvard_Seismology',
+    num_matrices: '1',
+    notes: 'Earth\'s crust underneath Japan, Harvard Seismology Group.
 
-The included files contain the matrices and rhs vectors arising in
-two ways of discretizing a single-material crack problem.
+This matrix represents the forward operator of a linearized seismic
+tomography problem for imaging Japan\'s crust and upper mantle.  The
+rows of the matrix correspond to 87,616 P-wave ray paths, from 125
+moderate size earthquakes (stars), deeper that ~150 km that occurred
+the last decade, and recorded from seismic stations of the Hi-net
+array (triangles). The 3-Dimensional space is parameterized using a
+grid of 67,320 parameters that correspond to the columns of the matrix.
 
-The *coord files are in zero-indexed coordinate format (row, column, value);
-the *vec files contain 
-    -- the size N
-    -- the entries from first to last
+The matrix is structurally and numerically rank deficient.  This is
+because some parts of the Earth are not imaged well from the data,
+due to the lack of signals (earthquakes) and receivers (seismic stations
+in those areas.  This leads to an under-determined part of the system.
+Other parts of the problem are overdetermined, because deep earthquakes
+repeat in the same region of the Earth, over time, and the seismic
+stations do not move.  Repeated earthquakes from the same source
+are recorded by the same seismic stations, leading to an over-
+determined problem for those regions of the Earth.
 
-The fd-* files come from a finite difference approximation;
-the sinc-* files from a sinc-basis approximation.
+In MATLAB, cs_dmspy(Problem.A) displays these two parts of the matrix,
+using a function from CSparse, available at http://suitesparse.com.
 
-Both use the same logarithmic grid.
+Petros Bogiatzis, Miaki Ishii, Harvard Seismology Group, 2015
+http://www.seismology.harvard.edu
 
-The fd matrices are very sparse, and factor in a few seconds, so
-they\'re not terribly interesting, but the sinc matrices are another matter...
+References:
 
-Larger matrices available on demand :)
+Bogiatzis, P., & Ishii, M., 2014. Resolution Analysis and Jointly Inverted P-
+and S-Wave Models of Japan\'s Crust and Upper Mantle. American Geophysical
+Union, Fall Meeting 2014, S33A-4501.
 
--- Michael Hohn, hohn :at the domain: math.utah.edu
 ',
 
 }

@@ -1,11 +1,11 @@
 {
-    name: 'JGD_Homology',
-    num_matrices: '128',
-    notes: 'Simplicial complexes from Homology from Volkmar Welker.
+    name: 'JGD_Groebner',
+    num_matrices: '8',
+    notes: 'Gro"bner basis from Jean-Charles Fauge`res, 
 From Jean-Guillaume Dumas\' Sparse Integer Matrix Collection,
 http://ljk.imag.fr/membres/Jean-Guillaume.Dumas/simc.html
 
-http://www.mathematik.uni-marburg.de/~welker/
+http://www-calfor.lip6.fr/~jcf/
 ',
 
 }

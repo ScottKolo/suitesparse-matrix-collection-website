@@ -1,39 +1,27 @@
 {
-    name: 'Norris',
-    num_matrices: '12',
-    notes: 'Finite element modelling of human body parts. Stuart Norris, Univ. Aukland.
+    name: 'Newman',
+    num_matrices: '16',
+    notes: 'Network graph collection from Mark Newman, University of Michigan
+http://www-personal.umich.edu/~mejn/netdata/
 
-email: s.norris :at the domain: auckland.ac.nz
-Bioengineering Institute, University of Auckland
-http://www.esc.auckland.ac.nz/People/Staff/Norris   wk: +(64 9) 373 7599 x3055
+Problems in this data set:
 
-Finite element matrices from bioengineering problems.
-
-
-Matrices:
-fv1	FV_100x100_works    finite element, Laplace eqn. on a 2D mesh
-fv2	FV_101x101_fails    finite element, Laplace eqn. on a 2D mesh, causes
-			    UMFPACK V4.0 with default pivot tolerance to fail.
-			    Requires a larger tolerance.
-fv3	FV_101x101_works    finite element, Laplace eqn. on a 2D mesh
-
-lung1	Lung_1		Coupled temperature and water vapour transport in a lung
-lung2	Lung_2		Ditto, with finer mesh resolution
-
-heart1	Heart_1		Quasi-static finite-element model of a heart
-heart2	Heart_2		Quasi-static finite-element model of a heart
-heart3	Heart_3		Quasi-static finite-element model of a heart
-
-stomach	Stomach3D	Electro-physiological model of a Duodenum
-
-torso1	Torso_FDandBE	Coupled Finite difference/Boundary element
-			electro-physiological model of a torso (2D)
-
-torso2	Torso_FDin2D	Finite difference electro-physiological model of
-			a torso (2D)
-torso3	Torso_FDin3D	Finite difference electro-physiological model of
-			a torso (3D)
-
+adjnoun         Common adjective and nouns in "David Copperfield"
+as-22july06     (symmetrized) structure of internet routers as of July 22, 2006
+astro-ph        collaboration network, preprints in astrophysics archive, www.arxiv.org
+celegansneural  Neural network of the nematode C. Elegans
+cond-mat        collaboration network, preprints in condensed matter archive, www.arxiv.org
+cond-mat-2003   collaboration network, preprints in condensed matter archive, www.arxiv.org
+cond-mat-2005   collaboration network, preprints in condensed matter archive, www.arxiv.org
+dolphins        social network of dolphins, Doubtful Sound, New Zealand
+football        American football games between Div IA colleges, Fall 2000
+hep-th          collaboration network, preprints in high-energy physics, www.arxiv.org
+karate          Karate club, from Wayne Zachary, 1977
+lesmis          co-appearences of characters in Les Miserables by Victor Hugo
+netscience      co-authoship of scientists in network theory & experiments
+polblogs        Political blogosphere Feb. 2005
+polbooks        Books about US politics, compiled by V. Krebs
+power           Western States Power Grid, Watts & Strogatz
 ',
 
 }

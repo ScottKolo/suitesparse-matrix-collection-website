@@ -1,20 +1,35 @@
 {
-    name: 'IBM_Austin',
-    num_matrices: '1',
-    notes: 'Circuit simulation matrix from Emrah Acar, IBM Austin.  High degree of coupling.
+    name: 'Hollinger',
+    num_matrices: '49',
+    notes: 'Economic models from Peter Holinger, Intex Solutions, Inc.
 
-From Emrah Acar, IBM Research-Austin
+from MULTIMOD, a multi-country forward-looking macroeconometric model
+(see http://www.imf.org/external/np/res/mmod/mark3/index.htm).
 
-this matrix failed in umd4[umfpack4.0], ma28 takes forever, sparse1.3
-is slower than umd2, haven\'t tested in 4.3.  The matrix is from transient
-simulation of a timing path. The circuit contains a high level of coupling.
+mark3jacTTT[sc]:
 
-For more info contact Emrah Acar, emrah (at sign) us dot ibm dotcom
-IBM Austin Research Lab
+    These matrices are the large block of a Jacobian matrix from the IMF\'s
+    MULTIMOD Mark3 model stacked for \'TTT\' periods.  In each \'TTT\' pair,
+    the \'sc\' version is the same matrix after row and column scaling.
 
-Results from Tim Davis:
-On a 3.2Ghz Pentium 4, UMFPACK v4.0 takes 7.4 seconds (backslash in
-MATLAB 6.5).  UMFPACK v4.3 takes 0.20 seconds.
+jan99jac*:
+
+    Jacobians from a stacked forward-looking macroeconomic model, 
+    in this case from the Bank of Canada.  
+
+g7jac*:
+
+    This set of matrices is from an "Overlapping Generations Model"
+    used to study the social security systems of the G7 nations.
+    It\'s from CEPII, a research institute in Paris.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ Peter Hollinger  Tel:781-449-6222 Fax:781-444-2318
+ peterh :at the domain: intex.com
+ Intex Solutions, Inc.      110 A Street      Needham, MA 02494-2807
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 ',
 
 }

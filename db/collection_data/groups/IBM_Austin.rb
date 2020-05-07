@@ -1,21 +1,20 @@
 {
-    name: 'IBM_EDA',
-    num_matrices: '7',
-    notes: 'Circuit simulation matrices from Tim Lehner, IBM EDA.
-Added March, 2006.
+    name: 'IBM_Austin',
+    num_matrices: '1',
+    notes: 'Circuit simulation matrix from Emrah Acar, IBM Austin.  High degree of coupling.
 
-The dc* matrices are DC operating point problems, and the trans* matrices
-are transient simluations.  All come from the same circuit.  As in most
-circuit matrices, these matrices are permutable into block triangular form,
-and the also have a few dense rows/columns (normally from voltage and
-current sources).
+From Emrah Acar, IBM Research-Austin
 
-Tim Lehner
-Circuit Simulation, EDA
-IBM Systems and Technology Group
-USmail: IBM Corporation, M/S 2A1, Bldg 334, 2070 Route 52, Hopewell
-Junction, NY 12533
+this matrix failed in umd4[umfpack4.0], ma28 takes forever, sparse1.3
+is slower than umd2, haven\'t tested in 4.3.  The matrix is from transient
+simulation of a timing path. The circuit contains a high level of coupling.
 
+For more info contact Emrah Acar, emrah (at sign) us dot ibm dotcom
+IBM Austin Research Lab
+
+Results from Tim Davis:
+On a 3.2Ghz Pentium 4, UMFPACK v4.0 takes 7.4 seconds (backslash in
+MATLAB 6.5).  UMFPACK v4.3 takes 0.20 seconds.
 ',
 
 }

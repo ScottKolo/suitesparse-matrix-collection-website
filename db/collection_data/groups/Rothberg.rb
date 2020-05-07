@@ -1,7 +1,10 @@
 {
-    name: 'Rucci',
-    num_matrices: '1',
-    notes: 'ill-conditioned least-squares problem, A. Rucci
+    name: 'Rothberg',
+    num_matrices: '6',
+    notes: 'Structural engineering matrices from Ed Rothberg, Silicon Graphics, Inc.
+
+Some of the matrix names and file names don\'t match.
+This might be changed soon.
 ',
 
 }

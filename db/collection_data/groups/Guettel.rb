@@ -1,86 +1,50 @@
 {
-    name: 'Gupta',
+    name: 'Guettel',
     num_matrices: '3',
-    notes: 'Linear programming matrices from Anshul Gupta, IBM T. J. Watson Research Center.
+    notes: '3D Transient Electromagnetic Modelleing, Stefan Guettel, Univ Manchester
 
-Discussed in "Fast and Effective Algorithms for Graph Partitioning and Sparse
-Matrix Ordering," Ansul Gupta, IBM Research Division, T.J. Watson Research
-Center, PO Box 218, Yorktown Heights, New York, 10598, USA,
-anshul :at the domain: watson.ibm.com.  Tech Report RC 20496 (90799)
-July 10, 1996
-Computer Science / Mathematics.  The report discusses the WGPP graph
-partitioner.
+The TEM problem relates to the time-dependent modelling of a transient
+electromagnetic field in geophysical exploration. The set contains a
+matrix pencil (C,M) and an initial value vector q, corresponding to a
+Nedelec finite element discretization of Maxwell\'s equations for the
+electric field density e(t). The curl-curl matrix C is symmetric
+positive semi-definite and the mass matrix M is symmetric positive
+definite. The problem to be solved is a linear initial value problem
 
-All three matrices come from linear programming problems.  They
-are matrices of the form A times A transpose, where A is a rectangular
-matrix with N rows (not provided).  All three matrices are positive definite,
-but values are not provided.
+   M*e\'(t) = C*e(t),  M*e(0) = q,
 
-	   N	     NZ (in all of matrix, not just lower triangular part)
+for logarithmically distributed time points t in the interval
+[1e-6,1e-3].
 
-Gupta1.psa  31,802   2,164,210
+There are three test sets which are described in the following
+publication:
 
-Gupta2.psa  62,064   4,248,286
+@article{BEG2015,
+  title={Three-dimensional transient electromagnetic modelling using
+    rational {K}rylov methods},
+  author={B{\\"o}rner, Ralph-Uwe and Ernst, Oliver G and G{\\"u}ttel,
+    Stefan},
+  journal={Geophysical Journal International},
+  volume={202},
+  number={3},
+  pages={2025--2043},
+  year={2015},
+  publisher={Oxford University Press}
+}
 
-Gupta3.psa  16,783   9,323,427
+The problem details are
 
+TEM27623: section 5.1 in the above paper; layered half-space problem
+discretized by 24582 tetrahedral elements of order 1 giving rise to
+27623 degrees of freedom.
 
-If you "spy" these matrices in Matlab, you can see that
-the Gupta1 and Gupta2 matrices have a structure roughly of the form:
+TEM152078: section 5.1 in the above paper; layered half-space problem
+discretized by 24582 tetrahedral elements of order 2 giving rise to
+152078 degrees of freedom.
 
-	A D
-	D A D
-	  D A D
-	    D ...
-
-where D is banded, and A is an arrowhead matrix of the form
-
-	x x x x x x x x x 
-	x x
-	x   x
-	x     x
-	x       x
-	x         x
-	x           x
-	x             x
-	x               x
-
-where the "x" above, is a dense block.  Gupta1 has 3 of these arrowheads,
-and Gupta2 has 6 of them.  The Gupta1 matrix is not used in the tech. report,
-but it is similar to Gupta2, which is used in the experiments reported there.
-
-The Gupta3 matrix has a form
-
-	 x               x
-	   x             x
-	     x           x
-	       x         x
-	         x       x
-	           x     x
-	             x   x
-	               x x
-	 x x x x x x x x x	<=== the border, with nearly all the nonzeros
-
-where the "x"\'s are block submatrices (dense, or with some sparse pattern).
-
-The leading 15343-by-15343 submatrix of Gupta3 has only 596,765 nonzeros.
-This leading submatrix appears to be block diagonal, with dense blocks of
-size 39, 40, or 41.  If a natural ordering is used, L has the same number of
-nonzeros in its leading 15343-by-15343 submatrix as does the lower triangular
-part of the leading 15343-by-15343 submatrix of Gupta3.  That is, no fill-in
-occurs in this part of the matrix.
-
-The remaining 8.72 million nonzeros are in the border (which is very dense).
-Cholesky factorization of Gupta3, using the natural ordering, results in a
-factor L with 5.4 million nonzeros, requiring 2.262 billion floating-point
-operations to compute.  This compares with 2.181 billion flops when using an
-ordering from WGPP.  Essentially, the matrix does not need any permutation to
-reduce fill-in.
-
-These dense rows cause minimum degree ordering algorithms (AMD, for example)
-to take a long time to run.  A simple preprocessing can remove them from
-the matrix prior to calling AMD.  The dense rows/columns can then be
-ordered last.   This technique can greatly improve AMD\'s run time.
+TEM181302: section 5.2 in the above paper; homogeneous subsurface with
+topography discretized by 28849 tetrahedral elements of order 2 giving
+rise to 181302 degrees of freedom.
 
 ',
 

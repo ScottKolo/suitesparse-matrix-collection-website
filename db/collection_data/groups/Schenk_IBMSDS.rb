@@ -1,6 +1,6 @@
 {
-    name: 'Schenk_ISEI',
-    num_matrices: '18',
+    name: 'Schenk_IBMSDS',
+    num_matrices: '7',
     notes: 'Semiconductor device simulation matrices, Olaf Schenk, Univ. of Basel.
 
 Univ. of Basel collection, Olaf Schenk (semiconductors, sheet metal forming

@@ -1,9 +1,13 @@
 {
-    name: 'JGD_BIBD',
-    num_matrices: '21',
-    notes: 'Balanced Incomplete Block Design from Mark Giesbrecht, Univ. of Waterloo
-From Jean-Guillaume Dumas\' Sparse Integer Matrix Collection,
-http://ljk.imag.fr/membres/Jean-Guillaume.Dumas/simc.html
+    name: 'IPSO',
+    num_matrices: '7',
+    notes: 'Power simulation matrices, Li Peijie, Inst. of Power Systems, Guangxi Univ.
+
+Three different kinds of optimization methods (OPF, TSCOPF, HTC)
+applied to power system simulation.  All matrices are symmetric
+indefinite.  From Li Peijie, Institute of Power Systems (IPSO),
+Guangxi University (beyondpeijie at gxu.edu.cn).  Collected by
+Jonathan Hogg, Rutherford Appleton Laboratory, Oxfordshire, UK.
 ',
 
 }

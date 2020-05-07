@@ -1,8 +1,8 @@
 {
-    name: 'Muite',
-    num_matrices: '4',
-    notes: 'Ill-conditioned Chebyshev integration matrices from Benson Muite, Oxford.
-http://www.maths.ox.ac.uk/~muite
+    name: 'Morandini',
+    num_matrices: '3',
+    notes: 'Multibody simulation problems from Marco Morandini.
+Added March, 2006.
 ',
 
 }

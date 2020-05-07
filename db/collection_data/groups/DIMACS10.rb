@@ -1,387 +1,500 @@
 {
-    name: 'DNVS',
-    num_matrices: '15',
-    notes: 'Positive definite matrices from Christian Damhaug, DNV Software.
+    name: 'DIMACS10',
+    num_matrices: '151',
+    notes: '10th DIMACS Implementation Challenge
 
-Originally collected by Nick Gould, Yifan Hu, & Jennifer Scott,
-some in unassembled finite-element form (and some in both forms).
+Updated July 2012
 
-(Note: these matrices were previously in the GHS_psdef directory).
+http://www.cc.gatech.edu/dimacs10/index.shtml
+http://www.cise.ufl.edu/research/sparse/dimacs10
 
-NOTE: matrices can have upper-case or lower case matrix-type fields
-(rsa or RSA, for example).
+As stated on their main website (
+http://dimacs.rutgers.edu/Challenges/ ), the "DIMACS Implementation
+Challenges address questions of determining realistic algorithm
+performance where worst case analysis is overly pessimistic and
+probabilistic models are too unrealistic: experimentation can provide
+guides to realistic algorithm performance where analysis fails."
 
---------------------------------------------------------------------------------
-==> Fcondp2.readme <==
---------------------------------------------------------------------------------
+For the 10th DIMACS Implementation Challenge, the two related
+problems of graph partitioning and graph clustering were chosen.
+Graph partitioning and graph clustering are among the aforementioned
+questions or problem areas where theoretical and practical results
+deviate significantly from each other, so that experimental outcomes
+are of particular interest.
 
-Source: Christain Damahug (Det Norske Veritas, Oslo, Norway)
+Problem Motivation
 
+Graph partitioning and graph clustering are ubiquitous subtasks in
+many application areas. Generally speaking, both techniques aim at
+the identification of vertex subsets with many internal and few
+external edges. To name only a few, problems addressed by graph
+partitioning and graph clustering algorithms are:
 
- Matrix Format Converter
- -----------------------
+    * What are the communities within an (online) social network?
+    * How do I speed up a numerical simulation by mapping it
+        efficiently onto a parallel computer?
+    * How must components be organized on a computer chip such that
+        they can communicate efficiently with each other?
+    * What are the segments of a digital image?
+    * Which functions are certain genes (most likely) responsible
+        for?
 
- Total number of nodes ................................... :       33913
- Number of active nodes .................................. :       33913
- Number of external nodes ................................ :           0
- Number of nodes with at least one boundary condition .... :         552
- Number of nodes with at least one load intensity ........ :           0
- Number of free variables (equations) .................... :      201822
+Challenge Goals
 
- Number of elements ...................................... :       35836
- Number of material types ................................ :           1
- Maximum number of nodes connected to an element ......... :           4
+    * One goal of this Challenge is to create a reproducible picture
+        of the state-of-the-art in the area of graph partitioning
+        (GP) and graph clustering (GC) algorithms. To this end we
+        are identifying a standard set of benchmark instances and
+        generators.
 
- Size of complete element node connectivity .............. :      143344
- Size of stripped element node connectivity .............. :      143344
- Size of active adjacency set representation ............. :      282912
- TIME FOR WRITING MATRIX FORMAT        =     7.7391695976E+00
+    * Moreover, after initiating a discussion with the community, we
+        would like to establish the most appropriate problem
+        formulations and objective functions for a variety of
+        applications.
 
+    * Another goal is to enable current researchers to compare their
+        codes with each other, in hopes of identifying the most
+        effective algorithmic innovations that have been proposed.
 
- = = = = = = = = = = = = = = = = = = = = = = = = =
- = = = Storage Requirement Matrix Convertion = = =
- = = = = = = = = = = = = = = = = = = = = = = = = =
+    * The final goal is to publish proceedings containing results
+        presented at the Challenge workshop, and a book containing
+        the best of the proceedings papers.
 
- Total INTEGER workspace need (runtime measure) .......... :     1173274
- Total REAL workspace need (runtime measure) ............. :           0
+Problems Addressed
 
- Total CPU-time consumption to convert the matrix ........ : 8.89181E+00
+The precise problem formulations need to be established in the course
+of the Challenge. The descriptions below serve as a starting point.
 
- Wall-Clock Time Consumption ............................. : 1.70000E+01
+    * Graph partitioning:
 
---------------------------------------------------------------------------------
-==> Fullb.readme <==
---------------------------------------------------------------------------------
+      The most common formulation of the graph partitioning problem
+      for an undirected graph G = (V,E) asks for a division of V into
+      k pairwise disjoint subsets (partitions) such that all
+      partitions are of approximately equal size and the edge-cut,
+      i.e., the total number of edges having their incident nodes in
+      different subdomains, is minimized. The problem is known to be
+      NP-hard.
 
-Source: Christain Damahug (Det Norske Veritas, Oslo, Norway)
+    * Graph clustering:
 
+      Clustering is an important tool for investigating the
+      structural properties of data. Generally speaking, clustering
+      refers to the grouping of objects such that objects in the same
+      cluster are more similar to each other than to objects of
+      different clusters. The similarity measure depends on the
+      underlying application. Clustering graphs usually refers to the
+      identification of vertex subsets (clusters) that have
+      significantly more internal edges (to vertices of the same
+      cluster) than external ones (to vertices of another cluster).
 
- Matrix Format Converter
- -----------------------
+There are 12 data sets in the DIMACS10 collection:
 
- Total number of nodes ................................... :       33442
- Number of active nodes .................................. :       33442
- Number of external nodes ................................ :           0
- Number of nodes with at least one boundary condition .... :         586
- Number of nodes with at least one load intensity ........ :           0
- Number of free variables (equations) .................... :      199187
+clustering: real-world graphs commonly used as benchmarks
+coauthor:   citation and co-author networks
+Delaunay:   Delaunay triangulations of random points in the plane
+dyn-frames: frames from a 2D dynamic simulation
+Kronecker:  synthetic graphs from the Graph500 benchmark
+numerical:  graphs from numerical simulation
+random:     random geometric graphs (random points in the unit square)
+streets:    real-world street networks
+Walshaw:    Chris Walshaw\'s graph partitioning archive
+matrix:     graphs from the UF collection (not added here)
+redistrict: census networks
+star-mixtures : artificially generated from sets of real graphs
 
- Number of elements ...................................... :       59738
- Number of material types ................................ :           3
- Maximum number of nodes connected to an element ......... :           4
-
- Size of complete element node connectivity .............. :      195585
- Size of stripped element node connectivity .............. :      195585
- Size of active adjacency set representation ............. :      294498
- TIME FOR WRITING MATRIX FORMAT        =     1.0402039528E+01
-
-
- = = = = = = = = = = = = = = = = = = = = = = = = =
- = = = Storage Requirement Matrix Convertion = = =
- = = = = = = = = = = = = = = = = = = = = = = = = =
-
- Total INTEGER workspace need (runtime measure) .......... :     1584759
- Total REAL workspace need (runtime measure) ............. :           0
-
- Total CPU-time consumption to convert the matrix ........ : 1.18173E+01
-
- Wall-Clock Time Consumption ............................. : 2.90000E+01
-
---------------------------------------------------------------------------------
-==> Halfb.readme <==
---------------------------------------------------------------------------------
-
-
-Source: Christain Damahug (Det Norske Veritas, Oslo, Norway)
-
-
- Matrix Format Converter
- -----------------------
-
- Total number of nodes ................................... :       38556
- Number of active nodes .................................. :       38556
- Number of external nodes ................................ :           0
- Number of nodes with at least one boundary condition .... :        2470
- Number of nodes with at least one load intensity ........ :           0
- Number of free variables (equations) .................... :      224617
-
- Number of elements ...................................... :       70211
- Number of material types ................................ :           3
- Maximum number of nodes connected to an element ......... :           4
-
- Size of complete element node connectivity .............. :      221764
- Size of stripped element node connectivity .............. :      221764
- Size of active adjacency set representation ............. :      321406
- TIME FOR WRITING MATRIX FORMAT        =     1.1791002274E+01
-
-
- = = = = = = = = = = = = = = = = = = = = = = = = =
- = = = Storage Requirement Matrix Convertion = = =
- = = = = = = = = = = = = = = = = = = = = = = = = =
-
- Total INTEGER workspace need (runtime measure) .......... :     1774320
- Total REAL workspace need (runtime measure) ............. :           0
-
- Total CPU-time consumption to convert the matrix ........ : 1.33733E+01
-
- Wall-Clock Time Consumption ............................. : 4.20000E+01
+Some of the graphs already exist in the UF Collection.  In some cases,
+the original graph is unsymmetric, with values, whereas the DIMACS
+graph is the symmetrized pattern of A+A\'.  Rather than add duplicate
+patterns to the UF Collection, a MATLAB script is provided at
+http://www.cise.ufl.edu/research/sparse/dimacs10 which downloads
+each matrix from the UF Collection via UFget, and then performs whatever
+operation is required to convert the matrix to the DIMACS graph problem.
+Also posted at that page is a MATLAB code (metis_graph) for reading the
+DIMACS *.graph files into MATLAB.
 
 --------------------------------------------------------------------------------
-==> M_T1.readme <==
---------------------------------------------------------------------------------
-Source: Christian Damhaug
-www.parallab.uib.no/parasol/data.html
-
-We have this matrix available in assembled and element form
-
-Tubular joint
-
-Order 97,578
-when assembled, entries = 4,925,574
-unassembled entries = 6,882,780
-
- DNV-Ex 1 : Tubular joint-1999-01-17                                     M_T1    
-       1747955           533         26727       1720695             0
-RSE                    97578          5328        267270       6882780          
-(10I8)          (10I8)          (3e26.16)                               
-            
-
---------------------------------------------------------------------------------
-==> MT1.readme <==
---------------------------------------------------------------------------------
-Source: Christian Damhaug
-
-Element Repr of                                                                 
-         27260           533         26727             0             0
-PSE                    97578          5328        267270             0
-(10I8)          (10I8)          
-
---------------------------------------------------------------------------------
-==> SHIP_001.readme <==
---------------------------------------------------------------------------------
-Source: Chrisitan Damhaug
-www.parallab.uib.no/parasol/data.html
-
-We have this matrix available in assembled and element form
-
-Ship structure, predesign model
-Order 34,920
-when assembled, entries = 2,339,575
-unassembled entries = 3,686,133
-
-DNV-Ex 2 : Ship structure, predesign model-1999-01-17                   SHIP_001
-        937389           344         15511        921534             0
-RSE                    34920          3431        155106       3686133          
-(10I8)          (10I8)          (3e26.16)                               
-            
-
---------------------------------------------------------------------------------
-==> SHIP_003.readme <==
---------------------------------------------------------------------------------
-Source: Chrisitan Damhaug
-www.parallab.uib.no/parasol/data.html
-
-We have this matrix available in assembled and element form
-
-Ship structure from production run
-Order 121,728
-when assembled, entries = 4,103,881
-unassembled entries =9,728,631
-
-            
-DNV-Ex 3 : Ship structure from production run-1999-01-17                SHIP_003
-       2525272          4547         88317       2432408             0
-RSE                   121728         45464        883167       9729631          
-(10I8)          (10I8)          (3e26.16)                               
-
---------------------------------------------------------------------------------
-==> SHIPSEC1.readme <==
---------------------------------------------------------------------------------
-Source: Chrisitan Damhaug
-www.parallab.uib.no/parasol/data.html
-
-We have this matrix available in assembled and element form
-
-Ship section/detail from production run
-Order 140,874
-when assembled, entries = 3,977,139
-unassembled entries = 6,882,780
-
-DNV-Ex 4 : Ship section/detail from production run-1999-01-17           SHIPSEC1
-       2237188          4104         78502       2154582             0
-RSE                   140874         41037        785016       8618328          
-(10I8)          (10I8)          (3e26.16)                               
-            
-
---------------------------------------------------------------------------------
-==> SHIPSEC5.readme <==
---------------------------------------------------------------------------------
-Source: Chrisitan Damhaug
-www.parallab.uib.no/parasol/data.html
-
-We have this matrix available in assembled and element form
-
-Ship section/detail from production run
-Order 179,86
-when assembled, entries = 6,146,478
-unassembled entries = 11,118,602
-
-DNV-PARASOL Ship section 5-1999-01-15                                   Shipsec5
-       2885670          5228        100791       2779651             0
-RSE                   179860         52272       1007907      11118602          
-(10I8)          (10I8)          (4e22.14)                               
-            
-
---------------------------------------------------------------------------------
-==> SHIPSEC8.readme <==
---------------------------------------------------------------------------------
-Source: Chrisitan Damhaug
-www.parallab.uib.no/parasol/data.html
-
-We have this matrix available in assembled and element form
-
-Ship section/detail from production run
-Order 114,919
-when assembled, entries = 3,384,159
-unassembled entries = 7,431,867
-
-DNV-PARASOL Ship section 5-1999-01-15                                   Shipsec5
-       2885670          5228        100791       2779651             0
-RSE                   179860         52272       1007907      11118602          
-(10I8)          (10I8)          (4e22.14)                               
-            
-
---------------------------------------------------------------------------------
-==> Thread.readme <==
+clustering:  Clustering Benchmarks
 --------------------------------------------------------------------------------
 
-Source: Christain Damahug (Det Norske Veritas, Oslo, Norway)
+    These real-world graphs are often used as benchmarks in the graph
+    clustering and community detection communities.  All but 4 of the 27
+    graphs already appear in the UF collection in other groups.  The
+    DIMACS10 version is always symmetric, binary, and with zero-free
+    diagonal.  The version in the UF collection may not have those
+    properties, but in those cases, if the pattern of the UF matrix
+    is symmetrized and the diagonal removed, the result is the DIMACS10
+    graph.
 
+    DIMACS10 graph:                 new?   UF matrix:
+    ---------------                 ----   -------------
+    clustering/adjnoun                     Newman/adjoun
+    clustering/as-22july06                 Newman/as-22july06
+    clustering/astro-ph                    Newman/astro-ph
+    clustering/caidaRouterLevel      *     DIMACS10/caidaRouterLevel
+    clustering/celegans_metabolic          Arenas/celegans_metabolic
+    clustering/celegansneural              Newman/celegansneural
+    clustering/chesapeake            *     DIMACS10/chesapeake
+    clustering/cnr-2000                    LAW/cnr-2000
+    clustering/cond-mat-2003               Newman/cond-mat-2003
+    clustering/cond-mat-2005               Newman/cond-mat-2005
+    clustering/cond-mat                    Newman/cond-mat
+    clustering/dolphins                    Newman/dolphins
+    clustering/email                       Arenas/email
+    clustering/eu-2005                     LAW/eu-2005
+    clustering/football                    Newman/football
+    clustering/hep-th                      Newman/hep-th
+    clustering/in-2004                     LAW/in-2004
+    clustering/jazz                        Arenas/jazz
+    clustering/karate                      Arenas/karate
+    clustering/lesmis                      Newman/lesmis
+    clustering/netscience                  Newman/netscience
+    clustering/PGPgiantcompo               Arenas/PGPgiantcompo
+    clustering/polblogs                    Newman/polblogs
+    clustering/polbooks                    Newman/polbooks
+    clustering/power                       Newman/power
+    clustering/road_central          *     DIMACS10/road_central
+    clustering/road_usa              *     DIMACS10/road_usa
 
- Matrix Format Converter
- -----------------------
+    the following graphs were added on July 2012:
 
- Total number of nodes ................................... :       10008
- Number of active nodes .................................. :        9912
- Number of external nodes ................................ :           0
- Number of nodes with at least one boundary condition .... :          96
- Number of nodes with at least one load intensity ........ :           0
- Number of free variables (equations) .................... :       29736
+    G_n_pin_pout
+    preferentialAttachment
+    smallworld
 
- Number of elements ...................................... :        2176
- Number of material types ................................ :           1
- Maximum number of nodes connected to an element ......... :          20
+    uk-2002 was \'added\' on July 2012 to the dimacs10 MATLAB interface,
+    but it already appears as the LAW/uk-2002 matrix.
 
- Size of complete element node connectivity .............. :       42080
- Size of stripped element node connectivity .............. :       41888
- Size of active adjacency set representation ............. :      486760
- TIME FOR WRITING MATRIX FORMAT        =     1.0886445045E+00
-
-
- = = = = = = = = = = = = = = = = = = = = = = = = =
- = = = Storage Requirement Matrix Convertion = = =
- = = = = = = = = = = = = = = = = = = = = = = = = =
-
- Total INTEGER workspace need (runtime measure) .......... :      201743
- Total REAL workspace need (runtime measure) ............. :           0
-
- Total CPU-time consumption to convert the matrix ........ : 1.33817E+00
-
- Wall-Clock Time Consumption ............................. : 4.00000E+00
-
---------------------------------------------------------------------------------
-==> THREAD.readme <==
---------------------------------------------------------------------------------
-Source: Chrisitan Damhaug
-www.parallab.uib.no/parasol/data.html
-
-We have this matrix available in assembled and element form
-
-Threaded connector/contact problem
-Order 29,736
-when assembled, entries = 2,249,892
-unassembled entries = 3,718,704
-
-DNV-Ex 7 : Threaded connector/contact problem-1999-01-17                THREAD  
-        942461           218         12567        929676             0
-RSE                    29736          2176        125664       3718704          
-(10I8)          (10I8)          (3e26.16)                               
-            
+    uk-2007-05 is in the DIMACS10 collection but is not yet added here,
+    because it\'s too large for the file format of the UF collection.
 
 --------------------------------------------------------------------------------
-==> trdheim.readme <==
---------------------------------------------------------------------------------
-Source: Christian Damhaug (DNR)
-
-Matrix Representation of TRDHEIM, Mesh of the Trondheim Fjord           TRDHEIM 
-          4473            82          4391             0             0
-PSE                    22098           813         43902             0
-(10I8)          (10I8)          
-
---------------------------------------------------------------------------------
-==> Troll.readme <==
+coauthor:  Citation Networks
 --------------------------------------------------------------------------------
 
-Source: Christain Damahug (Det Norske Veritas, Oslo, Norway)
-
- Matrix Format Converter
- -----------------------
-
- Total number of nodes ................................... :       72545
- Number of active nodes .................................. :       71151
- Number of external nodes ................................ :           0
- Number of nodes with at least one boundary condition .... :        1394
- Number of nodes with at least one load intensity ........ :           0
- Number of free variables (equations) .................... :      213453
-
- Number of elements ...................................... :       41084
- Number of material types ................................ :           2
- Maximum number of nodes connected to an element ......... :           8
-
- Size of complete element node connectivity .............. :      321888
- Size of stripped element node connectivity .............. :      318624
- Size of active adjacency set representation ............. :     1260528
- TIME FOR WRITING MATRIX FORMAT        =     8.8573474884E+00
-
-
- = = = = = = = = = = = = = = = = = = = = = = = = =
- = = = Storage Requirement Matrix Convertion = = =
- = = = = = = = = = = = = = = = = = = = = = = = = =
-
- Total INTEGER workspace need (runtime measure) .......... :     1570220
- Total REAL workspace need (runtime measure) ............. :           0
-
- Total CPU-time consumption to convert the matrix ........ : 1.10190E+01
-
- Wall-Clock Time Consumption ............................. : 2.90000E+01
+    These graphs are examples of social networks used in R. Geisberger, P.
+    Sanders, and D. Schultes. Better approximation of betweenness
+    centrality. In 10th Workshop on Algorithm Engineering and
+    Experimentation, pages 90-108, San Francisco, 2008. SIAM.
 
 --------------------------------------------------------------------------------
-==> tsyl201.readme <==
+Delaunay:  Delaunay Graphs
 --------------------------------------------------------------------------------
-Source: Christian Damhaug (DNR)
 
-Matrix Representation of TSYL201, part of condeep cylinder              TSYL201 
-          5857            97          5760             0             0
-PSE                    20685           960         57600             0
-(10I8)          (10I8)          
+    These files have been generated as Delaunay triangulations of random
+    points in the unit square.
+
+    Engineering a scalable high quality graph partitioner,
+    M. Holtgrewe, P. Sanders, C. Schulz, IPDPS 2010
+    http://dx.doi.org/10.1109/IPDPS.2010.5470485
 
 --------------------------------------------------------------------------------
-==> X104.readme <==
+dyn-frames:  Frames from 2D Dynamic Simulations
 --------------------------------------------------------------------------------
-Source: Chrisitan Damhaug
-www.parallab.uib.no/parasol/data.html
 
-We have this matrix available in assembled and element form
+    These files have been created with the generator described in Oliver
+    Marquardt, Stefan Schamberger: Open Benchmarks for Load Balancing
+    Heuristics in Parallel Adaptive Finite Element Computations. In Proc.
+    International Conference on Parallel and Distributed Processing
+    Techniques and Applications (PDPTA 2005), Volume 2, pp. 685-691. CSREA
+    Press 2005, ISBN 1-932415-59-9685-691.
 
-Beam joint (SESAM test example no. 104)
-Order 108,384
-when assembled, entries = 5,138,004
-unassembled entries = 7,065,546
+    The graphs are meshes taken from indivudual frames of a dynamic
+    sequence that resembles two-dimensional adaptive numerical simulations.
+    Smaller versions of these files (and their dynamic sequences as videos)
+    can be found on Stefan Schamberger\'s website (
+    http://www.upb.de/cs/schaum/benchmark.html ) dedicated to these
+    benchmarks. The files presented here are the frames 0, 10, and 20 of
+    the sequences, respectively.
 
-DNV-Ex 8 : SESAM test example no 104-1999-01-17                         X104    
-       1795848           602         28859       1766387             0
-RSE                   108384          6019        288588       7065546          
-(10I8)          (10I8)          (3e26.16)                               
+--------------------------------------------------------------------------------
+Kronecker:  Kronecker Generator Graphs
+--------------------------------------------------------------------------------
+
+    The original Kronecker files contain self-loops and multiple edges.
+    These properties are also present in real-world data sets. However,
+    some tools cannot handle these "artifacts" at the moment. That is why
+    we present "cleansed" versions of the data sets as well.  For the
+    Challenge you should expect to be confronted with the original data
+    with self-loops and multiple edges. However, the final decision on
+    this issue will be made based on participant feedback.
+
+    All files have been generated with the R-MAT parameters A=0.57, B=0.19,
+    C=0.19, and D=1-(A+B+C)=0.05 and edgefactor=48, i.e., the number of
+    edges equals 48*n, where n is the number of vertices. Details about the
+    generator and the parameter meanings can be found on the Graph500
+    website.  ( http://www.graph500.org/Specifications.html )
+
+    There are 12 graphs in the DIMACS10 test set at
+    http://www.cc.gatech.edu/dimacs10/index.shtml .  Them come in 6 pairs.
+    One graph in each pair is a multigraph, with self-edges.  The other
+    graph is the nonzero pattern of the first (binary), with self-edges
+    removed.  MATLAB cannot directly represent multigraph, so in the UF
+    Collection the unweighted multigraph G is represented as a matrix A
+    where A(i,j) is an integer equal to the number edges (i,j) in G.
+
+    The binary graphs include the word \'simple\' in their
+    name In the UF Collection, only the multigraph is included,
+    since the simple graph can be constructed from the multigraph.
+    If A is the multigraph, the simple graph S can be computed as:
+
+       S = spones (tril (A,-1)) + spones (triu (A,1)) ;
+
+    DIMACS10 graph:                        UF matrix:
+    ---------------                        -------------
+    kronecker/kron_g500-logn16             DIMACS10/kron_g500-logn16
+    kronecker/kron_g500-simple-logn16
+
+    kronecker/kron_g500-logn17             DIMACS10/kron_g500-logn17
+    kronecker/kron_g500-simple-logn17
+
+    kronecker/kron_g500-logn18             DIMACS10/kron_g500-logn18
+    kronecker/kron_g500-simple-logn18
+
+    kronecker/kron_g500-logn19             DIMACS10/kron_g500-logn19
+    kronecker/kron_g500-simple-logn19
+
+    kronecker/kron_g500-logn20             DIMACS10/kron_g500-logn20
+    kronecker/kron_g500-simple-logn20
+
+    kronecker/kron_g500-logn21             DIMACS10/kron_g500-logn21
+    kronecker/kron_g500-simple-logn21
+
+
+    References: "Introducing the Graph 500," Richard C. Murphy, Kyle B.
+    Wheeler, Brian W. Barrett, James A. Ang, Cray User\'s Group (CUG), May
+    5, 2010.
+
+    D.A. Bader, J. Feo, J. Gilbert, J. Kepner, D. Koester, E. Loh, K.
+    Madduri, W. Mann, Theresa Meuse, HPCS Scalable Synthetic Compact
+    Applications #2 Graph Analysis (SSCA#2 v2.2 Specification), 5
+    September 2007.
+
+    D. Chakrabarti, Y. Zhan, and C. Faloutsos, R-MAT: A recursive model
+    for graph mining, SIAM Data Mining 2004.
+
+    Section 17.6, Algorithms in C (third edition). Part 5 Graph
+    Algorithms, Robert Sedgewick (Programs 17.7 and 17.8)
+
+    P. Sanders, Random Permutations on Distributed, External and
+    Hierarchical Memory, Information Processing Letters 67 (1988) pp
+    305-309.
+
+    "DFS: A Simple to Write Yet Difficult to Execute Benchmark," Richard C.
+    Murphy, Jonathan Berry, William McLendon, Bruce Hendrickson, Douglas
+    Gregor, Andrew Lumsdaine, IEEE International Symposium on Workload
+    Characterizations 2006 (IISWC06), San Jose, CA, 25-27 October 2006.
+
+    ---- sample code for generating these matrices:
+
+    function ij = kronecker_generator (SCALE, edgefactor)
+    %% Generate an edgelist according to the Graph500
+    %% parameters.  In this sample, the edge list is
+    %% returned in an array with two rows, where StartVertex
+    %% is first row and EndVertex is the second.  The vertex
+    %% labels start at zero.
+    %%
+    %% Example, creating a sparse matrix for viewing:
+    %%   ij = kronecker_generator (10, 16);
+    %%   G = sparse (ij(1,:)+1, ij(2,:)+1, ones (1, size (ij, 2)));
+    %%   spy (G);
+    %% The spy plot should appear fairly dense. Any locality
+    %% is removed by the final permutations.
+
+      %% Set number of vertices.
+      N = 2^SCALE;
+
+      %% Set number of edges.
+      M = edgefactor * N;
+
+      %% Set initiator probabilities.
+      [A, B, C] = deal (0.57, 0.19, 0.19);
+
+      %% Create index arrays.
+      ij = ones (2, M);
+      %% Loop over each order of bit.
+      ab = A + B;
+      c_norm = C/(1 - (A + B));
+      a_norm = A/(A + B);
+
+      for ib = 1:SCALE,
+        %% Compare with probabilities and set bits of indices.
+        ii_bit = rand (1, M) > ab;
+        jj_bit = rand (1, M) > ( c_norm * ii_bit + a_norm * not (ii_bit) );
+        ij = ij + 2^(ib-1) * [ii_bit; jj_bit];
+      end
+
+      %% Permute vertex labels
+      p = randperm (N);
+      ij = p(ij);
+
+      %% Permute the edge list
+      p = randperm (M);
+      ij = ij(:, p);
+
+      %% Adjust to zero-based labels.
+      ij = ij - 1;
+
+    function G = kernel_1 (ij)
+    %% Compute a sparse adjacency matrix representation
+    %% of the graph with edges from ij.
+
+      %% Remove self-edges.
+      ij(:, ij(1,:) == ij(2,:)) = [];
+      %% Adjust away from zero labels.
+      ij = ij + 1;
+      %% Find the maximum label for sizing.
+      N = max (max (ij));
+      %% Create the matrix, ensuring it is square.
+      G = sparse (ij(1,:), ij(2,:), ones (1, size (ij, 2)), N, N);
+      %% Symmetrize to model an undirected graph.
+      G = spones (G + G.\');
+
+--------------------------------------------------------------------------------
+numerical: graphs from numerical simulations
+--------------------------------------------------------------------------------
+
+    For the graphs adaptive and venturiLevel3, please refer to the preprint:
+
+    Hartwig Anzt, Werner Augustin, Martin Baumann, Hendryk Bockelmann,
+    Thomas Gengenbach, Tobias Hahn, Vincent Heuveline, Eva Ketelaer,
+    Dimitar Lukarski, Andrea Otzen, Sebastian Ritterbusch, Bjo"rn Rocker,
+    Staffan Ronnås, Michael Schick, Chandramowli Subramanian, Jan-Philipp
+    Weiss, and Florian Wilhelm.  Hiflow3 - a flexible and hardware-aware
+    parallel Finite element package. In Parallel/High-Performance Object-
+    Oriented Scientific Computing (POOSC\'10).
+
+    For the graphs channel-500x100x100-b050 and packing-500x100x100-b050,
+    please refer to:
+
+    Markus Wittmann, Thomas Zeiser. Technical Note: Data Structures of
+    ILBDC Lattice Boltzmann Solver.
+    http://www.cc.gatech.edu/dimacs10/archive/numerical-overview-Erlangen.pdf
+
+    The instances NACA0015, M6, 333SP, AS365, and NLR are 2-dimensional FE
+    triangular meshes with coordinate information. 333SP and AS365 are actually
+    converted from existing 3-dimensional models to 2D places, while the rest
+    are created from geometry. The corresponding coordinate files have been
+    assembled in one archive. They have been created and contributed by Chan
+    Siew Yin with the help of Jian Tao Zhang, Department of Mechanical
+    Engineering, University of New Brunswick, Fredericton, Canada. 
+
+--------------------------------------------------------------------------------
+random:  Random Geometric Graphs
+--------------------------------------------------------------------------------
+
+    rggX is a random geometric graph with 2^X vertices. Each vertex is a
+    random point in the unit square and edges connect vertices whose
+    Euclidean distance is below 0.55 (ln n)/n. This threshold was choosen
+    in order to ensure that the graph is almost connected.
+
+    Note:  the UF Collection is a collection of matrices primarily from
+    real applications.  The only random matrices I add to the collection
+    are those used in established benchmarks (such as DIMACS10).
+
+    Engineering a scalable high quality graph partitioner,
+    M. Holtgrewe, P. Sanders, C. Schulz, IPDPS 2010.
+    http://dx.doi.org/10.1109/IPDPS.2010.5470485
+
+--------------------------------------------------------------------------------
+steets:  Street Networks
+--------------------------------------------------------------------------------
+
+    The graphs Asia, Belgium, Europe, Germany, Great-Britain, Italy,
+    Luxemburg and Netherlands are (roughly speaking) undirected and
+    unweighted versions of the largest strongly connected component
+    of the corresponding Open Street Map road networks. The Open
+    Street Map road networks have been taken from
+    http://download.geofabrik.de and have been converted for DIMACS10
+    by Moritz Kobitzsch (kobitzsch at kit.edu) as follows:
+
+    First, we took the corresponding graph and extracted all routeable
+    streets. Routable streets are objects in this file that are tagged
+    using one of the following tags: motorway, motorway_link, trunk
+    trunk_link, primary, primary_link, secondary, secondary_link,
+    tertiary, tertiary_link, residential, unclassified, road,
+    living_street, and service.  Next, we now compute the largest
+    strongly connected component of this extracted open street map graph.
+    Self-edges and parallel edges are removed afterwards.
+    The DIMACS 10 graph is now the undirected and unweighted version
+    of the constructed graph, i.e.  if there is an edge (u,v) but the
+    reverse edge (v,u) is missing, we insert the reverse edge into the
+    graph.  The XY coordinates of each node in the graph are preserved.
+
+--------------------------------------------------------------------------------
+Walshaw:  Chris Walshaw\'s graph partitioning archive
+--------------------------------------------------------------------------------
+
+    Chris Walshaw\'s graph partitioning archive contains 34 graphs that
+    have been very popular as benchmarks for graph partitioning algorithms
+    ( http://staffweb.cms.gre.ac.uk/~wc06/partition/ ).
+
+    17 of them are already in the UF Collection.  Only the 17 new graphs
+    not yet in the collection are added here in the DIMACS10 set.
+
+    DIMACS10 graph:                 new?   UF matrix:
+    ---------------                 ----   -------------
+    walshaw/144                      *     DIMACS10/144
+    walshaw/3elt                           AG-Monien/3elt
+    walshaw/4elt                           Pothen/barth5
+    walshaw/598a                     *     DIMACS10/598a
+    walshaw/add20                          Hamm/add20
+    walshaw/add32                          Hamm/add32
+    walshaw/auto                     *     DIMACS10/auto
+    walshaw/bcsstk29                       HB/bcsstk29
+    walshaw/bcsstk30                       HB/bcsstk30
+    walshaw/bcsstk31                       HB/bcsstk31
+    walshaw/bcsstk32                       HB/bcsstk32
+    walshaw/bcsstk33                       HB/bcsstk33
+    walshaw/brack2                         AG-Monien/brack2
+    walshaw/crack                          AG-Monient/crack
+    walshaw/cs4                      *     DIMACS10/cs4
+    walshaw/cti                      *     DIMACS10/cti
+    walshaw/data                     *     DIMACS10/data
+    walshaw/fe_4elt2                 *     DIMACS10/fe_4elt2
+    walshaw/fe_body                  *     DIMACS10/fe_body
+    walshaw/fe_ocean                 *     DIMACS10/fe_ocean
+    walshaw/fe_pwt                         Pothen/pwt
+    walshaw/fe_rotor                 *     DIMACS10/fe_rotor
+    walshaw/fe_sphere                *     DIMACS10/fe_sphere
+    walshaw/fe_tooth                 *     DIMACS10/fe_tooth
+    walshaw/finan512                       Mulvey/finan512
+    walshaw/m14b                     *     DIMACS10/m14b
+    walshaw/memplus                        Hamm/memplus
+    walshaw/t60k                     *     DIMACS10/t60k
+    walshaw/uk                       *     DIMACS10/uk
+    walshaw/vibrobox                       Cote/vibrobox
+    walshaw/wave                           AG-Monien/wave
+    walshaw/whitaker3                      AG-Monien/whitaker3
+    walshaw/wing                     *     DIMACS10/wing
+    walshaw/wing_nodal               *     DIMACS10/wing_nodal
+
+--------------------------------------------------------------------------------
+redistrict:  census networks
+--------------------------------------------------------------------------------
+
+    These graphs represent US states. They are used for solving the
+    redistricting problem. All data have been provided by Will Zhao. As stated
+    on the project website,  The nodes are Census2010 blocks. Two nodes have an
+    edge linking them if they share a line segment on their borders, i.e.
+    rook-style neighboring. The nodes weights are the POP100 variable of
+    Census2010-PL94, and the area of eache district.
+
+--------------------------------------------------------------------------------
+star-mixtures : artificially generated from sets of real graphs
+--------------------------------------------------------------------------------
+
+    Each graph in this benchmark represents a star-like structure of different
+    graphs S0 , . . . , St. Graphs S1 , . . . , St are weakly connected to the
+    center S0 by random edges. The total number of edges between each Si and S0
+    was less than 3% out of the total number of edges in Si . The graphs are
+    mixtures of the following structures: social networks, finite-element
+    graphs, VLSI chips, peer-to-peer networks, and matrices from optimization
+    solvers.
+
+    More info can be found in the paper I. Safro, P. Sanders, C. Schulz:
+    Advanced Coarsening Schemes for Graph Partitioning, SEA 2012.
+
+    Communicated by Christian Schulz, uploaded on March 30, 2012. 
 
 ',
 

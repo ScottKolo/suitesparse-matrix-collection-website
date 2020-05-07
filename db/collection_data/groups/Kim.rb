@@ -1,7 +1,7 @@
 {
-    name: 'Koutsovasilis',
+    name: 'Kim',
     num_matrices: '2',
-    notes: 'Symmetric indefinite matrix from P. Koutsovasilis, Tech. Univ. Dresden
+    notes: '2D complex meshes, from Wonsik Kim, Korea.
 ',
 
 }

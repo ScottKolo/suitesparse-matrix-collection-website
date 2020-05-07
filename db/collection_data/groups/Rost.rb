@@ -1,10 +1,12 @@
 {
-    name: 'Rothberg',
-    num_matrices: '6',
-    notes: 'Structural engineering matrices from Ed Rothberg, Silicon Graphics, Inc.
+    name: 'Rost',
+    num_matrices: '1',
+    notes: 'semiconductor device simulation, Johann Rost, Politechnia Univ., Bucharest.
 
-Some of the matrix names and file names don\'t match.
-This might be changed soon.
+Numerical Methods Laboratory, Politehnica Univ., Bucharest, Romania.
+Johann Rost, et al.  RF semiconductors and electronic device simulation
+in the frequency domain.  UMFPACK (x=A\\b in MATLAB) experiences high
+fill-in for this matrix.  KLU is worse.
 ',
 
 }

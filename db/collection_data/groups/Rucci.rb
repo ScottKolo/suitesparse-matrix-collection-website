@@ -1,7 +1,7 @@
 {
-    name: 'Rudnyi',
+    name: 'Rucci',
     num_matrices: '1',
-    notes: '3D fluid flow: water in a tank.  Evgenii Rudnyi, IMTEK
+    notes: 'ill-conditioned least-squares problem, A. Rucci
 ',
 
 }

@@ -1,21 +1,44 @@
 {
-    name: 'Cunningham',
-    num_matrices: '4',
-    notes: 'Finite element matrices from Andrew Cunningham, Vibro-Acoustic Sciences, Inc.
-http://www.vasci.com
+    name: 'Cote',
+    num_matrices: '2',
+    notes: 'Vibroacoustic matrices from Andre Cote, Univ. Sherbrooke, Quebec.
 
-qa8fk:  Finite element stiffness matrix for a 3D acoustic problem.
-qa8fm:  Mass matrix for the above problem.
-Both matrices are symmetric.
+  Andre Cote
+  GAUS, genie mecanique
+  Universite de Sherbrooke     |  E-mail :
+  Andre.Cote :at the domain: gme.usherb.ca
+  2500, boul. Universite       |  Tel    : (819) 821-8000 ext. 3166
+  Sherbrooke ( Quebec )        |  Fax    : (819) 821-7163
+  J1K 2R1                      |  Web    : http://www-gaus.gme.usherb.ca/
 
-The MATLAB version of qa8fk and qa8fm includes the 3D coordinates of
-the nodes of the matrix as Problem.coord.  They appear here as *.xyz.gz
-files.  See ../Pothen/README.txt for a description of the xyz file format.
 
-k3plates:  Finite element mass matrix, 3 plates meeting at a line
-m3plates:  mass matrix for the above problem.
+Andre Cote writes:
 
-Submitted to the UF sparse matrix collection in January, 2002.
+Depending on the type of problems we solve ( structure only, fluid only,
+fluid-structure, etc.), and the type of solutions we are interested in
+(eigenvalue or forced problems), we use different calculations schemes.
+But, basically, the main bottleneck for every path comes down to two
+situations:
+
+1. Solving Ax = b for A symmetric and real (double precision)
+
+	file name:	vibrobox.rsa
+
+	How large                  ?  12328 DOFS       
+	What is the structure like ?  symmetric with large bandwidth
+	What structural problem    ?  flexible box (structure only)
+
+
+2. Solving Ax = b for A symmetric and complex (double precision)
+
+	file name:	mplate.csa
+
+	How large                  ?  5962 DOFS        
+	What is the structure like ?  symmetric 
+	What structural problem    ?  multi-layer plate (that is
+	a plate-air-poroelastic-air-plate system)
+
+Many solves are required (a few to 5000).
 
 ',
 

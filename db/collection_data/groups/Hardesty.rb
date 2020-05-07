@@ -1,38 +1,22 @@
 {
-    name: 'Harvard_Seismology',
-    num_matrices: '1',
-    notes: 'Earth\'s crust underneath Japan, Harvard Seismology Group.
+    name: 'Hardesty',
+    num_matrices: '3',
+    notes: 'Surface fitting problem for visualization, Sean Hardesty
 
-This matrix represents the forward operator of a linearized seismic
-tomography problem for imaging Japan\'s crust and upper mantle.  The
-rows of the matrix correspond to 87,616 P-wave ray paths, from 125
-moderate size earthquakes (stars), deeper that ~150 km that occurred
-the last decade, and recorded from seismic stations of the Hi-net
-array (triangles). The 3-Dimensional space is parameterized using a
-grid of 67,320 parameters that correspond to the columns of the matrix.
+Visualization of 3D structures in the earth
 
-The matrix is structurally and numerically rank deficient.  This is
-because some parts of the Earth are not imaged well from the data,
-due to the lack of signals (earthquakes) and receivers (seismic stations
-in those areas.  This leads to an under-determined part of the system.
-Other parts of the problem are overdetermined, because deep earthquakes
-repeat in the same region of the Earth, over time, and the seismic
-stations do not move.  Repeated earthquakes from the same source
-are recorded by the same seismic stations, leading to an over-
-determined problem for those regions of the Earth.
+The Hardesty3 matrix is an interpolation matrix stacked above a
+weighted Laplacian, to to fit a surface z(x,y) to a set of points
+in R^3 subject to a smoothness constraint enforced via regularization.
+Hardesty2 is a smaller version of this problem.
 
-In MATLAB, cs_dmspy(Problem.A) displays these two parts of the matrix,
-using a function from CSparse, available at http://suitesparse.com.
+For the big matrix (Hardesty/Hardesty3), sparse QR (via SuiteSparseQR,
+or SPQR) finds an R factor and a set of Householder vectors (Q.H) with
+about 150 million nonzeros.  Sparse LU factorization (with UMFPACK
+v5.7.1) sees very high fillin (about 2.5 billion nonzeros in L+U).
 
-Petros Bogiatzis, Miaki Ishii, Harvard Seismology Group, 2015
-http://www.seismology.harvard.edu
-
-References:
-
-Bogiatzis, P., & Ishii, M., 2014. Resolution Analysis and Jointly Inverted P-
-and S-Wave Models of Japan\'s Crust and Upper Mantle. American Geophysical
-Union, Fall Meeting 2014, S33A-4501.
-
+The Hardesty1 matrix is a simple discretization of a 2D biharmonic
+operator with some Lagrange multiplier constraints used for smoothing.
 ',
 
 }

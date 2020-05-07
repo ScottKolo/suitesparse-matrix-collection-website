@@ -1,85 +1,72 @@
 {
-    name: 'LPnetlib',
-    num_matrices: '138',
-    notes: 'NETLIB Linear Programming problems, www.netlib.org.
+    name: 'LAW',
+    num_matrices: '15',
+    notes: 'Laboratory for Web Algorithmics (LAW), Università degli Studi di Milano
+http://law.di.unimi.it/index.php
 
-matrices/LPnetlib/README.  Tim Davis, May 15, 1997. (davis :at the domain:
-cise.ufl.edu)
+When using matrices in the LAW/ group in the collection, please follow the
+citation instructions at http://law.di.unimi.it/datasets.php
 
-The files in this directory are a translation of the linear programming
-problems in Netlib.  You can obtain more information about the Netlib LP
-problems by sending email to netlib :at the domain:
-ornl.gov with the message
-"send index from lp".
+If you publish results based on these graphs, please acknowledge the usage of
+WebGraph and LLP by quoting the following papers:
 
+@inproceedings{BoVWFI,
+  author ="Paolo Boldi and Sebastiano Vigna",
+  title = "The {W}eb{G}raph Framework {I}: {C}ompression Techniques",
+  year = 2004,
+  booktitle="Proc. of the Thirteenth International World Wide Web Conference (WWW 2004)",
+  address="Manhattan, USA",
+  pages="595--601",
+  publisher="ACM Press"
+}
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-NOTICE!  The Netlib LP problems, in MPS format, should be considered the
-"canonical" problems.  If you find any problems with different optimal
-objectives than what is reported in Netlib, then please let me know.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+@inproceedings{BRSLLP,
+  author = "Paolo Boldi and Marco Rosa and Massimo Santini and Sebastiano Vigna",
+  title = "Layered Label Propagation: A MultiResolution Coordinate-Free Ordering
+  for Compressing Social Networks",
+  booktitle="Proceedings of the 20th international conference on World Wide Web",
+  year = 2011,
+  publisher="ACM Press"
+}
 
-The Netlib LP problems are in MPS or compressed MPS format.  Any compressed
-MPS files were uncompressed using emps.c in the Netlib lp/data directory.
-The MPS files were then converted to the KAR format using the mpsrd program
-by M.G.C. Resende and G. Veiga.  The mpsrd program does not process RANGES,
-so five problems (boeing1, boeing2, forplan, nesm, and seba) do not appear
-here.  The KAR format is written out by mpsrd as follows:
+If the graphs you are using were gathered by UbiCrawler, please acknowledge the
+usage of UbiCrawler by quoting the following paper:
 
-c     name   - problem name (same as mps name card)
-      write(out,\'(a8)\') name
-c     m      - number or rows (input)
-c     n      - number of columns (input)
-      write(out,*) m,n
-c     ia     - pointers to the begining of storage of column
-      write(out,*) (ia(i),i=1,n+1)
-c     ja     - row indices for each non zero entry (input)
-      write(out,*) (ja(i),i=1,ia(n+1)-1)
-c     a      - non zero entries (input)
-      write(out,*) (a(i),i=1,ia(n+1)-1)
-c     b      - right hand side (input)
-      write(out,*) (b(i),i=1,m)
-c     c      - objective vector (minimize)
-      write(out,*) (c(i),i=1,n)
-c     z0     - initial fixed value for objective
-      write(out,*) z0
-c     lobnd  - lower bounds on variables
-      write(out,*) (lobnd(i),i=1,n)
-c     upbnd  - upper bounds on variables
-      write(out,*) (upbnd(i),i=1,n)
+@article{BCSU3,
+  author="Paolo Boldi and Bruno Codenotti and Massimo Santini and Sebastiano Vigna",
+  title="UbiCrawler: A Scalable Fully Distributed Web Crawler",
+  journal="Software: Practice and Experience",
+  year=2004,
+  volume=34,
+  number=8,
+  pages="711--726"
+}
 
-Mpsrd converts the MPS problem into a single form:
+Notes on the graphs in the UF Collection:
 
-	minimize c\'*x, subject to Ax=b and l<=x<=u.
-	(and given an initial value of the objective, z0).
+    The node labels have not been imported into the UF Collection,
+    since they are not yet compatible with the UF format.
+    They are available at the http://law.di.unimi.it/index.php site
+    as separate files.
 
-Next, the KAR formatted version of the LP problem was converted into
-two formats by the readkar.f program, written by Tim Davis.  It generates
-a single Matlab script, such as lp_afiro.m for the AFIRO problem.
-For infeasible (lp/infeas) problems, the prefix is lpi_ (lpi_galenet.m for
-the problem GALENET, for example).  This prefix was chosen so that you
-are sure to notice that the problem is infeasible, and also because there
-are two versions of the same problem in Netlib (GREENBEA), one feasible
-and the other not.
+    The MATLAB Problem.A matrix is stored in double precision, but
+    these files are all binary.  These graphs are also quite huge.
+    If you have problems with memory usage, you can convert the
+    graphs to the logical format.  For example:
 
+        Problem = UFget (\'LAW/uk-2002\') ;
+        A = logical (Problem.A) ;
+        clear Problem
 
+    The above transformation will temporarily take additional space,
+    but once the transformation is made, A will be about half as
+    big as the original Problem.A.  This will free up memory for
+    other algorithms to operate on the graph (assuming that they
+    can operate on logical sparse matrices).
 
---------------------------------------------------------------------------------
-
-
-The *.clu files contain the c, l, and u vectors,
-and the scalar z0, for the LP problems held in
-RRA format in the LPnetlib directory.  The dense vectors
-appear in order: c, l, u, and then z0.  One entry is held
-on each line. 
-
-The RRA files contain A and b, in Harwell/Boeing format.
-
-The LP problems are all of the form
-
-	minimize c\'*x, subject to Ax=b and l<=x<=u
-	and where z0 is the initial value of the
-	objective.
+For a complete list of the graphs in the LAW collection, and
+for a wealth of statistical data on the graphs, please
+refer to http://law.di.unimi.it/datasets.php for details.
 
 ',
 

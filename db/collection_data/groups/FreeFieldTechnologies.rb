@@ -1,7 +1,8 @@
 {
-    name: 'Freescale',
-    num_matrices: '7',
-    notes: 'Circuit simulation matrices K. Gullapalli, Freescale Semiconductor
+    name: 'FreeFieldTechnologies',
+    num_matrices: '1',
+    notes: '3D vibro-acoustic problem, aircraft engine nacelle, from M. Gontier
+Free Field Technologies, Mont-Saint Guibert, Belguim (http://www.fft.be)
 ',
 
 }

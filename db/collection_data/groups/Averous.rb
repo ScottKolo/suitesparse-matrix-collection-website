@@ -1,92 +1,85 @@
 {
-    name: 'Bai',
-    num_matrices: '78',
-    notes: 'Matrices from Z. Bai, D. Day, J. Demmel, and J. Dongarra.
-located at ftp.ms.uky.edu : pub/misc/bai/Collection.
-
-Modifications:
-Header line (line 1) of AF23560 modified - 11 null characters removed.
-Names changed to reflect the naming conventions at this site
-(lower case, followed by a 3 character extension with the matrix type - .rua,
-.rsa, etc.).
-
-Jan, 2003: Matrices with unsorted columns were sorted (originals in
-Jumbled directory).
-Apr 2003: Matrices with "(5E16)" format changed to "(5E16.8)".  Originals in
-5e16 directory.
+    name: 'Averous',
+    num_matrices: '4',
+    notes: 'Matrices from David Averous, Institut National Polytechnique de Toulouse (INPT).
 
 --------------------------------------------------------------------------------
-Original README file:
---------------------------------------------------------------------------------
 
-This directory contains the data files for the test matrices. 
+Date: Thu, 19 Feb 1998 15:13:41 +0100
+To: davis at cise.ufl.edu
+From: David Averous <David.Averous at ensigct.fr>
+Subject: UMFPACK
 
+Dear Prof. T. DAVIS,
+We work at ENSIGCT (in Toulouse (France) which is in the same university as
+ENSEEIHT)in Laboratory of Chemical Engineering. Ours fields are simulation,
+dynamic and static, and modeling of chemical processes. So we deal with
+matrices that can be small and quiet full (N=100) up to very large, very
+sparse and unsymmetric (N=100000, NNZ=500000).
+We have tested various codes and according to literature and also workshops
+(ILAY 95 CERFACS) we use UMF (2.*). For most of ours cases we have very
+good results, fast integration and acceptable fill in.
 
-Title                                                                   Key     
------------------------------------------------------------------------+--------
+We use it with a general DAE (differential Algebraic Equations) systems
+solver using Gear, write in Fortran 77. Due to its general aspect we don\'t
+know a priori the structure of matrix. So for static allocation of
+integrator work vector, does a method (or a function) exist to evaluate an
+upper limit of LVALUE and LINDEX with N(nb of equations) and NNZ(nb of non
+zero) ? (Do you intend to make a f90 version of UMF in the future.. ?)
 
-square dielectric waveguid, H. Dong                                     DW256A
-                                                                        DW245B
-                                                                        DW1024
-                                                                        DW4096
+We have another problem due to fill in. For static simulation of plate fin
+heat exchanger, we deal with matrices
+from N~10000 and NNZ~50000 to N~100000 and NNZ~500000. But we can\'t reach
+the upper limit of N due to fill in, the factor range from 5 to 50 ,
+depending of cases. It depends on matrix structure. But perhaps there is a
+matrix structure (large or small bandwidth, with or without border ...)
+that reduce fill-in in UMF ?(we tried to change the number of columns
+examined during pivot search but the behavior was unpredictable.)
 
-bounded finline waveguide eigenmodes, B. Shultz and S. Gedney           BFWA62
-                                                                        BFWB62
-                                                                        BFWA398
-                                                                        BFWB398
-                                                                        BFWA782
-                                                                        BFWB782
+Thanking you by advance for your courtesy,
 
-Magneto-hydro-dynamics Alfven spectral problem,                         MHDA416
-                                                                        MHDB416
-
-Airfoil  (A. Mahajan)                                                   AF23560 
-
-Quebec Hydro Power system, Deo                                          QH882 
-
-Chuck matrix (multiple eigenvalues)  J. Cullum                          CK104
-                                                                        CK400
-                                                                        CK656
-
-LOPSI Stochastic Test Matrix                                            LOP163
-
-
-Model ordinary differential eigenvalue problem                          ODEPA400
-                                                                        ODEPB400
-							
-Model convection-diffusion differential equations                       CDDE1 
-                                                                        CDDE2 
-                                                                        CDDE3 
-                                                                        CDDE4 
-                                                                        CDDE5 
-                                                                        CDDE6 
-
-Brusselator wave model in transport interaction of chemical solutions   BWM200 
-                                                                        BWM2000 
-                                              
-
-Markov Chain Modeling, Random Walk  (m = 15)  G. W. Stewart             RW136
-                                    (m = 30)                            RW496
-                                    (m = 100)                           RW5151
-
-model PDE problem, H. Elman         nx = ny = 15                        PDE225
-                                    nx = ny = 30                        PDE900
-                                    nx=47, ny=63                        PDE2961
+	Best regards.					Prof. J.M. LE LANN
+							D. AVEROUS
+							K. HAMMADI
+							A. SARGOUSSE
 
 
-Quantum chemistry (complex symmetric)                                   QC324
-                                                                        QC2534 
+--------------------------------------------------------------------------
+David AVEROUS
+Institut National Polytechnique de Toulouse (INPT)
+Ecole Nationale Sup=E9rieure d\'Ing=E9nieurs de G=E9nie Chimique (ENSIGC)
+Laboratoire de G=E9nie Chimique (UMR 5503 CNRS)
+Equipe Analyse Fonctionnelle des Proc=E9d=E9s
+18, Chemin de la Loge - F31078 TOULOUSE CEDEX (France)=09
+	T=E9l.: 33 (0)5 62 25 23 00 Poste 2585	Fax : 33 (0)5 62 25 23 18
+	E-mail : David.Averous at ensigct.fr
+--------------------------------------------------------------------------
 
----------------- to be included ------------------------------------------------ 
-Orr-Sommerfeld  (complex matrix) 
+Date: Mon, 02 Mar 1998 10:47:35 +0100
+To: davis at cise.ufl.edu
+From: David Averous <David.Averous at ensigct.fr>
+Subject: Matrices
 
-Ising mode (size? and parameters?)  
+I have sent you matrices (epb0.mat, epb1.mat, epb2.mat, epb3.mat). I use
+gunzip for compression.=20
 
-Robotic control (CAD in C program)                                      ROB480
+epb0 : N = 1794 ; NE = 8960 Plate-Fin Heat Exchanger with Simple Model
+epb1 : N = 14734 ; NE = 95053 PFHE Model (simple case)
+epb2 : N = 25228 ; NE = 175027 PFHE model ( case with flow redistributio=
+n
+represent by the extra diagonal blocs)
+epb3 : N = 84617 ; NE = 463625 PFHE model (large case)
 
-Taylor-Couette flow 
+I have made some tests on memory requirements as function of the amalgation
+parameter. Normalized memory requirements increases faster than in your
+tests (TR-97-016) unfortunately for me I have an extremun at default value
+(2.0), I reach 1.6 in some case. A value of 1.1 for amalgation seems better
+for my kind of matrices, of course it means a little increase in
+factorization time.
 
-NASA AMES arc2d problems (16,256 by 16,256) 
+Best wishes
+
+David Averous
 
 ',
 

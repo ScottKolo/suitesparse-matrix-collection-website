@@ -1,31 +1,31 @@
 {
-    name: 'Luong',
+    name: 'Lucifora',
     num_matrices: '2',
-    notes: 'Photogrammetry problem from Bruno Luong, FOGALE nanotech, France.
+    notes: 'GSM cell traffic matrices from Salvatore Lucifora, Telecom Italia Mobile.
 
-The problem of interest is:
+Ing. Salvatore Lucifora
+TIM R/SR-TI
+via L. Rizzo, 22
+00136 Roma
 
-    [U S V]=svd(full(A),0);
-    s=diag(S);
+tel.   +39 06 3900 9241
+fax.   +39 06 3900 9315
+cell.  +39 335 7534668
+email:  <mailto:slucifora :at the domain:
+mail.tim.it> slucifora :at the domain:
+mail.tim.it
 
-The spectrum has two parts:
-- the singular values s(1) to s(end-7) are 1.7486e-004 to 3.4655e-007 
-(ratio 504.57).
-- the singular values s(end-6) to s(end) is smaller than 2.9614e-012 
-(ratio > 5.9e7).
 
-So in my problem, I consider
-K = span<U(:,end-6:end) > is the kernel of A, and
-L = span<U(:,1:end-7) > = orthogonal(K) is isomorph to Im(A).
+These 2 matrices come from a software tool that evaluates the correct
+dimensioning for GSM cell with the coexistence of 2 kinds of traffic channels
+(Full-Rate and Half-Rate: the latter requires only half bandwidth with
+respect to the FR channel). The tool requires the solution of a sparse linear
+system Ax=b.
 
-The rank deficient is not quite clear since of A is a Jacobian of 
-certain non-linear operator. One can prove this non-linear operator has 
-a same value on a manifold of dimension 7. This manifold has some sort 
-of curvature.
-
-Best regards,
-
-Bruno
+The cell1.rua and cell2.rua matrices have the same nonzero pattern, and
+very similar values.  The 1-norm of C1-C2 is only 0.002, compared with
+a 1-norm of about 416 for both C1 and C2.  MATLAB\'s condest reports a
+condition number of 10^12 for C1 and 10^20 for C2.
 
 ',
 
