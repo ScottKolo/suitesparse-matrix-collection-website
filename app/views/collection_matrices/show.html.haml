@@ -81,8 +81,8 @@
         .carousel-inner
           -for image in image_list(@matrix) do
             .carousel-item{class: ("active" if image[:first])}
-              %a{href: "#{image[:url]}"}
-                %img.img-fluid.d-block.w-100{src: "#{image[:url]}", alt: "#{image[:description]}"}
+              = link_to image[:url] do
+                = image_tag image[:url], class: "img-fluid d-block w-100", alt: image[:description]
         %a.carousel-control-prev{href:'#figures', role: 'button', :'data-slide' => 'prev'}
           %span.carousel-control-prev-icon{'aria-hidden': 'true'}
           %span.sr-only
