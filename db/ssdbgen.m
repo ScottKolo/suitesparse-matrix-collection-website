@@ -14,7 +14,7 @@ function ssdbgen (ids, groups)
 
 index = ssget ;
 params = ssget_defaults ;
-collection_dir = params.topdir;
+collection_dir = params.topdir ;
 
 if (nargin < 1)
     ids = 1:length(index.nrows);
@@ -37,6 +37,10 @@ end
 
 if (~exist('./collection_data/matrices', 'dir'))
     mkdir('./collection_data', 'matrices')
+end
+
+if (~exist('collection_images', 'dir'))
+    mkdir('collection_images')
 end
 
 %--------------------------------------------------------------------------
@@ -126,6 +130,11 @@ name = index.Name {i} ;
 % Create a folder for this group, unless one already exists
 if (~exist(['./collection_data/matrices/', grp], 'dir'))
     mkdir('./collection_data/matrices/', grp)
+end
+
+% Create an image folder for this group, unless one already exists
+if (~exist(['./collection_images/', grp], 'dir'))
+    mkdir('./collection_images/', grp)
 end
 
 % If the data file for this matrix already exists, skip this matrix
@@ -410,8 +419,8 @@ end
 % _gplot.png
 % _svd.png
 
-image_file_list = [dir(['/archive/davis/SuiteSparseCollection/files/', fullname, '*.png']);
-                   dir(['/archive/davis/SuiteSparseCollection/files/', fullname, '*.gif'])];
+image_file_list = [dir([collection_dir, '/files/', fullname, '*.png']);
+                   dir([collection_dir, '/files/', fullname, '*.gif'])];
 
 k = 1;
 while k <= length(image_file_list)
@@ -427,9 +436,10 @@ while k <= length(image_file_list)
 end
                
 fprintf(f, '    image_files: ''');
-
+disp(image_file_list)
 for k = 1:length(image_file_list)
     fprintf(f, '%s,', image_file_list(k).name);
+    copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
 end
 
 fprintf(f, ''',\n');
