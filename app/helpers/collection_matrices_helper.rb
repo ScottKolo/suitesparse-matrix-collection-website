@@ -65,7 +65,7 @@ module CollectionMatricesHelper
 
     for filename in filename_list
       image_hash = {};
-      image_hash[:url] = "collection_images/#{matrix.group}/#{filename}"
+      image_hash[:url] = "#{CollectionMatrix.get_base_url}files/#{matrix.group}/#{filename}"
       image_hash[:description] = get_image_description(filename, matrix)
       image_hash[:first] = (filename == filename_list.first)
       image_list.append(image_hash)
