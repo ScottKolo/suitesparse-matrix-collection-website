@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   get '/RB/:group/:name.tar.gz', to: redirect('http://sparse-files.engr.tamu.edu/RB/%{group}/%{name}.tar.gz', status: 308)
   get '/MM/:group/:name.tar.gz', to: redirect('http://sparse-files.engr.tamu.edu/MM/%{group}/%{name}.tar.gz', status: 308)
   get '/svd/:group/:name_SVD.mat', to: redirect('http://sparse-files.engr.tamu.edu/svd/%{group}/%{name}_SVD.mat', status: 308)
+  
+  # Image Redirect
+  get '/files/:group/*file', to: redirect('https://sparse-files-images.engr.tamu.edu/%{group}/%{file}', status: 308), 
+                                  format: false, 
+                                  constraints: { file: /.*\.(jpg|jpeg|gif|png)/ }
+
   get '/files/*file_path', to: redirect('http://sparse-files.engr.tamu.edu/files/%{file_path}', status: 308), format: false
 
   # Static page routes
