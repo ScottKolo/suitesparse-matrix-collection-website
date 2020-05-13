@@ -39,9 +39,9 @@ if (~exist('./collection_data/matrices', 'dir'))
     mkdir('./collection_data', 'matrices')
 end
 
-% if (~exist('collection_images', 'dir'))
-%     mkdir('collection_images')
-% end
+if (~exist('collection_images', 'dir'))
+    mkdir('collection_images')
+end
 
 %--------------------------------------------------------------------------
 % Build group database
@@ -439,7 +439,7 @@ fprintf(f, '    image_files: ''');
 
 for k = 1:length(image_file_list)
     fprintf(f, '%s,', image_file_list(k).name);
-    % copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
+    copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
 end
 
 fprintf(f, ''',\n');
