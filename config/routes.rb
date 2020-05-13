@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/mat/:group/:name.mat', to: redirect('http://sparse-files.engr.tamu.edu/mat/%{group}/%{name}.mat', status: 308)
   get '/RB/:group/:name.tar.gz', to: redirect('http://sparse-files.engr.tamu.edu/RB/%{group}/%{name}.tar.gz', status: 308)
   get '/MM/:group/:name.tar.gz', to: redirect('http://sparse-files.engr.tamu.edu/MM/%{group}/%{name}.tar.gz', status: 308)
-  get '/svd/:group/:name_SVD.mat', to: redirect('http://sparse-files.engr.tamu.edu/svd/%{group}/%{name}_SVD.mat', status: 308)
+  get '/svd/:group/:filename.mat', to: redirect('http://sparse-files.engr.tamu.edu/svd/%{group}/%{filename}.mat', status: 308)
   
   # Image Redirect
   get '/files/:group/*file', to: redirect('https://sparse-files-images.engr.tamu.edu/%{group}/%{file}', status: 308), 
