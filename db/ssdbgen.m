@@ -424,6 +424,7 @@ image_file_list = [dir([collection_dir, '/files/', fullname, '*.png']);
 
 k = 1;
 while k <= length(image_file_list)
+    copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
     if ~isempty(regexp(image_file_list(k).name, '.*_thumb\..*', 'ONCE')) ...
         || ~isempty(regexp(image_file_list(k).name, '.*_big\..*', 'ONCE')) ...
         || isempty(regexp(image_file_list(k).name, (strcat(name,'[\._].*')), 'ONCE'))
@@ -439,7 +440,6 @@ fprintf(f, '    image_files: ''');
 
 for k = 1:length(image_file_list)
     fprintf(f, '%s,', image_file_list(k).name);
-    copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
 end
 
 fprintf(f, ''',\n');
