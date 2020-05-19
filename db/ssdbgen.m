@@ -424,14 +424,19 @@ image_file_list = [dir([collection_dir, '/files/', fullname, '*.png']);
 
 k = 1;
 while k <= length(image_file_list)
-    copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
-    if ~isempty(regexp(image_file_list(k).name, '.*_thumb\..*', 'ONCE')) ...
-        || ~isempty(regexp(image_file_list(k).name, '.*_big\..*', 'ONCE')) ...
-        || isempty(regexp(image_file_list(k).name, (strcat(name,'[\._].*')), 'ONCE'))
-        % Remove thumbnail or large image from list
-        % Also remove matches like matrix10 when processing matrix1
+    if isempty(regexp(image_file_list(k).name, (strcat(name,'[\._].*')), 'ONCE'))
+        % Remove matches like matrix10 when processing matrix1
+        image_file_list(k) = [];
+    elseif ~isempty(regexp(image_file_list(k).name, '.*_thumb\..*', 'ONCE'))
+        % Remove thumbnail from database list, but copy it to S3
+        copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
+        image_file_list(k) = [];
+    elseif ~isempty(regexp(image_file_list(k).name, '.*_big\..*', 'ONCE'))
+        % Remove large image from database list, but copy it to S3
+        copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
         image_file_list(k) = [];
     else
+        copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
         k = k + 1;
     end
 end
