@@ -20,7 +20,9 @@ after deployment).
 
 The website requires three servers to work together.
 
-**TODO...**
+ * **Heroku web application server.** The Rails application runs on Heroku.
+ * **sparse-files.engr.tamu.edu.** The matrix data files (MATLAB, Matrix Market, Rutherford-Boeing, and SVD data) are served from an Amazon AWS S3 bucket without any HTTPS/SSL. These files are only accessible via HTTP.
+ * **sparse-files-images.engr.tamu.edu.** The matrix image files are served from an Amazon AWS S3 bucket with HTTPS/SSL enabled. This enables images to be included in the website without a security warning.
 
 ### Ruby on Rails Application Infrastructure
 
@@ -69,8 +71,8 @@ While a full description of the inner workings of a Rails application is beyond 
  * Run the test suite.
  * Push the changes to the GitHub repository.
  * See if the test suite passes on Semaphore.
- * Check the test website (suitesparse-test.herokuapp.com).
- * Manually deploy to production (sparse.tamu.edu).
+ * Check the test website on Heroku.
+ * Manually deploy to Heroku production.
 
 Note that "code" for the website refers to everything within the Rails application folder, including the database seed data. In other words, the process for modifying and deploying the website is essentially the same whether the changes are to the website code or database code.
 
@@ -104,11 +106,11 @@ When you're ready to commit your changes, you can `git push` the changes to GitH
 
 Navigate to [semaphoreci.com/scottkolo/suitesparse-matrix-collection-website](https://semaphoreci.com/scottkolo/suitesparse-matrix-collection-website) to check the status of the continuous integration build. If this build fails, something may be cached on your system that is not on the independent server. You should troubleshoot this issue before proceeding, then push your changes to GitHub again.
 
-### Check the website on Heroku.
+### Check the test website on Heroku.
 
 Once the tests on Semaphore are passing, the web application will be automatically deployed to Heroku at [suitesparse-test.herokuapp.com](https://suitesparse-test.herokuapp.com). This deployment environment is almost identical to the production environment, so problems here will almost certainly be present in production. If everything looks and works correctly, then it's time to deploy to production.
 
-### Manually deploy to production.
+### Manually deploy to Heroku production.
 
 Once you are confident that the website is ready for deployment, you can then manually deploy the application to the production Heroku instance.
 
@@ -135,16 +137,24 @@ Here are some common problems that may occur when deploying the website.
 
 Updates to the matrix database because new matrices have been added to (or removed from...?) the collection are treated just like any other change to the website. The same process described above should be followed.
 
+## Updating Matrix Database
+
 The matrix (and group) data is stored in `db/collection_data`. It is part of the application code and stored in the GitHub repository. Modifying `collection_data` directly is not recommended - it can instead be generated automatically using `ssdbgen.m`. The general process for updating `collection_data` is described below:
 
  * Update the canonical collection up to and including the point where `ssstats.csv` is generated.
  * Log into Backslash
  	- Any computer with MATLAB installed and access to a complete copy of the collection should suffice, but for very large matrices, it may require Backslash to be able to compute the relevant statistics.
- * Start MATLAB, add the `db/` folder to your page, and run `ssdbgen` in MATLAB.
+ * Start MATLAB, navigate to the `db/` folder, and run `ssdbgen` in MATLAB.
  	- Note that `ssget` should be in your path, and it should be pointing to a complete local verison of the collection (see `ssget_defaults.m`).
- * Once `ssdbgen` has finished, two directories will have been created.
-     - First, a directory called `collection_data` will have been generated with the matrix collection database data. Copy this directory to `suitesparse-matrix-collection-website/db/collection_data`, overwriting the previous data.
-     - Second, a directory called `collection_images` will have been generated with all matrix images collected from the `files` directory. These need to be placed on the AWS S3 `sparse-files-images` bucket.
- * To test the website locally, you can call `rails db:reset` to reset the database and re-seed it with the updated data.
+ * Once `ssdbgen` has finished, the `db/collection_data` directory will have been overwritten with the new matrix collection database data.
+
+## Updating Matrix Data and Image Files
+
+![Updating AWS S3 Buckets](AWS.png)
+
+After new matrices are added, new image and data files will also need to be uploaded to their corresponding Amazon AWS S3 buckets. On Backslash, navigate to `/raid/SuiteSparseCollection` ...
+
+ * `do_aws_sync` will synchronize the directories `mat`, `MM`, `RB`, and `files` in `/raid/SuiteSparseCollection/html` with the `sparse-files.engr.tamu.edu` S3 bucket. It will also synchronize the `files` directory with the `sparse-files-images.engr.tamu.edu` S3 bucket. Note that this will also delete files on the S3 bucket that are no longer present.
+ * `do_aws_sync_dryrun` will compute a dry run of `do_aws_sync` and display the expected upload/delete operations.
 
 From this point, you can treat the above changes like any other change and start from "Make Changes to the Code" above.
