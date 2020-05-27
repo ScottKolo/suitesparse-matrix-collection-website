@@ -39,9 +39,9 @@ if (~exist('./collection_data/matrices', 'dir'))
     mkdir('./collection_data', 'matrices')
 end
 
-if (~exist('collection_images', 'dir'))
-    mkdir('collection_images')
-end
+% if (~exist('collection_images', 'dir'))
+%     mkdir('collection_images')
+% end
 
 %--------------------------------------------------------------------------
 % Build group database
@@ -133,9 +133,9 @@ if (~exist(['./collection_data/matrices/', grp], 'dir'))
 end
 
 % Create an image folder for this group, unless one already exists
-if (~exist(['./collection_images/', grp], 'dir'))
-    mkdir('./collection_images/', grp)
-end
+% if (~exist(['./collection_images/', grp], 'dir'))
+%     mkdir('./collection_images/', grp)
+% end
 
 % If the data file for this matrix already exists, skip this matrix
 if (exist(['./collection_data/matrices/', grp, '/', name, '.rb'], 'file'))
@@ -429,14 +429,14 @@ while k <= length(image_file_list)
         image_file_list(k) = [];
     elseif ~isempty(regexp(image_file_list(k).name, '.*_thumb\..*', 'ONCE'))
         % Remove thumbnail from database list, but copy it to S3
-        copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
+        % copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
         image_file_list(k) = [];
     elseif ~isempty(regexp(image_file_list(k).name, '.*_big\..*', 'ONCE'))
         % Remove large image from database list, but copy it to S3
-        copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
+        % copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
         image_file_list(k) = [];
     else
-        copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
+        % copyfile([collection_dir, '/files/', grp, '/', image_file_list(k).name], ['collection_images/' grp '/' image_file_list(k).name])
         k = k + 1;
     end
 end
