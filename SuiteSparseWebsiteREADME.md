@@ -13,18 +13,14 @@ after deployment).
 
  * **GitHub.** The code for the website is maintained on GitHub at [github.com/ScottKolo/suitesparse-matrix-collection-website](https://github.com/ScottKolo/suitesparse-matrix-collection-website).
  * **Semaphore CI.** Semaphore CI (for Continuous Integration) runs the website's test suite after every push to GitHub. This ensures an independent system can run the website and it can function properly.
- * **Heroku.** Once the website test suite passes on Semaphore CI, the website is automatically deployed on Heroku at [suitesparse-test.herokuapps.com](https://suitesparse-test.herokuapps.com). This allows the developer to check that the website is functioning as expected and renders correctly when deployed to an independent system.
- * **Sparse.** When the developer feels confident that the website is ready for deployment, they can deploy to the production server Sparse at [sparse.tamu.edu](https://sparse.tamu.edu).
+ * **Heroku (Test).** Once the website test suite passes on Semaphore CI, the website is automatically deployed on Heroku at [suitesparse-test.herokuapps.com](https://suitesparse-test.herokuapps.com). This allows the developer to check that the website is functioning as expected and renders correctly when deployed to an independent system.
+ * **Heroku (Production).** When the developer feels confident that the website is ready for deployment, they can deploy manually to the production server on Heroku (suitesparse-collection-website). This production server is accessible through [sparse.tamu.edu](https://sparse.tamu.edu).
 
-### Sparse Server Infrastructure
+### Collection Webserver Infrastructure
 
-The Sparse server (sparse.tamu.edu) has three virtual machines running on it that serve the following purposes:
+The website requires three servers to work together.
 
- * **pmatrix-www** (publicly visible as sparse.tamu.edu) runs Apache and serves the Ruby on Rails application.
- * **pmatrix-ds** (publicly visible as sparse-ds.tamu.edu) runs Apache and serves as the file server (or data store, hence _ds_). Any large files not solely associated with the website are served from this virtual machine.
- * **pmatrix-dbsrv** runs MySQL and provides the website's database backend. This server is not publicly visible.
-
-For the remainder of this document, we will use "Sparse," "sparse.tamu.edu," and "pmatrix-www" interchangeably. The other virtual machines should rarely, if ever, need to be modified. If a problem is suspected on those virtual machines, Parasol support should be contacted.
+**TODO...**
 
 ### Ruby on Rails Application Infrastructure
 
@@ -73,8 +69,8 @@ While a full description of the inner workings of a Rails application is beyond 
  * Run the test suite.
  * Push the changes to the GitHub repository.
  * See if the test suite passes on Semaphore.
- * Check the website on Heroku.
- * Manually deploy to Sparse.
+ * Check the test website (suitesparse-test.herokuapp.com).
+ * Manually deploy to production (sparse.tamu.edu).
 
 Note that "code" for the website refers to everything within the Rails application folder, including the database seed data. In other words, the process for modifying and deploying the website is essentially the same whether the changes are to the website code or database code.
 
@@ -110,58 +106,45 @@ Navigate to [semaphoreci.com/scottkolo/suitesparse-matrix-collection-website](ht
 
 ### Check the website on Heroku.
 
-Once the tests on Semaphore are passing, the web application will be automatically deployed to Heroku at [suitesparse-test.herokuapp.com](https://suitesparse-test.herokuapp.com). 
+Once the tests on Semaphore are passing, the web application will be automatically deployed to Heroku at [suitesparse-test.herokuapp.com](https://suitesparse-test.herokuapp.com). This deployment environment is almost identical to the production environment, so problems here will almost certainly be present in production. If everything looks and works correctly, then it's time to deploy to production.
 
-### Manually deploy to Sparse.
+### Manually deploy to production.
 
-Once you are confident that the website is ready for deployment, you can then manually deploy the application to the production server Sparse. Note that automatic deployment is infeasible since Sparse is only accessible inside the Texas A&M network (or VPN).
+Once you are confident that the website is ready for deployment, you can then manually deploy the application to the production Heroku instance.
 
- * First, log into sparse.
-     - `ssh <username>@sparse.tamu.edu`
-     or
-     - `ssh p-support@pmatrix-www.cse.tamu.edu
- * Switch to the suitesparsecollectionwebsite user
- 	- `su suitesparsecollectionwebsite`
- * Log file cleanup: see /var/log
- * Navigate to the website application code.
-    - `cd /var/www/suitesparse-matrix-collection-website/code`
- * Execute pull the latest version from the GitHub repository.
-    - `git pull`
- * Run bundler to update or install all Ruby gems necessary for production deployment.
-    - `bundle install --deployment --without development test production_heroku`
- * Precompile assets (stylesheets, javascript, etc.) for production.
-     - `RAILS_ENV=production bin/rails assets:precompile`
- * Reset the database, rebuild it, and seed it with the matrix data. This step can be skipped if no matrix data has changed.
-     - `bundle exec rake db:reset RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1`
- * Restart the application.
-     - `passenger-config restart-app $(pwd)`
+ * First, log into Heroku. You will need to be part of the **tamu-cse** team and have access to the **suitesparse-collection-website** app.
+ * Navigate to the **Deploy** tab.
+ * At the bottom of the page, under **Manual Deploy**, make sure the master branch is selected, and then click on **Deploy Branch**.
 
-If everything has succeeded, you should be able to navigate to [sparse.tamu.edu](https://sparse.tamu.edu) and see the newly deployed website.
+The deployment process will automatically pull the latest application code from GitHub, deploy it on Heroku in the production environment, and reset the database with the seed values. This can take a few minutes. If everything has succeeded, you should be able to navigate to [sparse.tamu.edu](https://sparse.tamu.edu) and see the newly deployed website.
 
 # Troubleshooting Deployment
 
 Here are some common problems that may occur when deploying the website.
 
-* **The styelsheets and javascript are missing.** This indicates a problem with the Rails asset pipeline. You may need to call `rake assets:precompile` to precompile the assets, or check the settings in the `config` directory.
-* **I see two (or more) copies of every matrix.** This is likely caused by calling `rake db:seed` without resetting the database. Many Rails applications have large databases that should not be reset often, but for this application, resetting the database is trivial. Running `rake db:reset` will clear the old database and rebuild it, fixing this issue. Alternatively, check the contents of `db/collection_data` to ensure that there are no erroneous duplicate files.
-* **I receive an error about a migration or schema problem.** Running `rake db:reset` should fix this. If this problem is on Heroku, `db:reset` is not allowed, so try resetting the database and running `rake db:schema:load` to load the schema manually.
+* **The styelsheets and javascript are missing.** This indicates a problem with the Rails asset pipeline. You may need to call `rails assets:precompile` to precompile the assets, or check the settings in the `config` directory.
+* **I see two (or more) copies of every matrix.** This is likely caused by calling `rails db:seed` without resetting the database. Many Rails applications have large databases that should not be reset often, but for this application, resetting the database is trivial. Running `rails db:reset` will clear the old database and rebuild it, fixing this issue. Alternatively, check the contents of `db/collection_data` to ensure that there are no erroneous duplicate files.
+    - Heroku does not give applications permission to do a total `db:reset`, so to reset the database, you need to run `rails db:schema:load db:seed`. This should be done automatically upon deployment (see `/Procfile`).
+* **I receive an error about a migration or schema problem.** Running `rake db:reset` should fix this. If this problem is on Heroku, `db:reset` is not allowed, so try resetting the database and running `rails db:schema:load` to load the schema manually.
+    - Again, the database should be reset automatically upon deployment (see `/Procfile`).
 * **My tests sometimes fail on Semaphore.** You may have a flaky test. Look into making the test more consistent, or, in the worst/lazy case, you may need to add a delay during the test (e.g. after a new filter has been applied, allowing time for the interface to update).
-* **I get a reddish "Something went wrong" page.** Check the logs. On Sparse, they are located at `/var/log/httpd/`.
+* **I get a reddish "Something went wrong" page.** Check the logs. If working locally, check `/log/development.log`, and if you're working on Heroku, click on the **More** dropdown in the top right corner of the Heroku dashboard and select **View logs**.
 * **I get some `Gemfile` / `Gemfile.lock` error.** Most likely, you forgot to run `bundle install` after modifying the Gemfile. This is important, since `Gemfile.lock` is also generated when `bundler install` runs. If the `Gemfile.lock` file is outdated compared to the `Gemfile`, you will receive an error. Another issue that can come up is that you have specified an impossible set of versions (e.g. < 2.0 and > 3.1). If you have recently edited the versions of the gems in the `Gemfile`, this could be the problem, and you will need to revise those dependencies by either upgrading or downgrading your dependencies in your `Gemfile`.
 
 # Updating the Matrix Database
 
-Updates to the matrix database because new matrices have been added to (or removed from!) the collection are treated just like any other change to the website. The same process described above should be followed.
+Updates to the matrix database because new matrices have been added to (or removed from...?) the collection are treated just like any other change to the website. The same process described above should be followed.
 
 The matrix (and group) data is stored in `db/collection_data`. It is part of the application code and stored in the GitHub repository. Modifying `colleciton_data` directly is not recommended - it can instead be generated automatically using `ssdbgen.m`. The general process for updating `collection_data` is described below:
 
- * Update the canonical collection up to and including the point where `UFstats.csv` is generated.
+ * Update the canonical collection up to and including the point where `ssstats.csv` is generated.
  * Log into Backslash
- 	- Any computer with MATLAB installed and internet access to sparse.tamu.edu should suffice, but for very large matrices, it may require Backslash to be able to compute the relevant statistics.
+ 	- Any computer with MATLAB installed and access to a complete copy of the collection should suffice, but for very large matrices, it may require Backslash to be able to compute the relevant statistics.
  * Start MATLAB and call `ssdbgen`, located in `ssdbgen.m`.
- 	- Note that `ssget` should be in your path.
- * Once `ssdbgen` has finished, a directory called `collection_data` will have been generated in the current directory.
- * Copy this directory to `suitesparse-matrix-collection-website/db/collection_data`, overwriting the previous data.
- * To test the website locally, you can call `rake db:reset` to reset the database and re-seed it with the updated data.
+ 	- Note that `ssget` should be in your path, and it should be pointing to a complete local verison of the collection (see `ssget_defaults.m`).
+ * Once `ssdbgen` has finished, two directories will have been created.
+     - First, a directory called `collection_data` will have been generated with the matrix collection database data. Copy this directory to `suitesparse-matrix-collection-website/db/collection_data`, overwriting the previous data.
+     - Second, a directory called `collection_images` will have been generated with all matrix images collected from the `files` directory. These need to be placed on the AWS S3 `sparse-files-images` bucket.
+ * To test the website locally, you can call `rails db:reset` to reset the database and re-seed it with the updated data.
 
 From this point, you can treat the above changes like any other change and start from "Make Changes to the Code" above.
