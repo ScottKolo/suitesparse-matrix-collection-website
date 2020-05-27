@@ -135,12 +135,12 @@ Here are some common problems that may occur when deploying the website.
 
 Updates to the matrix database because new matrices have been added to (or removed from...?) the collection are treated just like any other change to the website. The same process described above should be followed.
 
-The matrix (and group) data is stored in `db/collection_data`. It is part of the application code and stored in the GitHub repository. Modifying `colleciton_data` directly is not recommended - it can instead be generated automatically using `ssdbgen.m`. The general process for updating `collection_data` is described below:
+The matrix (and group) data is stored in `db/collection_data`. It is part of the application code and stored in the GitHub repository. Modifying `collection_data` directly is not recommended - it can instead be generated automatically using `ssdbgen.m`. The general process for updating `collection_data` is described below:
 
  * Update the canonical collection up to and including the point where `ssstats.csv` is generated.
  * Log into Backslash
  	- Any computer with MATLAB installed and access to a complete copy of the collection should suffice, but for very large matrices, it may require Backslash to be able to compute the relevant statistics.
- * Start MATLAB and call `ssdbgen`, located in `ssdbgen.m`.
+ * Start MATLAB, add the `db/` folder to your page, and run `ssdbgen` in MATLAB.
  	- Note that `ssget` should be in your path, and it should be pointing to a complete local verison of the collection (see `ssget_defaults.m`).
  * Once `ssdbgen` has finished, two directories will have been created.
      - First, a directory called `collection_data` will have been generated with the matrix collection database data. Copy this directory to `suitesparse-matrix-collection-website/db/collection_data`, overwriting the previous data.
