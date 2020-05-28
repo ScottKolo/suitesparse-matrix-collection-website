@@ -18,6 +18,8 @@ after deployment).
 
 ### Collection Webserver Infrastructure
 
+![Collection Webserver Infrastructure](Routing.png)
+
 The website requires three servers to work together.
 
  * **Heroku web application server.** The Rails application runs on Heroku.
@@ -25,6 +27,8 @@ The website requires three servers to work together.
  * **sparse-files-images.engr.tamu.edu.** The matrix image files are served from an Amazon AWS S3 bucket with HTTPS/SSL enabled. This enables images to be included in the website without a security warning.
 
 ### Ruby on Rails Application Infrastructure
+
+![Rail Application MVC Architecture](MVC.png)
 
 While a full description of the inner workings of a Rails application is beyond the scope of this document, some explanation is necessary. Rails is a web application framework, meaning that it provides much of the necessary infrastructure for developing, deploying, and serving a website. You can think of Rails as a large configurable application that runs on a Ruby interpreter - and all of the website data, from HTML to CSS to Javascript, is all part of the Rails "configuration."
 
@@ -61,7 +65,6 @@ While a full description of the inner workings of a Rails application is beyond 
 > 
 > **Gemfile**
 > > The Gemfile contains a list of required dependencies and versions. After ANY modification to the Gemfile, you should always run `bundle install` to allow bundler to upgrade/install any gems necessary, as well as to regenerate Gemfile.lock.
-
 
 
 ## General Process for Updating the SuiteSparse Matrix Collection Website
