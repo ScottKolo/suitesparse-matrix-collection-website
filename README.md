@@ -111,3 +111,6 @@ This website was originally part of a Software Engineering course project. The o
 We would also like to thank [Dr. Jeff Huang](https://parasol.tamu.edu/~jeff/), who taught that Software Enigneering course and impressed upon us the importance of software engineering practices, such as test-driven development and Agile.
 
 We also owe a significant debt to [Dr. Tim Davis](http://faculty.cse.tamu.edu/davis/) for his input and guidance, as well as for creating many of the tools (and the original website) that made this project possible. 
+
+Last update: May 29, 2020.
+
