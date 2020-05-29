@@ -95,7 +95,10 @@ Within the local git repository, you can make changes to the website.
 
 After making any changes to the code, the first check that nothing has been broken is to run the test suite locally. It is also good practice to add tests before making any changes (test-driven development).
 
-The easiest way to run the test suite locally is to navigate to the website root directory and run `rake`. Additionally, it is a good idea to also run `brakeman`, which will check for any obvious security errors.
+The easiest way to run the test suite locally is to navigate to the root
+directory (`suitesparse-matrix-collection-website`) and run `rake`.
+Additionally, it is a good idea to also run `brakeman`, which will check for
+any obvious security errors.
 
 If tests fail, you will need to go fix whatever the issue is (or modify the test if you feel everything is working as it should). Also note that "flaky" tests (tests that may pass or fail under the same configuration - e.g. race conditions or other timing issues) should be fixed.
 
