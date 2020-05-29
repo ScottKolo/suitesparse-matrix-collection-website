@@ -55,7 +55,7 @@ While a full description of the inner workings of a Rails application is beyond 
 > > The config folder contains all application configuration information. Generally, this should not be edited, but from time to time (e.g. upgrades to Rails or Ruby) modifications are required, especially as the Rails default configuration has been known the change.
 > 
 > **db**
-> > The database configuration folder. The schema is stored here, as well as any database migrations. Also, the database seed script (`seeds.rb`) is stored here, which will populate an empty database when `rake db:seed` is called.
+> > The database configuration folder. The schema is stored here, as well as any database migrations. Also, the database seed script (`seeds.rb`) is stored here, which will populate an empty database when `rails db:seed` is called.
 > 
 > **features**
 > > Cucumber BDD tests are stored in features. As new features are added to the website, new tests should be added in this folder.
@@ -133,7 +133,7 @@ Here are some common problems that may occur when deploying the website.
 * **The stylesheets and javascript are missing.** This indicates a problem with the Rails asset pipeline. You may need to call `rails assets:precompile` to precompile the assets, or check the settings in the `config` directory.
 * **I see two (or more) copies of every matrix.** This is likely caused by calling `rails db:seed` without resetting the database. Many Rails applications have large databases that should not be reset often, but for this application, resetting the database is trivial. Running `rails db:reset` will clear the old database and rebuild it, fixing this issue. Alternatively, check the contents of `db/collection_data` to ensure that there are no erroneous duplicate files.
     - Heroku does not give applications permission to do a total `db:reset`, so to reset the database, you need to run `rails db:schema:load db:seed`. This should be done automatically upon deployment (see `/Procfile`).
-* **I receive an error about a migration or schema problem.** Running `rake db:reset` should fix this. If this problem is on Heroku, `db:reset` is not allowed, so try resetting the database and running `rails db:schema:load` to load the schema manually.
+* **I receive an error about a migration or schema problem.** Running `rails db:reset` should fix this. If this problem is on Heroku, `db:reset` is not allowed, so try resetting the database and running `rails db:schema:load` to load the schema manually.
     - Again, the database should be reset automatically upon deployment (see `/Procfile`).
 * **My tests sometimes fail on Semaphore.** You may have a flaky test. Look into making the test more consistent, or, in the worst/lazy case, you may need to add a delay during the test (e.g. after a new filter has been applied, allowing time for the interface to update).
 * **I get a reddish "Something went wrong" page.** Check the logs. If working locally, check `/log/development.log`, and if you're working on Heroku, click on the **More** dropdown in the top right corner of the Heroku dashboard and select **View logs**.

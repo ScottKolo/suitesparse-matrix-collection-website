@@ -62,7 +62,8 @@ While the canonical deployment can be found at [https://sparse.tamu.edu](https:/
 The only dependencies for running the application are listed below. They can be installed using your package manager (like `apt-get` or `yum` for Linux or `brew` for macOS):
 
  * Ruby 2.7.1 or later
- * PostgreSQL 9.3 or later
+ * PostgreSQL 9.3 or later (and permissions to create a database)
+ * A JavaScript runtime environment such as node.js 12.17.0 or later
 
 Many operating systems come with Ruby installed, and you can check which version you have with `ruby -v`. If no Ruby installation is found, or the version is incorrect, you can use your package manager to install a compatible version (see [ruby-lang.org](https://www.ruby-lang.org) for more information regarding obtaining and installing Ruby). You may also find Ruby Version Manager ([rvm.io](https://rvm.io)) to be helpful if you need to maintain multiple versions of Ruby.
 
@@ -80,8 +81,9 @@ pg_isready                           # Check that PostgreSQL database is ready
 git clone https://github.com/ScottKolo/suitesparse-matrix-collection-website.git
 cd suitesparse-matrix-collection-website
 gem install bundler                  # Dependency manager
-bundle install --without production  # Download and install dependencies
-bundle exec rake db:setup            # Generate and seed the database
+bundle config set without 'development test'
+bundle install                       # Download and install dependencies
+bundle exec rails db:setup           # Generate and seed the database
 bundle exec rails server             # Start the Ruby on Rails server application
 ```
 
