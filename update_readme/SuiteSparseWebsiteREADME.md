@@ -127,7 +127,7 @@ The deployment process will automatically pull the latest application code from 
 
 Here are some common problems that may occur when deploying the website.
 
-* **The styelsheets and javascript are missing.** This indicates a problem with the Rails asset pipeline. You may need to call `rails assets:precompile` to precompile the assets, or check the settings in the `config` directory.
+* **The stylesheets and javascript are missing.** This indicates a problem with the Rails asset pipeline. You may need to call `rails assets:precompile` to precompile the assets, or check the settings in the `config` directory.
 * **I see two (or more) copies of every matrix.** This is likely caused by calling `rails db:seed` without resetting the database. Many Rails applications have large databases that should not be reset often, but for this application, resetting the database is trivial. Running `rails db:reset` will clear the old database and rebuild it, fixing this issue. Alternatively, check the contents of `db/collection_data` to ensure that there are no erroneous duplicate files.
     - Heroku does not give applications permission to do a total `db:reset`, so to reset the database, you need to run `rails db:schema:load db:seed`. This should be done automatically upon deployment (see `/Procfile`).
 * **I receive an error about a migration or schema problem.** Running `rake db:reset` should fix this. If this problem is on Heroku, `db:reset` is not allowed, so try resetting the database and running `rails db:schema:load` to load the schema manually.

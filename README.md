@@ -61,8 +61,8 @@ While the canonical deployment can be found at [https://sparse.tamu.edu](https:/
 
 The only dependencies for running the application are listed below. They can be installed using your package manager (like `apt-get` or `yum` for Linux or `brew` for macOS):
 
- * Ruby 2.5 or later
- * PostgreSQL 8.4 or later
+ * Ruby 2.7.1 or later
+ * PostgreSQL 9.3 or later
 
 Many operating systems come with Ruby installed, and you can check which version you have with `ruby -v`. If no Ruby installation is found, or the version is incorrect, you can use your package manager to install a compatible version (see [ruby-lang.org](https://www.ruby-lang.org) for more information regarding obtaining and installing Ruby). You may also find Ruby Version Manager ([rvm.io](https://rvm.io)) to be helpful if you need to maintain multiple versions of Ruby.
 
@@ -70,16 +70,16 @@ Note that after installing PostgreSQL, one needs to start it up so it is running
 
 For running the test suite, the following additional dependencies are required:
 
- * PhantomJS 2.1.1 or later
+ * Firefox 46 or later
 
 The application is a standard Ruby on Rails web application, and can be installed with the following commands:
 
 ```shell
-ruby -v                              # Check that Ruby 2.5+ is installed
+ruby -v                              # Check that Ruby 2.7.1+ is installed
 pg_isready                           # Check that PostgreSQL database is ready
 git clone https://github.com/ScottKolo/suitesparse-matrix-collection-website.git
 cd suitesparse-matrix-collection-website
-gem install bundler:1.16.6           # Dependency manager
+gem install bundler                  # Dependency manager
 bundle install --without production  # Download and install dependencies
 bundle exec rake db:setup            # Generate and seed the database
 bundle exec rails server             # Start the Ruby on Rails server application
