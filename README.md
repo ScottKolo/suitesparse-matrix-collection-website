@@ -85,7 +85,7 @@ bundle exec rake db:setup            # Generate and seed the database
 bundle exec rails server             # Start the Ruby on Rails server application
 ```
 
-Once the Rails server starts, you can navigate to localhost:3000 to view the web application running locally.
+Once the Rails server starts, you can navigate in a web browser to localhost:3000 to view the web application running locally.
 
 ## Test Suite
 
@@ -111,3 +111,6 @@ This website was originally part of a Software Engineering course project. The o
 We would also like to thank [Dr. Jeff Huang](https://parasol.tamu.edu/~jeff/), who taught that Software Enigneering course and impressed upon us the importance of software engineering practices, such as test-driven development and Agile.
 
 We also owe a significant debt to [Dr. Tim Davis](http://faculty.cse.tamu.edu/davis/) for his input and guidance, as well as for creating many of the tools (and the original website) that made this project possible. 
+
+Last update: May 29, 2020.
+
