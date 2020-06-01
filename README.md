@@ -73,12 +73,9 @@ regarding obtaining and installing Ruby). You may also find Ruby Version
 Manager ([rvm.io](https://rvm.io)) to be helpful if you need to maintain
 multiple versions of Ruby.
 
-For example, to install PostgreSQL and node.js (required by Rails) on Ubuntu 18, you can use the following commands:
+Installing PostgreSQL and node.js also varies greatly from system to system. For example, to install PostgreSQL and node.js (required by Rails) on Ubuntu 18, you can use the following commands:
 ```shell
-sudo apt install postgresql
-sudo apt install postgresql-contrib
-sudo apt install libpq-dev
-sudo apt install nodejs
+sudo apt install postgresql postgresql-contrib libpq-dev nodejs
 sudo -u postgres createuser -s $(whoami); createdb $(whoami)
 ```
 
