@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '~> 2.7'
 
 # Need the Rails gem
-gem 'rails', '>= 6.0.3.1'
+gem 'rails', '~> 6.0.3.4'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -57,17 +57,17 @@ group :development, :test do
   gem 'byebug'
   # Use Selenium for javascript testing
   gem 'selenium-webdriver'
-  gem 'webdrivers', '~> 4.0'
+  gem 'webdrivers', '~> 4.4.1'
   gem 'nokogiri', '~> 1.10.8'
   # Use brakeman for security checks
   gem 'brakeman', require: false
   gem 'loofah', '>= 2.2.3'
-  gem 'listen'
+  gem 'listen', '~> 3.3'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 3.5'
+  gem 'web-console', '~> 4.1'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
