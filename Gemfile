@@ -63,6 +63,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'loofah', '>= 2.2.3'
   gem 'listen', '~> 3.3'
+  gem 'mini_racer'
 end
 
 group :development do
