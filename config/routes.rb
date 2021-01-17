@@ -15,6 +15,10 @@ Rails.application.routes.draw do
                                   format: false, 
                                   constraints: { file: /.*\.(jpg|jpeg|gif|png)/ }
 
+  get '/files/*file', to: redirect('https://sparse-files-images.engr.tamu.edu/%{file}', status: 301), 
+                                  format: false, 
+                                  constraints: { file: /.*\.(jpg|jpeg|gif|png)/ }
+
   get '/files/*file_path', to: redirect('http://sparse-files.engr.tamu.edu/files/%{file_path}', status: 301), format: false
 
   # Static page routes
