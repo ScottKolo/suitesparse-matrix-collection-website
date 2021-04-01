@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '~> 2.7'
 
 # Need the Rails gem
-gem 'rails', '~> 6.0.3.4'
+gem 'rails', '~> 6.0.3.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -63,7 +63,8 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'loofah', '>= 2.2.3'
   gem 'listen', '~> 3.3'
-  gem 'mini_racer'
+  gem 'sq_mini_racer'
+  gem 'libv8-node'
 end
 
 group :development do
@@ -89,9 +90,4 @@ end
 group :production_heroku, :development, :test, :development do
   # Use puma webserver
   gem 'puma'
-end
-
-group :production do
-  # Use mysql as the database for Active Record on production
-  gem 'mysql2'
 end
