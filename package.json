@@ -1,6 +1,10 @@
 {
   "dependencies": {
-    "@rails/webpacker": "5.1.1"
+    "@rails/webpacker": "5.1.1",
+    "elliptic": "6.5.4",
+    "is-svg": "4.2.2",
+    "ssri": "8.0.1",
+    "y18n": "4.0.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.10.3"
