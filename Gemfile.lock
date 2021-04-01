@@ -261,6 +261,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rexml (3.2.4)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -383,6 +384,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   recaptcha
+  rexml
   rspec-rails (~> 4.0.0)
   sassc
   selenium-webdriver
@@ -399,7 +401,7 @@ DEPENDENCIES
   will_paginate-bootstrap4
 
 RUBY VERSION
-   ruby 2.7.1p83
+   ruby 3.0.0p0
 
 BUNDLED WITH
-   2.1.4
+   2.2.15

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '~> 2.7'
+ruby '~> 3.0'
 
 # Need the Rails gem
 gem 'rails', '~> 6.0.3.6'
@@ -40,6 +40,8 @@ gem "recaptcha", require: "recaptcha/rails"
 gem 'filterrific', '~> 5.2.1'
 # Generate a sitemap
 gem 'sitemap_generator'
+
+gem 'rexml'
 
 group :development, :test do
   # Use Cucumber for BDD testing
