@@ -1,5 +1,5 @@
 class AdminNotifierMailer < ApplicationMailer
-  add_template_helper(EmailHelpers)
+  helper EmailHelpers
 
   # Send a notification email with the new matrix information
   def send_matrix_submitted_email(new_matrix)

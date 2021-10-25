@@ -21,6 +21,7 @@
 /public/assets
 
 *.DS_Store
+*.icloud
 /public/packs
 /public/packs-test
 /node_modules

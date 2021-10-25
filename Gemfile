@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '~> 3.0'
 
 # Need the Rails gem
-gem 'rails', '~> 6.0.3.6'
+gem 'rails', '~> 6.1.4'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
