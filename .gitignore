@@ -25,6 +25,14 @@
 /public/packs
 /public/packs-test
 /node_modules
+
+# Ignore a lot of yarn-related stuff
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
