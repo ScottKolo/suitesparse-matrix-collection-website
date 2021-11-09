@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
     @group = Group.find_by(name: group_name)
     
     if !@group
-      return render :not_found, status: 404, content_type: 'text/html', template: 'groups/not_found.html.haml'
+      return render :not_found, status: 404, content_type: 'text/html', template: 'groups/not_found'
     end
 
     @matrices = @filterrific.find.page(permitted_params[:page]).merge(CollectionMatrix.where(group: group_name))
