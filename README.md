@@ -152,9 +152,10 @@ You should also preserve the metadata in the matrices themselves, which
 includes additional citations for specific matrices.  For example, the
 [LAW](http://sparse.tamu.edu/LAW) set of matrices (from the Laboratory for Web
 Algorithmics, Universita degli Studi di Milano) includes specific instructions
-on how to properly cite the matrices.   Refer to
-[LAW](http://sparse.tamu.edu/LAW) for details.  For the Matrix Market format,
-most of the metadata appears in the header of the *.mtx themselves.
+on how to properly cite the matrices.   See
+[sparse.tamu.edu/LAW](http://sparse.tamu.edu/LAW) for details.  For the Matrix
+Market format, most of the metadata appears in the header of the *.mtx
+themselves.
 
 Ideally, if you redistribute the matrices in your own applications, you should
 not change them at all.  This is essential for repeatability of experiments
