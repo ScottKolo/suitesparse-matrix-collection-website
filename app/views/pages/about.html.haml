@@ -299,53 +299,59 @@
 
 
 
-%h2 License:
+%h2 License
+
+%h3 Overview
+%p
+  This website software (except for ssget) is under the MIT License.
+  The matrices themselves are under the CC-BY 4.0 License.
+
+%h3 Details
+%p
+  %strong
+    ssget
+  (available in
+  ==#{link_to "SuiteSparse/ssget", "https://github.com/DrTimothyAldenDavis/SuiteSparse"}
+  in the ssget folder is under the BSD 3-clause License.
 
 %p
-Overview: This website software (except for ssget) is under the MIT License.
-The matrices themselves are under the CC-BY 4.0 License.
+  %strong
+    The matrices themselves 
+  are under the
+  ==#{link_to "CC-BY 4.0 license", "https://creativecommons.org/licenses/by/4.0/"}
+  Note that this license asks you to cite the source of
+  the matrices.  That citation can be made to these references:
+
+  %ul
+    %li
+      Kolodziej et al., (2019). The SuiteSparse Matrix Collection Website Interface.
+      Journal of Open Source Software, 4(35), 1244,
+      ==#{link_to "DOI", "https://doi.org/10.21105/joss.01244"}
+
+    %li
+      Timothy A. Davis and Yifan Hu. 2011. The University of Florida sparse matrix
+      collection. ACM Trans. Math. Softw. 38, 1, Article 1 (November 2011), 25 pages.
+      ==#{link_to "DOI", "https://doi.org/10.1145/2049662.2049663"}
 
 %p
-ssget (available in
-==#{link_to "SuiteSparse/ssget", "https://github.com/DrTimothyAldenDavis/SuiteSparse"}
-in the ssget folder is under the BSD 3-clause License.
+  You should also preserve the metadata in the matrices themselves, which
+  includes additional citations for specific matrices.  For example, the
+  ==#{link_to "LAW", "http://sparse.tamu.edu/LAW"}
+  set of matrices (from the Laboratory for Web
+  Algorithmics, Universita degli Studi di Milano) includes specific instructions
+  on how to properly cite the matrices.   See
+  ==#{link_to "sparse.tamu.edu/LAW", "http://sparse.tamu.edu/LAW"}
+  for details.  For the Matrix
+  Market format, most of the metadata appears in the header of the *.mtx
+  themselves.
 
 %p
-The matrices themselves are under the
-==#{link_to "CC-BY 4.0 license", "https://creativecommons.org/licenses/by/4.0/"}
-Note that this license asks you to cite the source of
-the matrices.  That citation can be made to these references:
-
-    %ul
-        %li
-        Kolodziej et al., (2019). The SuiteSparse Matrix Collection Website Interface.
-        Journal of Open Source Software, 4(35), 1244,
-        ==#{link_to "DOI", "https://doi.org/10.21105/joss.01244"}
-
-        %li
-        Timothy A. Davis and Yifan Hu. 2011. The University of Florida sparse matrix
-        collection. ACM Trans. Math. Softw. 38, 1, Article 1 (November 2011), 25 pages.
-        ==#{link_to "DOI", "https://doi.org/10.1145/2049662.2049663"}
-
-%p
-You should also preserve the metadata in the matrices themselves, which
-includes additional citations for specific matrices.  For example, the
-==#{link_to "LAW", "http://sparse.tamu.edu/LAW"}
-set of matrices (from the Laboratory for Web
-Algorithmics, Universita degli Studi di Milano) includes specific instructions
-on how to properly cite the matrices.   See
-==#{link_to "[sparse.tamu.edu/LAW", "http://sparse.tamu.edu/LAW"}
-for details.  For the Matrix
-Market format, most of the metadata appears in the header of the *.mtx
-themselves.
-
-%p
-Ideally, if you redistribute the matrices in your own applications, you should
-not change them at all.  This is essential for repeatability of experiments
-that rely on these matrices.  Modification is permitted under the CC-BY 4.0
-License, but that license requires you to state the modifications you make.  If
-you make any such modifications, please change the filename and matrix name to
-indicate that it differs from the copy of the matrix from
-==#{link_to "sparse.tamu.edu", "http://sparse.tamu.edu"}.
-Carefully describe any modifications you make.
+  Ideally, if you redistribute the matrices in your own applications, you should
+  not change them at all.  This is essential for repeatability of experiments
+  that rely on these matrices.  Modification is permitted under the CC-BY 4.0
+  License, but that license requires you to state the modifications you make.  If
+  you make any such modifications, please change the filename and matrix name to
+  indicate that it differs from the copy of the matrix from
+  ==#{link_to "sparse.tamu.edu", "http://sparse.tamu.edu"}.
+  Carefully describe any modifications you make.
 
