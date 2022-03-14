@@ -133,7 +133,7 @@ The matrices themselves are under the CC-BY 4.0 License.
 
 
 ssget (available in [SuiteSparse/ssget](https://github.com/DrTimothyAldenDavis/SuiteSparse)
-in the ssget folder is at under the BSD 3-clause >icense.
+in the ssget folder is under the BSD 3-clause License.
 
 The matrices themselves are under the
 [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/).
