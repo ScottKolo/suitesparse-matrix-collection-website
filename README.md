@@ -126,5 +126,43 @@ We would also like to thank [Dr. Jeff Huang](https://parasol.tamu.edu/~jeff/), w
 
 We also owe a significant debt to [Dr. Tim Davis](http://faculty.cse.tamu.edu/davis/) for his input and guidance, as well as for creating many of the tools (and the original website) that made this project possible. 
 
-Last update: May 29, 2020.
+## License
 
+Overview: This website software (except for ssget) is under the MIT License.
+The matrices themselves are under the CC-BY 4.0 License.
+
+
+ssget (available in [SuiteSparse/ssget](https://github.com/DrTimothyAldenDavis/SuiteSparse)
+in the ssget folder is at under the BSD 3-clause >icense.
+
+The matrices themselves are under the
+[CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/).
+Note that this license asks you to cite the source of
+the matrices.  That citation can be made to these references:
+
+* Kolodziej et al., (2019). The SuiteSparse Matrix Collection Website Interface.
+Journal of Open Source Software, 4(35), 1244,
+[DOI](https://doi.org/10.21105/joss.01244)
+
+* Timothy A. Davis and Yifan Hu. 2011. The University of Florida sparse matrix
+collection. ACM Trans. Math. Softw. 38, 1, Article 1 (November 2011), 25 pages.
+[DOI](https://doi.org/10.1145/2049662.2049663)
+
+You should also preserve the metadata in the matrices themselves, which
+includes additional citations for specific matrices.  For example, the
+[LAW](http://sparse.tamu.edu/LAW) set of matrices (from the Laboratory for Web
+Algorithmics, Universita degli Studi di Milano) includes specific instructions
+on how to properly cite the matrices.   Refer to
+[LAW](http://sparse.tamu.edu/LAW) for details.  For the Matrix Market format,
+most of the metadata appears in the header of the *.mtx themselves.
+
+Ideally, if you redistribute the matrices in your own applications, you should
+not change them at all.  This is essential for repeatability of experiments
+that rely on these matrices.  Modification is permitted under the CC-BY 4.0
+License, but that license requires you to state the modifications you make.  If
+you make any such modifications, please change the filename and matrix name to
+indicate that it differs from the copy of the matrix from
+[sparse.tamu.edu](http://sparse.tamu.edu).  Carefully describe any
+modifications you make.
+
+Last update: Mar 14, 2022.
