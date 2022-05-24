@@ -60,7 +60,7 @@ group :development, :test do
   # Use Selenium for javascript testing
   gem 'selenium-webdriver'
   gem 'webdrivers', '~> 4.4.1'
-  gem 'nokogiri', '~> 1.13.2'
+  gem 'nokogiri', '~> 1.13.6'
   # Use brakeman for security checks
   gem 'brakeman', require: false
   gem 'loofah', '>= 2.2.3'
