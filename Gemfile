@@ -51,14 +51,14 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_bot'
   # Use rspec for lower level unit testing
-  gem 'rspec-rails', '~> 4.0.0'
+  gem 'rspec-rails', '~> 6.0.1'
   # Use simplecov for coverage testing
-  gem 'simplecov', '0.17.1', require: false
+  gem 'simplecov', '0.21.2', require: false
   gem 'byebug'
   # Use Selenium for javascript testing
   gem 'selenium-webdriver'
-  gem 'webdrivers', '~> 4.4.1'
-  gem 'nokogiri', '~> 1.13.2'
+  gem 'webdrivers', '~> 5.2.0'
+  gem 'nokogiri', '~> 1.13.9'
   # Use brakeman for security checks
   gem 'brakeman', require: false
   gem 'loofah', '>= 2.2.3'
