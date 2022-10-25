@@ -77,7 +77,7 @@ Capybara.register_driver :firefox_headless do |app|
   options.headless!
 
   client = ::Selenium::WebDriver::Remote::Http::Default.new
-  client.read_timeout = 90 # instead of the default 60
+  client.read_timeout = 600 # instead of the default 60
 
   Capybara::Selenium::Driver.new(app, browser: :firefox, options: options, http_client: client)
 end
