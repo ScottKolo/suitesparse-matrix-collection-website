@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def paginate(collection, params= {})
-    will_paginate collection, params.merge(:renderer => WillPaginateHelper::LinkRenderer)
+    will_paginate collection, params.merge(:renderer => WillPaginate::ActionView::BootstrapLinkRenderer)
   end
 
   def replace_bold_tags(html_text)

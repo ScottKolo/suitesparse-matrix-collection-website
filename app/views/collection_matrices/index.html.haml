@@ -2,9 +2,8 @@
 =provide(:description, "SuiteSparse Matrix Collection Index")
 
 .alert.alert-info.alert-dismissible.about-alert
-  %button.close.about-close{type: "button", 'data-dismiss': "alert", 'aria-label': "Close"}
+  %button.btn-close.about-close{type: "button", 'data-bs-dismiss': "alert", 'aria-label': "Close"}
     %span{:'aria-hidden' => "true"}
-      &times;
   The SuiteSparse Matrix Collection (formerly the University of Florida Sparse Matrix Collection) is a widely used set of sparse matrix benchmarks collected from a wide range of applications. See the
   = link_to "about page", about_path, class: "alert-link"
   for more information.
@@ -14,20 +13,20 @@
     .col-lg-2
       .text-center.filter-column
         .dropdown
-          %button.btn.btn-outline-dark.btn-md.dropdown-toggle.mb-2{type: "button", id: "filter-dropdown", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
+          %button.btn.btn-outline-dark.btn-md.dropdown-toggle.mb-2{type: "button", id: "filter-dropdown", 'data-bs-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "true" }
             %span.fa.fa-filter{'aria-hidden': "true"}
             Filters
           %ul.dropdown-menu{'aria-labelledby': 'filter-dropdown', 'data-no-turbolink': 'true'}
             %li
-              .small{'data-target': ".size-checkbox", tabIndex: "-1"}
+              .dropdown-item.small{'data-target': ".size-checkbox", tabIndex: "-1"}
                 = check_box_tag :size_checkbox, 'enable', @checked[:size], class: "filter-checkbox size-checkbox", 'data-target': "#size-filter"
                 = label_tag :size_checkbox, "Size and Shape"
             %li
-              .small{'data-target': ".structure-checkbox", tabIndex: "-1"}
+              .dropdown-item.small{'data-target': ".structure-checkbox", tabIndex: "-1"}
                 = check_box_tag :structure_checkbox, 'enable', @checked[:structure], class: "filter-checkbox structure-checkbox", 'data-target': "#structure-filter"
                 = label_tag :structure_checkbox, "Structure and Entry Types"
             %li
-              .small{'data-target': ".metadata-checkbox", tabIndex: "-1"}
+              .dropdown-item.small{'data-target': ".metadata-checkbox", tabIndex: "-1"}
                 = check_box_tag :metadata_checkbox, 'enable', @checked[:metadata], class: "filter-checkbox metadata-checkbox", 'data-target': "#metadata-filter"
                 = label_tag :metadata_checkbox, "Metadata"
       .filterrific_spinner{style: "display:none; margin: 30px 40%;"}

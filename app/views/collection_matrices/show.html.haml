@@ -21,55 +21,55 @@
           %tr
             %th
               Num Rows
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_rows)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:num_rows)}
                 %span.fas.fa-question-circle
             %td= number_with_delimiter(@matrix.num_rows, :delimiter => ',')
           %tr
             %th 
               Num Cols
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_cols)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:num_cols)}
                 %span.fas.fa-question-circle
             %td= number_with_delimiter(@matrix.num_cols, :delimiter => ',')
           %tr
             %th
               Nonzeros
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:nonzeros)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:nonzeros)}
                 %span.fas.fa-question-circle
             %td= number_with_delimiter(@matrix.nonzeros, :delimiter => ',')
           %tr
             %th
               Pattern Entries
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:entries)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:entries)}
                 %span.fas.fa-question-circle
             %td= number_with_delimiter(@matrix.nonzeros+@matrix.num_explicit_zeros, :delimiter => ',') unless (@matrix.nonzeros.nil? or @matrix.num_explicit_zeros.nil?)
           %tr
             %th
               Kind
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:kind)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:kind)}
                 %span.fas.fa-question-circle
             %td= @matrix.kind.titleize.gsub(/2\sD/, '2D').gsub(/3\sD/, '3D') unless @matrix.kind.nil?
           %tr
             %th
               Symmetric
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:symmetric)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:symmetric)}
                 %span.fas.fa-question-circle
             %td= @matrix.structure == "symmetric" ? "Yes" : "No"
           %tr
             %th
               Date
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:date)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:date)}
                 %span.fas.fa-question-circle
             %td= @matrix.date
           %tr
             %th
               Author
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:author)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:author)}
                 %span.fas.fa-question-circle
             %td= @matrix.author
           %tr
             %th
               Editor
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:editor)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:editor)}
                 %span.fas.fa-question-circle
             %td= @matrix.editor
     .col-md-6.col-md-push-6
@@ -105,49 +105,49 @@
           %tr
             %th
               Num Dmperm Blocks
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_dmperm_blocks)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:num_dmperm_blocks)}
                 %span.fas.fa-question-circle
             %td= number_with_delimiter(@matrix.num_dmperm_blocks, :delimiter => ',')
           %tr
             %th
               Strongly Connect Components
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_strongly_connected_components)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:num_strongly_connected_components)}
                 %span.fas.fa-question-circle
             %td= number_with_delimiter(@matrix.num_strongly_connected_components, :delimiter => ',')
           %tr
             %th
               Num Explicit Zeros
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:num_explicit_zeros)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:num_explicit_zeros)}
                 %span.fas.fa-question-circle
             %td= number_with_delimiter(@matrix.num_explicit_zeros, :delimiter => ',')
           %tr
             %th
               Pattern Symmetry
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:pattern_symmetry)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:pattern_symmetry)}
                 %span.fas.fa-question-circle
             %td= number_to_percentage(@matrix.pattern_symmetry ? @matrix.pattern_symmetry*100 : nil, options={precision:1, strip_insignificant_zeros:true})
           %tr
             %th
               Numeric Symmetry
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:numeric_symmetry)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:numeric_symmetry)}
                 %span.fas.fa-question-circle
             %td= number_to_percentage(@matrix.numeric_symmetry ? @matrix.numeric_symmetry*100 : nil, options={precision:1, strip_insignificant_zeros:true})
           %tr
             %th
               Cholesky Candidate
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:cholesky_candidate)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:cholesky_candidate)}
                 %span.fas.fa-question-circle
             %td= @matrix.cholesky_candidate
           %tr
             %th
               Positive Definite
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:positive_definite)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:positive_definite)}
                 %span.fas.fa-question-circle
             %td= @matrix.positive_definite
           %tr
             %th
               Type
-              %a.small{href: '/statistics', 'data-toggle': 'tooltip', title: tooltip_text(:rb_type)}
+              %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:rb_type)}
                 %span.fas.fa-question-circle
             %td{colspan: 2}= @matrix.rb_type
     - if @matrix.norm
@@ -211,5 +211,5 @@
                   %pre.pre-scrollable= @matrix.notes
 :javascript
   $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
+    $('[data-bs-toggle="tooltip"]').tooltip(); 
   });
