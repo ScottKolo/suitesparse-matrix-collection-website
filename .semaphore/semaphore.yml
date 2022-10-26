@@ -12,10 +12,10 @@ global_job_config:
       - sem-version ruby 3.0.0
       - sem-version firefox esr-latest
 blocks:
-  - name: Setup Environment
+  - name: Run Tests
     task:
       jobs:
-        - name: Setup Env
+        - name: Tests
           commands:
             - checkout
             - rbenv local 3.0.0
@@ -35,11 +35,6 @@ blocks:
             - 'bundle exec rails db:setup'
             - 'bundle exec rails db:test:prepare'
             - 'bundle exec rake assets:precompile'
-  - name: Tests
-    task:
-      jobs:
-        - name: Run Tests
-          commands:
             - bundle exec brakeman -z
             - bundle exec rake
 after_pipeline:
