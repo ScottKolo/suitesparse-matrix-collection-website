@@ -37,10 +37,5 @@ blocks:
             - 'bundle exec rake assets:precompile'
             - bundle exec brakeman -z
             - bundle exec rake
-after_pipeline:
-  task:
-    jobs:
-      - name: Coverage Report
-        commands:
-          - ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.json coverage/coverage.json
-          - 'if [ "$SEMAPHORE_THREAD_RESULT" == "passed" ]; then ./cc-test-reporter after-build; fi'
+            - ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.json coverage/coverage.json
+            - 'if [ "$SEMAPHORE_THREAD_RESULT" == "passed" ]; then ./cc-test-reporter after-build; fi'
