@@ -57,8 +57,7 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-require "selenium/webdriver"
-require 'webdrivers'
+require 'webdrivers/geckodriver'
 
 # Capybara.register_driver :headless_chrome do |app|
 # 	options = Selenium::WebDriver::Chrome::Options.new
@@ -69,21 +68,8 @@ require 'webdrivers'
 # 	Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 # end
 
+Capybara.default_driver = :selenium_headless
+Capybara.javascript_driver = :selenium_headless
+
 # Capybara.default_driver = :headless_chrome
 # Capybara.javascript_driver = :headless_chrome
-
-Capybara.register_driver :firefox_headless do |app|
-  options = ::Selenium::WebDriver::Firefox::Options.new
-  options.headless!
-
-  client = ::Selenium::WebDriver::Remote::Http::Default.new
-  client.read_timeout = 600 # instead of the default 60
-
-  Capybara::Selenium::Driver.new(app, browser: :firefox, options: options, http_client: client)
-end
-
-Capybara.javascript_driver = :firefox_headless
-
-Before do
-	page.driver.restart if defined?(page.driver.restart)
-end

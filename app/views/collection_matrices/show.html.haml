@@ -23,25 +23,25 @@
               Num Rows
               %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:num_rows)}
                 %span.fas.fa-question-circle
-            %td= number_with_delimiter(@matrix.num_rows, :delimiter => ',')
+            %td= number_with_delimiter(@matrix.num_rows, delimiter: ',')
           %tr
             %th 
               Num Cols
               %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:num_cols)}
                 %span.fas.fa-question-circle
-            %td= number_with_delimiter(@matrix.num_cols, :delimiter => ',')
+            %td= number_with_delimiter(@matrix.num_cols, delimiter: ',')
           %tr
             %th
               Nonzeros
               %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:nonzeros)}
                 %span.fas.fa-question-circle
-            %td= number_with_delimiter(@matrix.nonzeros, :delimiter => ',')
+            %td= number_with_delimiter(@matrix.nonzeros, delimiter: ',')
           %tr
             %th
               Pattern Entries
               %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:entries)}
                 %span.fas.fa-question-circle
-            %td= number_with_delimiter(@matrix.nonzeros+@matrix.num_explicit_zeros, :delimiter => ',') unless (@matrix.nonzeros.nil? or @matrix.num_explicit_zeros.nil?)
+            %td= number_with_delimiter(@matrix.nonzeros+@matrix.num_explicit_zeros, delimiter: ',') unless (@matrix.nonzeros.nil? or @matrix.num_explicit_zeros.nil?)
           %tr
             %th
               Kind
@@ -73,21 +73,21 @@
                 %span.fas.fa-question-circle
             %td= @matrix.editor
     .col-md-6.col-md-push-6
-      #figures.carousel.slide{'data-ride': "carousel"}
-        %ol.carousel-indicators
+      #figures.carousel.carousel-dark.slide{'data-bs-ride': "carousel"}
+        .carousel-indicators
           - fig_num = -1;
           -for image in image_list(@matrix) do
-            %li{'data-target': "#figures", 'data-slide-to': "#{fig_num += 1}", class: ("active" if image[:first])}
+            %button.btn{type: 'button', 'data-bs-target': "#figures", 'data-bs-slide-to': "#{fig_num += 1}", class: ("active" if image[:first])}
         .carousel-inner
           -for image in image_list(@matrix) do
             .carousel-item{class: ("active" if image[:first])}
               = link_to image[:url] do
                 = image_tag image[:url], class: "img-fluid d-block w-100", alt: image[:description]
-        %a.carousel-control-prev{href:'#figures', role: 'button', :'data-slide' => 'prev'}
+        %button.carousel-control-prev{type: 'button', 'data-bs-target': "#figures", 'data-bs-slide': 'prev'}
           %span.carousel-control-prev-icon{'aria-hidden': 'true'}
           %span.sr-only
             Previous
-        %a.carousel-control-next{href:'#figures', role: 'button', :'data-slide' => 'next'}
+        %button.carousel-control-next{type: 'button', 'data-bs-target': "#figures", 'data-bs-slide': 'next'}
           %span.carousel-control-next-icon{'aria-hidden': 'true'}
           %span.sr-only
             Next
@@ -98,7 +98,7 @@
         %tbody
           %tr
             %th Structural Rank
-            %td= number_with_delimiter(@matrix.structural_rank, :delimiter => ',')
+            %td= number_with_delimiter(@matrix.structural_rank, delimiter: ',')
           %tr
             %th Structural Rank Full
             %td= @matrix.structural_full_rank
@@ -107,19 +107,19 @@
               Num Dmperm Blocks
               %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:num_dmperm_blocks)}
                 %span.fas.fa-question-circle
-            %td= number_with_delimiter(@matrix.num_dmperm_blocks, :delimiter => ',')
+            %td= number_with_delimiter(@matrix.num_dmperm_blocks, delimiter: ',')
           %tr
             %th
               Strongly Connect Components
               %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:num_strongly_connected_components)}
                 %span.fas.fa-question-circle
-            %td= number_with_delimiter(@matrix.num_strongly_connected_components, :delimiter => ',')
+            %td= number_with_delimiter(@matrix.num_strongly_connected_components, delimiter: ',')
           %tr
             %th
               Num Explicit Zeros
               %a.small{href: '/statistics', 'data-bs-toggle': 'tooltip', title: tooltip_text(:num_explicit_zeros)}
                 %span.fas.fa-question-circle
-            %td= number_with_delimiter(@matrix.num_explicit_zeros, :delimiter => ',')
+            %td= number_with_delimiter(@matrix.num_explicit_zeros, delimiter: ',')
           %tr
             %th
               Pattern Symmetry
@@ -158,26 +158,26 @@
               %th{colspan:2, style: 'text-align: center'} SVD Statistics
             %tr
               %th Matrix Norm
-              %td= number_with_delimiter(@matrix.norm, :delimiter => ',')
+              %td= number_with_delimiter(@matrix.norm, delimiter: ',')
             %tr
               %th Minimum Singular Value
-              %td= number_with_delimiter(@matrix.min_singular_value, :delimiter => ',')
+              %td= number_with_delimiter(@matrix.min_singular_value, delimiter: ',')
             %tr
               %th Condition Number
               %td
                 -if @matrix.condition_number.to_i < 1E9
-                  = number_with_delimiter(@matrix.condition_number, :delimiter => ',')
+                  = number_with_delimiter(@matrix.condition_number, delimiter: ',')
                 -else
                   = "%e" %@matrix.condition_number
             %tr
               %th Rank
-              %td= number_with_delimiter(@matrix.svd_rank, :delimiter => ',')
+              %td= number_with_delimiter(@matrix.svd_rank, delimiter: ',')
             %tr
               %th sprank(A)-rank(A)
-              %td= number_with_delimiter(@matrix.sprank_minus_rank, :delimiter => ',')
+              %td= number_with_delimiter(@matrix.sprank_minus_rank, delimiter: ',')
             %tr
               %th Null Space Dimension
-              %td= number_with_delimiter(@matrix.null_space_dimension, :delimiter => ',')
+              %td= number_with_delimiter(@matrix.null_space_dimension, delimiter: ',')
             %tr
               %th Full Numerical Rank?
               %td= @matrix.full_numerical_rank
@@ -211,5 +211,8 @@
                   %pre.pre-scrollable= @matrix.notes
 :javascript
   $(document).ready(function(){
-    $('[data-bs-toggle="tooltip"]').tooltip(); 
+    //$('[data-bs-toggle="tooltip"]').tooltip();
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
   });
+

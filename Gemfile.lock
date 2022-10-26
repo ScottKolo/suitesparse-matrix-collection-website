@@ -390,7 +390,6 @@ DEPENDENCIES
   rexml
   rspec-rails (~> 6.0.1)
   sassc-rails
-  selenium-webdriver
   simplecov (= 0.21.2)
   sitemap_generator
   spring

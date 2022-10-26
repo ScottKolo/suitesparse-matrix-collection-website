@@ -56,7 +56,6 @@ group :development, :test do
   gem 'simplecov', '0.21.2', require: false
   gem 'byebug'
   # Use Selenium for javascript testing
-  gem 'selenium-webdriver'
   gem 'webdrivers', '~> 5.2.0'
   gem 'nokogiri', '~> 1.13.9'
   # Use brakeman for security checks
