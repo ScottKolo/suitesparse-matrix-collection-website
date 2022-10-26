@@ -1,0 +1,49 @@
+version: v1.0
+name: Test Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+global_job_config:
+  prologue:
+    commands:
+      - sudo apt-get update
+      - sudo apt-get install -y libv8-dev gcc-8
+      - rbenv install 3.0.0
+      - sem-version firefox esr-latest
+blocks:
+  - name: Setup Environment
+    task:
+      jobs:
+        - name: Setup Env
+          commands:
+            - checkout
+            - rbenv local 3.0.0
+            - gem install bundler
+            - gem install libv8 -- --with-system-v8
+            - 'curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter'
+            - chmod +x ./cc-test-reporter
+            - ./cc-test-reporter before-build
+            - bundle config set path 'vendor/bundle'
+            - bundle config set deployment 'true'
+            - export CXX=g++-8
+            - export CC=gcc-8
+            - bundle install
+            - sem-service start postgres
+            - 'bundle exec rails db:setup'
+            - 'bundle exec rails db:test:prepare'
+            - 'bundle exec rake assets:precompile'
+  - name: Tests
+    task:
+      jobs:
+        - name: Run Tests
+          commands:
+            - bundle exec brakeman -z
+            - bundle exec rake
+after_pipeline:
+  task:
+    jobs:
+      - name: Coverage Report
+        commands:
+          - ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.json coverage/coverage.json
+          - 'if [ "$SEMAPHORE_THREAD_RESULT" == "passed" ]; then ./cc-test-reporter after-build; fi'
