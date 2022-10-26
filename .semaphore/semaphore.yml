@@ -30,7 +30,7 @@ blocks:
             - export CC=gcc-8
             - bundle install
             - sem-service start postgres
-            - psql -U postgres -h localhost -c “CREATE ROLE semaphore WITH SUPERUSER”;
+            - psql -U postgres -h localhost -c “CREATE ROLE semaphore LOGIN INHERIT”;
             - 'bundle exec rails db:setup'
             - 'bundle exec rails db:test:prepare'
             - 'bundle exec rake assets:precompile'
