@@ -9,7 +9,7 @@ global_job_config:
     commands:
       - sudo apt-get update
       - sudo apt-get install -y libv8-dev gcc-8
-      - rbenv install 3.0.0
+      - sem-version ruby 3.0.0
       - sem-version firefox esr-latest
 blocks:
   - name: Setup Environment
