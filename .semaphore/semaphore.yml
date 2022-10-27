@@ -9,7 +9,7 @@ global_job_config:
     commands:
       - sudo apt-get update
       - sudo apt-get install -y libv8-dev gcc-8 g++-8
-      - sem-version ruby 3.0.4
+      - sem-version ruby 3.1.2
       - sem-version firefox esr-latest
 blocks:
   - name: Run Tests
@@ -18,7 +18,7 @@ blocks:
         - name: Tests
           commands:
             - checkout
-            - rbenv local 3.0.4
+            - rbenv local 3.1.2
             - gem install bundler
             - gem install libv8 -- --with-system-v8
             - 'curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter'

@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '~> 3.0.4'
+ruby '~> 3.1.2'
 
 # Need the Rails gem
 gem 'rails', '~> 7.0.4'
