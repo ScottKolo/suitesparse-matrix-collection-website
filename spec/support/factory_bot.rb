@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'factory_bot'
 
 RSpec.configure do |config|
@@ -6,11 +8,9 @@ RSpec.configure do |config|
 
   # Build and validate factories before the test, clean up after
   config.before(:suite) do
-    begin
-      DatabaseCleaner.start
-      FactoryBot.lint
-    ensure
-      DatabaseCleaner.clean
-    end
+    DatabaseCleaner.start
+    FactoryBot.lint
+  ensure
+    DatabaseCleaner.clean
   end
 end

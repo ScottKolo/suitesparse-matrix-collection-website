@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://sparse.tamu.edu/matrices"
+SitemapGenerator::Sitemap.default_host = 'http://sparse.tamu.edu/matrices'
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
@@ -33,15 +35,14 @@ SitemapGenerator::Sitemap.create do
 
   # Add group listing
   add '/groups'
-  
+
   # Add all matrices
   Matrix.all.each do |matrix|
     add "/#{matrix.group}/#{matrix.name}"
   end
-  
+
   # Add all groups
   Group.all.each do |group|
     add "/#{group.name}"
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 ruby '~> 3.0'
@@ -7,7 +9,7 @@ gem 'rails', '~> 7.0.4'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # jquery for easier javascript
-gem "jquery-rails"
+gem 'jquery-rails'
 # Rails no longer includes sprockets - we need to include it
 gem 'sprockets-rails'
 # js-cookie for modifying using cookies with JavaScript
@@ -22,18 +24,18 @@ gem 'bootstrap'
 gem 'sassc-rails'
 # Use haml for views
 gem 'haml', '~> 5.0'
-gem 'haml-rails'
 gem 'haml-contrib', '~> 1.0.0.1'
+gem 'haml-rails'
 # Add Font Awesome
 gem 'font_awesome5_rails'
 # Add pagination
+gem 'json', '~> 2.3.0'
 gem 'will_paginate', '~> 3.3.1'
 gem 'will_paginate-bootstrap-style'
-gem 'json', '~> 2.3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Use reCaptcha to prevent spam
-gem "recaptcha", require: "recaptcha/rails"
+gem 'recaptcha', require: 'recaptcha/rails'
 # Use Filterrific for AJAX filtering
 gem 'filterrific', '~> 5.2.3'
 # Generate a sitemap
@@ -45,25 +47,26 @@ group :development, :test do
   # Use Cucumber for BDD testing
   gem 'cucumber-rails', require: false
   # Use Database Cleaner to clear the database between tests
-  gem 'database_cleaner'
   gem 'capybara', git: 'https://github.com/teamcapybara/capybara'
-  gem 'rails-controller-testing'
-  gem 'launchy'
+  gem 'database_cleaner'
   gem 'factory_bot'
+  gem 'launchy'
+  gem 'rails-controller-testing'
   # Use rspec for lower level unit testing
   gem 'rspec-rails', '~> 6.0.1'
   # Use simplecov for coverage testing
-  gem 'simplecov', '0.21.2', require: false
   gem 'byebug'
+  gem 'simplecov', '0.21.2', require: false
   # Use Selenium for javascript testing
-  gem 'webdrivers', '~> 5.2.0'
   gem 'nokogiri', '~> 1.13.9'
+  gem 'webdrivers', '~> 5.2.0'
   # Use brakeman for security checks
   gem 'brakeman', require: false
-  gem 'loofah', '>= 2.2.3'
+  # Use rubocop for Ruby style checks
   gem 'listen', '~> 3.3'
+  gem 'loofah', '>= 2.2.3'
+  gem 'rubocop', require: false
   gem 'sq_mini_racer'
-  gem 'libv8-node'
 end
 
 group :development do

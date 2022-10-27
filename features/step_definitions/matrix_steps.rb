@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
 
-Given /the following matri(?:x|ces) exist/ do |matrices_table|
+Given(/the following matri(?:x|ces) exist/) do |matrices_table|
   matrices_table.hashes.each do |matrix|
     CollectionMatrix.create!(matrix)
   end
 end
 
-Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
+Then(/I should see "(.*)" before "(.*)"/) do |e1, e2|
   assert_text(:all, /#{e1}.*#{e2}/)
 end

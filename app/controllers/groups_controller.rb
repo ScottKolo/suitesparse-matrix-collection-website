@@ -1,6 +1,7 @@
-class GroupsController < ApplicationController
+# frozen_string_literal: true
 
-  PERMITTED_PARAMTERS = [:page, :per_page, :utf8, :_]
+class GroupsController < ApplicationController
+  PERMITTED_PARAMTERS = %i[page per_page utf8 _].freeze
 
   def index
     # List of permitted fields for params
@@ -18,25 +19,23 @@ class GroupsController < ApplicationController
 
   def show
     # List of permitted fields for params
-    permitted_params = params.permit([{filterrific: [:reset_filterrific, :sorted_by]},
-      :format, :group, :page, :per_page, :utf8, :_])
+    permitted_params = params.permit([{ filterrific: %i[reset_filterrific sorted_by] },
+                                      :format, :group, :page, :per_page, :utf8, :_])
 
     # Initialize filterrific filtering system
     @filterrific = initialize_filterrific(
       CollectionMatrix,
       permitted_params[:filterrific],
       select_options: {
-        sorted_by: CollectionMatrix.options_for_sorted_by,
+        sorted_by: CollectionMatrix.options_for_sorted_by
       }
     ) or return
 
     # Get group info from the params
     group_name = permitted_params[:group]
     @group = Group.find_by(name: group_name)
-    
-    if !@group
-      return render :not_found, status: 404, content_type: 'text/html', template: 'groups/not_found'
-    end
+
+    return render :not_found, status: 404, content_type: 'text/html', template: 'groups/not_found' unless @group
 
     @matrices = @filterrific.find.page(permitted_params[:page]).merge(CollectionMatrix.where(group: group_name))
     @per_page = helpers.per_page(params, session)
@@ -50,5 +49,4 @@ class GroupsController < ApplicationController
     #   format.all { return render :not_found, status: 404, content_type: 'text/html'  }
     # end
   end
-
 end

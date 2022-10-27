@@ -82,6 +82,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    ast (2.4.2)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     bcrypt (3.1.18)
@@ -176,7 +177,6 @@ GEM
     json (2.3.1)
     launchy (2.5.0)
       addressable (~> 2.7)
-    libv8-node (18.8.0.0)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -212,6 +212,9 @@ GEM
     nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    parallel (1.22.1)
+    parser (3.1.2.1)
+      ast (~> 2.4.1)
     pg (1.4.4)
     popper_js (2.11.6)
     public_suffix (5.0.0)
@@ -256,6 +259,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
+    rainbow (3.1.1)
     rake (13.0.6)
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
@@ -286,6 +290,19 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.11.1)
+    rubocop (1.37.1)
+      json (~> 2.3)
+      parallel (~> 1.10)
+      parser (>= 3.1.2.1)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.23.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.23.0)
+      parser (>= 3.1.1.0)
+    ruby-progressbar (1.11.0)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -333,6 +350,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
+    unicode-display_width (2.3.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -376,7 +394,6 @@ DEPENDENCIES
   js_cookie_rails
   json (~> 2.3.0)
   launchy
-  libv8-node
   listen (~> 3.3)
   loofah (>= 2.2.3)
   mailgun_rails
@@ -389,6 +406,7 @@ DEPENDENCIES
   recaptcha
   rexml
   rspec-rails (~> 6.0.1)
+  rubocop
   sassc-rails
   simplecov (= 0.21.2)
   sitemap_generator

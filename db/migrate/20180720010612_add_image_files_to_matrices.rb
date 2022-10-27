@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AddImageFilesToMatrices < ActiveRecord::Migration[5.1]
   def change
-  	add_column :matrices, :image_files, :text
+    add_column :matrices, :image_files, :text
   end
 end

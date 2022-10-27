@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 # File: features/step_definitions/download_steps.rb
 #
 # Step definitions for forming Cucumber tests related to downloading matrix
 # data files
 
-Given /^there is a matrix with the group "(.+)" and the name "(.+)"$/ do |group, name|
+Given(/^there is a matrix with the group "(.+)" and the name "(.+)"$/) do |group, name|
   CollectionMatrix.create(group: group, name: name)
 end
 
-Then /^I should be able to download a "([^"]*)" file called "([^"]*)"$/ do |format, filename|
+Then(/^I should be able to download a "([^"]*)" file called "([^"]*)"$/) do |format, filename|
   expect(page).to have_link(format, href: /.*#{filename}/)
 end
