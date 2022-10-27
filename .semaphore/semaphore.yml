@@ -39,3 +39,5 @@ blocks:
             - bundle exec rake
             - ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.json coverage/coverage.json
             - 'if [ "$SEMAPHORE_THREAD_RESULT" == "passed" ]; then ./cc-test-reporter after-build; fi'
+      secrets:
+        - name: CodeClimate Tokens
