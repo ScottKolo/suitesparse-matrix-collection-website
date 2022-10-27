@@ -6,8 +6,8 @@ ruby '~> 3.1.2'
 
 # Need the Rails gem
 gem 'rails', '~> 7.0.4'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+# Use Terser as compressor for JavaScript assets
+gem 'terser', '~> 1.1.12'
 # jquery for easier javascript
 gem 'jquery-rails'
 # Rails no longer includes sprockets - we need to include it
