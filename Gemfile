@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '~> 3.0'
+ruby '~> 3.0.4'
 
 # Need the Rails gem
 gem 'rails', '~> 7.0.4'
@@ -66,7 +66,6 @@ group :development, :test do
   gem 'listen', '~> 3.3'
   gem 'loofah', '>= 2.2.3'
   gem 'rubocop', require: false
-  gem 'sq_mini_racer'
 end
 
 group :development do
