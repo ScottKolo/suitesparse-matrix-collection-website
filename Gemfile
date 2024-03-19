@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby '~> 3.1.2'
 
 # Need the Rails gem
-gem 'rails', '~> 7.0.4'
+gem 'rails', '~> 7.0.8'
 # Use Terser as compressor for JavaScript assets
 gem 'terser', '~> 1.1.12'
 # jquery for easier javascript
