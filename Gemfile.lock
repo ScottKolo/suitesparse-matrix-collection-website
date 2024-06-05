@@ -209,7 +209,7 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.0)
-    nokogiri (1.15.6)
+    nokogiri (1.16.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     parallel (1.22.1)
@@ -397,7 +397,7 @@ DEPENDENCIES
   listen (~> 3.3)
   loofah (>= 2.2.3)
   mailgun_rails
-  nokogiri (~> 1.15.6)
+  nokogiri (~> 1.16.5)
   pg
   puma
   rails (~> 7.0.4)
