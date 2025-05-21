@@ -1,0 +1,6 @@
+{
+  "name": "suitesparse-collection-website",
+  "engines": {
+    "node": "22.x"
+  }
+}
