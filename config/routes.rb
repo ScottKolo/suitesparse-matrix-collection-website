@@ -7,24 +7,24 @@ Rails.application.routes.draw do
   get '/' => 'collection_matrices#index'
 
   # Redirects
-  get '/mat/:group/:name.mat', to: redirect('http://sparse-files.engr.tamu.edu/mat/%<group>s/%<name>s.mat', status: 301)
+  get '/mat/:group/:name.mat', to: redirect('http://sparse-files.engr.tamu.edu/mat/%{group}/%{name}.mat', status: 301)
   get '/RB/:group/:name.tar.gz',
-      to: redirect('http://sparse-files.engr.tamu.edu/RB/%<group>s/%<name>s.tar.gz', status: 301)
+      to: redirect('http://sparse-files.engr.tamu.edu/RB/%{group}/%{name}.tar.gz', status: 301)
   get '/MM/:group/:name.tar.gz',
-      to: redirect('http://sparse-files.engr.tamu.edu/MM/%<group>s/%<name>s.tar.gz', status: 301)
+      to: redirect('http://sparse-files.engr.tamu.edu/MM/%{group}/%{name}.tar.gz', status: 301)
   get '/svd/:group/:filename.mat',
-      to: redirect('http://sparse-files.engr.tamu.edu/svd/%<group>s/%<filename>s.mat', status: 301)
+      to: redirect('http://sparse-files.engr.tamu.edu/svd/%{group}/%{filename}.mat', status: 301)
 
   # Image Redirect
-  get '/files/:group/*file', to: redirect('https://sparse-files-images.engr.tamu.edu/%<group>s/%<file>s', status: 301),
+  get '/files/:group/*file', to: redirect('https://sparse-files-images.engr.tamu.edu/%{group}/%{file}', status: 301),
                              format: false,
                              constraints: { file: /.*\.(jpg|jpeg|gif|png)/ }
 
-  get '/files/*file', to: redirect('https://sparse-files-images.engr.tamu.edu/%<file>s', status: 301),
+  get '/files/*file', to: redirect('https://sparse-files-images.engr.tamu.edu/%{file}', status: 301),
                       format: false,
                       constraints: { file: /.*\.(jpg|jpeg|gif|png)/ }
 
-  get '/files/*file_path', to: redirect('http://sparse-files.engr.tamu.edu/files/%<file_path>s', status: 301),
+  get '/files/*file_path', to: redirect('http://sparse-files.engr.tamu.edu/files/%{file_path}', status: 301),
                            format: false
 
   # Static page routes
