@@ -4,10 +4,10 @@
     notes: 'ML_Graph: adjacency matrices from machine learning datasets, Olaf Schenk.
 
 The following adjacency matrices were used in the numerical experiments in:
- 
-D.  Pasadakis,  C.  L.  Alappat,  O.  Schenk,  and  G.  Wellein,  "K-way
-p-spectral clustering on Grassmann manifolds," 2020.  [Online]. Available:
-https://arxiv.org/abs/2008.13210
+
+D. Pasadakis, C.L. Alappat, O. Schenk, and G. Wellein, "Multiway p-spectral
+graph cuts on Grassmann manifolds," Machine Learning 111, 791–829, 2022,
+https://doi.org/10.1007/s10994-021-06108-1
 
 -------------------------------------------------------------------------------
 Graph Creation
